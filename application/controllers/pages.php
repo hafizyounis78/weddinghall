@@ -24,10 +24,18 @@ class Pages extends CI_Controller
 			$this->load->view('templates/sidebar');
 			$this->load->view('templates/stylecustomizer');
 			$this->load->view('templates/pageheader');
+			$data['users'] = $this->users($data);
 			$this->load->view('pages/'.$page,$data);
 			$this->load->view('templates/quicksidebar.php');
 			$this->load->view('templates/footer');
 		}
+	}
+	
+	function users($data)
+	{
+		$this->load->model('usermodel');
+		return $this->usermodel->get_users();
+		//$this->load->view('users_view', $data);
 	}
 }
 ?>

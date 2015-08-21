@@ -30,211 +30,27 @@
 							</tr>
 							</thead>
 							<tbody>
-							<tr class="odd gradeX">
-								<td>
-									&nbsp;
-								</td>
-								<td>
-									 shuxer
-								</td>
-								<td>&nbsp;</td>
-								<td>
-									<a href="mailto:shuxer@gmail.com">
-									shuxer@gmail.com </a>
-								</td>
-								<td>
-									<span class="label label-sm label-success">
-									Approved </span>
-								</td>
-							</tr>
-							<tr class="odd gradeX">
-								<td>
-									&nbsp;
-								</td>
-								<td>
-									 looper
-								</td>
-								<td>&nbsp;</td>
-								<td>
-									<a href="mailto:looper90@gmail.com">
-									looper90@gmail.com </a>
-								</td>
-								<td>
-									<span class="label label-sm label-warning">
-									Suspended </span>
-								</td>
-							</tr>
-							<tr class="odd gradeX">
-								<td>
-									&nbsp;
-								</td>
-								<td>
-									 userwow
-								</td>
-								<td>&nbsp;</td>
-								<td>
-									<a href="mailto:userwow@yahoo.com">
-									userwow@yahoo.com </a>
-								</td>
-								<td>
-									<span class="label label-sm label-success">
-									Approved </span>
-								</td>
-							</tr>
-							<tr class="odd gradeX">
-								<td>
-									&nbsp;
-								</td>
-								<td>
-									 user1wow
-								</td>
-								<td>&nbsp;</td>
-								<td>
-									<a href="mailto:userwow@gmail.com">
-									userwow@gmail.com </a>
-								</td>
-								<td>
-									<span class="label label-sm label-default">
-									Blocked </span>
-								</td>
-							</tr>
-							<tr class="odd gradeX">
-								<td>
-									&nbsp;
-								</td>
-								<td>
-									 restest
-								</td>
-								<td>&nbsp;</td>
-								<td>
-									<a href="mailto:userwow@gmail.com">
-									test@gmail.com </a>
-								</td>
-								<td>
-									<span class="label label-sm label-success">
-									Approved </span>
-								</td>
-							</tr>
-							<tr class="odd gradeX">
-								<td>
-									&nbsp;
-								</td>
-								<td>
-									 foopl
-								</td>
-								<td>&nbsp;</td>
-								<td>
-									<a href="mailto:userwow@gmail.com">
-									good@gmail.com </a>
-								</td>
-								<td>
-									<span class="label label-sm label-success">
-									Approved </span>
-								</td>
-							</tr>
-							<tr class="odd gradeX">
-								<td>
-									&nbsp;
-								</td>
-								<td>
-									 weep
-								</td>
-								<td>&nbsp;</td>
-								<td>
-									<a href="mailto:userwow@gmail.com">
-									good@gmail.com </a>
-								</td>
-								<td>
-									<span class="label label-sm label-success">
-									Approved </span>
-								</td>
-							</tr>
-							<tr class="odd gradeX">
-								<td>
-									&nbsp;
-								</td>
-								<td>
-									 coop
-								</td>
-								<td>&nbsp;</td>
-								<td>
-									<a href="mailto:userwow@gmail.com">
-									good@gmail.com </a>
-								</td>
-								<td>
-									<span class="label label-sm label-success">
-									Approved </span>
-								</td>
-							</tr>
-							<tr class="odd gradeX">
-								<td>
-									&nbsp;
-								</td>
-								<td>
-									 pppol
-								</td>
-								<td>&nbsp;</td>
-								<td>
-									<a href="mailto:userwow@gmail.com">
-									good@gmail.com </a>
-								</td>
-								<td>
-									<span class="label label-sm label-success">
-									Approved </span>
-								</td>
-							</tr>
-							<tr class="odd gradeX">
-								<td>
-									&nbsp;
-								</td>
-								<td>
-									 test
-								</td>
-								<td>&nbsp;</td>
-								<td>
-									<a href="mailto:userwow@gmail.com">
-									good@gmail.com </a>
-								</td>
-								<td>
-									<span class="label label-sm label-success">
-									Approved </span>
-								</td>
-							</tr>
-							<tr class="odd gradeX">
-								<td>
-									&nbsp;
-								</td>
-								<td>
-									 userwow
-								</td>
-								<td>&nbsp;</td>
-								<td>
-									<a href="mailto:userwow@gmail.com">
-									userwow@gmail.com </a>
-								</td>
-								<td>
-									<span class="label label-sm label-default">
-									Blocked </span>
-								</td>
-							</tr>
-							<tr class="odd gradeX">
-								<td>
-									&nbsp;
-								</td>
-								<td>
-									 test
-								</td>
-								<td>&nbsp;</td>
-								<td>
-									<a href="mailto:userwow@gmail.com">
-									test@gmail.com </a>
-								</td>
-								<td>
-									<span class="label label-sm label-success">
-									Approved </span>
-								</td>
-							</tr>
+                            <?php
+  							foreach($users as $row)
+  							{
+								echo '<tr class="odd gradeX">';
+								echo '<td>&nbsp;</td>';
+								echo '<td>'.$row->username.'</td>';
+								echo '<td>'.$row->name.'</td>';
+								echo '<td>'.$row->email.'</td>';
+								if ($row->status == 1)
+								echo '<td><span class="label label-sm label-success">
+									فعال</span>
+								</td>';
+								else
+							if ($row->status == 0)
+								echo '<td><span class="label label-sm label-warning">
+									غير فعال</span>
+								</td>';
+							echo '</tr>';
+							}
+							?>
 							</tbody>
 							</table>
-</div>
+					  </div>
 					</div>

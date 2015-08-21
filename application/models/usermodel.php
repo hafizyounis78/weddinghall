@@ -3,10 +3,10 @@
 class Usermodel extends CI_Model
 {
 
-public function get_users($user_is)
+public function get_users()
     {
-        $myquery = "select * from users where username= $user_is";
-        return $this->db->query($myquery);
+        $query = $this->db->get('users');
+		return $query->result();
 
 
     }
