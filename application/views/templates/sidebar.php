@@ -145,13 +145,13 @@
 				<li >
 					<a href="javascript:;">
 					<i class="icon-rocket"></i>
-					<span class="title">Page Layouts</span>
+					<span class="title">الموظفين</span>
                     <span class="arrow "></span>
 					</a>
 					<ul class="sub-menu">
 						<li>
-							<a href="layout_horizontal_sidebar_menu.html">
-							Horizontal & Sidebar Menu</a>
+							<a href="employee">
+							عرض الموظفين</a>
 						</li>
 						<li>
 							<a href="index_horizontal_menu.html">
