@@ -31,10 +31,11 @@
 							</thead>
 							<tbody>
                             <?php
+							$i = 1;
   							foreach($users as $row)
   							{
 								echo '<tr class="odd gradeX">';
-								echo '<td>&nbsp;</td>';
+								echo '<td>'.$i++.'</td>';
 								echo '<td>'.$row->username.'</td>';
 								echo '<td>'.$row->name.'</td>';
 								echo '<td>'.$row->email.'</td>';
