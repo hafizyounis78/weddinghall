@@ -10,6 +10,11 @@ public function get_employee()
 
 
     }
+public function add_employee($data)
+    {
+         $this->db->insert("employee", $data);
+
+    }
 
 
 }
