@@ -192,7 +192,11 @@ var FormValidation = function () {
                 focusInvalid: false, // do not focus the last invalid input
                 ignore: "", // validate all fields including form hidden input
                 rules: {
-                    name: {
+                    emp_id: {
+                        minlength: 2,
+                        required: true
+                    },
+					name: {
                         minlength: 2,
                         required: true
                     },
@@ -209,10 +213,10 @@ var FormValidation = function () {
 					confpassword: {
                         required: true
                     }, 
-                    options1: {
+                    job: {
                         required: true
                     },
-                    options2: {
+                    contract_code: {
                         required: true
                     },
                     select2tags: {
@@ -221,10 +225,13 @@ var FormValidation = function () {
                     datepicker: {
                         required: true
                     },
+					dob: {
+                        required: true
+                    },
                     occupation: {
                         minlength: 5,
                     },
-                    membership: {
+                    sex: {
                         required: true
                     },
                     service: {

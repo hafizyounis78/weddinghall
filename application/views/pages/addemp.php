@@ -105,8 +105,10 @@
 											<select class="form-control select2me" name="job">
 												<option value="">Select...</option>
 												<option value="Option 1">مضيف</option>
+                                                <option value="Option 3">محاسب مالي</option>
 												<option value="Option 2">مصور</option>
 												<option value="Option 3">عامل</option>
+                                                <option value="Option 3">نظام صالة</option>
                                                 <option value="Option 3">حارس</option>
                                                 
 											</select>
