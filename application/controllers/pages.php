@@ -37,5 +37,12 @@ class Pages extends CI_Controller
 		 
 		//$this->load->view('users_view', $data);
 	}
+	function employee()
+	{
+		$this->load->model('empmodel');
+		return $this->empmodel->get_employee();
+		 
+		//$this->load->view('users_view', $data);
+	}
 }
 ?>
