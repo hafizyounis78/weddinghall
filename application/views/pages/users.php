@@ -4,7 +4,7 @@
 								<i class="fa fa-user"></i>جدول المستخدمين
 							</div>
 							<div class="actions">
-								<a href="#" class="btn btn-default btn-sm">
+								<a href="adduser" class="btn btn-default btn-sm">
 								<i class="fa fa-plus"></i> إضافة مستخدم </a>
 							</div>
 						</div>

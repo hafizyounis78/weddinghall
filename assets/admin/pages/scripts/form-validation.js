@@ -199,7 +199,16 @@ var FormValidation = function () {
                     email: {
                         required: true,
                         email: true
-                    },  
+                    },
+					username: {
+                        required: true
+                    },
+					password: {
+                        required: true
+                    },
+					confpassword: {
+                        required: true
+                    }, 
                     options1: {
                         required: true
                     },

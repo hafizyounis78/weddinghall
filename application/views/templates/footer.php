@@ -30,6 +30,19 @@
 <script type="text/javascript" src="<?php echo base_url();?>assets/global/plugins/select2/select2.min.js"></script>
 <script type="text/javascript" src="<?php echo base_url();?>assets/global/plugins/datatables/media/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="<?php echo base_url();?>assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.js"></script>
+<!-- FORM VALIDATION BLUGINS-->
+<script type="text/javascript" src="<?php echo base_url();?>assets/global/plugins/jquery-validation/js/jquery.validate.min.js"></script>
+<script type="text/javascript" src="<?php echo base_url();?>assets/global/plugins/jquery-validation/js/additional-methods.min.js"></script>
+<script type="text/javascript" src="<?php echo base_url();?>assets/global/plugins/select2/select2.min.js"></script>
+<script type="text/javascript" src="<?php echo base_url();?>assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+<script type="text/javascript" src="<?php echo base_url();?>assets/global/plugins/bootstrap-wysihtml5/wysihtml5-0.3.0.js"></script>
+<script type="text/javascript" src="<?php echo base_url();?>assets/global/plugins/bootstrap-wysihtml5/bootstrap-wysihtml5.js"></script>
+<script type="text/javascript" src="<?php echo base_url();?>assets/global/plugins/ckeditor/ckeditor.js"></script>
+<script type="text/javascript" src="<?php echo base_url();?>assets/global/plugins/bootstrap-markdown/js/bootstrap-markdown.js"></script>
+<script type="text/javascript" src="<?php echo base_url();?>assets/global/plugins/bootstrap-markdown/lib/markdown.js"></script>
+<!-- BEGIN PAGE VALIDATION -->
+<script type="text/javascript" src="<?php echo base_url();?>assets/admin/pages/scripts/form-validation.js"></script>
+<!-- END PAGE VALIDATION -->
 <!-- END PAGE LEVEL PLUGINS -->
 <script src="<?php echo base_url();?>assets/global/scripts/metronic.js" type="text/javascript"></script>
 <script src="<?php echo base_url();?>assets/admin/layout/scripts/layout.js" type="text/javascript"></script>
@@ -43,6 +56,7 @@
 		QuickSidebar.init(); // init quick sidebar
 		Demo.init(); // init demo features
 		TableManaged.init();
+		FormValidation.init();
       });
    </script>
 <!-- END JAVASCRIPTS -->
