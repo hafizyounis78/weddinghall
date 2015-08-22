@@ -154,8 +154,8 @@
 							عرض الموظفين</a>
 						</li>
 						<li>
-							<a href="index_horizontal_menu.html">
-							Dashboard & Mega Menu</a>
+							<a href="addemp">
+							اضافة موظف</a>
 						</li>
 						<li>
 							<a href="layout_horizontal_menu1.html">
