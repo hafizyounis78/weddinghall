@@ -6,33 +6,8 @@
 							</div>
 							<div class="actions">
 								<a href="javascript:;" class="btn btn-default btn-sm">
-								<i class="fa fa-pencil"></i> Add </a>
-								<div class="btn-group">
-									<a class="btn btn-default btn-sm" href="javascript:;" data-toggle="dropdown">
-									<i class="fa fa-cogs"></i> Tools <i class="fa fa-angle-down"></i>
-									</a>
-									<ul class="dropdown-menu pull-right">
-										<li>
-											<a href="javascript:;">
-											<i class="fa fa-pencil"></i> Edit </a>
-										</li>
-										<li>
-											<a href="javascript:;">
-											<i class="fa fa-trash-o"></i> Delete </a>
-										</li>
-										<li>
-											<a href="javascript:;">
-											<i class="fa fa-ban"></i> Ban </a>
-										</li>
-										<li class="divider">
-										</li>
-										<li>
-											<a href="javascript:;">
-											<i class="i"></i> Make admin </a>
-										</li>
-									</ul>
-								</div>
-							</div>
+								<i class="fa fa-pencil"></i>إضافة موظف </a>
+											</div>
 						</div>
 						<div class="portlet-body">
 							<table class="table table-striped table-bordered table-hover" id="sample_2">
@@ -59,14 +34,14 @@
 							</tr>
 							</thead>
 							<tbody>
-							<tr class="odd gradeX">
+							
 								
 								<?php
+								$i=1;
   							foreach($employee as $row)
   							{
 								echo '<tr class="odd gradeX">';
-								echo '<td>							<input type="checkbox" class="checkboxes" value="1"/>
-								</td>';
+								echo '<td>'.$i++.'</td>';
 								echo '<td>'.$row->emp_code.'</td>';
 								echo '<td>'.$row->name.'</td>';
 								echo '<td>'.$row->job.'</td>';
