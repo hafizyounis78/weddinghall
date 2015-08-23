@@ -12,7 +12,6 @@ public function get_employee()
     }
 public function add_employee($data)
     {
-	alert($_POST);
 		extract($_POST);
 	   /********************************/
 	   	 $data['emp_id']= $emp_id;
