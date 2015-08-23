@@ -152,7 +152,7 @@
             
       <script>
        $('.save1').click(function() {
-		
+		alert('fffffff');
 		alert($("#form_sample_3").serialize());
 		var input = $("#form_sample_3").serialize();
 		$.ajax({
