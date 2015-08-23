@@ -149,3 +149,47 @@
 					</div>
 				</div>
 			</div>
+            
+      <script>
+       $('.sav_sec1').click(function() {
+		
+		if ($("#centername").val().trim() =='')
+		{
+			alert('الرجاء ادخال البيات الاساسية');
+			 return 0; 
+		}
+		//alert($("#section1").serialize());
+		var input = $("#section1").serialize();
+		$.ajax({
+		url: "pages/addemp/",
+		type: "POST",
+		data:  $("#form_sample_3").serialize(),
+		error: function(){},
+		beforeSend: function(){ },
+		complete: function(){ },
+		success: function(strData){
+			//alert(strData);
+			back_lingth=strData.length;
+		$('#emp_code').val(strData);
+		if (strData>0){
+		alert('تمت عملية حفظ  البيانات العامة');
+		 /* document.getElementById("save5").style.visibility="visible";
+		 document.getElementById("saveb").style.visibility="hidden";
+		  document.getElementById("save7").style.visibility="visible";
+		  document.getElementById("updateb").style.visibility="visible";
+		  document.getElementById("updated").style.visibility="visible";
+		 document.getElementById("savec").style.visibility="visible";
+		  //document.getElementById("saved").style.visibility="visible";
+		  // document.getElementById("saveg").style.visibility="visible";
+		  document.getElementById("savef").style.visibility="visible";
+		 document.getElementById("savek").style.visibility="visible";*/
+		}else
+		{
+			alert('لم تتم عملية الحفظ حاول مرة اخرى');
+		}
+		//	$("#savek").show();
+			 
+		}
+	});//$.ajax
+		})
+	</script>
