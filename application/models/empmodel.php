@@ -12,20 +12,19 @@ public function get_employee()
     }
 public function add_employee($data)
     {
-alert( 	extract($_POST));
-			extract($_POST);
-	   $data = array (
-	  
-	   	 array('name' => ':emp_id','value'=>  $emp_id),
-		 array('name' => ':NAME','value'=>  $name),
-	 	 array('name' => ':sex','value'=>  $sex),
-		 array('name' => ':dob','value'=>  $dob),
-		 array('name' => ':mobile','value'=>  $mobile),
-		 array('name' => ':tel','value'=>  $tel),
-		 array('name' => ':address','value'=>  $address),
-		 array('name' => ':contract_code','value'=>  $contract_code),
-		 array('name' => ':salary','value'=>  $salary),
-		 array('name' => ':job','value'=>  $job));	
+	alert($_POST);
+		extract($_POST);
+	   /********************************/
+	   	 $data['emp_id']= $emp_id;
+		 $data['name']=  $name;
+	 	 $data['sex']= $sex;
+		 $data['dob']=  $dob;
+		 $data['mobile']= $mobile;
+		 $data['tel']= $tel;
+		 $data['address']=$address;
+		 $data['contract_code']= $contract_code;
+		 $data['salary']=  $salary;
+		 $data['job']=  $job;
 	/*********************************/
          $this->db->insert("employee", $data);
 

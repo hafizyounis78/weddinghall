@@ -52,6 +52,9 @@
 <!-- OUR SCRIPTS-->
 <script src="<?php echo base_url();?>js/users.js"></script>
 <!-- END OUR SCRIPTS-->
+<!-- OUR SCRIPTS-->
+<script src="<?php echo base_url();?>js/employee.js"></script>
+<!-- END OUR SCRIPTS-->
 <script>
       jQuery(document).ready(function() {    
         Metronic.init(); // init metronic core components

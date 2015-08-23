@@ -103,13 +103,13 @@
 										</label>
 										<div class="col-md-4">
 											<select class="form-control select2me" name="job">
-												<option value="">Select...</option>
-												<option value="Option 1">مضيف</option>
-                                                <option value="Option 3">محاسب مالي</option>
-												<option value="Option 2">مصور</option>
-												<option value="Option 3">عامل</option>
-                                                <option value="Option 3">نظام صالة</option>
-                                                <option value="Option 3">حارس</option>
+												<option value="0">Select...</option>
+												<option value="1">مضيف</option>
+                                                <option value="2">محاسب مالي</option>
+												<option value="3">مصور</option>
+												<option value="4">عامل</option>
+                                                <option value="5">نظام صالة</option>
+                                                <option value="6">حارس</option>
                                                 
 											</select>
 										</div>
@@ -120,10 +120,10 @@
 										</label>
 										<div class="col-md-4">
 											<select class="form-control select2me" name="contract_code">
-												<option value="">Select...</option>
-												<option value="Option 1">عقد دائم</option>
-												<option value="Option 2">عقد مؤقت</option>
-												<option value="Option 3">متطوع</option>
+												<option value="0">Select...</option>
+												<option value="1">عقد دائم</option>
+												<option value="2">عقد مؤقت</option>
+												<option value="3">متطوع</option>
 											</select>
 										</div>
 									</div>
@@ -137,7 +137,7 @@
 								<div class="form-actions">
 									<div class="row">
 										<div class="col-md-offset-3 col-md-9">
-											<button name="save1" type="submit"  class="btn green">Submit</button>
+											<button id="btnAddemp" name="btnAddemp" type="submit"  class="btn green">Submit</button>
 											<button type="button" class="btn default">Cancel</button>
 										</div>
 									</div>
@@ -150,41 +150,3 @@
 				</div>
 			</div>
             
-      <script>
-       $('.save1').click(function() {
-		alert('fffffff');
-		alert($("#form_sample_3").serialize());
-		var input = $("#form_sample_3").serialize();
-		$.ajax({
-		url: "pages/addemp/",
-		type: "POST",
-		data:  $("#form_sample_3").serialize(),
-		error: function(){},
-		beforeSend: function(){ },
-		complete: function(){ },
-		success: function(strData){
-			//alert(strData);
-			back_lingth=strData.length;
-		$('#emp_code').val(strData);
-		if (strData>0){
-		alert('تمت عملية حفظ  البيانات العامة');
-		 /* document.getElementById("save5").style.visibility="visible";
-		 document.getElementById("saveb").style.visibility="hidden";
-		  document.getElementById("save7").style.visibility="visible";
-		  document.getElementById("updateb").style.visibility="visible";
-		  document.getElementById("updated").style.visibility="visible";
-		 document.getElementById("savec").style.visibility="visible";
-		  //document.getElementById("saved").style.visibility="visible";
-		  // document.getElementById("saveg").style.visibility="visible";
-		  document.getElementById("savef").style.visibility="visible";
-		 document.getElementById("savek").style.visibility="visible";*/
-		}else
-		{
-			alert('لم تتم عملية الحفظ حاول مرة اخرى');
-		}
-		//	$("#savek").show();
-			 
-		}
-	});//$.ajax
-		})
-	</script>

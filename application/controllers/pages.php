@@ -48,12 +48,11 @@ class Pages extends CI_Controller
 		$this->load->model('empmodel');
 		return $this->empmodel->get_employee();
 		 
-		//$this->load->view('users_view', $data);
 	}
 	function addemp()
 	{
 		$this->load->model('empmodel');
-		return $this->empmodel->add_employee();
+		$this->empmodel->add_employee();
 		
 }
 }
