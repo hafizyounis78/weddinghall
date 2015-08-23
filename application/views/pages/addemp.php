@@ -137,7 +137,7 @@
 								<div class="form-actions">
 									<div class="row">
 										<div class="col-md-offset-3 col-md-9">
-											<button type="submit" class="btn green">Submit</button>
+											<button name="save1" type="submit"  class="btn green">Submit</button>
 											<button type="button" class="btn default">Cancel</button>
 										</div>
 									</div>
@@ -151,13 +151,8 @@
 			</div>
             
       <script>
-       $('.sav_sec1').click(function() {
+       $('.save1').click(function() {
 		
-		if ($("#centername").val().trim() =='')
-		{
-			alert('الرجاء ادخال البيات الاساسية');
-			 return 0; 
-		}
 		alert($("#form_sample_3").serialize());
 		var input = $("#form_sample_3").serialize();
 		$.ajax({
