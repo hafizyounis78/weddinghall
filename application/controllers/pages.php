@@ -41,7 +41,7 @@ class Pages extends CI_Controller
 	function adduser()
 	{
 		$this->load->model('usermodel');
-		return $this->usermodel->insert_users();
+		$this->usermodel->insert_user();
 	}
 	function employee()
 	{

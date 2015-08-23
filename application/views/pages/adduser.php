@@ -7,7 +7,7 @@
 						</div>
 						<div class="portlet-body form">
 							<!-- BEGIN FORM-->
-							<form action="#" id="frmAdduser" class="form-horizontal">
+                            <form action="#" id="form_sample_3" class="form-horizontal">
 								<div class="form-body">
 									<h3 class="form-section">Advance validation. <small>Custom radio buttons, checkboxes and Select2 dropdowns</small></h3>
 									<div class="alert alert-danger display-hide">
@@ -73,12 +73,13 @@
 								<div class="form-actions">
 									<div class="row">
 										<div class="col-md-offset-3 col-md-9">
-											<button type="submit" class="btn green" >Submit</button>
-											<button type="button" class="btn default" id="btnAdduser" name="btnAdduser">Cancel</button>
+											<button type="submit" class="btn green" id="btnAdduser" name="btnAdduser">Submit</button>
+											<button type="button" class="btn default" >Cancel</button>
 										</div>
 									</div>
 								</div>
 							</form>
+							
 							<!-- END FORM-->
 						</div>
 						<!-- END VALIDATION STATES-->

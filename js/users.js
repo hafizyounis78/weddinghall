@@ -1,17 +1,19 @@
 ﻿// JavaScript Document
 $(document).ready(function(){
 	$('#btnAdduser').click(function() {
-		alert($("#frmAdduser").serialize());
-		var input = $("#frmAdduser").serialize();
-		
+									
 		$.ajax({
-			url: "pages/adduser/",
+			url: "pages/adduser",
 			type: "POST",
-			data:  $("#frmAdduser").serialize(),
-			error: function(){},
+			data:  $("#form_sample_3").serialize(),
+			error: function(){
+				alert('error');
+			},
 			beforeSend: function(){},
 			complete: function(){},
-			success: function(){}
-		});//$.ajax
+			success: function(){
+					alert ('تمت عملية الإضافة بنجاح');
+			}
+		});//END $.ajax
 	}); // END CLICK
 }); // END READY
