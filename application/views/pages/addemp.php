@@ -158,8 +158,8 @@
 			alert('الرجاء ادخال البيات الاساسية');
 			 return 0; 
 		}
-		//alert($("#section1").serialize());
-		var input = $("#section1").serialize();
+		alert($("#form_sample_3").serialize());
+		var input = $("#form_sample_3").serialize();
 		$.ajax({
 		url: "pages/addemp/",
 		type: "POST",

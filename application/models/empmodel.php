@@ -12,6 +12,7 @@ public function get_employee()
     }
 public function add_employee($data)
     {
+alert( 	extract($_POST));
 			extract($_POST);
 	   $data = array (
 	  
