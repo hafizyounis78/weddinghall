@@ -38,6 +38,11 @@ class Pages extends CI_Controller
 		 
 		//$this->load->view('users_view', $data);
 	}
+	function adduser()
+	{
+		$this->load->model('usermodel');
+		return $this->usermodel->insert_users();
+	}
 	function employee()
 	{
 		$this->load->model('empmodel');

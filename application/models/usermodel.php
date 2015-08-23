@@ -3,15 +3,24 @@
 class Usermodel extends CI_Model
 {
 
-public function get_users()
+	public function get_users()
     {
         $query = $this->db->get('users');
 		return $query->result();
-
-
     }
+	
+	public function insert_user()
+	{
+		extract($_POST);
+		$data['username'] = $username;
+		$data['password'] = $password;
+		$data['name'] = $name;
+		$data['email'] = $email;
+		$data['status'] = $status;
+		
+		$this->db->insert('users',$data);
 
-
+	}
 }
 
 

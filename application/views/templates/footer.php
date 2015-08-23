@@ -49,6 +49,9 @@
 <script src="<?php echo base_url();?>assets/admin/layout/scripts/quick-sidebar.js" type="text/javascript"></script>
 <script src="<?php echo base_url();?>assets/admin/layout/scripts/demo.js" type="text/javascript"></script>
 <script src="<?php echo base_url();?>assets/admin/pages/scripts/table-managed.js"></script>
+<!-- OUR SCRIPTS-->
+<script src="<?php echo base_url();?>js/users.js"></script>
+<!-- END OUR SCRIPTS-->
 <script>
       jQuery(document).ready(function() {    
         Metronic.init(); // init metronic core components

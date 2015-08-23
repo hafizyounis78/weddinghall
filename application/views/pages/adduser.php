@@ -7,7 +7,7 @@
 						</div>
 						<div class="portlet-body form">
 							<!-- BEGIN FORM-->
-							<form action="#" id="form_sample_3" class="form-horizontal">
+							<form action="#" id="frmAdduser" class="form-horizontal">
 								<div class="form-body">
 									<h3 class="form-section">Advance validation. <small>Custom radio buttons, checkboxes and Select2 dropdowns</small></h3>
 									<div class="alert alert-danger display-hide">
@@ -66,15 +66,15 @@
 										</label>
 										<div class="col-md-4">
 												<label>
-												<input type="checkbox" value="1" name="activeaccount" checked="checked"/> </label>
+												<input type="checkbox" value="1" name="status" checked="checked"/> </label>
 										</div>
 									</div>
 								</div>
 								<div class="form-actions">
 									<div class="row">
 										<div class="col-md-offset-3 col-md-9">
-											<button type="submit" class="btn green">Submit</button>
-											<button type="button" class="btn default">Cancel</button>
+											<button type="submit" class="btn green" >Submit</button>
+											<button type="button" class="btn default" id="btnAdduser" name="btnAdduser">Cancel</button>
 										</div>
 									</div>
 								</div>
@@ -82,3 +82,12 @@
 							<!-- END FORM-->
 						</div>
 						<!-- END VALIDATION STATES-->
+<!-- JQUERY
+<script type="text/javascript">
+$(document).ready(function(){
+$('#btnAdduser').click(function() {
+	alert('hi');
+});
+});
+</script>--> 
+<!-- END JQUERY-->                  
