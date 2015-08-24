@@ -17,3 +17,22 @@ $(document).ready(function(){
 		});//END $.ajax
 	}); // END CLICK
 }); // END READY
+/***********************delete***************/
+$(document).ready(function(){
+	$('#btndelemp').click(function() {
+									
+		$.ajax({
+			url: "pages/delemp",
+			type: "POST",
+			data:  $("#tablerow").serialize(),
+			error: function(){
+				alert('error');
+			},
+			beforeSend: function(){},
+			complete: function(){},
+			success: function(){
+					alert ('تمت عملية الحذف بنجاح');
+			}
+		});//END $.ajax
+	}); // END CLICK
+}); // END READY

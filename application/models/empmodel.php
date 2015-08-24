@@ -29,7 +29,15 @@ public function add_employee($data)
 
     }
 
+public function del_employee()
+    {
+		extract($_POST);
+		$data['emp_code']= $emp_code;
+        $this->db->where('emp_code', $data);
+        $this->db->delete('employee');
 
+
+    }
 }
 
 

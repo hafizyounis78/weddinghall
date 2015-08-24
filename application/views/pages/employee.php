@@ -5,7 +5,7 @@
 								<i class="fa fa-user"></i>جدول عرض الموظفين
 							</div>
 							<div class="actions">
-								<a href="javascript:;" class="btn btn-default btn-sm">
+								<a href="addemp" class="btn btn-default btn-sm">
 								<i class="fa fa-pencil"></i>إضافة موظف </a>
 											</div>
 						</div>
@@ -31,9 +31,12 @@
                                 <th>
 									 عنوان
 								</th>
+                                <th>
+                                       
+                                </th>
 							</tr>
 							</thead>
-							<tbody>
+							<tbody  >
 							
 								
 								<?php
@@ -42,11 +45,17 @@
   							{
 								echo '<tr class="odd gradeX">';
 								echo '<td>'.$i++.'</td>';
-								echo '<td>'.$row->emp_code.'</td>';
+								echo '<td id="tablerow">'.$row->emp_code.'</td>';
 								echo '<td>'.$row->name.'</td>';
 								echo '<td>'.$row->job.'</td>';
 								echo '<td>'.$row->mobile.'</td>';
 								echo '<td>'.$row->address.'</td>';
+								echo '<td>
+								<button id="btneditemp" name="btneditemp" type="button"  class="btn default btn-xs purple"><i class="fa fa-edit"></i> Edit</button>
+
+								<button id="btndelemp" name="btndelemp" type="submit" value="Delete"  class="btn default btn-xs black"><i class="fa fa-trash-o"></i> Delete</button>
+';
+					echo '</td>';
 							echo '</tr>';
 							}
 							?>
