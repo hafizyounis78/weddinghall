@@ -35,7 +35,7 @@
 										* </span>
 										</label>
 										<div class="col-md-4">
-											<input type="text" name="emp_id" data-required="1" class="form-control"/>
+											<input type="text" name="emp_id" value="<?php if (isset($addemp->emp_id)) {echo $addemp->emp_ID;}?>"  data-required="1" class="form-control"/>
 										</div>
 									</div>
 
@@ -44,7 +44,7 @@
 										* </span>
 										</label>
 										<div class="col-md-4">
-											<input type="text" name="name" data-required="1" class="form-control"/>
+											<input type="text" name="name" data-required="1"  value="<?php if (isset($addemp->name)) {echo $addemp->name;}?>" class="form-control"/>
 										</div>
 									</div>
                                     									<div class="form-group">
@@ -150,3 +150,4 @@
 				</div>
 			</div>
             
+								

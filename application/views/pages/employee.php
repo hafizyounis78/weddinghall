@@ -51,7 +51,7 @@
 								echo '<td>'.$row->mobile.'</td>';
 								echo '<td>'.$row->address.'</td>';
 								echo '<td>
-								<button id="btneditemp" name="btneditemp" type="button"  class="btn default btn-xs purple"><i class="fa fa-edit"></i> Edit</button>
+								<button id="btneditemp" name="btneditemp" type="button"  class="btn default btn-xs purple" onclick="updateEmp('.$row->emp_code.')><i class="fa fa-edit"></i> Edit</button>
 
 								<button id="btndelemp" name="btndelemp" type="submit" value="Delete" class="btn default btn-xs black" onclick="deleteEmp('.$row->emp_code.')"><i class="fa fa-trash-o"></i> Delete</button>
 ';

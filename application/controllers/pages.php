@@ -23,7 +23,7 @@ class Pages extends CI_Controller
 			$this->load->view('templates/sidebar');
 			$this->load->view('templates/stylecustomizer');
 			$this->load->view('templates/pageheader');
-		if($page == 'users'||$page == 'employee' )
+		//if($page == 'users'||$page == 'employee' )
 			$data[$page] = $this->$page();
 			$this->load->view('pages/'.$page,$data);
 			$this->load->view('templates/quicksidebar.php');
@@ -42,7 +42,7 @@ class Pages extends CI_Controller
 	{
 		$this->load->model('usermodel');
 		$this->usermodel->insert_user();
-			return 'adduser';
+			
 	}
 	function employee()
 	{
@@ -50,11 +50,18 @@ class Pages extends CI_Controller
 		return $this->empmodel->get_employee();
 		 		
 	}
-	function addemp()
+	function addemp($empID)
 	{
-		$this->load->model('empmodel');
-		$this->empmodel->add_employee();
 
+		$this->load->model('empmodel');
+		if (isset($empID)) 
+		{
+		return $this->empmodel->get_current_employee($empID);
+		}
+		else
+		{
+		$this->empmodel->add_employee();
+		}
 }
 function delemp($empID)
 	{

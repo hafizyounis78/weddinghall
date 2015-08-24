@@ -34,3 +34,20 @@ function deleteEmp(empId)
 			}
 		});//END $.ajax
 }
+/**************************update******************/
+function updateEmp(empId)
+{						
+		$.ajax({
+			url: "pages/delemp/"+empId,
+			type: "POST",
+			error: function(){
+				alert('error');
+			},
+			beforeSend: function(){},
+			complete: function(){},
+			success: function(){
+					alert ('تمت عملية الحذف بنجاح');
+					window.location.href="employee";
+			}
+		});//END $.ajax
+}
