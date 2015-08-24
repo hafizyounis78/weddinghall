@@ -30,6 +30,7 @@ function deleteEmp(empId)
 			complete: function(){},
 			success: function(){
 					alert ('تمت عملية الحذف بنجاح');
+					window.location.href="employee";
 			}
 		});//END $.ajax
 }
