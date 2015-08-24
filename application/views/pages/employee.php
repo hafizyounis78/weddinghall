@@ -45,7 +45,7 @@
   							{
 								echo '<tr class="odd gradeX">';
 								echo '<td>'.$i++.'</td>';
-								echo '<td id="tablerow">'.$row->emp_code.'</td>';
+								echo '<td>'.$row->emp_code.'</td>';
 								echo '<td>'.$row->name.'</td>';
 								echo '<td>'.$row->job.'</td>';
 								echo '<td>'.$row->mobile.'</td>';
@@ -53,7 +53,7 @@
 								echo '<td>
 								<button id="btneditemp" name="btneditemp" type="button"  class="btn default btn-xs purple"><i class="fa fa-edit"></i> Edit</button>
 
-								<button id="btndelemp" name="btndelemp" type="submit" value="Delete"  class="btn default btn-xs black"><i class="fa fa-trash-o"></i> Delete</button>
+								<button id="btndelemp" name="btndelemp" type="submit" value="Delete" class="btn default btn-xs black" onclick="deleteEmp('.$row->emp_code.')"><i class="fa fa-trash-o"></i> Delete</button>
 ';
 					echo '</td>';
 							echo '</tr>';

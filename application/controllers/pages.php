@@ -56,10 +56,10 @@ class Pages extends CI_Controller
 		$this->empmodel->add_employee();
 
 }
-function delemp()
+function delemp($empID)
 	{
 		$this->load->model('empmodel');
-		$this->empmodel->del_employee();
+		$this->empmodel->del_employee($empID);
 
 }
 }

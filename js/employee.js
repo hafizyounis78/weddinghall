@@ -18,13 +18,11 @@ $(document).ready(function(){
 	}); // END CLICK
 }); // END READY
 /***********************delete***************/
-$(document).ready(function(){
-	$('#btndelemp').click(function() {
-									
+function deleteEmp(empId)
+{						
 		$.ajax({
-			url: "pages/delemp",
+			url: "pages/delemp/"+empId,
 			type: "POST",
-			data:  $("#tablerow").serialize(),
 			error: function(){
 				alert('error');
 			},
@@ -34,5 +32,4 @@ $(document).ready(function(){
 					alert ('تمت عملية الحذف بنجاح');
 			}
 		});//END $.ajax
-	}); // END CLICK
-}); // END READY
+}
