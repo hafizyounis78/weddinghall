@@ -33,10 +33,11 @@ public function add_employee($data)
 
 public function get_curr_emp($empId)
     {
-		  $this->db->where('emp_code', $empId);
+  $this->db->where('emp_code', $empId);
 	      $query = $this->db->get('employee');
 		  return $query->result();
-      
+//		  echo $query->result();
+
 	   
     }
 

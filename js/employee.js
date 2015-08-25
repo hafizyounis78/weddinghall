@@ -48,6 +48,7 @@ function updateEmp(empId)
 			success: function(){
 //					alert ('تمت عملية hgju بنجاح');
 					//window.location.href="employee";
+					//window.location.href="addemp/"+empId;
 			}
 		});//END $.ajax
 }
