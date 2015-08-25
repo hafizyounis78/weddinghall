@@ -27,8 +27,8 @@
 								<th>
 									 حالة المستخدم
 								</th>
-                                <th>
-                                &nbsp;
+                                <th>&nbsp;
+                                
                                 </th>
 							</tr>
 							</thead>
@@ -50,7 +50,7 @@
 								echo '<td><span class="label label-sm label-warning">
 									غير فعال</span>
 									</td>';
-							echo '<td align="center"><a href="#" class="btn default btn-xs purple">
+							echo '<td align="center"><a href="pages/view/adduser/'.$row->username.'" class="btn default btn-xs purple">
 										<i class="fa fa-edit"></i> تعديل </a>
 									  <a href="#" class="btn default btn-xs black">
 										<i class="fa fa-trash-o"></i> حذف </a>
