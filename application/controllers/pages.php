@@ -44,6 +44,12 @@ class Pages extends CI_Controller
 		$this->usermodel->insert_user();
 			
 	}
+	function deleteuser($username)
+	{
+		$this->load->model('usermodel');
+		return $this->usermodel->delete_user($username);
+
+	}
 	function employee()
 	{
 		$this->load->model('empmodel');

@@ -52,8 +52,8 @@
 									</td>';
 							echo '<td align="center"><a href="pages/view/adduser/'.$row->username.'" class="btn default btn-xs purple">
 										<i class="fa fa-edit"></i> تعديل </a>
-									  <a href="#" class="btn default btn-xs black">
-										<i class="fa fa-trash-o"></i> حذف </a>
+									  <button id="btndelemp" name="btndelemp" type="button" class="btn default btn-xs black" onclick="deleteUser(\''.$row->username.'\')">
+										<i class="fa fa-trash-o"></i> حذف </button>
 								  </td>';
 							echo '</tr>';
 							

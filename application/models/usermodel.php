@@ -21,6 +21,15 @@ class Usermodel extends CI_Model
 		$this->db->insert('users',$data);
 
 	}
+	public function update_user()
+	{
+		
+	}
+	public function delete_user($username)
+	{
+		$this->db->where('username', $username);
+        $this->db->delete('users');
+	}
 }
 
 
