@@ -7,6 +7,8 @@ public function get_employee()
     {
         $query = $this->db->get('employee');
 		return $query->result();
+      
+       
 
 
     }
@@ -28,6 +30,16 @@ public function add_employee($data)
          $this->db->insert("employee", $data);
 
     }
+
+public function get_curr_emp($empId)
+    {
+		  $this->db->where('emp_code', $empId);
+	      $query = $this->db->get('employee');
+		  return $query->result();
+      
+	   
+    }
+
 
 public function del_employee($empId)
     {

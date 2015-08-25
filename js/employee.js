@@ -38,7 +38,7 @@ function deleteEmp(empId)
 function updateEmp(empId)
 {						
 		$.ajax({
-			url: "pages/delemp/"+empId,
+			url: "pages/addemp/"+empId,
 			type: "POST",
 			error: function(){
 				alert('error');
@@ -46,8 +46,8 @@ function updateEmp(empId)
 			beforeSend: function(){},
 			complete: function(){},
 			success: function(){
-					alert ('تمت عملية الحذف بنجاح');
-					window.location.href="employee";
+//					alert ('تمت عملية hgju بنجاح');
+					//window.location.href="employee";
 			}
 		});//END $.ajax
 }

@@ -52,16 +52,20 @@ class Pages extends CI_Controller
 	}
 	function addemp($empID)
 	{
+		//echo $empID;
 
 		$this->load->model('empmodel');
 		if (isset($empID)) 
 		{
-		return $this->empmodel->get_current_employee($empID);
+		   return $this->empmodel->get_curr_emp($empID);
+		
 		}
 		else
 		{
-		$this->empmodel->add_employee();
+		   $this->empmodel->add_employee();
 		}
+			
+		
 }
 function delemp($empID)
 	{
