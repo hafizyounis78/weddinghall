@@ -44,6 +44,9 @@ class Pages extends CI_Controller
 		$this->usermodel->insert_user();
 			
 	}
+	function viewupdate($username)
+	{
+	}
 	function deleteuser($username)
 	{
 		$this->load->model('usermodel');
