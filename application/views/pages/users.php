@@ -27,6 +27,9 @@
 								<th>
 									 حالة المستخدم
 								</th>
+                                <th>
+                                &nbsp;
+                                </th>
 							</tr>
 							</thead>
 							<tbody>
@@ -42,13 +45,18 @@
 								if ($row->status == 1)
 								echo '<td><span class="label label-sm label-success">
 									فعال</span>
-								</td>';
-								else
-							if ($row->status == 0)
+									</td>';
+								else if ($row->status == 0)
 								echo '<td><span class="label label-sm label-warning">
 									غير فعال</span>
-								</td>';
+									</td>';
+							echo '<td align="center"><a href="#" class="btn default btn-xs purple">
+										<i class="fa fa-edit"></i> تعديل </a>
+									  <a href="#" class="btn default btn-xs black">
+										<i class="fa fa-trash-o"></i> حذف </a>
+								  </td>';
 							echo '</tr>';
+							
 							}
 							?>
 							</tbody>
