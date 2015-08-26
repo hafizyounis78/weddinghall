@@ -23,7 +23,12 @@
 										* </span>
 										</label>
 										<div class="col-md-4">
-											<input type="text" name="name" data-required="1" class="form-control"/>
+											<input type="text" name="name" data-required="1" class="form-control"
+                                            <?php 
+												if(isset($row->name))
+													echo 'value="'.$row->name.'"';
+											?>
+                                            />
 										</div>
 									</div>
 									<div class="form-group">
@@ -35,7 +40,12 @@
 												<span class="input-group-addon">
 												<i class="fa fa-envelope"></i>
 												</span>
-												<input type="email" name="email" class="form-control" placeholder="البريد الإلكتروني">
+												<input type="email" name="email" class="form-control" placeholder="البريد الإلكتروني"
+                                                 <?php 
+												if(isset($row->email))
+													echo 'value="'.$row->email.'"';
+												?>
+                                                />
 											</div>
 										</div>
 									</div>
@@ -44,7 +54,12 @@
 										* </span>
 										</label>
 										<div class="col-md-4">
-											<input type="text" name="username" data-required="1" class="form-control"/>
+											<input type="text" name="username" data-required="1" class="form-control"
+                                            <?php 
+												if(isset($row->username))
+													echo 'value="'.$row->username.'"';
+											?>
+                                            />
 										</div>
 									</div>
                                     <div class="form-group">
@@ -66,7 +81,14 @@
 										</label>
 										<div class="col-md-4">
 												<label>
-												<input type="checkbox" value="1" name="status" checked="checked"/> </label>
+												<input type="checkbox" value="1" name="status"
+                                                 <?php 
+												if(isset($row->username) && $row->username == 0)
+													echo '';
+												else
+													echo 'checked="checked"';
+												?>
+                                                /> </label>
 										</div>
 									</div>
 								</div>

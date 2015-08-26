@@ -1,7 +1,7 @@
 <?php
 class Pages extends CI_Controller 
 {
-	function view ( $page = 'home')
+	function view ( $page = 'home', $indata = '')
 	{
 		if( ! file_exists('application/views/pages/'.$page.'.php'))
 		{
@@ -25,6 +25,8 @@ class Pages extends CI_Controller
 			$this->load->view('templates/pageheader');
 		if($page == 'users'||$page == 'employee' )
 			$data[$page] = $this->$page();
+			if($page == 'adduser' && $indata !='')
+				$data[$page] = $this->viewupdate($indata);
 			$this->load->view('pages/'.$page,$data);
 			$this->load->view('templates/quicksidebar.php');
 			$this->load->view('templates/footer');
@@ -46,6 +48,8 @@ class Pages extends CI_Controller
 	}
 	function viewupdate($username)
 	{
+		$this->load->model('usermodel');
+		return $this->usermodel->get_user_by_username($username);
 	}
 	function deleteuser($username)
 	{
