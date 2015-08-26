@@ -1,3 +1,9 @@
+<?php
+if (isset($adduser))
+{
+	foreach($adduser as $row);
+}
+?>
 <!-- BEGIN VALIDATION STATES-->
 					<div class="portlet box green">
 						<div class="portlet-title">
@@ -66,14 +72,24 @@
 										<label class="control-label col-md-3">كلمة المرور <span class="required">
 										* </span></label>
 										<div class="col-md-4">
-											<input name="password" type="password" class="form-control"/>
+											<input name="password" type="password" class="form-control" 
+                                            <?php 
+												if(isset($row->password))
+													echo 'value="'.$row->password.'"';
+											?>
+                                            />
 										</div>
 									</div>
                                     <div class="form-group">
 										<label class="control-label col-md-3">تأكيد كلمة المرور <span class="required">
 										* </span></label>
 										<div class="col-md-4">
-											<input name="confpassword" type="password" class="form-control"/>
+											<input name="confpassword" type="password" class="form-control"
+                                            <?php 
+												if(isset($row->password))
+													echo 'value="'.$row->password.'"';
+											?>
+                                            />
 										</div>
 									</div>
                                     <div class="form-group">
@@ -83,7 +99,7 @@
 												<label>
 												<input type="checkbox" value="1" name="status"
                                                  <?php 
-												if(isset($row->username) && $row->username == 0)
+												if(isset($row->status) && $row->status == 0)
 													echo '';
 												else
 													echo 'checked="checked"';
