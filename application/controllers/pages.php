@@ -51,6 +51,11 @@ class Pages extends CI_Controller
 		$this->load->model('usermodel');
 		return $this->usermodel->get_user_by_username($username);
 	}
+	function updateuser()
+	{
+		$this->load->model('usermodel');
+		return $this->usermodel->update_user();
+	}
 	function deleteuser($username)
 	{
 		$this->load->model('usermodel');
