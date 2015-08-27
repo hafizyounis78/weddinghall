@@ -5,22 +5,32 @@ class Bookingmodel extends CI_Model
 
 	public function get_booking()
     {
-        $query = $this->db->get('wedding_booking');
-		return $query->result();
+        $myquery = "select wedding_hall.*,customer.*,wedding_booking.*
+from wedding_hall,customer,wedding_booking
+where wedding_booking.w_code=wedding_hall.w_code
+and   wedding_booking.cut_id=customer.cut_id";
+        return $this->db->query($myquery);
     }
 	
 	
 	public function get_booking_by_code($booking_code)//,$cut_id)
 	{
+		 $myquery = "select wedding_hall.*,customer.*,wedding_booking.*
+from wedding_hall,customer,wedding_booking
+where wedding_booking.w_code=wedding_hall.w_code
+and   wedding_booking.cut_id=customer.cut_id
+and wedding_booking.booking_code=$booking_code";
+        return $this->db->query($myquery);
+
 /*****************booking************************/
-		$this->db->where('booking_code',$booking_code);
-		$query = $this->db->get('wedding_booking');
+	//	$this->db->where('booking_code',$booking_code);
+		//$query = $this->db->get('wedding_booking');
 		//$query = $this->db->get('wedding_booking_detalis');
 /*****************customer**********************/
 /*		$this->db->where('booking_code',$cut_id);
 		$query = $this->db->get('customer');
 	*/	
-		return $query->result();
+		//return $query->result();
 	}
 	
 	public function insert_booking()
