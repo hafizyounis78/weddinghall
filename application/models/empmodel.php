@@ -22,13 +22,13 @@ public function get_emp_by_code($emp_code)
 	   	 
 		 $data['emp_id']= $emp_id;
 		 $data['name']=  $name;
-	 	 //$data['sex']= $sex;
-		 //$data['dob']=  $dob;
+	 	 $data['sex']= $sex;
+		 $data['dob']=  $dob;
 		 $data['mobile']= $mobile;
-		// $data['tel']= $tel;
+		 $data['tel']= $tel;
 		 $data['address']=$address;
-		 //$data['contract_code']= $contract_code;
-		 //$data['salary']=  $salary;
+		$data['contract_code']= $contract_code;
+		$data['salary']=  $salary;
 		 $data['job']=  $job;
 		//print_r($_POST);
 		//exit;
