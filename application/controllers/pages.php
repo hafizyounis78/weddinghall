@@ -23,12 +23,14 @@ class Pages extends CI_Controller
 			$this->load->view('templates/sidebar');
 			$this->load->view('templates/stylecustomizer');
 			$this->load->view('templates/pageheader');
-		if($page == 'users'||$page == 'employee' )
+		if($page == 'users'||$page == 'employee'|| $page == 'hall')
 			$data[$page] = $this->$page();
 			if($page == 'adduser' && $indata !='')
 				$data[$page] = $this->viewupdate($indata);
 		if(($page == 'addemp' )&& $indata !='')
 				$data[$page] = $this->viewempupdate($indata);
+		if(($page == 'addhall' )&& $indata !='')
+				$data[$page] = $this->viewhallupdate($indata);
 
 			$this->load->view('pages/'.$page,$data);
 			$this->load->view('templates/quicksidebar.php');
@@ -66,11 +68,22 @@ class Pages extends CI_Controller
 		return $this->empmodel->get_emp_by_code($emp_code);
 	}
 
+function viewhallupdate($w_code)
+	{
+		$this->load->model('hallmodel');
+		return $this->hallmodel->get_hall_by_code($w_code);
+	}
 
 	function updateuser()
 	{
 		$this->load->model('usermodel');
 		return $this->usermodel->update_user();
+	}
+	function deletehall($w_code)
+	{
+		$this->load->model('hallmodel');
+		return $this->hallmodel->delete_hall($w_code);
+
 	}
 	function deleteuser($username)
 	{
@@ -82,6 +95,12 @@ class Pages extends CI_Controller
 	{
 		$this->load->model('empmodel');
 		return $this->empmodel->get_employee();
+		 		
+	}
+	function hall()
+	{
+		$this->load->model('hallmodel');
+		return $this->hallmodel->get_hall();
 		 		
 	}
 	function updateemp($emp_code)

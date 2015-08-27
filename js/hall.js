@@ -18,7 +18,7 @@ $(document).ready(function(){
 	}); // END CLICK
 }); // END READY
 /***********************delete***************/
-/*function deletehall(w_code)
+function deletehall(w_code)
 {
 		$.ajax({
 			url: "pages/deletehall/"+w_code,
@@ -30,7 +30,7 @@ $(document).ready(function(){
 			complete: function(){},
 			success: function(){
 					alert ('تمت عملية الحذف بنجاح');
-					window.location.href="users";
+					window.location.href="hall";
 			}
 		});//END $.ajax
-}*/
+}
