@@ -73,19 +73,19 @@
 				<li>
 					<a href="javascript:;">
 					<i class="icon-basket"></i>
-					<span class="title">eCommerce</span>
+					<span class="title">الحجوزات</span>
 					<span class="arrow "></span>
 					</a>
 					<ul class="sub-menu">
 						<li>
-							<a href="ecommerce_index.html">
+							<a href="addbooking">
 							<i class="icon-home"></i>
-							Dashboard</a>
+							اضافة حجز</a>
 						</li>
 						<li>
-							<a href="ecommerce_orders.html">
+							<a href="booking">
 							<i class="icon-basket"></i>
-							Orders</a>
+							عرض الحجوزات</a>
 						</li>
 						<li>
 							<a href="ecommerce_orders_view.html">
@@ -243,8 +243,8 @@
 							إضافة صالة</a>
 						</li>
 						<li>
-							<a href="ui_buttons.html">
-							Buttons</a>
+							<a href="hall">
+							عرض الصالات</a>
 						</li>
 						<li>
 							<a href="ui_icons.html">
@@ -319,17 +319,17 @@
 				<li>
 					<a href="javascript:;">
 					<i class="icon-puzzle"></i>
-					<span class="title">UI Components</span>
+					<span class="title">الخدمات</span>
 					<span class="arrow "></span>
 					</a>
 					<ul class="sub-menu">
 						<li>
-							<a href="components_pickers.html">
-							Pickers</a>
+							<a href="addservices">
+							اضافة خدمة</a>
 						</li>
 						<li>
-							<a href="components_dropdowns.html">
-							Custom Dropdowns</a>
+							<a href="services">
+							عرض الخدمات</a>
 						</li>
 						<li>
 							<a href="components_form_tools.html">

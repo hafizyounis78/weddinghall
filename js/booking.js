@@ -1,0 +1,36 @@
+// JavaScript Document// JavaScript Document
+$(document).ready(function(){
+	$('#btnAddbooking').click(function() {
+									
+		$.ajax({
+			url: "pages/Addbooking",
+			type: "POST",
+			data:  $("#form_sample_3").serialize(),
+			error: function(){
+				alert('error');
+			},
+			beforeSend: function(){},
+			complete: function(){},
+			success: function(){
+					alert ('تمت عملية الإضافة بنجاح');
+			}
+		});//END $.ajax
+	}); // END CLICK
+}); // END READY
+/***********************delete***************/
+function deletebooking(w_code)
+{
+		$.ajax({
+			url: "pages/deletebooking/"+booking_code,
+			type: "POST",
+			error: function(){
+				alert('error');
+			},
+			beforeSend: function(){},
+			complete: function(){},
+			success: function(){
+					alert ('تمت عملية الحذف بنجاح');
+					window.location.href="booking";
+			}
+		});//END $.ajax
+}

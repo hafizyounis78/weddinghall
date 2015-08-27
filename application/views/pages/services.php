@@ -1,11 +1,11 @@
 					<div class="portlet box blue-madison">
 						<div class="portlet-title">
 							<div class="caption">
-								<i class="fa fa-user"></i>جدول الصالات
+								<i class="fa fa-user"></i>جدول الخدمات
 							</div>
 							<div class="actions">
-								<a href="addhall" class="btn btn-default btn-sm">
-								<i class="fa fa-plus"></i> إضافة صالة </a>
+								<a href="addservices" class="btn btn-default btn-sm">
+								<i class="fa fa-plus"></i> إضافة خدمة </a>
 							</div>
 						</div>
 						<div class="portlet-body">
@@ -16,16 +16,13 @@
 									#
 								</th>
 								<th>
-									 اسم الصالة
+									 اسم الخدمة
 								</th>
 								<th>
-									  عنوان
+									  السعر
 								</th>
                                 
-								<th>
-									  مشرف الصالة
-								</th>
-                                <th>&nbsp;
+							    <th>&nbsp;
                                 
                                 </th>
 							</tr>
@@ -33,16 +30,16 @@
 							<tbody>
                             <?php
 							$i = 1;
-  							foreach($hall as $row)
+  							foreach($services as $row)
   							{
 								echo '<tr class="odd gradeX">';
 								echo '<td>'.$i++.'</td>';
-								echo '<td>'.$row->w_name.'</td>';
-								echo '<td>'.$row->address.'</td>';
-								echo '<td>'.$row->w_emp.'</td>';
-								echo '<td align="center"><a href="pages/view/addhall/'.$row->w_code.'" class="btn default btn-xs purple">
+								echo '<td>'.$row->sev_desc.'</td>';
+								echo '<td>'.$row->sev_price.'</td>';
+
+								echo '<td align="center"><a href="pages/view/addservices/'.$row->sev_code.'" class="btn default btn-xs purple">
 										<i class="fa fa-edit"></i> تعديل </a>
-									  <button id="btndelemp" name="btndelemp" type="button" class="btn default btn-xs black" onclick="deletehall(\''.$row->w_code.'\')">
+									  <button id="btndelemp" name="btndelemp" type="button" class="btn default btn-xs black" onclick="deleteservice(\''.$row->sev_code.'\')">
 										<i class="fa fa-trash-o"></i> حذف </button>
 								  </td>';
 							echo '</tr>';
