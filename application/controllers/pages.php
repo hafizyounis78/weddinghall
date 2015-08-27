@@ -27,6 +27,9 @@ class Pages extends CI_Controller
 			$data[$page] = $this->$page();
 			if($page == 'adduser' && $indata !='')
 				$data[$page] = $this->viewupdate($indata);
+		if(($page == 'addemp' )&& $indata !='')
+				$data[$page] = $this->viewempupdate($indata);
+
 			$this->load->view('pages/'.$page,$data);
 			$this->load->view('templates/quicksidebar.php');
 			$this->load->view('templates/footer');
@@ -46,11 +49,24 @@ class Pages extends CI_Controller
 		$this->usermodel->insert_user();
 			
 	}
+	function addhall()
+	{
+		$this->load->model('hallmodel');
+		$this->hallmodel->insert_hall();
+			
+	}
 	function viewupdate($username)
 	{
 		$this->load->model('usermodel');
 		return $this->usermodel->get_user_by_username($username);
 	}
+	function viewempupdate($emp_code)
+	{
+		$this->load->model('empmodel');
+		return $this->empmodel->get_emp_by_code($emp_code);
+	}
+
+
 	function updateuser()
 	{
 		$this->load->model('usermodel');
@@ -68,18 +84,17 @@ class Pages extends CI_Controller
 		return $this->empmodel->get_employee();
 		 		
 	}
-	function addemp($empID)
+	function updateemp($emp_code)
 	{
-		//echo $empID;
-
 		$this->load->model('empmodel');
-		if (isset($empID)) 
+		return $this->empmodel->update_emp($emp_code);
+	}
+	function addemp($emp_code)
+	{
+		$this->load->model('empmodel');
+		if (isset($emp_code)) 
 		{
-//		   echo $this->empmodel->get_curr_emp($empID);
-
-		   return $this->empmodel->get_curr_emp($empID);
-		   	//	$this->load->view('pages/'.$page,$empid);
-		echo $this->empmodel->get_curr_emp($empID);
+	  	updateemp($emp_code);
 		}
 		else
 		{

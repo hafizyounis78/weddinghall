@@ -234,13 +234,13 @@
 				<li>
 					<a href="javascript:;">
 					<i class="icon-diamond"></i>
-					<span class="title">UI Features</span>
+					<span class="title">الصالات</span>
 					<span class="arrow "></span>
 					</a>
 					<ul class="sub-menu">
 						<li>
-							<a href="ui_general.html">
-							General Components</a>
+							<a href="addhall">
+							إضافة صالة</a>
 						</li>
 						<li>
 							<a href="ui_buttons.html">

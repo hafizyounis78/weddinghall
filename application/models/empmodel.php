@@ -8,11 +8,35 @@ public function get_employee()
         $query = $this->db->get('employee');
 		return $query->result();
       
-       
+     }
+public function get_emp_by_code($emp_code)
+	{
+		$this->db->where('emp_code',$emp_code);
+		$query = $this->db->get('employee');
+		return $query->result();
+	}
+    public function update_emp($emp_code)
+    {
+        extract($_POST);
+	   /********************************/
+	   	 $data['emp_id']= $emp_id;
+		 $data['name']=  $name;
+	 	 $data['sex']= $sex;
+		 $data['dob']=  $dob;
+		 $data['mobile']= $mobile;
+		 $data['tel']= $tel;
+		 $data['address']=$address;
+		 $data['contract_code']= $contract_code;
+		 $data['salary']=  $salary;
+		 $data['job']=  $job;
+        $this->db->where('emp_code', $emp_code);
+        $this->db->update('employee', $data);
 
 
     }
-public function add_employee($data)
+
+	
+public function add_employee()
     {
 		extract($_POST);
 	   /********************************/

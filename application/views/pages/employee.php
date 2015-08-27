@@ -51,7 +51,8 @@
 								echo '<td>'.$row->mobile.'</td>';
 								echo '<td>'.$row->address.'</td>';
 								echo '<td>
-								<button id="btneditemp" name="btneditemp" type="submit"  class="btn default btn-xs purple" onclick="updateEmp('.$row->emp_code.')"><i class="fa fa-edit"></i> Edit</button>
+								<a href="pages/view/addemp/'.$row->emp_code.'" class="btn default btn-xs purple">
+										<i class="fa fa-edit"></i> تعديل </a>
 
 								<button id="btndelemp" name="btndelemp" type="submit" value="Delete" class="btn default btn-xs black" onclick="deleteEmp('.$row->emp_code.')"><i class="fa fa-trash-o"></i> Delete</button>
 ';
