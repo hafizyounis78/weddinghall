@@ -117,7 +117,7 @@
 					</a>
 					<ul class="sub-menu">
 						<li>
-							<a href="users">
+							<a href="<?php echo base_url();?>users">
 							عرض المستخدمين</a>
 						</li>
 						<li>

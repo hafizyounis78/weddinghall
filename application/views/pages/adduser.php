@@ -1,7 +1,9 @@
 <?php
+$isUpdate=0;
 if (isset($adduser))
 {
 	foreach($adduser as $row);
+	$isUpdate = 1;
 }
 ?>
 <!-- BEGIN VALIDATION STATES-->
@@ -16,7 +18,8 @@ if (isset($adduser))
                             <form action="#" id="form_sample_3" class="form-horizontal">
 								<div class="form-body">
 									<h3 class="form-section">Advance validation. <small>Custom radio buttons, checkboxes and Select2 dropdowns</small></h3>
-									<div class="alert alert-danger display-hide">
+									<input id="hdnAction" name="hdnAction" type="hidden" value="<?php echo $isUpdate;?>" />
+                                    <div class="alert alert-danger display-hide">
 										<button class="close" data-close="alert"></button>
 										You have some form errors. Please check below.
 									</div>
@@ -60,10 +63,13 @@ if (isset($adduser))
 										* </span>
 										</label>
 										<div class="col-md-4">
-											<input type="text" name="username" data-required="1" class="form-control"
+											<input type="text" name="username" data-required="1" class="form-control" 
                                             <?php 
 												if(isset($row->username))
-													echo 'value="'.$row->username.'"';
+												{
+													echo 'value="'.$row->username.'" ';
+													echo 'readonly="readonly"';
+												}
 											?>
                                             />
 										</div>

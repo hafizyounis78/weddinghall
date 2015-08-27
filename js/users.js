@@ -1,18 +1,27 @@
 ﻿// JavaScript Document
 $(document).ready(function(){
-	$('#btnAdduser').click(function() {
-									
+	$('#btnAdduser').click(function(event) {							
+		event.preventDefault();
+		var action = "adduser";
+		if(document.getElementById('hdnAction').value == '1')
+			action = "updateuser";
+		
 		$.ajax({
-			url: "pages/adduser",
+			url: "http://localhost/weddinghall/pages/"+action,
 			type: "POST",
 			data:  $("#form_sample_3").serialize(),
-			error: function(){
-				alert('error');
+			error: function(xhr, status, error) {
+  				//var err = eval("(" + xhr.responseText + ")");
+  				alert(xhr.responseText);
+				alert("pages/"+action);
+
 			},
 			beforeSend: function(){},
 			complete: function(){},
-			success: function(){
-					alert ('تمت عملية الإضافة بنجاح');
+			success: function(returndb){
+					alert (returndb);
+					alert ('تمت عملية الاضافة بنجاح');
+					window.location.href="users";
 			}
 		});//END $.ajax
 	}); // END CLICK
@@ -28,7 +37,8 @@ function deleteUser(username)
 			},
 			beforeSend: function(){},
 			complete: function(){},
-			success: function(){
+			success: function(returndb){
+					alert (returndb);
 					alert ('تمت عملية الحذف بنجاح');
 					window.location.href="users";
 			}

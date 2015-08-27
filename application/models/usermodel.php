@@ -29,7 +29,15 @@ class Usermodel extends CI_Model
 	}
 	public function update_user()
 	{
+		extract($_POST);
+		$data['username'] = $username;
+		$data['password'] = $password;
+		$data['name'] = $name;
+		$data['email'] = $email;
+		$data['status'] = $status;
 		
+		$this->db->where('username',$username);
+		$this->db->update('users',$data);
 	}
 	public function delete_user($username)
 	{
