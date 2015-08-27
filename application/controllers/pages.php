@@ -33,6 +33,7 @@ class Pages extends CI_Controller
 		//exit;
 			if($page == 'adduser' && $indata !='')
 				$data[$page] = $this->viewupdate($indata);
+				
 		if(($page == 'addemp' )&& $indata !='')
 				$data[$page] = $this->viewempupdate($indata);
 		if(($page == 'addhall' )&& $indata !='')
@@ -83,11 +84,6 @@ class Pages extends CI_Controller
 	{
 		$this->load->model('usermodel');
 		return $this->usermodel->get_user_by_username($username);
-	}
-	function viewempupdate($emp_code)
-	{
-		$this->load->model('empmodel');
-		return $this->empmodel->get_emp_by_code($emp_code);
 	}
 function viewbookingupdate($booking_code)
 	{
@@ -168,25 +164,23 @@ function deletebooking($booking_code)
 		 		
 	}
 
-	function updateemp($emp_code)
+	function updateemp()
 	{
 		$this->load->model('empmodel');
-		return $this->empmodel->update_emp($emp_code);
+		return $this->empmodel->update_emp();
 	}
-	function addemp($emp_code)
+	function addemp()
 	{
 		$this->load->model('empmodel');
-		if (isset($emp_code)) 
-		{
-	  	updateemp($emp_code);
-		}
-		else
-		{
-		   $this->empmodel->add_employee();
-		}
-			
-		
-}
+		$this->empmodel->add_employee();
+	}
+
+	function viewempupdate($emp_code)
+	{
+		$this->load->model('empmodel');
+		return $this->empmodel->get_emp_by_code($emp_code);
+	}
+
 function delemp($empID)
 	{
 		$this->load->model('empmodel');

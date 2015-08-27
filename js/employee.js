@@ -1,22 +1,37 @@
+
 // JavaScript Document// JavaScript Document
+
 $(document).ready(function(){
-	$('#btnAddemp').click(function() {
-									
+	$('#btnAddemp').click(function(event) {							
+		event.preventDefault();
+		var action = "addemp";
+		
+		if(document.getElementById('hdnAction').value == '1')
+		{
+			action = "updateemp";
+		
+		}
 		$.ajax({
-			url: "pages/addemp",
+			url: "http://localhost/weddinghall/pages/"+action,
 			type: "POST",
 			data:  $("#form_sample_3").serialize(),
-			error: function(){
-				alert('error');
+			error: function(xhr, status, error) {
+  				//var err = eval("(" + xhr.responseText + ")");
+  				alert(xhr.responseText);
+				alert("pages/"+action);
+
 			},
 			beforeSend: function(){},
 			complete: function(){},
-			success: function(){
-					alert ('تمت عملية الإضافة بنجاح');
+			success: function(returndb){
+				alert (returndb);
+					alert ('تمت عملية الاضافة بنجاح');
+					window.location.href="employee";
 			}
 		});//END $.ajax
 	}); // END CLICK
 }); // END READY
+
 /***********************delete***************/
 function deleteEmp(empId)
 {						
@@ -35,20 +50,3 @@ function deleteEmp(empId)
 		});//END $.ajax
 }
 /**************************update******************/
-function updateEmp(empId)
-{						
-		$.ajax({
-			url: "pages/addemp/"+empId,
-			type: "POST",
-			error: function(){
-				alert('error');
-			},
-			beforeSend: function(){},
-			complete: function(){},
-			success: function(){
-//					alert ('تمت عملية hgju بنجاح');
-					//window.location.href="employee";
-					//window.location.href="addemp/"+empId;
-			}
-		});//END $.ajax
-}

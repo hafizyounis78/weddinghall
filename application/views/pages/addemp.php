@@ -1,7 +1,14 @@
 <?php
+$isUpdate=0;
+$emp_code='';
 if (isset($addemp))
 {
 foreach($addemp as $row);
+if (isset($row->emp_code)) 
+{
+	$emp_code=$row->emp_code;
+}
+$isUpdate = 1;
 }
 
 ?>
@@ -31,7 +38,9 @@ foreach($addemp as $row);
 							<form action="#" id="form_sample_3" class="form-horizontal">
 								<div class="form-body">
 									<h3 class="form-section">Advance validation. <small>Custom radio buttons, checkboxes and Select2 dropdowns</small></h3>
-									<div class="alert alert-danger display-hide">
+									<input id="hdnAction" name="hdnAction" type="hidden" value="<?php echo $isUpdate;?>" />
+                                    <input id="emp_code" name="emp_code" type="hidden" value="<?php echo $emp_code;?>" />
+                                    <div class="alert alert-danger display-hide">
 										<button class="close" data-close="alert"></button>
 										You have some form errors. Please check below.
 									</div>
@@ -81,7 +90,7 @@ foreach($addemp as $row);
 										<label class="control-label col-md-3">تاريخ الميلاد</label>
 										<div class="col-md-4">
 											<div class="input-group date date-picker" data-date-format="dd-mm-yyyy">
-												<input type="text" class="form-control" readonly name="dob"
+												<input type="text" class="form-control"  name="dob"
                                                   <?php if (isset($row->dob)) {echo 'value="'.$row->dob.'"';}?>/>
 												<span class="input-group-btn">
 												<button class="btn default" type="button"><i class="fa fa-calendar"></i></button>

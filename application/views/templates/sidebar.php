@@ -150,11 +150,11 @@
 					</a>
 					<ul class="sub-menu">
 						<li>
-							<a href="employee">
+							<a href="<?php echo base_url();?>employee">
 							عرض الموظفين</a>
 						</li>
 						<li>
-							<a href="addemp">
+							<a href="<?php echo base_url();?>addemp">
 							اضافة موظف</a>
 						</li>
 						<li>
@@ -239,11 +239,11 @@
 					</a>
 					<ul class="sub-menu">
 						<li>
-							<a href="addhall">
+							<a href="<?php echo base_url();?>addhall">
 							إضافة صالة</a>
 						</li>
 						<li>
-							<a href="hall">
+							<a href="<?php echo base_url();?>hall">
 							عرض الصالات</a>
 						</li>
 						<li>
@@ -324,11 +324,11 @@
 					</a>
 					<ul class="sub-menu">
 						<li>
-							<a href="addservices">
+							<a href="<?php echo base_url();?>addservices">
 							اضافة خدمة</a>
 						</li>
 						<li>
-							<a href="services">
+							<a href="<?php echo base_url();?>services">
 							عرض الخدمات</a>
 						</li>
 						<li>

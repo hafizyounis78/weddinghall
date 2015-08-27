@@ -17,7 +17,7 @@
 									<input type="checkbox" class="group-checkable" data-set="#sample_2 .checkboxes"/>
 								</th>
 								<th>
-									كود الموظف
+									رقم الهوية
 								</th>
 								<th>
 									 الاسم
@@ -45,13 +45,12 @@
   							{
 								echo '<tr class="odd gradeX">';
 								echo '<td>'.$i++.'</td>';
-								echo '<td>'.$row->emp_code.'</td>';
+								echo '<td>'.$row->emp_id.'</td>';
 								echo '<td>'.$row->name.'</td>';
 								echo '<td>'.$row->job.'</td>';
 								echo '<td>'.$row->mobile.'</td>';
 								echo '<td>'.$row->address.'</td>';
-								echo '<td>
-								<a href="pages/view/addemp/'.$row->emp_code.'" class="btn default btn-xs purple">
+								echo '<td align="center"><a href="'.base_url().'addemp/'.$row->emp_code.'" class="btn default btn-xs purple">
 										<i class="fa fa-edit"></i> تعديل </a>
 
 								<button id="btndelemp" name="btndelemp" type="submit" value="Delete" class="btn default btn-xs black" onclick="deleteEmp('.$row->emp_code.')"><i class="fa fa-trash-o"></i> Delete</button>
