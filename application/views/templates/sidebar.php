@@ -112,12 +112,12 @@
 					</a>
 					<ul class="sub-menu">
 						<li>
-							<a href="addbooking">
+							<a href="addpayments">
 							<i class="icon-home"></i>
 						دفعات مالية</a>
 						</li>
 						<li>
-							<a href="booking">
+							<a href="payments">
 							<i class="icon-basket"></i>
 							دفعات الموظفين</a>
 						</li>
