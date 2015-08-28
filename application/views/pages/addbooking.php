@@ -180,7 +180,7 @@ foreach($addbooking as $row);
 								<div class="form-actions">
 									<div class="row">
 										<div class="col-md-offset-3 col-md-9">
-											<button id="btnAddser" name="btnAddser" type="submit"  class="btn green">Submit</button>
+											<button id="btnAddbooking_details" name="btnAddbooking_details" type="submit"  class="btn green">Submit</button>
 											<button type="button" class="btn default">Cancel</button>
 										</div>
 									</div>
