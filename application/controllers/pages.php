@@ -23,7 +23,7 @@ class Pages extends CI_Controller
 			$this->load->view('templates/sidebar');
 			$this->load->view('templates/stylecustomizer');
 			$this->load->view('templates/pageheader');
-		if($page == 'users'||$page == 'employee'|| $page == 'hall'||$page == 'services' ||$page == 'booking')
+		if($page == 'users'||$page == 'employee'|| $page == 'hall'||$page == 'services' ||$page == 'booking'||$page == 'payments')
 		$data[$page] = $this->$page();
 		
 		
@@ -36,6 +36,7 @@ class Pages extends CI_Controller
 		{
 				//$data[$page] = $this->viewbookingupdate($indata);
 				$data['sev'] =$this->services();
+//				$data['booking_sev']=$this->booking_details($indata);
 		}
 		//print_r($data[$page]);
 		//exit;
@@ -62,12 +63,35 @@ class Pages extends CI_Controller
 		 
 		//$this->load->view('users_view', $data);
 	}
+	function payments()
+	{
+		$this->load->model('bookingmodel');
+		$rec = $this->bookingmodel->get_booking();
+
+		//print_r($rec->result());
+		//exit;
+		return $rec->result();
+		 		
+	}
 	function adduser()
 	{
 		$this->load->model('usermodel');
 		$this->usermodel->insert_user();
 			
 	}
+	function addbooking_details()
+	{
+		
+		$this->load->model('bookingmodel');
+		$this->bookingmodel->insert_booking_details();
+			
+	}
+function booking_details($booking_code)
+	{
+		$this->load->model('bookingmodel');
+		$rec = $this->bookingmodel->get_booking_details_by_code($booking_code);
+	}
+	
 	function addbooking()
 	{
 		
