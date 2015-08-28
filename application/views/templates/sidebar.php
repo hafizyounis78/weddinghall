@@ -104,6 +104,40 @@
 						</li>
 					</ul>
 				</li>
+                <li>
+					<a href="javascript:;">
+					<i class="icon-basket"></i>
+					<span class="title">المالية</span>
+					<span class="arrow "></span>
+					</a>
+					<ul class="sub-menu">
+						<li>
+							<a href="addbooking">
+							<i class="icon-home"></i>
+						دفعات مالية</a>
+						</li>
+						<li>
+							<a href="booking">
+							<i class="icon-basket"></i>
+							دفعات الموظفين</a>
+						</li>
+						<li>
+							<a href="ecommerce_orders_view.html">
+							<i class="icon-tag"></i>
+							Order View</a>
+						</li>
+						<li>
+							<a href="ecommerce_products.html">
+							<i class="icon-handbag"></i>
+							Products</a>
+						</li>
+						<li>
+							<a href="ecommerce_products_edit.html">
+							<i class="icon-pencil"></i>
+							Product Edit</a>
+						</li>
+					</ul>
+				</li>
                 <li <?php if($title == 'users') echo 'class="active open"';?>>
 					<a href="javascript:;">
 					<i class="icon-user"></i>
