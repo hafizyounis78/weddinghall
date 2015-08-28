@@ -23,7 +23,7 @@ class Pages extends CI_Controller
 			$this->load->view('templates/sidebar');
 			$this->load->view('templates/stylecustomizer');
 			$this->load->view('templates/pageheader');
-		if($page == 'users'||$page == 'employee'|| $page == 'hall'||$page == 'services' ||$page == 'booking'||$page == 'payments')
+		if($page == 'users'||$page == 'employee'|| $page == 'hall'||$page == 'services' ||$page == 'booking'||$page == 'payments'||$page == 'emppayments')
 		$data[$page] = $this->$page();
 		
 		
@@ -75,6 +75,17 @@ class Pages extends CI_Controller
 		return $rec->result();
 		 		
 	}
+	function emppayments()
+	{
+		$this->load->model('empmodel');
+		return $this->empmodel->get_employee();
+		
+		//print_r($rec->result());
+		//exit;
+		return $rec->result();
+		 		
+	}
+
 	function adduser()
 	{
 		$this->load->model('usermodel');
