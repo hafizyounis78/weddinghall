@@ -1,18 +1,24 @@
 // JavaScript Document// JavaScript Document
 $(document).ready(function(){
-	$('#btnAddservice').click(function() {
-									
+	$('#btnAddservice').click(function(event) {
+		event.preventDefault();
+		
+		var action = "Addservices";
+		if(document.getElementById('sev_code').value != '')
+			action = "updateservices";
+			
 		$.ajax({
-			url: "pages/Addservices",
+			url: "http://localhost/weddinghall/pages/"+action,
 			type: "POST",
 			data:  $("#form_sample_3").serialize(),
-			error: function(){
-				alert('error');
+			error: function(xhr, status, error) {
+  				alert(xhr.responseText);
 			},
 			beforeSend: function(){},
 			complete: function(){},
-			success: function(){
-					alert ('تمت عملية الإضافة بنجاح');
+			success: function(returndb){
+				//alert (returndb);
+				alert ('تمت عملية الإضافة بنجاح');
 			}
 		});//END $.ajax
 	}); // END CLICK

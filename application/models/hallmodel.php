@@ -32,7 +32,7 @@ class Hallmodel extends CI_Model
 		$data['w_name'] = $w_name;
 		$data['address'] = $address;
 		$data['w_emp'] = $w_emp;
-
+		$data['w_code'] = $w_code;
 		
 		$this->db->where('w_code',$w_code);
 		$this->db->update('wedding_hall',$data);

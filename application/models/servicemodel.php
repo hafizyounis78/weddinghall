@@ -24,7 +24,17 @@ class Servicemodel extends CI_Model
 		$this->db->insert('wedding_services',$data);
 
 	}
+	public function update_service()
+	{
+		extract($_POST);
+		$data['sev_code'] = $sev_code;
+		$data['sev_desc'] = $sev_desc;
+		$data['sev_price'] = $sev_price;
+		
+		$this->db->where('sev_code',$sev_code);
+		$this->db->update('wedding_services',$data);
 
+	}
 	public function delete_service($sev_code)
 	{
 		$this->db->where('sev_code', $sev_code);

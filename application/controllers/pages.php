@@ -159,6 +159,11 @@ function viewserviceupdate($sev_code)
 		$this->load->model('hallmodel');
 		return $this->hallmodel->update_hall();
 	}
+	function updateservices()
+	{
+		$this->load->model('servicemodel');
+		return $this->servicemodel->update_service();
+	}
 	function deletehall($w_code)
 	{
 		$this->load->model('hallmodel');
