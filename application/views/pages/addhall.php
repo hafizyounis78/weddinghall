@@ -16,7 +16,14 @@ if (isset($addhall))
                             <form action="#" id="form_sample_3" class="form-horizontal">
 								<div class="form-body">
 									<h3 class="form-section">Advance validation. <small>Custom radio buttons, checkboxes and Select2 dropdowns</small></h3>
-									<div class="alert alert-danger display-hide">
+									<input id="w_code" name="w_code" type="hidden" 
+                                    <?php 
+										if (isset($row->w_code))
+											echo 'value="'.$row->w_code.'"';
+										else
+											echo 'value=""';
+									?> />
+                                    <div class="alert alert-danger display-hide">
 										<button class="close" data-close="alert"></button>
 										You have some form errors. Please check below.
 									</div>

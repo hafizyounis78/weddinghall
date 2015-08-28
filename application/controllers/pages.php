@@ -117,6 +117,11 @@ function viewserviceupdate($sev_code)
 		$this->load->model('usermodel');
 		return $this->usermodel->update_user();
 	}
+	function updatehall()
+	{
+		$this->load->model('hallmodel');
+		return $this->hallmodel->update_hall();
+	}
 	function deletehall($w_code)
 	{
 		$this->load->model('hallmodel');

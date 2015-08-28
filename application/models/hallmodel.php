@@ -26,7 +26,17 @@ class Hallmodel extends CI_Model
 		$this->db->insert('wedding_hall',$data);
 
 	}
+	public function update_hall()
+	{
+		extract($_POST);
+		$data['w_name'] = $w_name;
+		$data['address'] = $address;
+		$data['w_emp'] = $w_emp;
 
+		
+		$this->db->where('w_code',$w_code);
+		$this->db->update('wedding_hall',$data);
+	}
 	public function delete_hall($w_code)
 	{
 		$this->db->where('w_code', $w_code);
