@@ -4,6 +4,7 @@ if (isset($addbooking))
 foreach($addbooking as $row);
 }
 
+
 ?>
 
 <div class="row">
@@ -13,18 +14,9 @@ foreach($addbooking as $row);
 					<div class="portlet box green">
 						<div class="portlet-title">
 							<div class="caption">
-								<i class="fa fa-gift"></i>Advance Validation
+								<i class="fa fa-gift"></i>حجز موعد
 							</div>
-							<div class="tools">
-								<a href="javascript:;" class="collapse">
-								</a>
-								<a href="#portlet-config" data-toggle="modal" class="config">
-								</a>
-								<a href="javascript:;" class="reload">
-								</a>
-								<a href="javascript:;" class="remove">
-								</a>
-							</div>
+							
 						</div>
 						<div class="portlet-body form">
 							<!-- BEGIN FORM-->
@@ -52,7 +44,7 @@ foreach($addbooking as $row);
                                     <div class="form-group">
 										<label class="control-label col-md-3">تاريخ الحجز</label>
 										<div class="col-md-4">
-											<div class="input-group date date-picker" data-date-format="dd-mm-yyyy">
+											<div class="input-group date date-picker" data-date-format="yyyy-mm-dd">
 												<input type="text" class="form-control" readonly name="booking_date"
                                                   <?php if (isset($row->booking_date)) {echo 'value="'.$row->booking_date.'"';}?>/>
 												<span class="input-group-btn">
@@ -130,6 +122,140 @@ foreach($addbooking as $row);
 						</div>
 						<!-- END VALIDATION STATES-->
 					</div>
+				</div>
+<!--------------------------------------------------- service form------------------------------------------------------>
+				<div class="col-md-12">
+					<!-- BEGIN VALIDATION STATES-->
+              
+					<div class="portlet box green">
+						<div class="portlet-title">
+							<div class="caption">
+								<i class="fa fa-gift"></i>اضافة الخدمات
+							</div>
+							
+						</div>
+						<div class="portlet-body form">
+							<!-- BEGIN FORM-->
+							<form action="#" id="service_form" class="form-horizontal">
+								<div class="form-body">
+									<h3 class="form-section">Advance validation. <small>Custom radio buttons, checkboxes and Select2 dropdowns</small></h3>
+									
+                                    <div class="alert alert-danger display-hide">
+										<button class="close" data-close="alert"></button>
+										You have some form errors. Please check below.
+									</div>
+									<div class="alert alert-success display-hide">
+										<button class="close" data-close="alert"></button>
+										Your form validation is successful!
+									</div>
+                                    <div class="form-group">
+										<label class="control-label col-md-3">نوع الخدمة<span class="required">
+										* </span>
+										</label>
+										<div class="col-md-4">
+											<select class="form-control select2me" name="sev_desc">
+												<option value="0">Select...</option>
+												<?php
+												$selected;
+												foreach($sev as $row)
+												{	 
+												?>
+							                     <option value="<?php echo $row->sev_code;?>"> <?php echo $row->sev_desc;?></option>
+
+                                                <?php
+												}
+												?>
+											</select>
+										</div>
+									</div>
+								<div class="form-group">
+										<label class="control-label col-md-3">تكلفة الخدمة</label>
+										<div class="col-md-4">
+											<input name="sev_price" type="text" class="form-control"
+                                           <?php if (isset($row->sev_price)) {echo 'value="'.$row->sev_price.'"';}?>/>
+                                            />
+										</div>
+                                     </div>
+                                  </div>
+								<div class="form-actions">
+									<div class="row">
+										<div class="col-md-offset-3 col-md-9">
+											<button id="btnAddser" name="btnAddser" type="submit"  class="btn green">Submit</button>
+											<button type="button" class="btn default">Cancel</button>
+										</div>
+									</div>
+								</div>
+							</form>
+							<!-- END FORM-->
+						</div>
+						<!-- END VALIDATION STATES-->
+					</div>
+				</div>
+
+
+<!--------------------------------------------------- service table------------------------------------------------------>
+                
+                <div class="col-md-6">
+					<!-- BEGIN BORDERED TABLE PORTLET-->
+					<div class="portlet box yellow">
+						<div class="portlet-title">
+							<div class="caption">
+								<i class="fa fa-coffee"></i>جدول الخدمات 
+							</div>
+							<div class="tools">
+								<a href="javascript:;" class="collapse">
+								</a>
+								<a href="#portlet-config" data-toggle="modal" class="config">
+								</a>
+								<a href="javascript:;" class="reload">
+								</a>
+								<a href="javascript:;" class="remove">
+								</a>
+							</div>
+						</div>
+						<div class="portlet-body">
+							<div class="table-scrollable">
+								<table class="table table-bordered table-hover">
+								<thead>
+								<tr>
+									<th>
+										 #
+									</th>
+									<th>
+										 كود الحدمة
+									</th>
+									<th>
+										 اسم الخدمة
+									</th>
+									<th>
+										 تكلفه الخدمة
+									</th>
+									
+								</tr>
+								</thead>
+								<tbody>
+								<tr>
+									<td rowspan="2">
+										 1
+									</td>
+									<td>
+										 Mark
+									</td>
+									<td>
+										 Otto
+									</td>
+									<td>
+										 makr124
+									</td>
+									
+								</tr>
+								
+								</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+					<!-- END BORDERED TABLE PORTLET-->
 				</div>
 			</div>
             

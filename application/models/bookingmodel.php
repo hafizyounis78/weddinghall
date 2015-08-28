@@ -36,6 +36,7 @@ and wedding_booking.booking_code=$booking_code";
 	public function insert_booking()
 	{
 		extract($_POST);
+		
 /*****************booking************************/		
 		$bdata['w_code'] = $w_code;
 		$bdata['booking_date'] = $booking_date;
@@ -56,6 +57,7 @@ and wedding_booking.booking_code=$booking_code";
 		$sdata['sev_price'] = $sev_price;
 		
 */
+	
 		$this->db->insert('wedding_booking',$bdata);
 
 		$this->db->insert('customer',$cdata);

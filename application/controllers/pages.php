@@ -28,7 +28,15 @@ class Pages extends CI_Controller
 		
 		
 		if($page == 'addbooking' && $indata !='')
+		{
 				$data[$page] = $this->viewbookingupdate($indata);
+				$data['sev'] =$this->services();
+		}
+		if($page == 'addbooking')
+		{
+				//$data[$page] = $this->viewbookingupdate($indata);
+				$data['sev'] =$this->services();
+		}
 		//print_r($data[$page]);
 		//exit;
 			if($page == 'adduser' && $indata !='')
@@ -62,6 +70,7 @@ class Pages extends CI_Controller
 	}
 	function addbooking()
 	{
+		
 		$this->load->model('bookingmodel');
 		$this->bookingmodel->insert_booking();
 			
