@@ -1,4 +1,5 @@
 <?php
+$selected='';
 if (isset($addbooking))
 {
 foreach($addbooking as $row);
@@ -35,16 +36,20 @@ foreach($addbooking as $row);
 										<label class="control-label col-md-3">الصالة<span class="required">
 										* </span>
 										</label>
-										<div class="col-md-4">
+									
+                                    	<div class="col-md-4">
                                         	
-											<select class="form-control select2me" name="sev_code">
+											<select class="form-control select2me" name="w_code">
 												<option value="0">Select...</option>
 												<?php
 												$selected;
-												foreach($hall as $row)
-												{	 
+												foreach($hall as $row2)
+												{$selected = "";
+													if (isset($addbooking))
+													if ($row->w_code==$row2->w_code)	
+													$selected = 'selected="selected"'; 
 												?>
-							                     <option value="<?php echo $row->w_code;?>"> <?php echo $row->w_name;?></option>
+							                     <option value="<?php echo $row2->w_code;?>" <?php echo $selected;?> > <?php echo $row2->w_name;?></option>
 
                                                 <?php
 												}

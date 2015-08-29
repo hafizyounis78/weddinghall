@@ -35,11 +35,13 @@ class Pages extends CI_Controller
 			{
 				$data[$page] = $this->viewbookingupdate($indata);
 				$data['sev'] =$this->services();
+				$data['hall'] =$this->wedding_hall();
 			}
 			if($page == 'addbooking')
 			{
 				//$data[$page] = $this->viewbookingupdate($indata);
 				$data['sev'] =$this->services();
+				$data['hall'] =$this->wedding_hall();
 				//	
 			}
 			//print_r($data[$page]);
@@ -296,7 +298,12 @@ function deletebooking($booking_code)
 		return $this->servicemodel->get_service();
 		 		
 	}
-
+function wedding_hall()
+	{
+		$this->load->model('hallmodel');
+		return $this->hallmodel->get_hall();
+		 		
+	}
 	function updateemp()
 	{
 		$this->load->model('empmodel');
