@@ -14,8 +14,10 @@
 <!-- END LOGO -->
 <!-- BEGIN LOGIN -->
 <div class="content">
-	<!-- BEGIN LOGIN FORM -->
-	<form class="login-form" action="index.html" method="post">
+	<!-- BEGIN LOGIN FORM 
+	<form class="login-form" action="index.html" method="post">-->
+    <?php echo validation_errors(); ?>
+  	<?php echo form_open('verifylogin'); ?>
 		<h3 class="form-title">تسجيل دخول</h3>
 		<div class="alert alert-danger display-hide">
 			<button class="close" data-close="alert"></button>

@@ -68,10 +68,10 @@ $config['url_suffix'] = '';
 |
 | This determines which set of language files should be used. Make sure
 | there is an available translation if you intend to use something other
-| than english.
+| than english.arabic
 |
 */
-$config['language']	= 'arabic';
+$config['language']	= 'english';
 
 /*
 |--------------------------------------------------------------------------
@@ -305,7 +305,7 @@ $config['cache_query_string'] = FALSE;
 | http://codeigniter.com/user_guide/libraries/encryption.html
 |
 */
-$config['encryption_key'] = '';
+$config['encryption_key'] = '3fRmVzGZy2PY1LL65iKIC33ZraKIQg70';
 
 /*
 |--------------------------------------------------------------------------

@@ -14,8 +14,11 @@ class Pages extends CI_Controller
 			$this->load->view('templates/header',$data);
 			$this->load->view('pages/'.$page,$data);
 		}
-		else
-		{
+		else if($this->session->userdata('logged_in'))
+   		{
+     		$session_data = $this->session->userdata('logged_in');
+     		$data['username'] = $session_data['username'];
+
 			$data['title'] = $page;
 		
 			$this->load->view('templates/header',$data);
@@ -23,51 +26,55 @@ class Pages extends CI_Controller
 			$this->load->view('templates/sidebar');
 			$this->load->view('templates/stylecustomizer');
 			$this->load->view('templates/pageheader');
-		if($page == 'users'||$page == 'employee'|| $page == 'hall'||$page == 'services' ||$page == 'booking'||$page == 'payments'||$page == 'emppayments'||$page=='searchpayments'||$page=='searchemppayments')
-		$data[$page] = $this->$page();
+			if($page == 'users'||$page == 'employee'|| $page == 'hall'||$page == 'services' ||
+			   $page == 'booking'||$page == 'payments'||$page == 'emppayments'||$page=='searchpayments'||$page=='searchemppayments')
+					$data[$page] = $this->$page();
 		
 		
-		if($page == 'addbooking' && $indata !='')
-		{
+			if($page == 'addbooking' && $indata !='')
+			{
 				$data[$page] = $this->viewbookingupdate($indata);
 				$data['sev'] =$this->services();
-		}
-		if($page == 'addbooking')
-		{
+			}
+			if($page == 'addbooking')
+			{
 				//$data[$page] = $this->viewbookingupdate($indata);
 				$data['sev'] =$this->services();
-	//	
-		}
-		//print_r($data[$page]);
-		//exit;
-		if($page == 'adduser' && $indata !='')
+				//	
+			}
+			//print_r($data[$page]);
+			//exit;
+			if($page == 'adduser' && $indata !='')
 				$data[$page] = $this->viewupdate($indata);
-		if($page == 'addpayments' && $indata !='')
-		{
+			if($page == 'addpayments' && $indata !='')
+			{
 				$data[$page] = $this->viewpaydata($indata);
 				$data['payment_view'] = $this->payment_view($indata);
 				
-		}
+			}
 
-		if($page == 'addemppayments' && $indata !='')
-				{
-					$data[$page] = $this->viewemppaydata($indata);
-					$data['employee_view']=$this->employee_view($indata);
-				}
+			if($page == 'addemppayments' && $indata !='')
+			{
+				$data[$page] = $this->viewemppaydata($indata);
+				$data['employee_view']=$this->employee_view($indata);
+			}
 
-		
-				
-		if(($page == 'addemp' )&& $indata !='')
+			if(($page == 'addemp' )&& $indata !='')
 				$data[$page] = $this->viewempupdate($indata);
-		if(($page == 'addhall' )&& $indata !='')
+			if(($page == 'addhall' )&& $indata !='')
 				$data[$page] = $this->viewhallupdate($indata);
-		if(($page == 'addservices' )&& $indata !='')
+			if(($page == 'addservices' )&& $indata !='')
 				$data[$page] = $this->viewserviceupdate($indata);
 
 			$this->load->view('pages/'.$page,$data);
 			$this->load->view('templates/quicksidebar.php');
 			$this->load->view('templates/footer');
 		}
+		else
+   		{
+     		//If no session, redirect to login page
+     		redirect('login', 'refresh');
+   		}
 	}
 	
 	function users()
@@ -307,11 +314,16 @@ function deletebooking($booking_code)
 		return $this->empmodel->get_emp_by_code($emp_code);
 	}
 
-function delemp($empID)
+	function delemp($empID)
 	{
 		$this->load->model('empmodel');
 		$this->empmodel->del_employee($empID);
-
-}
+	}
+	function logout()
+ 	{
+   		$this->session->unset_userdata('logged_in');
+   		session_destroy();
+   		redirect('home', 'refresh');
+ 	}
 }
 ?>
