@@ -1,17 +1,21 @@
 // JavaScript Document// JavaScript Document
 $(document).ready(function(){
-	$('#btnAddbooking').click(function() {
-									
+	$('#btnAddbooking').click(function(event) {							
+		event.preventDefault();
+		
 		$.ajax({
 			url: "pages/Addbooking",
 			type: "POST",
 			data:  $("#form_sample_3").serialize(),
-			error: function(){
-				alert('error');
+			error: function(xhr, status, error) {
+  				//var err = eval("(" + xhr.responseText + ")");
+  				alert(xhr.responseText);
+	
 			},
 			beforeSend: function(){},
 			complete: function(){},
-			success: function(){
+			success: function(result){
+				alert (result);
 					alert ('تمت عملية الإضافة بنجاح');
 			}
 		});//END $.ajax

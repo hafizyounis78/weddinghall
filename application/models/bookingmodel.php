@@ -45,7 +45,7 @@ and wedding_booking.booking_code=$booking_code";
 	$this->db->insert('wedding_booking',$bdata);
 /*****************customer**********************/
 
-$GLOBALS['booking_code']=mysql_insert_id();
+	$bookingid=$this->db->insert_id();
 
 
 		$cdata['cut_id'] = $cut_id;
@@ -56,9 +56,9 @@ $GLOBALS['booking_code']=mysql_insert_id();
 		
 /*****************booking details************************/	
        //extract($_POST);
-		$sdata['booking_code'] = $GLOBALS['booking_code'];
+		/*$sdata['booking_code'] = $GLOBALS['booking_code'];
 		$sdata['sev_code'] = 30;
-		$sdata['sev_price'] = 401;
+		$sdata['sev_price'] = 401;*/
 	
 
 	
@@ -66,7 +66,8 @@ $GLOBALS['booking_code']=mysql_insert_id();
 
 		$this->db->insert('customer',$cdata);
 
-		$this->db->insert('wedding_booking_details',$sdata);
+		//$this->db->insert('wedding_booking_details',$sdata);
+		return $bookingid;
 
 	}
 
