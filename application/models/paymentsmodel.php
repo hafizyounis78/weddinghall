@@ -8,7 +8,7 @@ class Paymentsmodel extends CI_Model
         $query = $this->db->get('payments');
 		return $query->result();
     }
-	public function get_booking_by_code($booking_code)//,$cut_id)
+	public function get_booking_by_code($booking_code)
 	{
 		 $myquery = "select wedding_hall.*,customer.*,wedding_booking.*
 from wedding_hall,customer,wedding_booking
@@ -18,7 +18,13 @@ and wedding_booking.booking_code=$booking_code";
         return $this->db->query($myquery);
 
 	}
-	
+public function get_emp_by_code($emp_code)
+	{
+		$this->db->where('emp_code',$emp_code);
+		$query = $this->db->get('employee');
+		return $query->result();
+	}
+
 	public function insert_payments()
 	{
 		extract($_POST);
@@ -32,6 +38,22 @@ and wedding_booking.booking_code=$booking_code";
 		$this->db->insert('payments',$data);
 
 	}
+
+	public function insert_emppayments()
+	{
+		extract($_POST);
+		//print_r(extract($_POST));
+		//exit;
+		$data['emp_code'] = $emp_code;
+		$data['payment_type'] = $payment_type;
+		$data['payment_amount'] = $payment_amount;
+		$data['payment_date'] = $payment_date;
+		//$data['invoice_no'] = $invoice_no;
+		
+		$this->db->insert('employee_payments',$data);
+
+	}
+
 }
 
 

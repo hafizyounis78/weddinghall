@@ -1,5 +1,5 @@
 <?php
-
+$emp_code='';
 
 if (isset($addemppayments))
 {
@@ -34,7 +34,7 @@ foreach($addemppayments as $row);
 							<form action="#" id="emppayments_form" class="form-horizontal">
 								<div class="form-body">
 									<h3 class="form-section">Advance validation. <small>Custom radio buttons, checkboxes and Select2 dropdowns</small></h3>
-									
+									 <input id="emp_code" name="emp_code" type="hidden" value="<?php echo $emp_code;?>" />
                                     
                                     <div class="alert alert-danger display-hide">
 										<button class="close" data-close="alert"></button>
@@ -45,42 +45,11 @@ foreach($addemppayments as $row);
 										Your form validation is successful!
 									</div>
                                     <div class="form-group">
-										<label class="control-label col-md-3">كود الحجز <span class="required">
-										* </span>
-										</label>
-										<div class="col-md-4">
-											<input type="text" name="booking_code" <?php if (isset($row->booking_code)) {echo 'value="'.$row->booking_code.'"';}?>  data-required="1" class="form-control"/>
-										</div>
-									</div>
-<div class="form-group">
-										<label class="control-label col-md-3">اسم الصالة <span class="required">
-										* </span>
-										</label>
-										<div class="col-md-4">
-											<input type="text" name="w_name" <?php if (isset($row->w_name)) {echo 'value="'.$row->w_name.'"';}?>  data-required="1" class="form-control"/>
-										</div>
-									</div>
-									<div class="form-group">
-										<label class="control-label col-md-3">تاريخ الحجز</label>
-										<div class="col-md-4">
-											<div class="input-group date date-picker" data-date-format="yyyy/mm/dd">
-												<input type="text" class="form-control" readonly name="booking_date" <?php if (isset($row->booking_date)) {echo 'value="'.$row->booking_date.'"';}?>/>
-												<span class="input-group-btn">
-												<button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
-												</span>
-											</div>
-											<!-- /input-group -->
-											<span class="help-block">
-											select a date </span>
-										</div>
-									</div>
-                                    
-                                    <div class="form-group">
 										<label class="control-label col-md-3">رقم الهوية <span class="required">
 										* </span>
 										</label>
 										<div class="col-md-4">
-											<input type="text" name="cut_id" <?php if (isset($row->cut_id)) {echo 'value="'.$row->cut_id.'"';}?>  data-required="1" class="form-control"/>
+											<input type="text" name="cut_id" <?php if (isset($row->emp_id)) {echo 'value="'.$row->emp_id.'"';}?>  data-required="1" class="form-control"/>
 										</div>
 									</div>
 
@@ -113,12 +82,18 @@ foreach($addemppayments as $row);
 										</div>
                                      </div>
                                      <div class="form-group">
-										<label class="control-label col-md-3">رقم الوصل المالي</label>
+                   				<label class="control-label col-md-3">نوع الدفع<span class="required">*</span>
+										</label>
 										<div class="col-md-4">
-											<input name="invoice_no" type="text" class="form-control"/>
-                                            
+											<select class="form-control select2me" name="payment_type">
+												<option value="0">Select...</option>
+												<option value="1">راتب شهري</option>
+                                                <option value="2">سلفة مالية</option>
+						                        
+											</select>
 										</div>
-                                     </div>
+									</div>
+						
                                      
 								<div class="form-actions">
 									<div class="row">

@@ -44,6 +44,8 @@ class Pages extends CI_Controller
 				$data[$page] = $this->viewupdate($indata);
 		if($page == 'addpayments' && $indata !='')
 				$data[$page] = $this->viewpaydata($indata);
+		if($page == 'addemppayments' && $indata !='')
+				$data[$page] = $this->viewemppaydata($indata);
 				
 		if(($page == 'addemp' )&& $indata !='')
 				$data[$page] = $this->viewempupdate($indata);
@@ -98,6 +100,12 @@ class Pages extends CI_Controller
 		$this->paymentsmodel->insert_payments();
 			
 	}
+	function addemppayments()
+	{
+		$this->load->model('paymentsmodel');
+		$this->paymentsmodel->insert_emppayments();
+			
+	}
 	function addbooking_details()
 	{
 		
@@ -149,6 +157,13 @@ function viewpaydata($booking_code)
 		$rec=$this->paymentsmodel->get_booking_by_code($booking_code);
 		return $rec->result();
 	}
+function viewemppaydata($emp_code)
+	{
+		$this->load->model('paymentsmodel');
+		return $this->paymentsmodel->get_emp_by_code($emp_code);
+		 
+	}
+
 function viewhallupdate($w_code)
 	{
 		$this->load->model('hallmodel');
