@@ -36,7 +36,7 @@ class Pages extends CI_Controller
 		{
 				//$data[$page] = $this->viewbookingupdate($indata);
 				$data['sev'] =$this->services();
-//				$data['booking_sev']=$this->booking_details($indata);
+	//	
 		}
 		//print_r($data[$page]);
 		//exit;
@@ -119,6 +119,7 @@ class Pages extends CI_Controller
 		
 		$this->load->model('bookingmodel');
 		$this->bookingmodel->insert_booking_details();
+		$data['booking_sev']=$this->booking_details($indata);
 			
 	}
 function booking_details($booking_code)

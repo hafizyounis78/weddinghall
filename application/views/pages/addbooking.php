@@ -153,7 +153,7 @@ foreach($addbooking as $row);
 										* </span>
 										</label>
 										<div class="col-md-4">
-                                        	<input id="hdnBookingcode" name="hdnBookingcode" type="hidden" value="" />
+                                        	
 											<select class="form-control select2me" name="sev_desc">
 												<option value="0">Select...</option>
 												<?php
@@ -175,8 +175,15 @@ foreach($addbooking as $row);
 											<input name="sev_price" type="text" class="form-control"
                                            <?php if (isset($row->sev_price)) {echo 'value="'.$row->sev_price.'"';}?>/>
 										</div>
-                                     </div>
-                                  </div>
+                                </div>
+                                <div class="form-group">
+										<label class="control-label col-md-3">كود الحجز </label>
+										<div class="col-md-4">
+											<input name="hdnBookingcode" type="text" class="form-control"/>
+                                         
+										</div>
+                                </div>
+                                  
 								<div class="form-actions">
 									<div class="row">
 										<div class="col-md-offset-3 col-md-9">
@@ -234,22 +241,33 @@ foreach($addbooking as $row);
 								</tr>
 								</thead>
 								<tbody>
-								<tr>
-									<td rowspan="2">
-										 1
-									</td>
-									<td>
-										 Mark
-									</td>
-									<td>
-										 Otto
-									</td>
-									<td>
-										 makr124
-									</td>
 									
-								</tr>
-								
+								<?php
+								$i=1;
+								if (isset($booking_sev))
+								{
+  							foreach($booking_sev as $row)
+  							{
+								echo '<tr class="odd gradeX">';
+								echo '<td>'.$i++.'</td>';
+/*								echo '<td>'.$this->hdnBookingcode.'</td>';*/
+								echo '<td>'.$row->sev_code.'</td>';
+								echo '<td>'.$row->sev_desc.'</td>';
+								echo '<td>'.$row->sev_price.'</td>';
+								echo '</tr>';
+							}
+								}
+								else
+								{
+								echo '<tr class="odd gradeX">';
+								echo '<td>'.'</td>';
+								echo '<td>'.'</td>';
+								echo '<td>'.'</td>';
+								echo '<td>'.'</td>';
+								echo '</tr>';
+								}
+							?>
+                           
 								</tbody>
 								</table>
 							</div>

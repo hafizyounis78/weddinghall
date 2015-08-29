@@ -75,7 +75,7 @@ and wedding_booking.booking_code=$booking_code";
 	{
 		extract($_POST);
 
-		$data['booking_code'] = $booking_code;
+		$data['booking_code'] = $hdnBookingcode;
 		$data['sev_code'] = $sev_code;
 		$data['sev_price'] = $sev_price;
 
