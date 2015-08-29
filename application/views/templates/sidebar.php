@@ -124,15 +124,15 @@
 							<i class="icon-basket"></i>
 							دفعات الموظفين</a>
 						</li>
-						<li>
-							<a href="ecommerce_orders_view.html">
+						<li <?php if($title == 'searchpayments') echo 'class="active"'; ?>>
+							<a href="<?php echo base_url();?>searchpayments">
 							<i class="icon-tag"></i>
-							Order View</a>
+							استعلام على الدفعات المالية</a>
 						</li>
-						<li>
-							<a href="ecommerce_products.html">
+						<li <?php if($title == 'searchemppayments') echo 'class="active"'; ?>>
+							<a href="<?php echo base_url();?>searchemppayments">
 							<i class="icon-handbag"></i>
-							Products</a>
+							استعلام على دفعات الموظفين</a>
 						</li>
 						<li>
 							<a href="ecommerce_products_edit.html">

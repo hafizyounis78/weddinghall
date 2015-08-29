@@ -23,7 +23,7 @@ class Pages extends CI_Controller
 			$this->load->view('templates/sidebar');
 			$this->load->view('templates/stylecustomizer');
 			$this->load->view('templates/pageheader');
-		if($page == 'users'||$page == 'employee'|| $page == 'hall'||$page == 'services' ||$page == 'booking'||$page == 'payments'||$page == 'emppayments')
+		if($page == 'users'||$page == 'employee'|| $page == 'hall'||$page == 'services' ||$page == 'booking'||$page == 'payments'||$page == 'emppayments'||$page=='searchpayments'||$page=='searchemppayments')
 		$data[$page] = $this->$page();
 		
 		
@@ -48,11 +48,14 @@ class Pages extends CI_Controller
 				$data['payment_view'] = $this->payment_view($indata);
 				
 		}
+
 		if($page == 'addemppayments' && $indata !='')
 				{
 					$data[$page] = $this->viewemppaydata($indata);
 					$data['employee_view']=$this->employee_view($indata);
 				}
+
+		
 				
 		if(($page == 'addemp' )&& $indata !='')
 				$data[$page] = $this->viewempupdate($indata);
@@ -84,6 +87,23 @@ class Pages extends CI_Controller
 		return $rec->result();
 		 		
 	}
+	function searchpayments()
+	{
+	
+		$this->load->model('paymentsmodel');
+		$rec=$this->paymentsmodel->get_all_payments();
+		return $rec->result();
+		 		
+	}
+function searchemppayments()
+	{
+	
+		$this->load->model('paymentsmodel');
+		$rec=$this->paymentsmodel->get_all_emppayments();
+		return $rec->result();
+		 		
+	}
+
 	function emppayments()
 	{
 		$this->load->model('empmodel');
