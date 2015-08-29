@@ -24,7 +24,26 @@ public function get_emp_by_code($emp_code)
 		$query = $this->db->get('employee');
 		return $query->result();
 	}
+public function get_emppayments_by_code($emp_code)
+	{
+		 $myquery = "select employee_payments.*,employee.*
+from employee_payments,employee
+where employee_payments.emp_code=employee.emp_code
+and employee_payments.emp_code=$emp_code";
+        return $this->db->query($myquery);
 
+	}
+public function get_payments_by_code($booking_code)
+	{
+		 $myquery = "select payments.*,wedding_booking.*,customer.*,wedding_hall.*
+from  payments,wedding_booking,customer,wedding_hall
+where wedding_booking.booking_code=payments.booking_code
+and   wedding_booking.w_code=wedding_hall.w_code
+and   wedding_booking.cut_id=customer.cut_id
+and   wedding_booking.booking_code=$booking_code";
+        return $this->db->query($myquery);
+
+	}	
 	public function insert_payments()
 	{
 		extract($_POST);

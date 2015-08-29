@@ -43,9 +43,16 @@ class Pages extends CI_Controller
 		if($page == 'adduser' && $indata !='')
 				$data[$page] = $this->viewupdate($indata);
 		if($page == 'addpayments' && $indata !='')
+		{
 				$data[$page] = $this->viewpaydata($indata);
+				$data['payment_view'] = $this->payment_view($indata);
+				
+		}
 		if($page == 'addemppayments' && $indata !='')
-				$data[$page] = $this->viewemppaydata($indata);
+				{
+					$data[$page] = $this->viewemppaydata($indata);
+					$data['employee_view']=$this->employee_view($indata);
+				}
 				
 		if(($page == 'addemp' )&& $indata !='')
 				$data[$page] = $this->viewempupdate($indata);
@@ -98,13 +105,14 @@ class Pages extends CI_Controller
 	{
 		$this->load->model('paymentsmodel');
 		$this->paymentsmodel->insert_payments();
+		
 			
 	}
 	function addemppayments()
 	{
 		$this->load->model('paymentsmodel');
 		$this->paymentsmodel->insert_emppayments();
-			
+		
 	}
 	function addbooking_details()
 	{
@@ -151,6 +159,20 @@ function viewbookingupdate($booking_code)
 		$rec=$this->bookingmodel->get_booking_by_code($booking_code);
 		return $rec->result();
 	}
+function employee_view($emp_code)
+	{
+		$this->load->model('paymentsmodel');
+		$rec=$this->paymentsmodel->get_emppayments_by_code($emp_code);
+		return $rec->result();
+	}	
+	
+function payment_view($booking_code)
+	{
+		$this->load->model('paymentsmodel');
+		$rec=$this->paymentsmodel->get_payments_by_code($booking_code);
+		return $rec->result();
+	}	
+
 function viewpaydata($booking_code)
 	{
 		$this->load->model('paymentsmodel');
