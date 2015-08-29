@@ -31,16 +31,28 @@ foreach($addbooking as $row);
 										<button class="close" data-close="alert"></button>
 										Your form validation is successful!
 									</div>
-                                   
-                                    <div class="form-group">
-										<label class="control-label col-md-3">الصالة <span class="required">
+                                       <div class="form-group">
+										<label class="control-label col-md-3">الصالة<span class="required">
 										* </span>
 										</label>
 										<div class="col-md-4">
-											<input type="text" name="w_code" <?php if (isset($row->w_code)) {echo 'value="'.$row->w_code.'"';}?>"  data-required="1" class="form-control"/>
+                                        	
+											<select class="form-control select2me" name="sev_code">
+												<option value="0">Select...</option>
+												<?php
+												$selected;
+												foreach($hall as $row)
+												{	 
+												?>
+							                     <option value="<?php echo $row->w_code;?>"> <?php echo $row->w_name;?></option>
+
+                                                <?php
+												}
+												?>
+											</select>
 										</div>
 									</div>
-
+                                    
                                     <div class="form-group">
 										<label class="control-label col-md-3">تاريخ الحجز</label>
 										<div class="col-md-4">
