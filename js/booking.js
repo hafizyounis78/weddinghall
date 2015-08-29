@@ -16,6 +16,7 @@ $(document).ready(function(){
 			complete: function(){},
 			success: function(result){
 				alert (result);
+				document.getElementById('hdnBookingcode').value = result;
 					alert ('تمت عملية الإضافة بنجاح');
 			}
 		});//END $.ajax

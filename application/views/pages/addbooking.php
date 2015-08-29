@@ -71,7 +71,7 @@ foreach($addbooking as $row);
 										* </span>
 										</label>
 										<div class="col-md-4">
-											<input type="text" name="name" data-required="1"  <?php if (isset($row->name)) {echo 'value="'.$row->name.'"';}?>" class="form-control"/>
+											<input type="text" name="name" data-required="1"  <?php if (isset($row->name)) {echo 'value="'.$row->name.'"';}?> class="form-control"/>
 										</div>
 									</div>
                                     
@@ -153,6 +153,7 @@ foreach($addbooking as $row);
 										* </span>
 										</label>
 										<div class="col-md-4">
+                                        	<input id="hdnBookingcode" name="hdnBookingcode" type="hidden" value="" />
 											<select class="form-control select2me" name="sev_desc">
 												<option value="0">Select...</option>
 												<?php
@@ -173,7 +174,6 @@ foreach($addbooking as $row);
 										<div class="col-md-4">
 											<input name="sev_price" type="text" class="form-control"
                                            <?php if (isset($row->sev_price)) {echo 'value="'.$row->sev_price.'"';}?>/>
-                                            />
 										</div>
                                      </div>
                                   </div>
