@@ -78,12 +78,12 @@
 					</a>
 					<ul class="sub-menu">
 						<li>
-							<a href="addbooking">
+							<a href="<?php echo base_url();?>addbooking">
 							<i class="icon-home"></i>
 							اضافة حجز</a>
 						</li>
 						<li>
-							<a href="booking">
+							<a href="<?php echo base_url();?>booking">
 							<i class="icon-basket"></i>
 							عرض الحجوزات</a>
 						</li>
@@ -112,12 +112,12 @@
 					</a>
 					<ul class="sub-menu">
 						<li>
-							<a href="payments">
+							<a href="<?php echo base_url();?>payments">
 							<i class="icon-home"></i>
 						دفعات مالية</a>
 						</li>
 						<li>
-							<a href="emppayments">
+							<a href="<?php echo base_url();?>emppayments">
 							<i class="icon-basket"></i>
 							دفعات الموظفين</a>
 						</li>
