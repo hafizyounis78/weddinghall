@@ -119,7 +119,7 @@ class Pages extends CI_Controller
 		
 		$this->load->model('bookingmodel');
 		$this->bookingmodel->insert_booking_details();
-		$data['booking_sev']=$this->booking_details($indata);
+		//$data['booking_sev']=$this->booking_details($indata);
 			
 	}
 function booking_details($booking_code)

@@ -25,19 +25,21 @@ $(document).ready(function(){
 
 /*********************booking_details*******************/
 $(document).ready(function(){
-	$('#btnAddbooking_details').click(function() {
-									
+	$('#btnAddbooking_details').click(function(event) {							
+		event.preventDefault();
+		alert('hi');
 		$.ajax({
 			url: "pages/addbooking_details",
 			type: "POST",
 			data:  $("#service_form").serialize(),
-			error: function(){
-				alert('error');
+			error: function(xhr, status, error) {
+  				alert(xhr.responseText);
 			},
 			beforeSend: function(){},
 			complete: function(){},
-			success: function(){
-					alert ('تمت عملية الإضافة بنجاح');
+			success: function(returndb){
+					//alert(returndb);
+					alert ('تمت عملية اضافة خدمة بنجاح');
 			}
 		});//END $.ajax
 	}); // END CLICK
