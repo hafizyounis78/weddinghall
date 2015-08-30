@@ -15,7 +15,7 @@ if (isset($addhall))
 							<!-- BEGIN FORM-->
                             <form action="#" id="form_sample_3" class="form-horizontal">
 								<div class="form-body">
-									<h3 class="form-section">Advance validation. <small>Custom radio buttons, checkboxes and Select2 dropdowns</small></h3>
+									<h3 class="form-section"></h3>
 									<input id="w_code" name="w_code" type="hidden" 
                                     <?php 
 										if (isset($row->w_code))

@@ -194,9 +194,9 @@ foreach($addbooking as $row);
 										</div>
                                 </div>
                                 <div class="form-group">
-										<label class="control-label col-md-3">كود الحجز </label>
+										
 										<div class="col-md-4">
-											<input id="hdnBookingcode" name="hdnBookingcode" type="text" class="form-control"/>
+											<input id="hdnBookingcode" name="hdnBookingcode" type="hidden" class="form-control"/>
                                          
 										</div>
                                 </div>
@@ -226,16 +226,7 @@ foreach($addbooking as $row);
 							<div class="caption">
 								<i class="fa fa-coffee"></i>جدول الخدمات 
 							</div>
-							<div class="tools">
-								<a href="javascript:;" class="collapse">
-								</a>
-								<a href="#portlet-config" data-toggle="modal" class="config">
-								</a>
-								<a href="javascript:;" class="reload">
-								</a>
-								<a href="javascript:;" class="remove">
-								</a>
-							</div>
+							
 						</div>
 						<div class="portlet-body">
 							<div class="table-scrollable">

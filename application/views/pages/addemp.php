@@ -20,24 +20,15 @@ $isUpdate = 1;
 					<div class="portlet box green">
 						<div class="portlet-title">
 							<div class="caption">
-								<i class="fa fa-gift"></i>Advance Validation
+								<i class="fa fa-gift"></i>إضافة موظف
 							</div>
-							<div class="tools">
-								<a href="javascript:;" class="collapse">
-								</a>
-								<a href="#portlet-config" data-toggle="modal" class="config">
-								</a>
-								<a href="javascript:;" class="reload">
-								</a>
-								<a href="javascript:;" class="remove">
-								</a>
-							</div>
+							
 						</div>
 						<div class="portlet-body form">
 							<!-- BEGIN FORM-->
 							<form action="#" id="form_sample_3" class="form-horizontal">
 								<div class="form-body">
-									<h3 class="form-section">Advance validation. <small>Custom radio buttons, checkboxes and Select2 dropdowns</small></h3>
+									<h3 class="form-section"></h3>
 									<input id="hdnAction" name="hdnAction" type="hidden" value="<?php echo $isUpdate;?>" />
                                     <input id="emp_code" name="emp_code" type="hidden" value="<?php echo $emp_code;?>" />
                                     <div class="alert alert-danger display-hide">

@@ -17,7 +17,7 @@ if (isset($adduser))
 							<!-- BEGIN FORM-->
                             <form action="#" id="form_sample_3" class="form-horizontal">
 								<div class="form-body">
-									<h3 class="form-section">Advance validation. <small>Custom radio buttons, checkboxes and Select2 dropdowns</small></h3>
+									<h3 class="form-section"></h3>
 									<input id="hdnAction" name="hdnAction" type="hidden" value="<?php echo $isUpdate;?>" />
                                     <div class="alert alert-danger display-hide">
 										<button class="close" data-close="alert"></button>
