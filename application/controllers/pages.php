@@ -36,6 +36,7 @@ class Pages extends CI_Controller
 				$data[$page] = $this->viewbookingupdate($indata);
 				$data['sev'] =$this->services();
 				$data['hall'] =$this->wedding_hall();
+				$data['booking_sev'] =$this->booking_details($indata);
 			}
 			if($page == 'addbooking')
 			{
@@ -150,13 +151,25 @@ function searchemppayments()
 		$this->bookingmodel->insert_booking_details();
 		extract($_POST);
 //		$hdnBookingcode
-		$data['booking_sev']=$this->booking_details($hdnBookingcode);
+		$rec=$this->booking_details($hdnBookingcode);
+		
+		foreach($rec as $row)
+  		{
+			echo '<tr class="odd gradeX">';
+			echo '<td>'.$i++.'</td>';
+			echo '<td>'.$row->sev_code.'</td>';
+			echo '<td>'.$row->sev_desc.'</td>';
+			echo '<td>'.$row->sev_price.'</td>';
+			echo '</tr>';
+		}
 			
 	}
 function booking_details($booking_code)
 	{
 		$this->load->model('bookingmodel');
 		$rec = $this->bookingmodel->get_booking_details_by_code($booking_code);
+		
+		return $rec->result();
 	}
 	
 	function addbooking()

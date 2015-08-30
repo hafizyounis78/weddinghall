@@ -254,24 +254,24 @@ foreach($addbooking as $row);
 								$i=1;
 								if (isset($booking_sev))
 								{
-  							foreach($booking_sev as $row)
-  							{
-								echo '<tr class="odd gradeX">';
-								echo '<td>'.$i++.'</td>';
-								echo '<td>'.$row->sev_code.'</td>';
-								echo '<td>'.$row->sev_desc.'</td>';
-								echo '<td>'.$row->sev_price.'</td>';
-								echo '</tr>';
-							}
+									foreach($booking_sev as $row)
+									{
+										echo '<tr class="odd gradeX">';
+										echo '<td>'.$i++.'</td>';
+										echo '<td>'.$row->sev_code.'</td>';
+										echo '<td>'.$row->sev_desc.'</td>';
+										echo '<td>'.$row->sev_price.'</td>';
+										echo '</tr>';
+									}
 								}
 								else
 								{
-								echo '<tr class="odd gradeX">';
-								echo '<td>'.'</td>';
-								echo '<td>'.'</td>';
-								echo '<td>'.'</td>';
-								echo '<td>'.'</td>';
-								echo '</tr>';
+									echo '<tr class="odd gradeX">';
+									echo '<td>&nbsp;</td>';
+									echo '<td>&nbsp;</td>';
+									echo '<td>&nbsp;</td>';
+									echo '<td>&nbsp;</td>';
+									echo '</tr>';
 								}
 							?>
                            

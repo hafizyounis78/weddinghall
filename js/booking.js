@@ -27,7 +27,7 @@ $(document).ready(function(){
 $(document).ready(function(){
 	$('#btnAddbooking_details').click(function(event) {							
 		event.preventDefault();
-		alert('hi');
+		
 		$.ajax({
 			url: "pages/addbooking_details",
 			type: "POST",
@@ -42,7 +42,8 @@ $(document).ready(function(){
 				//	$('#service_table table > tbody:first').html(data);
 					alert ('تمت عملية اضافة خدمة بنجاح');
 			
-               $( "#serv_body" ).load( " Addbooking #serv_body" );
+               //$( "#serv_body" ).load( " Addbooking #serv_body" );
+			   $( "#serv_body" ).html(data);
    
 
 			}
