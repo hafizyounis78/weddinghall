@@ -148,7 +148,10 @@ function searchemppayments()
 		
 		$this->load->model('bookingmodel');
 		$this->bookingmodel->insert_booking_details();
-		//$data['booking_sev']=$this->booking_details($indata);
+		extract($_POST);
+
+		
+		$data['booking_sev']=$this->booking_details($hdnBookingcode);
 			
 	}
 function booking_details($booking_code)
