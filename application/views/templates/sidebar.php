@@ -157,9 +157,9 @@
 							<a href="<?php echo base_url();?>users">
 							عرض المستخدمين</a>
 						</li>
-						<li>
-							<a href="login_2.html">
-							Login Form 2</a>
+						<li <?php if($title == 'adduser') echo 'class="active"'; ?>>
+							<a href="<?php echo base_url();?>adduser">
+							اضافة مستخدم</a>
 						</li>
 					</ul>
 				</li>
