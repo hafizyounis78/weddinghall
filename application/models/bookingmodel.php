@@ -25,9 +25,11 @@ and wedding_booking.booking_code=$booking_code";
 	}
 	public function get_booking_details_by_code($booking_code)//,$cut_id)
 	{
-		 $myquery = "select wedding_booking_details.*
-					from wedding_booking,wedding_booking_details
+		 $myquery = "select wedding_booking_details.sev_code,wedding_booking_details.sev_price,
+		 			wedding_booking_details.booking_code,wedding_services.sev_desc
+					from wedding_booking,wedding_booking_details,wedding_services
 					where wedding_booking.booking_code=wedding_booking_details.booking_code
+					and wedding_booking_details.sev_code=wedding_services.sev_code
 					and wedding_booking.booking_code=$booking_code";
         return $this->db->query($myquery);
 	}

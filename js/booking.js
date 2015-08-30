@@ -37,9 +37,14 @@ $(document).ready(function(){
 			},
 			beforeSend: function(){},
 			complete: function(){},
-			success: function(returndb){
+			success: function(data){
 					//alert(returndb);
+				//	$('#service_table table > tbody:first').html(data);
 					alert ('تمت عملية اضافة خدمة بنجاح');
+			
+               $( "#serv_body" ).load( " Addbooking #serv_body" );
+   
+
 			}
 		});//END $.ajax
 	}); // END CLICK

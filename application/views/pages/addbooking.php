@@ -23,7 +23,7 @@ foreach($addbooking as $row);
 							<!-- BEGIN FORM-->
 							<form action="#" id="form_sample_3" class="form-horizontal">
 								<div class="form-body">
-									<h3 class="form-section">Advance validation. <small>Custom radio buttons, checkboxes and Select2 dropdowns</small></h3>
+									<h3 class="form-section"></h3>
 									<div class="alert alert-danger display-hide">
 										<button class="close" data-close="alert"></button>
 										You have some form errors. Please check below.
@@ -79,7 +79,7 @@ foreach($addbooking as $row);
 										* </span>
 										</label>
 										<div class="col-md-4">
-											<input type="text" name="cut_id" <?php if (isset($row->cut_id)) {echo 'value="'.$row->cut_id.'"';}?>"  data-required="1" class="form-control"/>
+											<input type="text" name="cut_id" <?php if (isset($row->cut_id)) {echo 'value="'.$row->cut_id.'"';}?>  data-required="1" class="form-control"/>
 										</div>
 									</div>
 
@@ -155,7 +155,7 @@ foreach($addbooking as $row);
 							<!-- BEGIN FORM-->
 							<form action="#" id="service_form" class="form-horizontal">
 								<div class="form-body">
-									<h3 class="form-section">Advance validation. <small>Custom radio buttons, checkboxes and Select2 dropdowns</small></h3>
+									<h3 class="form-section"></h3>
 									
                                     <div class="alert alert-danger display-hide">
 										<button class="close" data-close="alert"></button>
@@ -228,9 +228,9 @@ foreach($addbooking as $row);
 							</div>
 							
 						</div>
-						<div class="portlet-body">
-							<div class="table-scrollable">
-								<table class="table table-bordered table-hover">
+						<div  class="portlet-body">
+							<div  class="table-scrollable">
+								<table  id="service_table" class="table table-bordered table-hover">
 								<thead>
 								<tr>
 									<th>
@@ -248,7 +248,7 @@ foreach($addbooking as $row);
 									
 								</tr>
 								</thead>
-								<tbody>
+								<tbody id="serv_body">
 									
 								<?php
 								$i=1;
@@ -258,7 +258,6 @@ foreach($addbooking as $row);
   							{
 								echo '<tr class="odd gradeX">';
 								echo '<td>'.$i++.'</td>';
-/*								echo '<td>'.$this->hdnBookingcode.'</td>';*/
 								echo '<td>'.$row->sev_code.'</td>';
 								echo '<td>'.$row->sev_desc.'</td>';
 								echo '<td>'.$row->sev_price.'</td>';
