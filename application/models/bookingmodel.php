@@ -25,7 +25,7 @@ and wedding_booking.booking_code=$booking_code";
 	}
 	public function get_booking_details_by_code($booking_code)//,$cut_id)
 	{
-		 $myquery = "wedding_booking_details.*
+		 $myquery = "select wedding_booking_details.*
 					from wedding_booking,wedding_booking_details
 					where wedding_booking.booking_code=wedding_booking_details.booking_code
 					and wedding_booking.booking_code=$booking_code";
