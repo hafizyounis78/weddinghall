@@ -30,7 +30,7 @@ $(document).ready(function(){
 		var sev_code = $(this).find('option:selected').val();
 		
 		$.ajax({
-			url: "pages/service_price/"+sev_code,
+			url: "http://localhost/weddinghall/pages/service_price/"+sev_code,
 			type: "POST",
 			data: function(){},
 			error: function(xhr, status, error) {
