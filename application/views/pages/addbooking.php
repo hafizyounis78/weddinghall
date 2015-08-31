@@ -171,7 +171,7 @@ foreach($addbooking as $row);
 										</label>
 										<div class="col-md-4">
                                         	
-											<select class="form-control select2me" name="sev_code">
+											<select id="sev_code" class="form-control select2me" name="sev_code">
 												<option value="0">Select...</option>
 												<?php
 												$selected;
@@ -189,7 +189,7 @@ foreach($addbooking as $row);
 								<div class="form-group">
 										<label class="control-label col-md-3">تكلفة الخدمة</label>
 										<div class="col-md-4">
-											<input name="sev_price" type="text" class="form-control"
+											<input id="sev_price" name="sev_price" type="text" class="form-control"
                                            <?php if (isset($row->sev_price)) {echo 'value="'.$row->sev_price.'"';}?>/>
 										</div>
                                 </div>

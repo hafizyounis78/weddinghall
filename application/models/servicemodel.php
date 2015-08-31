@@ -14,7 +14,14 @@ class Servicemodel extends CI_Model
 		$query = $this->db->get('wedding_services');
 		return $query->result();
 	}
-	
+	public function get_service_price($sev_code)
+	{
+		$this->db->select('sev_price');
+		$this->db->where('sev_code',$sev_code);
+		$query = $this->db->get('wedding_services');
+		
+		return $query->result();
+	}
 	public function insert_service()
 	{
 		extract($_POST);

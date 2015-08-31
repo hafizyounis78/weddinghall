@@ -313,7 +313,17 @@ function deletebooking($booking_code)
 		return $this->servicemodel->get_service();
 		 		
 	}
-function wedding_hall()
+	function service_price($sev_code)
+	{
+		$this->load->model('servicemodel');
+		$price = $this->servicemodel->get_service_price($sev_code);
+		
+		foreach($price as $row)
+  		{
+			echo $row->sev_price;
+		}
+	}
+	function wedding_hall()
 	{
 		$this->load->model('hallmodel');
 		return $this->hallmodel->get_hall();

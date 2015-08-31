@@ -25,6 +25,30 @@ $(document).ready(function(){
 
 /*********************booking_details*******************/
 $(document).ready(function(){
+	$('#sev_code').change(function(event) {							
+		event.preventDefault();
+		var sev_code = $(this).find('option:selected').val();
+		
+		$.ajax({
+			url: "pages/service_price/"+sev_code,
+			type: "POST",
+			data: function(){},
+			error: function(xhr, status, error) {
+  				//var err = eval("(" + xhr.responseText + ")");
+  				alert(xhr.responseText);
+	
+			},
+			beforeSend: function(){},
+			complete: function(){},
+			success: function(result){
+				//alert (result);
+				document.getElementById('sev_price').value = result;
+			}
+		});//END $.ajax	
+		
+	}); // END CLICK
+}); // END READY		
+$(document).ready(function(){
 	$('#btnAddbooking_details').click(function(event) {							
 		event.preventDefault();
 		
