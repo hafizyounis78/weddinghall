@@ -53,7 +53,7 @@ $(document).ready(function(){
 		event.preventDefault();
 		
 		$.ajax({
-			url: "pages/addbooking_details",
+			url: "http://localhost/weddinghall/pages/addbooking_details",
 			type: "POST",
 			data:  $("#service_form").serialize(),
 			error: function(xhr, status, error) {

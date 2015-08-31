@@ -1,8 +1,10 @@
 <?php
 $selected='';
+$booking_code='';
 if (isset($addbooking))
 {
-foreach($addbooking as $row);
+	foreach($addbooking as $row);
+	$booking_code=$row->booking_code;
 }
 
 
@@ -189,14 +191,15 @@ foreach($addbooking as $row);
 								<div class="form-group">
 										<label class="control-label col-md-3">تكلفة الخدمة</label>
 										<div class="col-md-4">
-											<input id="sev_price" name="sev_price" type="text" class="form-control"
-                                           <?php if (isset($row->sev_price)) {echo 'value="'.$row->sev_price.'"';}?>/>
+											<input id="sev_price" name="sev_price" type="text" class="form-control"/>
 										</div>
                                 </div>
                                 <div class="form-group">
 										
 										<div class="col-md-4">
-											<input id="hdnBookingcode" name="hdnBookingcode" type="hidden" class="form-control"/>
+											<input id="hdnBookingcode" name="hdnBookingcode" type="hidden" class="form-control" 
+                                            value="<?php echo $booking_code; ?>"
+                                            />
                                          
 										</div>
                                 </div>
@@ -252,10 +255,13 @@ foreach($addbooking as $row);
 									
 								<?php
 								$i=1;
+								$total = 0;
 								if (isset($booking_sev))
 								{
 									foreach($booking_sev as $row)
 									{
+										$total = $total + $row->sev_price;
+										
 										echo '<tr class="odd gradeX">';
 										echo '<td>'.$i++.'</td>';
 										echo '<td>'.$row->sev_code.'</td>';
@@ -273,6 +279,10 @@ foreach($addbooking as $row);
 									echo '<td>&nbsp;</td>';
 									echo '</tr>';
 								}
+								echo '<tr align="center" class="odd gradeX">';
+									echo '<td colspan="3">المجمــوع</td>';
+									echo '<td>'.$total.'</td>';
+									echo '</tr>';
 							?>
                            
 								</tbody>
@@ -282,6 +292,62 @@ foreach($addbooking as $row);
 					</div>
 					<!-- END BORDERED TABLE PORTLET-->
 				</div>
+<!--------------------------------------------------- Price form------------------------------------------------------>
+				<div class="col-md-12">
+					<!-- BEGIN VALIDATION STATES-->
+              
+					<div class="portlet box green">
+						<div class="portlet-title">
+							<div class="caption">
+								<i class="fa fa-gift"></i>سـعر الحجز النهائي
+							</div>
+							
+						</div>
+						<div class="portlet-body form">
+							<!-- BEGIN FORM-->
+							<form action="#" id="price_form" class="form-horizontal">
+								<div class="form-body">
+									<h3 class="form-section"></h3>
+									
+                                    <div class="alert alert-danger display-hide">
+										<button class="close" data-close="alert"></button>
+										You have some form errors. Please check below.
+									</div>
+									<div class="alert alert-success display-hide">
+										<button class="close" data-close="alert"></button>
+										Your form validation is successful!
+									</div>
+                                    <div class="form-group">
+										<label class="control-label col-md-3">السعر قبل الخصم<span class="required">
+										* </span>
+										</label>
+										<div class="col-md-4">
+											<input name="total_price" type="text" class="form-control" disabled="disabled"
+                                            <?php echo 'value="'.$total.'"';?> />
+										</div>
+									</div>
+								<div class="form-group">
+										<label class="control-label col-md-3">تكلفة الخدمة</label>
+										<div class="col-md-4">
+											<input id="final_price" name="final_price" type="text" class="form-control"
+                                           <?php if (isset($row->final_price)) {echo 'value="'.$row->final_price.'"';}?>/>
+										</div>
+                                </div>
+								<div class="form-actions">
+									<div class="row">
+										<div class="col-md-offset-3 col-md-9">
+											<button id="btnSaveprice" name="btnSaveprice" type="submit"  class="btn green">Submit</button>
+											<button type="button" class="btn default">Cancel</button>
+										</div>
+									</div>
+								</div>
+							</form>
+							<!-- END FORM-->
+						</div>
+						<!-- END VALIDATION STATES-->
+					</div>
+				</div>
+
 			</div>
             
 								

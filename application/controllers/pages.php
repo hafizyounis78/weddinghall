@@ -153,8 +153,11 @@ function searchemppayments()
 //		$hdnBookingcode
 		$rec=$this->booking_details($hdnBookingcode);
 		
+		$total = 0;
 		foreach($rec as $row)
   		{
+			$total = $total + $row->sev_price;
+			
 			echo '<tr class="odd gradeX">';
 			echo '<td>'.$i++.'</td>';
 			echo '<td>'.$row->sev_code.'</td>';
@@ -162,7 +165,10 @@ function searchemppayments()
 			echo '<td>'.$row->sev_price.'</td>';
 			echo '</tr>';
 		}
-			
+		echo '<tr align="center" class="odd gradeX">';
+		echo '<td colspan="3">?????????</td>';
+		echo '<td>'.$total.'</td>';
+		echo '</tr>';	
 	}
 function booking_details($booking_code)
 	{
