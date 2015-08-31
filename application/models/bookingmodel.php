@@ -23,6 +23,16 @@ and wedding_booking.booking_code=$booking_code";
         return $this->db->query($myquery);
 
 	}
+	public function update_booking_price_by_code($booking_code)//,$cut_id)
+	{
+		 extract($_POST);
+		$data['total_price'] = $total_price;
+		$data['final_price'] = $password;
+				
+		$this->db->where('booking_code',$booking_code);
+		$this->db->update('wedding_booking',$data);
+	}
+
 	public function get_booking_details_by_code($booking_code)//,$cut_id)
 	{
 		 $myquery = "select wedding_booking_details.sev_code,wedding_booking_details.sev_price,
