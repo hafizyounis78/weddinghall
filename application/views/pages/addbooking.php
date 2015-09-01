@@ -1,10 +1,12 @@
 <?php
 $selected='';
 $booking_code='';
+$final_price='';
 if (isset($addbooking))
 {
 	foreach($addbooking as $row);
 	$booking_code=$row->booking_code;
+	$final_price = $row->final_price;
 }
 
 
@@ -321,7 +323,7 @@ if (isset($addbooking))
 										<label class="control-label col-md-3">تكلفة الخدمة</label>
 										<div class="col-md-4">
 											<input id="final_price" name="final_price" type="text" class="form-control"
-                                           <?php if (isset($row->final_price)) {echo 'value="'.$row->final_price.'"';}?>/>
+                                           value="<?php echo $final_price;?>"/>
 										</div>
                                 </div>
 								<div class="form-actions">
