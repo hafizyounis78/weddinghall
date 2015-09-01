@@ -52,7 +52,7 @@ and wedding_booking.booking_code=$booking_code";
 	$bdata['w_code'] = $w_code;
 	$bdata['booking_date'] = $booking_date;
 	$bdata['cut_id'] = $cut_id;
-		//$bdata['booking_status'] = $booking_status;
+	$bdata['booking_status'] = 1;
 		//$bdata['notes'] = $notes;
 	$this->db->insert('wedding_booking',$bdata);
 /*****************customer**********************/

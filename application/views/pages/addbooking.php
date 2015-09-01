@@ -120,7 +120,7 @@ if (isset($addbooking))
                                              <?php if (isset($row->address)) {echo 'value="'.$row->address.'"';}?>/>
 										</div>
                                      </div>
-                                  </div>
+                                   
 								<div class="form-actions">
 									<div class="row">
 										<div class="col-md-offset-3 col-md-9">
