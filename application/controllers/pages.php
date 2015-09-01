@@ -167,8 +167,8 @@ function searchemppayments()
 		}
 		echo '<tr align="center" class="odd gradeX">';
 		echo '<td colspan="3">?????????</td>';
-		echo '<td>'.$total.'</td>';
-		echo '</tr>';	
+		echo '<td id="tdTotal">'.$total.'</td>';
+		echo '</tr>';		
 	}
 function booking_details($booking_code)
 	{
@@ -186,7 +186,12 @@ function booking_details($booking_code)
 		echo $result;
 			
 	}
-
+	function addbooking_price($booking_code)
+	{
+		$this->load->model('bookingmodel');
+		$result = $this->bookingmodel->update_booking_price_by_code($booking_code);
+		echo $result;
+	}
 	function addhall()
 	{
 		$this->load->model('hallmodel');

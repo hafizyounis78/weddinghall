@@ -68,14 +68,13 @@ $(document).ready(function(){
 			
                //$( "#serv_body" ).load( " Addbooking #serv_body" );
 			   $( "#serv_body" ).html(data);
-   
+			   document.getElementById('total_price').value = $('#serv_body #tdTotal').html();
+   				
 
 			}
 		});//END $.ajax
 	}); // END CLICK
 }); // END READY
-
-
 
 /***********************delete***************/
 
@@ -95,3 +94,26 @@ function deletebooking(w_code)
 			}
 		});//END $.ajax
 }
+/*********************Service Price*******************/
+$(document).ready(function(){
+	$('#btnSaveprice').click(function(event) {							
+		event.preventDefault();
+		
+		var booking_code = $('#hdnBookingcode').val();
+		
+		$.ajax({
+			url: "http://localhost/weddinghall/pages/addbooking_price/"+booking_code,
+			type: "POST",
+			data:  $("#price_form").serialize(),
+			error: function(xhr, status, error) {
+  				alert(xhr.responseText);
+			},
+			beforeSend: function(){},
+			complete: function(){},
+			success: function(data){
+					//alert(data);
+				alert ('تمت عملية اضافة السعر بنجاح');
+			}
+		});//END $.ajax
+	}); // END CLICK
+}); // END READY

@@ -118,15 +118,6 @@ if (isset($addbooking))
                                              <?php if (isset($row->address)) {echo 'value="'.$row->address.'"';}?>/>
 										</div>
                                      </div>
-									
-								  <div class="form-group">
-										<label class="control-label col-md-3">التكلفة</label>
-										<div class="col-md-4">
-											<input name="total_price" type="text" class="form-control"
-                                            <?php if (isset($row->total_price)) {echo 'value="'.$row->total_price.'"';}?>
-                                            />
-										</div>
-                                     </div>
                                   </div>
 								<div class="form-actions">
 									<div class="row">
@@ -322,7 +313,7 @@ if (isset($addbooking))
 										* </span>
 										</label>
 										<div class="col-md-4">
-											<input name="total_price" type="text" class="form-control" disabled="disabled"
+											<input id="total_price" name="total_price" type="text" class="form-control"
                                             <?php echo 'value="'.$total.'"';?> />
 										</div>
 									</div>
