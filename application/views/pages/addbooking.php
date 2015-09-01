@@ -182,7 +182,7 @@ if (isset($addbooking))
 								<div class="form-group">
 										<label class="control-label col-md-3">تكلفة الخدمة</label>
 										<div class="col-md-4">
-											<input id="sev_price" name="sev_price" type="text" class="form-control"/>
+											<input id="sev_price" name="sev_price" type="text" class="form-control" readonly/>
 										</div>
                                 </div>
                                 <div class="form-group">
@@ -313,7 +313,7 @@ if (isset($addbooking))
 										* </span>
 										</label>
 										<div class="col-md-4">
-											<input id="total_price" name="total_price" type="text" class="form-control"
+											<input id="total_price" name="total_price" type="text" class="form-control" readonly
                                             <?php echo 'value="'.$total.'"';?> />
 										</div>
 									</div>
