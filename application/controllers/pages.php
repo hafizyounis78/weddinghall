@@ -259,7 +259,12 @@ function get_booking_date($booking_date)
 {
 		$this->load->model('bookingmodel');
 		$rec=$this->bookingmodel->get_booking_by_date($booking_date);
-		return $rec->result();
+	
+		foreach($rec->result() as $row)
+		{
+  			echo $row->cn;
+		}
+	
 }
 function employee_view($emp_code)
 	{
