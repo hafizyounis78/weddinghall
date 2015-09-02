@@ -23,6 +23,15 @@ and wedding_booking.booking_code=$booking_code";
         return $this->db->query($myquery);
 
 	}
+	public function get_booking_by_date($booking_date)
+	{
+		 $myquery = "select count(1)
+					 from   wedding_booking
+					 where  booking_date=$booking_date";
+        return $this->db->query($myquery);
+
+	}
+
 	public function update_booking_price_by_code($booking_code)
 	{
 		extract($_POST);
@@ -44,6 +53,12 @@ and wedding_booking.booking_code=$booking_code";
         return $this->db->query($myquery);
 	}
 	
+public function delete_selectedservice($sev_code,$booking_code)
+{
+	$this->db->where('booking_code', $booking_code);
+	$this->db->where('sev_code',$sev_code);
+	$this->db->delete('wedding_booking_details');
+}
 	public function insert_booking()
 	{
 		extract($_POST);

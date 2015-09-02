@@ -66,7 +66,7 @@ if (isset($addbooking))
 										<label class="control-label col-md-3">تاريخ الحجز</label>
 										<div class="col-md-4">
 											<div class="input-group date date-picker" data-date-format="yyyy-mm-dd">
-												<input type="text" class="form-control" readonly name="booking_date"
+												<input type="text" class="form-control" readonly id="booking_date" name="booking_date"
                                                   <?php if (isset($row->booking_date)) {echo 'value="'.$row->booking_date.'"';}?>/>
 												<span class="input-group-btn">
 												<button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
@@ -241,6 +241,9 @@ if (isset($addbooking))
 									<th>
 										 تكلفه الخدمة
 									</th>
+									<th>
+									
+									</th>
 									
 								</tr>
 								</thead>
@@ -260,7 +263,14 @@ if (isset($addbooking))
 										echo '<td>'.$row->sev_code.'</td>';
 										echo '<td>'.$row->sev_desc.'</td>';
 										echo '<td>'.$row->sev_price.'</td>';
+										echo '<td> 
+									  <button id="btndelservice" name="btndelservice" type="button" class="btn default btn-xs black" onclick="deleteselectedservice('.$row->sev_code.')">
+									  
+										<i class="fa fa-trash-o"></i> حذف </button>
+								  </td>';
+			
 										echo '</tr>';
+										
 									}
 								}
 								else
@@ -270,10 +280,16 @@ if (isset($addbooking))
 									echo '<td>&nbsp;</td>';
 									echo '<td>&nbsp;</td>';
 									echo '<td>&nbsp;</td>';
+									echo '<td> 
+									  <button id="btndelservice" name="btndelservice" type="button" class="btn default btn-xs black" onclick="deleteselectedservice('.$row->sev_code.')">
+									  
+										<i class="fa fa-trash-o"></i> حذف </button>
+								  </td>';
+			
 									echo '</tr>';
 								}
 								echo '<tr align="center" class="odd gradeX">';
-									echo '<td colspan="3">المجمــوع</td>';
+									echo '<td colspan="4">المجمــوع</td>';
 									echo '<td>'.$total.'</td>';
 									echo '</tr>';
 							?>

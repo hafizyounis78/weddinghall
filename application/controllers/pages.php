@@ -144,6 +144,39 @@ function searchemppayments()
 		$this->paymentsmodel->insert_emppayments();
 		
 	}
+
+	function delete_selectedservice($sev_code,$booking_code)
+	{
+		
+		$this->load->model('bookingmodel');
+		//extract($_POST);
+		$this->bookingmodel->delete_selectedservice($sev_code,$booking_code);
+		$rec=$this->booking_details($booking_code);
+		
+		$total = 0;
+		foreach($rec as $row)
+  		{
+			$total = $total + $row->sev_price;
+			
+			echo '<tr class="odd gradeX">';
+			echo '<td>'.$i++.'</td>';
+			echo '<td>'.$row->sev_code.'</td>';
+			echo '<td>'.$row->sev_desc.'</td>';
+			echo '<td>'.$row->sev_price.'</td>';
+			echo '<td> 
+									  <button id="btndelemp" name="btndelemp" type="button" class="btn default btn-xs black" onclick="deleteselectedservice('.$row->sev_code.')">
+										<i class="fa fa-trash-o"></i> حذف </button>
+								  </td>';
+			
+			echo '</tr>';
+			
+		}
+		echo '<tr align="center" class="odd gradeX">';
+		echo '<td colspan="3">المجموع</td>';
+		echo '<td id="tdTotal">'.$total.'</td>';
+		echo '</tr>';		
+			
+	}
 	function addbooking_details()
 	{
 		
@@ -163,10 +196,16 @@ function searchemppayments()
 			echo '<td>'.$row->sev_code.'</td>';
 			echo '<td>'.$row->sev_desc.'</td>';
 			echo '<td>'.$row->sev_price.'</td>';
+			echo '<td> 
+									  <button id="btndelemp" name="btndelemp" type="button" class="btn default btn-xs black" onclick="deleteselectedservice('.$row->sev_code.')">
+										<i class="fa fa-trash-o"></i> حذف </button>
+								  </td>';
+			
 			echo '</tr>';
+			
 		}
 		echo '<tr align="center" class="odd gradeX">';
-		echo '<td colspan="3">?????????</td>';
+		echo '<td colspan="3">المجموع</td>';
 		echo '<td id="tdTotal">'.$total.'</td>';
 		echo '</tr>';		
 	}
@@ -216,6 +255,12 @@ function viewbookingupdate($booking_code)
 		$rec=$this->bookingmodel->get_booking_by_code($booking_code);
 		return $rec->result();
 	}
+function get_booking_date($booking_date)
+{
+		$this->load->model('bookingmodel');
+		$rec=$this->bookingmodel->get_booking_by_date($booking_date);
+		return $rec->result();
+}
 function employee_view($emp_code)
 	{
 		$this->load->model('paymentsmodel');
