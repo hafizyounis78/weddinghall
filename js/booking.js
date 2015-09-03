@@ -30,17 +30,17 @@ $(document).ready(function(){
 	$('#booking_date').change(function(event) {							
 		event.preventDefault();
 		
-		cnt=cnt+1;
 		
-		if (cnt>1)
-		{
-			cnt=0;
-		return false;
-		}
-		if (cnt==1)
-		{
 		var booking_date= document.getElementById('booking_date').value;
 		var w_code=$('#w_code').val();
+		if (w_code== null || w_code == ""|| w_code == 0)
+				{
+				document.getElementById('booking_date').value = '';
+				document.getElementById("w_code").focus();	
+				alert ('يجب اختيار الصالة قبل اختيار التاريخ');
+			
+				}
+		
 		$.ajax({
 			url: "http://localhost/weddinghall/pages/get_booking_date/"+booking_date+"/"+w_code,
 			type: "POST",
@@ -63,7 +63,7 @@ $(document).ready(function(){
 				}
 			}
 		});//END $.ajax	
-		}
+		
 	}); // END CLICK
 }); // END READY		
 
