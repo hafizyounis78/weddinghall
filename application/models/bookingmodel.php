@@ -23,11 +23,12 @@ and wedding_booking.booking_code=$booking_code";
         return $this->db->query($myquery);
 
 	}
-	public function get_booking_by_date($booking_date)
+	public function get_booking_by_date($booking_date,$w_code)
 	{
 		 $myquery = "select count(1) as cn
 					 from   wedding_booking
-					 where  booking_date=$booking_date";
+					 where  booking_date='".$booking_date."'
+					 and w_code=$w_code";
         return $this->db->query($myquery);
 
 	}

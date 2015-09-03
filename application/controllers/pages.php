@@ -255,10 +255,10 @@ function viewbookingupdate($booking_code)
 		$rec=$this->bookingmodel->get_booking_by_code($booking_code);
 		return $rec->result();
 	}
-function get_booking_date($booking_date)
+function get_booking_date($booking_date,$w_code)
 {
 		$this->load->model('bookingmodel');
-		$rec=$this->bookingmodel->get_booking_by_date($booking_date);
+		$rec=$this->bookingmodel->get_booking_by_date($booking_date,$w_code);
 	
 		foreach($rec->result() as $row)
 		{

@@ -1,3 +1,4 @@
+var cnt =0;
 // JavaScript Document// JavaScript Document
 $(document).ready(function(){
 	$('#btnAddbooking').click(function(event) {							
@@ -28,10 +29,20 @@ $(document).ready(function(){
 $(document).ready(function(){
 	$('#booking_date').change(function(event) {							
 		event.preventDefault();
-		var booking_date= document.getElementById('booking_date').value;
 		
+		cnt=cnt+1;
+		
+		if (cnt>1)
+		{
+			cnt=0;
+		return false;
+		}
+		if (cnt==1)
+		{
+		var booking_date= document.getElementById('booking_date').value;
+		var w_code=$('#w_code').val();
 		$.ajax({
-			url: "http://localhost/weddinghall/pages/get_booking_date/"+booking_date,
+			url: "http://localhost/weddinghall/pages/get_booking_date/"+booking_date+"/"+w_code,
 			type: "POST",
 			data: function(){},
 			error: function(xhr, status, error) {
@@ -42,11 +53,17 @@ $(document).ready(function(){
 			beforeSend: function(){},
 			complete: function(){},
 			success: function(result){
-				alert (result);
-				//document.getElementById('sev_price').value = result;
+				
+				if(result==1)
+				{
+				document.getElementById('booking_date').value = '';
+				
+				alert ('هذا اليوم محجوز');
+				
+				}
 			}
 		});//END $.ajax	
-		
+		}
 	}); // END CLICK
 }); // END READY		
 

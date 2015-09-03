@@ -43,7 +43,7 @@ if (isset($addbooking))
 									
                                     	<div class="col-md-4">
                                         	
-											<select class="form-control select2me" name="w_code">
+											<select class="form-control select2me" id="w_code" name="w_code">
 												<option value="0">Select...</option>
 												<?php
 												$selected;
