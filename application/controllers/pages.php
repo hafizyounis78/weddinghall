@@ -347,7 +347,8 @@ function deletebooking($booking_code)
 	function employee()
 	{
 		$this->load->model('empmodel');
-		return $this->empmodel->get_employee();
+		$rec = $this->empmodel->get_employee();
+		return $rec->result();
 		 		
 	}
 	function hall()
