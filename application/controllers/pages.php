@@ -216,6 +216,13 @@ function booking_details($booking_code)
 		
 		return $rec->result();
 	}
+function booking_calender()
+	{
+		$this->load->model('bookingmodel');
+		$rec = $this->bookingmodel->get_all_booking();
+		
+		return $rec->result();
+	}
 	
 	function addbooking()
 	{

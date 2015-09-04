@@ -23,6 +23,15 @@ and wedding_booking.booking_code=$booking_code";
         return $this->db->query($myquery);
 
 	}
+public function get_all_booking()//,$cut_id)
+	{
+		 $myquery = "select wedding_hall.*,customer.*,wedding_booking.*
+from wedding_hall,customer,wedding_booking
+where wedding_booking.w_code=wedding_hall.w_code
+and   wedding_booking.cut_id=customer.cut_id";
+        return $this->db->query($myquery);
+
+	}	
 	public function get_booking_by_date($booking_date,$w_code)
 	{
 		 $myquery = "select count(1) as cn
