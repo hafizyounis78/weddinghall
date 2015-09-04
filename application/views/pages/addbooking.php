@@ -327,7 +327,7 @@ if (isset($addbooking))
 										Your form validation is successful!
 									</div>
                                     <div class="form-group">
-										<label class="control-label col-md-3">السعر قبل الخصم<span class="required">
+										<label class="control-label col-md-3">تكلفة الحجز والخدمات<span class="required">
 										* </span>
 										</label>
 										<div class="col-md-4">
@@ -336,7 +336,7 @@ if (isset($addbooking))
 										</div>
 									</div>
 								<div class="form-group">
-										<label class="control-label col-md-3">تكلفة الخدمة</label>
+										<label class="control-label col-md-3">المبلغ المطلوب</label>
 										<div class="col-md-4">
 											<input id="final_price" name="final_price" type="text" class="form-control"
                                            value="<?php echo $final_price;?>"/>

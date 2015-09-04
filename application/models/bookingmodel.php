@@ -109,8 +109,7 @@ exit();
 		$data['booking_code'] = $hdnBookingcode;
 		$data['sev_code'] = $sev_code;
 		$data['sev_price'] = $sev_price;
-print_r($data);
-exit();
+
 		$this->db->insert('wedding_booking_details',$data);
 
 	}
