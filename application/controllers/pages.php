@@ -219,7 +219,6 @@ function booking_details($booking_code)
 	
 	function addbooking()
 	{
-		
 		$this->load->model('bookingmodel');
 		$result = $this->bookingmodel->insert_booking();
 		echo $result;

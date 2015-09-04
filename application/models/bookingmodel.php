@@ -127,6 +127,4 @@ $myquery = "update wedding_booking_details
         return $this->db->query($myquery);
 	}
 }
-
-
-?>;
+?>
