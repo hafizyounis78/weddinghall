@@ -117,6 +117,9 @@ public function delete_selectedservice($sev_code,$booking_code)
 		$this->db->delete('wedding_booking_details');
 	}
 }
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> origin/master
 ?>

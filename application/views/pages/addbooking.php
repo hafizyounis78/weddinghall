@@ -9,7 +9,6 @@ if (isset($addbooking))
 	$final_price = $row->final_price;
 }
 
-
 ?>
 
 <div class="row">
@@ -173,7 +172,8 @@ if (isset($addbooking))
 												foreach($sev as $row)
 												{	 
 												?>
-							                     <option value="<?php echo $row->sev_code;?>"> <?php echo '['.$row->sev_code.']  ' .$row->sev_desc;?></option>
+							                     <option value="<?php echo $row->sev_code;?>"> 
+												 	<?php echo '['.$row->sev_code.']  '.$row->sev_desc;?></option>
 
                                                 <?php
 												}

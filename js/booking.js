@@ -16,7 +16,11 @@ $(document).ready(function(){
 			beforeSend: function(){},
 			complete: function(){},
 			success: function(result){
+<<<<<<< HEAD
 				alert (result);
+=======
+				alert(result);
+>>>>>>> origin/master
 				document.getElementById('hdnBookingcode').value = result;
 				alert ('تمت عملية الإضافة بنجاح');
 			}

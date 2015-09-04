@@ -1,4 +1,4 @@
-<!-- BEGIN EXAMPLE TABLE PORTLET-->
+ <!-- BEGIN EXAMPLE TABLE PORTLET-->
 					<div class="portlet box yellow">
 						<div class="portlet-title">
 							<div class="caption">
