@@ -121,7 +121,7 @@ public function delete_selectedservice($sev_code,$booking_code)
 	public function delete_booking_details($booking_code)
 	{
 
-$myquery = "update wedding_booking_details
+		$myquery = "update wedding_booking_details
 			set wedding_booking_details.sev_price=wedding_booking_details.sev_price * (-1)
 			where wedding_booking_details.booking_code=$booking_code";
         return $this->db->query($myquery);
