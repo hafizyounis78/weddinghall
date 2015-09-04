@@ -43,12 +43,18 @@
 <!-- BEGIN PAGE VALIDATION -->
 <script type="text/javascript" src="<?php echo base_url();?>assets/admin/pages/scripts/form-validation.js"></script>
 <!-- END PAGE VALIDATION -->
+<!-- BEGIN CALENDER PLUGINS -->
+<!-- IMPORTANT! fullcalendar depends on jquery-ui-1.10.3.custom.min.js for drag & drop support -->
+<script src="<?php echo base_url();?>assets/global/plugins/moment.min.js"></script>
+<script src="<?php echo base_url();?>assets/global/plugins/fullcalendar/fullcalendar.min.js"></script>
+<!-- END CALENDER PLUGINS -->
 <!-- END PAGE LEVEL PLUGINS -->
 <script src="<?php echo base_url();?>assets/global/scripts/metronic.js" type="text/javascript"></script>
 <script src="<?php echo base_url();?>assets/admin/layout/scripts/layout.js" type="text/javascript"></script>
 <script src="<?php echo base_url();?>assets/admin/layout/scripts/quick-sidebar.js" type="text/javascript"></script>
 <script src="<?php echo base_url();?>assets/admin/layout/scripts/demo.js" type="text/javascript"></script>
 <script src="<?php echo base_url();?>assets/admin/pages/scripts/table-managed.js"></script>
+<script src="<?php echo base_url();?>assets/admin/pages/scripts/calendar.js"></script>
 <!-- OUR SCRIPTS-->
 <script src="<?php echo base_url();?>js/users.js"></script>
 <!-- END OUR SCRIPTS-->
@@ -75,6 +81,7 @@
 		Demo.init(); // init demo features
 		TableManaged.init();
 		FormValidation.init();
+		Calendar.init();
       });
    </script>
 <!-- END JAVASCRIPTS -->

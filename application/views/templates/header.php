@@ -44,6 +44,9 @@ License: You must have a valid license purchased only from themeforest(the above
 
 <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap-rtl.css"/>
 <!-- END TABLE STYLES -->
+<!-- BEGIN CALENDER STYLES -->
+<link href="<?php echo base_url();?>assets/global/plugins/fullcalendar/fullcalendar.min.css" rel="stylesheet"/>
+<!-- END CALENDER STYLES -->
 <!------------------------ END PAGE LEVEL STYLES -------------------------------------------------------------->
 <!-- BEGIN THEME STYLES -->
 <link href="<?php echo base_url();?>assets/global/css/components-rtl.css" id="style_components" rel="stylesheet" type="text/css"/>
