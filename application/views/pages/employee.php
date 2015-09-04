@@ -14,7 +14,7 @@
 							<thead>
 							<tr>
 								<th class="table-checkbox">
-									<input type="checkbox" class="group-checkable" data-set="#sample_2 .checkboxes"/>
+									#
 								</th>
 								<th>
 									رقم الهوية
@@ -47,7 +47,7 @@
 								echo '<td>'.$i++.'</td>';
 								echo '<td>'.$row->emp_id.'</td>';
 								echo '<td>'.$row->name.'</td>';
-								echo '<td>'.$row->job.'</td>';
+								echo '<td>'.$row->job_title.'</td>';
 								echo '<td>'.$row->mobile.'</td>';
 								echo '<td>'.$row->address.'</td>';
 								echo '<td align="center"><a href="'.base_url().'addemp/'.$row->emp_code.'" class="btn default btn-xs purple">
