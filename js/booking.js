@@ -16,17 +16,10 @@ $(document).ready(function(){
 			beforeSend: function(){},
 			complete: function(){},
 			success: function(result){
-<<<<<<< HEAD
-<<<<<<< HEAD
-				alert (result);
-=======
-				alert(result);
->>>>>>> origin/master
-=======
-				
->>>>>>> origin/master
+	
 				document.getElementById('hdnBookingcode').value = result;
 				alert ('تمت عملية الإضافة بنجاح');
+					alert(document.getElementById('hdnBookingcode').value )			;
 			}
 		});//END $.ajax
 	}); // END CLICK
@@ -48,7 +41,10 @@ $(document).ready(function(){
 				alert ('يجب اختيار الصالة قبل اختيار التاريخ');
 			
 				}
-		
+				//var d = new Date("03-25-2015"); 
+				//alert(Date().get);
+		if (booking_date<=Date())
+				alert ('يجب ان يكون تاريخ الحجز اكبر من تاريخ اليوم');
 		$.ajax({
 			url: "http://localhost/weddinghall/pages/get_booking_date/"+booking_date+"/"+w_code,
 			type: "POST",
@@ -144,7 +140,7 @@ $(document).ready(function(){
 
 /***********************delete***************/
 
-function deletebooking(w_code)
+function deletebooking(booking_code)
 {
 		$.ajax({
 			url: "pages/deletebooking/"+booking_code,
@@ -155,7 +151,7 @@ function deletebooking(w_code)
 			beforeSend: function(){},
 			complete: function(){},
 			success: function(){
-					alert ('تمت عملية الحذف بنجاح');
+					alert ('تمت عملية الإلغاء بنجاح');
 					window.location.href="booking";
 			}
 		});//END $.ajax

@@ -28,7 +28,8 @@ and wedding_booking.booking_code=$booking_code";
 		 $myquery = "select count(1) as cn
 					 from   wedding_booking
 					 where  booking_date='".$booking_date."'
-					 and w_code=$w_code";
+					 and w_code=$w_code
+					 and booking_status<>4";
         return $this->db->query($myquery);
 
 	}
@@ -70,6 +71,7 @@ public function delete_selectedservice($sev_code,$booking_code)
 	$bdata['cut_id'] = $cut_id;
 	$bdata['booking_status'] = 1;
 		//$bdata['notes'] = $notes;
+
 	$this->db->insert('wedding_booking',$bdata);
 /*****************customer**********************/
 
@@ -93,7 +95,8 @@ public function delete_selectedservice($sev_code,$booking_code)
 	
 
 		$this->db->insert('customer',$cdata);
-
+print_r($bookingid);
+exit();
 		//$this->db->insert('wedding_booking_details',$sdata);
 		return $bookingid;
 
@@ -106,33 +109,27 @@ public function delete_selectedservice($sev_code,$booking_code)
 		$data['booking_code'] = $hdnBookingcode;
 		$data['sev_code'] = $sev_code;
 		$data['sev_price'] = $sev_price;
-
+print_r($data);
+exit();
 		$this->db->insert('wedding_booking_details',$data);
 
 	}
 	public function delete_booking($booking_code)
 	{
+		$data['booking_status']=4;
 		$this->db->where('booking_code', $booking_code);
-<<<<<<< HEAD
-        $this->db->delete('wedding_booking');
-		$this->db->delete('wedding_booking_details');
-=======
 		$this->db->update('wedding_booking',$data);
 		$this->delete_booking_details($booking_code);
 	}
 	public function delete_booking_details($booking_code)
 	{
 
-		$myquery = "update wedding_booking_details
+$myquery = "update wedding_booking_details
 			set wedding_booking_details.sev_price=wedding_booking_details.sev_price * (-1)
 			where wedding_booking_details.booking_code=$booking_code";
         return $this->db->query($myquery);
->>>>>>> origin/master
 	}
 }
-<<<<<<< HEAD
 
 
-=======
->>>>>>> origin/master
 ?>
