@@ -113,8 +113,21 @@ public function delete_selectedservice($sev_code,$booking_code)
 	public function delete_booking($booking_code)
 	{
 		$this->db->where('booking_code', $booking_code);
+<<<<<<< HEAD
         $this->db->delete('wedding_booking');
 		$this->db->delete('wedding_booking_details');
+=======
+		$this->db->update('wedding_booking',$data);
+		$this->delete_booking_details($booking_code);
+	}
+	public function delete_booking_details($booking_code)
+	{
+
+		$myquery = "update wedding_booking_details
+			set wedding_booking_details.sev_price=wedding_booking_details.sev_price * (-1)
+			where wedding_booking_details.booking_code=$booking_code";
+        return $this->db->query($myquery);
+>>>>>>> origin/master
 	}
 }
 <<<<<<< HEAD
