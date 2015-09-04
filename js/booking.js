@@ -35,16 +35,41 @@ $(document).ready(function(){
 		var booking_date= document.getElementById('booking_date').value;
 		var w_code=$('#w_code').val();
 		if (w_code== null || w_code == ""|| w_code == 0)
-				{
-				document.getElementById('booking_date').value = '';
-				document.getElementById("w_code").focus();	
-				alert ('يجب اختيار الصالة قبل اختيار التاريخ');
+		{
+			document.getElementById('booking_date').value = '';
+			document.getElementById("w_code").focus();	
+			alert ('يجب اختيار الصالة قبل اختيار التاريخ');
+			return;
 			
-				}
+		}
 				//var d = new Date("03-25-2015"); 
 				//alert(Date().get);
-		if (booking_date<=Date())
-				alert ('يجب ان يكون تاريخ الحجز اكبر من تاريخ اليوم');
+		
+		var date = new Date();
+		
+		var day = date.getDate();
+		if (day>= 1 && day <= 9) 
+			day = '0' + day;
+			
+		var month = date.getMonth()+1;
+		if (month >= 1 && month <= 9)
+			month = '0' + month;
+		
+		var year = date.getFullYear();
+		
+		
+		var d = year+'-'+month+'-'+day;
+		
+		var bookingDate = new Date(booking_date);
+		var today = new Date(d);
+		//alert ("bookingDate: "+bookingDate);
+		//alert ("today: "+today);
+		if (bookingDate <= today)
+		{
+			alert ('يجب ان يكون تاريخ الحجز اكبر من تاريخ اليوم');
+			return;
+		}
+			
 		$.ajax({
 			url: "http://localhost/weddinghall/pages/get_booking_date/"+booking_date+"/"+w_code,
 			type: "POST",
