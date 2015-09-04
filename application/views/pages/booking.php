@@ -36,7 +36,7 @@
 									 عنوان
 								</th>
                                 <th>
-									 كود الحجز
+									 حالة الحجز
 								</th>
                                 <th>
                                        
@@ -48,8 +48,11 @@
 								
 								<?php
 								$i=1;
+								$x='';
   							foreach($booking as $row)
-  							{
+  							{ 
+							
+								
 								echo '<tr class="odd gradeX">';
 								echo '<td>'.$i++.'</td>';
 								echo '<td>'.$row->w_name.'</td>';
@@ -58,15 +61,21 @@
 								echo '<td>'.$row->tel.'</td>';
 								echo '<td>'.$row->mobile.'</td>';
 								echo '<td>'.$row->address.'</td>';
-								echo '<td>'.$row->booking_code.'</td>';
+								if ($row->booking_status == 1)
+								echo '<td><span class="label label-sm label-success">
+									فعال</span>
+									</td>';
+								else if ($row->booking_status == 4)
+								echo '<td><span class="label label-sm label-warning">
+							ملغي </span>
+									</td>';
 								echo '<td>
 								<a href="pages/view/addbooking/'.$row->booking_code.'" class="btn default btn-xs purple">
-										<i class="fa fa-edit"></i> تعديل </a>
-
-								<button id="btndelbooking" name="btndelbooking" type="submit" value="Delete" class="btn default btn-xs black" onclick="deletebooking('.$row->booking_code.')"><i class="fa fa-trash-o"></i> Delete</button>
-';
-					echo '</td>';
-							echo '</tr>';
+								<i class="fa fa-edit"></i> تعديل </a>
+<button id="btndelbooking" name="btndelbooking" type="button" class="btn default btn-xs black" onclick="deletebooking(\''.$row->booking_code.'\')">
+										<i class="fa fa-trash-o"></i> حذف </button>';
+								echo '</td>';
+								echo '</tr>';
 							}
 							?>
                               
