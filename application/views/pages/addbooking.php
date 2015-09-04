@@ -166,14 +166,14 @@ if (isset($addbooking))
 										</label>
 										<div class="col-md-4">
                                         	
-											<select id="sev_code" class="form-control select2me" name="sev_code">
+											<select id="sev_code" class="form-control select2me" id="sev_code" name="sev_code">
 												<option value="0">Select...</option>
 												<?php
 												$selected;
 												foreach($sev as $row)
 												{	 
 												?>
-							                     <option value="<?php echo $row->sev_code;?>"> <?php echo $row->sev_desc;?></option>
+							                     <option value="<?php echo $row->sev_code;?>"> <?php echo '['.$row->sev_code.']  ' .$row->sev_desc;?></option>
 
                                                 <?php
 												}
@@ -184,7 +184,7 @@ if (isset($addbooking))
 								<div class="form-group">
 										<label class="control-label col-md-3">تكلفة الخدمة</label>
 										<div class="col-md-4">
-											<input id="sev_price" name="sev_price" type="text" class="form-control" readonly/>
+											<input id="sev_price" id="sev_price" name="sev_price" type="text" class="form-control" readonly/>
 										</div>
                                 </div>
                                 <div class="form-group">

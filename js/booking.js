@@ -18,7 +18,7 @@ $(document).ready(function(){
 			success: function(result){
 				alert (result);
 				document.getElementById('hdnBookingcode').value = result;
-					alert ('تمت عملية الإضافة بنجاح');
+				alert ('تمت عملية الإضافة بنجاح');
 			}
 		});//END $.ajax
 	}); // END CLICK
@@ -113,7 +113,21 @@ $(document).ready(function(){
                //$( "#serv_body" ).load( " Addbooking #serv_body" );
 			   $( "#serv_body" ).html(data);
 			   document.getElementById('total_price').value = $('#serv_body #tdTotal').html();
+
+				var sev_index =document.getElementById("sev_code").selectedIndex;
+//			   	var sev_index = $(sev_code).item(index);
+			//alert(sev_index);
+			//   alert($('#service_form #sev_code').html());
    				
+				document.getElementById("sev_code").options.remove(sev_index);
+				//$('#sev_code').prop('selectedIndex',0);
+				
+				document.getElementById("sev_code").selectedIndex = "-1";
+				//document.getElementById("sev_code").selectedIndex="0";
+				//document.getElementById("sev_code").text='Select';				
+				//document.getElementById("sev_price").text=0;
+				
+				
 
 			}
 		});//END $.ajax
