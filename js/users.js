@@ -20,7 +20,7 @@ $(document).ready(function(){
 			complete: function(){},
 			success: function(returndb){
 					alert (returndb);
-					alert ('تمت عملية الاضافة بنجاح');
+					alert ('تمت العملية بنجاح');
 					window.location.href="users";
 			}
 		});//END $.ajax

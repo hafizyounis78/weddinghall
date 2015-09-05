@@ -1,4 +1,5 @@
 <?php
+$isUpdate=0;
 $selected='';
 $booking_code='';
 $final_price='';
@@ -7,6 +8,7 @@ if (isset($addbooking))
 	foreach($addbooking as $row);
 	$booking_code=$row->booking_code;
 	$final_price = $row->final_price;
+	$isUpdate = 1;
 }
 
 ?>
@@ -27,7 +29,8 @@ if (isset($addbooking))
 							<form action="#" id="form_sample_3" class="form-horizontal">
 								<div class="form-body">
 									<h3 class="form-section"></h3>
-									<div class="alert alert-danger display-hide">
+							<input id="hdnAction" name="hdnAction" type="hidden" value="<?php echo $isUpdate;?>" />
+            						<div class="alert alert-danger display-hide">
 										<button class="close" data-close="alert"></button>
 										You have some form errors. Please check below.
 									</div>
@@ -78,9 +81,7 @@ if (isset($addbooking))
 									</div>
                                      
                                     <div class="form-group">
-										<label class="control-label col-md-3">رقم الهوية <span class="required">
-										* </span>
-										</label>
+										<label class="control-label col-md-3">رقم الهوية </label>
 										<div class="col-md-4">
 											<input type="text" name="cut_id" <?php if (isset($row->cut_id)) {echo 'value="'.$row->cut_id.'"';}?>  data-required="1" class="form-control"/>
 										</div>
@@ -117,6 +118,13 @@ if (isset($addbooking))
 										<div class="col-md-4">
 											<input name="address" type="text" class="form-control"
                                              <?php if (isset($row->address)) {echo 'value="'.$row->address.'"';}?>/>
+										</div>
+                                     </div>
+                                     <div class="form-group">
+										<label class="control-label col-md-3">ملاحظات</label>
+										<div class="col-md-4">
+											<input name="notes" type="text" class="form-control"
+                                             <?php if (isset($row->notes)) {echo 'value="'.$row->notes.'"';}?>/>
 										</div>
                                      </div>
                                    

@@ -3,9 +3,11 @@ var cnt =0;
 $(document).ready(function(){
 	$('#btnAddbooking').click(function(event) {							
 		event.preventDefault();
-		
+		var action = "Addbooking";
+		if(document.getElementById('hdnAction').value == '1')
+			action = "updatebooking";
 		$.ajax({
-			url: "pages/Addbooking",
+			url: "http://localhost/weddinghall/pages/"+action,
 			type: "POST",
 			data:  $("#form_sample_3").serialize(),
 			error: function(xhr, status, error) {
@@ -18,7 +20,7 @@ $(document).ready(function(){
 			success: function(result){
 	
 				document.getElementById('hdnBookingcode').value = result;
-				alert ('تمت عملية الإضافة بنجاح');
+				alert ('تمت العملية بنجاح');
 					alert(document.getElementById('hdnBookingcode').value )			;
 			}
 		});//END $.ajax
@@ -67,6 +69,7 @@ $(document).ready(function(){
 		if (bookingDate <= today)
 		{
 			alert ('يجب ان يكون تاريخ الحجز اكبر من تاريخ اليوم');
+			document.getElementById('booking_date').value = '';
 			return;
 		}
 			

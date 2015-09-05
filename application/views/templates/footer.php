@@ -55,6 +55,8 @@
 <script src="<?php echo base_url();?>assets/admin/layout/scripts/demo.js" type="text/javascript"></script>
 <script src="<?php echo base_url();?>assets/admin/pages/scripts/table-managed.js"></script>
 <script src="<?php echo base_url();?>assets/admin/pages/scripts/calendar.js"></script>
+<script src="<?php echo base_url();?>assets/global/scripts/datatable.js"></script>
+<script src="<?php echo base_url();?>assets/admin/pages/scripts/table-ajax.js"></script>
 <!-- OUR SCRIPTS-->
 <script src="<?php echo base_url();?>js/users.js"></script>
 <!-- END OUR SCRIPTS-->

@@ -52,6 +52,19 @@ and   wedding_booking.cut_id=customer.cut_id";
 		$this->db->where('booking_code',$booking_code);
 		$this->db->update('wedding_booking',$data);
 	}
+public function update_booking()
+	{
+		extract($_POST);
+		$data['w_code'] = $w_code;
+		$data['booking_date'] = $booking_date;
+		$data['cut_id'] = $cut_id;
+		$data['booking_status'] = 1;
+		$data['notes'] = $notes;
+
+				
+		$this->db->where('booking_code',$booking_code);
+		$this->db->update('wedding_booking',$data);
+	}
 
 	public function get_booking_details_by_code($booking_code)//,$cut_id)
 	{
@@ -79,7 +92,7 @@ public function delete_selectedservice($sev_code,$booking_code)
 	$bdata['booking_date'] = $booking_date;
 	$bdata['cut_id'] = $cut_id;
 	$bdata['booking_status'] = 1;
-		//$bdata['notes'] = $notes;
+	$bdata['notes'] = $notes;
 
 	$this->db->insert('wedding_booking',$bdata);
 /*****************customer**********************/
