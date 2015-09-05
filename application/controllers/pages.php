@@ -216,12 +216,31 @@ function booking_details($booking_code)
 		
 		return $rec->result();
 	}
-function booking_calender()
+	function booking_calender()
 	{
 		$this->load->model('bookingmodel');
 		$rec = $this->bookingmodel->get_all_booking();
 		
-		return $rec->result();
+		$rec = $rec->result();
+		
+		$output = array();
+		foreach($rec as $row)
+		{
+			unset($temp); // Release the contained value of the variable from the last loop
+          	$temp = array();
+
+          	// It guess your client side will need the id to extract, and distinguish the ScoreCH data
+          	$temp['title'] = 'Wedding';
+          	$temp['start'] = $row->booking_date;
+			//$temp['backgroundColor'] = "Metronic.getBrandColor('yellow')";
+
+          	array_push($output,$temp);
+		}
+		
+		header('Access-Control-Allow-Origin: *');
+    	header("Content-Type: application/json");
+   		echo json_encode($output);
+		
 	}
 	
 	function addbooking()
