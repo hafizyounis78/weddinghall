@@ -63,7 +63,15 @@ if (isset($addbooking))
 											</select>
 										</div>
 									</div>
-                                    
+                                    <div class="form-group">
+										
+										<div class="col-md-4">
+											<input id="hdnBooking_code" name="hdnBooking_code" type="hidden" class="form-control" 
+                                            value="<?php echo $booking_code; ?>"
+                                            />
+                                         
+										</div>
+                                </div>
                                     <div class="form-group">
 										<label class="control-label col-md-3">تاريخ الحجز</label>
 										<div class="col-md-4">

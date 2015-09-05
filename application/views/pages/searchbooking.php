@@ -148,7 +148,7 @@
                                 		<?php
 								$i=1;
 								$x='';
-  							foreach($booking as $row)
+  							foreach($searchbooking as $row)
   							{ 
 							
 								

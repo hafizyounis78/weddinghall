@@ -62,7 +62,7 @@ public function update_booking()
 		$data['notes'] = $notes;
 
 				
-		$this->db->where('booking_code',$booking_code);
+		$this->db->where('booking_code',$hdnBooking_code);
 		$this->db->update('wedding_booking',$data);
 	}
 

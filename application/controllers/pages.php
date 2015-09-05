@@ -27,7 +27,7 @@ class Pages extends CI_Controller
 			$this->load->view('templates/stylecustomizer');
 			$this->load->view('templates/pageheader');
 			if($page == 'users'||$page == 'employee'|| $page == 'hall'||$page == 'services' ||
-			   $page == 'booking'||$page == 'payments'||$page == 'emppayments'||$page=='searchpayments'||$page=='searchemppayments')
+			   $page == 'booking'||$page == 'payments'||$page == 'emppayments'||$page=='searchpayments'||$page=='searchemppayments'||$page=='searchbooking')
 					$data[$page] = $this->$page();
 		
 		
@@ -216,6 +216,24 @@ function booking_details($booking_code)
 		
 		return $rec->result();
 	}
+
+function updatebooking()
+	{
+		$this->load->model('bookingmodel');
+		return $this->bookingmodel->update_booking();
+	}
+
+function searchbooking()
+	{
+		$this->load->model('bookingmodel');
+		$rec = $this->bookingmodel->get_booking();
+
+		//print_r($rec->result());
+		//exit;
+		return $rec->result();
+		 		
+	}
+	
 	function booking_calender()
 	{
 		$this->load->model('bookingmodel');
