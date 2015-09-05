@@ -248,9 +248,11 @@ function searchbooking()
           	$temp = array();
 
           	// It guess your client side will need the id to extract, and distinguish the ScoreCH data
-          	$temp['title'] = 'Wedding';
+          	$temp['title'] = $row->name;
           	$temp['start'] = $row->booking_date;
-			//$temp['backgroundColor'] = "Metronic.getBrandColor('yellow')";
+			if($row->w_code == 1) $temp['backgroundColor'] = 'yellow';
+			if($row->w_code == 2) $temp['backgroundColor'] = 'blue';
+			if($row->w_code == 3) $temp['backgroundColor'] = 'green';
 
           	array_push($output,$temp);
 		}

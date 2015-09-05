@@ -124,48 +124,38 @@ var Calendar = function() {
                         $(this).remove();
                     }
                 },
-                events: [{
-                    title: 'All Day Event',
-                    start: new Date(y, m, 1),
-                    backgroundColor: Metronic.getBrandColor('yellow')
-                }, {
-                    title: 'Long Event',
-                    start: new Date(y, m, d - 5),
-                    end: new Date(y, m, d - 2),
-                    backgroundColor: Metronic.getBrandColor('green')
-                }, {
-                    title: 'Repeating Event',
-                    start: new Date(y, m, d - 3, 16, 0),
-                    allDay: false,
-                    backgroundColor: Metronic.getBrandColor('red')
-                }, {
-                    title: 'Repeating Event',
-                    start: new Date(y, m, d + 4, 16, 0),
-                    allDay: false,
-                    backgroundColor: Metronic.getBrandColor('green')
-                }, {
-                    title: 'Meeting',
-                    start: new Date(y, m, d, 10, 30),
-                    allDay: false,
-                }, {
-                    title: 'Lunch',
-                    start: new Date(y, m, d, 12, 0),
-                    end: new Date(y, m, d, 14, 0),
-                    backgroundColor: Metronic.getBrandColor('grey'),
-                    allDay: false,
-                }, {
-                    title: 'Birthday Party',
-                    start: new Date(y, m, d + 1, 19, 0),
-                    end: new Date(y, m, d + 1, 22, 30),
-                    backgroundColor: Metronic.getBrandColor('purple'),
-                    allDay: false,
-                }, {
-                    title: 'Click for Google',
-                    start: new Date(y, m, 28),
-                    end: new Date(y, m, 29),
-                    backgroundColor: Metronic.getBrandColor('yellow'),
-                    url: 'http://google.com/',
-                }]
+                events: function(start, end, timezone, callback){
+						$.ajax({
+    						url:"http://localhost/weddinghall/pages/booking_calender",
+    						type: "POST",
+							data: {},
+    						success:function(retrieved_data){
+         					// Your code here.. use something like this
+							//alert(retrieved_data.length);
+         					//var Obj = JSON.parse(retrieved_data);
+							
+							var arr = [{title: 'All Day Event',
+                    		 start: new Date(y, m, 1),
+                    			backgroundColor: Metronic.getBrandColor('yellow')
+                			}];
+							//alert(arr[0]['start']);
+							
+         					// Since your controller produce array of object you can access the value by using this one :
+         					var events = [];
+							for(var a=0; a< retrieved_data.length; a++){
+              				//	alert("the value with id : " + retrieved_data[a]['title'] + "is " + retrieved_data[a]['start']);
+         						events.push({
+											title:retrieved_data[a]['title'],
+											start:retrieved_data[a]['start'],
+											backgroundColor:Metronic.getBrandColor(retrieved_data[a]['backgroundColor'])
+											});
+							}//END FOR
+							
+							callback(events);
+    					} //END SUCCESS
+						
+					});//END AJAX
+				}//END FUN
             });
 
         }
