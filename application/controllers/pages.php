@@ -233,7 +233,16 @@ function searchbooking()
 		return $rec->result();
 		 		
 	}
-	
+	function booking_grid_data()
+	{
+		$this->load->model('bookingmodel');
+		$rec = $this->bookingmodel->get_booking();
+
+		//print_r($rec->result());
+		//exit;
+		return $rec->result();
+		 		
+	}
 	function booking_calender()
 	{
 		$this->load->model('bookingmodel');

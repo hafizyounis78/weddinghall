@@ -20,7 +20,7 @@ var TableAjax = function () {
             onError: function (grid) {
                 // execute some code on network or other general error  
             },
-            loadingMessage: 'Loading...',
+            loadingMessage: 'جاري تحميل البيانات...',
             dataTable: { // here you can define a typical datatable settings from http://datatables.net/usage/options 
 
                 // Uncomment below line("dom" parameter) to fix the dropdown overflow issue in the datatable cells. The default datatable layout
@@ -36,7 +36,7 @@ var TableAjax = function () {
                 ],
                 "pageLength": 10, // default record count per page
                 "ajax": {
-                    "url": "demo/table_ajax.php", // ajax source
+                    "url": "http://localhost/weddinghall/pages/booking_grid_data.php", // ajax source
                 },
                 "order": [
                     [1, "asc"]

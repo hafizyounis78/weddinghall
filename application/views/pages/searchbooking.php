@@ -139,47 +139,7 @@
 								</tr>
 								</thead>
 								<tbody>
-                                		<?php
-								$i=1;
-								$x='';
-  							foreach($searchbooking as $row)
-  							{ 
-							
-								
-								echo '<tr class="odd gradeX">';
-								echo '<td>'.$i++.'</td>';
-								echo '<td>'.$row->w_name.'</td>';
-								echo '<td>'.$row->booking_date.'</td>';
-								echo '<td>'.$row->cut_id.'</td>';
-								echo '<td>'.$row->name.'</td>';
-								echo '<td>'.$row->tel.'</td>';
-								echo '<td>'.$row->mobile.'</td>';
-								if ($row->booking_status == 1)
-								echo '<td><span class="label label-sm label-success">
-									حجز فقط</span>
-									</td>';
-								else if ($row->booking_status == 2)
-								echo '<td><span class="label label-sm label-warning">
-							حجز عليه دفعات مالية </span>
-									</td>';
-									else if ($row->booking_status == 4)
-								echo '<td><span class="label label-sm label-warning">
-							حجز مسسدد كامل الدفعات </span>
-									</td>';
-								else if ($row->booking_status == 4)
-								echo '<td><span class="label label-sm label-warning">
-							ملغي </span>
-									</td>';
-			
-								echo '<td>
-                               
-      <a href="javascript:;" class="btn btn-xs default"><i class="fa fa-search"></i> View</a>
-								</td>';
-							}
-							?>
-			                    
-								</tr>
-            					</tbody>
+                                          					</tbody>
 								</table>
 							</div>
 						</div>
