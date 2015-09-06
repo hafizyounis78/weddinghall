@@ -84,6 +84,7 @@
 		TableManaged.init();
 		FormValidation.init();
 		Calendar.init();
+		TableAjax.init();
       });
    </script>
 <!-- END JAVASCRIPTS -->

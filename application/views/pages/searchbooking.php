@@ -2,13 +2,13 @@
 					<div class="portlet">
 						<div class="portlet-title">
 							<div class="caption">
-								<i class="fa fa-shopping-cart"></i>Order Listing
+								<i class="fa fa-search"></i>استعلام عام على الحجوزات
 							</div>
 							<div class="actions">
-								<a href="#" class="btn default yellow-stripe">
+								<a href="addbooking" class="btn default yellow-stripe">
 								<i class="fa fa-plus"></i>
 								<span class="hidden-480">
-								New Order </span>
+								حجز جديد</span>
 								</a>
 								<div class="btn-group">
 									<a class="btn default yellow-stripe" href="#" data-toggle="dropdown">
@@ -57,32 +57,30 @@
 								<table class="table table-striped table-bordered table-hover" id="datatable_ajax">
 								<thead>
 								<tr role="row" class="heading">
-									<th width="2%">
-										<input type="checkbox" class="group-checkable">
-									</th>
+									
 									<th width="5%">
 										 &nbsp;#
 									</th>
-									<th width="15%">
+									<th width="10%">
 										 الصالة
 									</th>
-                                    <th width="15%">
+                                    <th width="14%">
 										 تاريخ الحجز
 									</th>
-									<th width="15%">
-										 الزبون
+									<th width="10%">
+									رقم الهوية
+									</th>
+									<th width="20%">
+										 الاسم
 									</th>
 									<th width="10%">
-										 Ship&nbsp;To
+										 تلفون
 									</th>
 									<th width="10%">
-										 Price
+										 جوال
 									</th>
 									<th width="10%">
-										 Amount
-									</th>
-									<th width="10%">
-										 Status
+										 حالة الحجز
 									</th>
 									<th width="10%">
 										 Actions
@@ -90,57 +88,53 @@
 								</tr>
 								<tr role="row" class="filter">
 									<td>
-									</td>
+									
+                                    </td>
                                     
 									<td>
-										<input type="text" class="form-control form-filter input-sm" name="order_id">
+										<input type="text" class="form-control form-filter input-sm" name="w_name">
 									</td>
 									<td>
-										<div class="input-group date date-picker margin-bottom-5" data-date-format="dd/mm/yyyy">
-											<input type="text" class="form-control form-filter input-sm" readonly name="order_date_from" placeholder="From">
+										<div class="input-group date date-picker margin-bottom-5" data-date-format="yyyy/mm/dd">
+											<input type="text" class="form-control form-filter input-sm" readonly name="booking_date_from" placeholder="From">
 											<span class="input-group-btn">
 											<button class="btn btn-sm default" type="button"><i class="fa fa-calendar"></i></button>
 											</span>
 										</div>
-										<div class="input-group date date-picker" data-date-format="dd/mm/yyyy">
-											<input type="text" class="form-control form-filter input-sm" readonly name="order_date_to" placeholder="To">
+										<div class="input-group date date-picker" data-date-format="yyyy/mm/dd">
+											<input type="text" class="form-control form-filter input-sm" readonly name="booking_date_to" placeholder="To">
 											<span class="input-group-btn">
 											<button class="btn btn-sm default" type="button"><i class="fa fa-calendar"></i></button>
 											</span>
 										</div>
 									</td>
 									<td>
-										<input type="text" class="form-control form-filter input-sm" name="order_customer_name">
+										<input type="text" class="form-control form-filter input-sm" name="cut_id">
 									</td>
 									<td>
-										<input type="text" class="form-control form-filter input-sm" name="order_ship_to">
+										<input type="text" class="form-control form-filter input-sm" name="name">
 									</td>
 									<td>
-										<div class="margin-bottom-5">
-											<input type="text" class="form-control form-filter input-sm" name="order_price_from" placeholder="From"/>
-										</div>
-										<input type="text" class="form-control form-filter input-sm" name="order_price_to" placeholder="To"/>
+											<input type="text" class="form-control form-filter input-sm" name="tel">
 									</td>
 									<td>
-										<div class="margin-bottom-5">
-											<input type="text" class="form-control form-filter input-sm margin-bottom-5 clearfix" name="order_quantity_from" placeholder="From"/>
-										</div>
-										<input type="text" class="form-control form-filter input-sm" name="order_quantity_to" placeholder="To"/>
+											<input type="text" class="form-control form-filter input-sm" name="mobile">
 									</td>
 									<td>
-										<select name="order_status" class="form-control form-filter input-sm">
-											<option value="">Select...</option>
-											<option value="pending">Pending</option>
-											<option value="closed">Closed</option>
-											<option value="hold">On Hold</option>
-											<option value="fraud">Fraud</option>
+										<select name="booking_status" class="form-control form-filter input-sm">
+											<option value="0">Select...</option>
+											<option value="1">حجز فقط</option>
+											<option value="2">حجز عليه دفعات مالية</option>
+   											<option value="3">حجز مسسدد كامل الدفعات</option>
+                                            <option value="4">ملغي</option>
+											
 										</select>
 									</td>
 									<td>
 										<div class="margin-bottom-5">
-											<button class="btn btn-sm yellow filter-submit margin-bottom"><i class="fa fa-search"></i> Search</button>
+											<button class="btn btn-sm yellow filter-submit margin-bottom"><i class="fa fa-search"></i> بحث</button>
 										</div>
-										<button class="btn btn-sm red filter-cancel"><i class="fa fa-times"></i> Reset</button>
+										<button class="btn btn-sm red filter-cancel"><i class="fa fa-times"></i> بحث جديد</button>
 									</td>
 								</tr>
 								</thead>
@@ -160,21 +154,32 @@
 								echo '<td>'.$row->name.'</td>';
 								echo '<td>'.$row->tel.'</td>';
 								echo '<td>'.$row->mobile.'</td>';
-								echo '<td>'.$row->address.'</td>';
 								if ($row->booking_status == 1)
 								echo '<td><span class="label label-sm label-success">
-									فعال</span>
+									حجز فقط</span>
+									</td>';
+								else if ($row->booking_status == 2)
+								echo '<td><span class="label label-sm label-warning">
+							حجز عليه دفعات مالية </span>
+									</td>';
+									else if ($row->booking_status == 4)
+								echo '<td><span class="label label-sm label-warning">
+							حجز مسسدد كامل الدفعات </span>
 									</td>';
 								else if ($row->booking_status == 4)
 								echo '<td><span class="label label-sm label-warning">
 							ملغي </span>
 									</td>';
-								echo '</tr>';
-								
+			
+								echo '<td>
+                               
+      <a href="javascript:;" class="btn btn-xs default"><i class="fa fa-search"></i> View</a>
+								</td>';
 							}
 							?>
-                      
-								</tbody>
+			                    
+								</tr>
+            					</tbody>
 								</table>
 							</div>
 						</div>

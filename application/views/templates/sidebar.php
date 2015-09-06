@@ -89,9 +89,9 @@
 							عرض الحجوزات</a>
 						</li>
 						<li>
-							<a href="ecommerce_orders_view.html">
+							<a href="<?php echo base_url();?>searchbooking">
 							<i class="icon-tag"></i>
-							Order View</a>
+							استعلام على الحجوزات</a>
 						</li>
 						<li>
 							<a href="ecommerce_products.html">
