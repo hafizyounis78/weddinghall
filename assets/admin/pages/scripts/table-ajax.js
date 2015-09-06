@@ -36,7 +36,7 @@ var TableAjax = function () {
                 ],
                 "pageLength": 10, // default record count per page
                 "ajax": {
-                    "url": "http://localhost/weddinghall/pages/booking_grid_data.php", // ajax source
+                    "url": "http://localhost/weddinghall/booking_grid_data", // ajax source
                 },
                 "order": [
                     [1, "asc"]

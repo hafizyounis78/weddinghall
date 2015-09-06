@@ -22,9 +22,15 @@ $columns = array(
 //$query=$rec->result();
 /*****************************/
 // getting total number records without any search
-//$sql = "SELECT employee_name, employee_salary, employee_age ";
+
+$sql = "select wedding_hall.*,customer.*,wedding_booking.*
+		from wedding_hall,customer,wedding_booking
+		where wedding_booking.w_code=wedding_hall.w_code
+		and   wedding_booking.cut_id=customer.cut_id";
+
 //$sql.=" FROM employee";
 //$query=mysqli_query($conn, $sql) or die("employee-grid-data.php: get employees");
+$query= $this->db->query($sql);
 $totalData = mysqli_num_rows($query);
 $totalFiltered = $totalData;  // when there is no search parameter then total number rows = total number filtered rows.
 
