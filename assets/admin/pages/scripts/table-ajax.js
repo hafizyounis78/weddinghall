@@ -11,15 +11,14 @@ var TableAjax = function () {
     var handleRecords = function () {
 
         var grid = new Datatable();
-
         grid.init({
             src: $("#datatable_ajax"),
             onSuccess: function (grid) {
                 // execute some code after table records loaded
             },
-            onError: function (grid) {
-                // execute some code on network or other general error  
-            },
+            onError: function(xhr, status, error) {
+  				alert(xhr.responseText);
+			},
             loadingMessage: 'جاري تحميل البيانات...',
             dataTable: { // here you can define a typical datatable settings from http://datatables.net/usage/options 
 
@@ -36,7 +35,7 @@ var TableAjax = function () {
                 ],
                 "pageLength": 10, // default record count per page
                 "ajax": {
-                    "url": "http://localhost/weddinghall/booking_grid_data", // ajax source
+                    "url": "http://localhost/weddinghall/pages/booking_grid_data", // ajax source
                 },
                 "order": [
                     [1, "asc"]
@@ -81,6 +80,7 @@ var TableAjax = function () {
 
             initPickers();
             handleRecords();
+			
         }
 
     };

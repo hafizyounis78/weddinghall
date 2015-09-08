@@ -238,9 +238,37 @@ function searchbooking()
 		$this->load->model('bookingmodel');
 		$rec = $this->bookingmodel->get_booking();
 
-		//print_r($rec->result());
-		//exit;
-		return $rec->result();
+		$rec = $rec->result();
+		$i = 1;
+		$data = array();
+		foreach($rec as $row){
+			$nestedData=array(); 
+			
+			$nestedData[] = $i++;
+			$nestedData[] = $row->w_name;
+			$nestedData[] = $row->booking_date;
+			$nestedData[] = $row->cut_id;
+			$nestedData[] = $row->name;
+			$nestedData[] = $row->tel;
+			$nestedData[] = $row->mobile;
+			$nestedData[] = $row->booking_status;
+			$nestedData[] = '';
+			
+			$data[] = $nestedData;
+		}
+		
+		$totalData = count($data);
+		$totalFiltered = $totalData;
+		//$records["draw"] = $sEcho;
+		$json_data = array(
+					"draw"            => intval( $_REQUEST['draw'] ),   // for every request/draw by clientside , they send a number as a parameter, when they recieve a response/data they first check the draw number, so we are sending same number in draw. 
+					"recordsTotal"    => intval( $totalData ),  // total number of records
+					"recordsFiltered" => intval( $totalFiltered ), // total number of records after searching, if there is no searching then totalFiltered = totalData
+					"data"            => $data   // total data array
+					);
+		
+		echo json_encode($json_data);  // send data as json format
+
 		 		
 	}
 	function booking_calender()
