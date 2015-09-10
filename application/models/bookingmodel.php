@@ -64,11 +64,13 @@ and   wedding_booking.cut_id=customer.cut_id";
 		{
 			$myquery = $myquery." AND mobile LIKE '".$requestData['mobile']."%' ";
 		}
-		if(isset($requestData['booking_date_from']) && isset($requestData['booking_date_to']))
+		if(isset($requestData['booking_date_from']) && $requestData['booking_date_from'] != ''
+		   && isset($requestData['booking_date_to']) && $requestData['booking_date_to'] != '')
 		{
 			$myquery = $myquery." AND booking_date between '".$requestData['booking_date_from']."' and '".$requestData['booking_date_to']."'";
 		}
-		 if(isset($requestData['booking_date_from']) && !isset($requestData['booking_date_to']))
+		if(isset($requestData['booking_date_from']) && $requestData['booking_date_from'] != ''
+		   && (isset($requestData['booking_date_to']) && $requestData['booking_date_to'] == ''))
 		{
 			$myquery = $myquery." AND booking_date = '".$requestData['booking_date_from']."'";
 		}
