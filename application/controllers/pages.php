@@ -285,7 +285,7 @@ function searchbooking()
           	$temp = array();
 
           	// It guess your client side will need the id to extract, and distinguish the ScoreCH data
-          	$temp['title'] = $row->name;
+          	$temp['title'] = $row->w_name."\n".$row->name."\n".$row->tel."\n".$row->mobile;
           	$temp['start'] = $row->booking_date;
 			if($row->w_code == 1) $temp['backgroundColor'] = 'yellow';
 			if($row->w_code == 2) $temp['backgroundColor'] = 'blue';
