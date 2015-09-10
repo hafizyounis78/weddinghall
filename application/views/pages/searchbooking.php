@@ -93,7 +93,7 @@
                                     
 									<td>
 										<select id="w_code" name="w_code" class="form-control form-filter input-sm">
-											<option value="0">Select...</option>
+											<option value="">Select...</option>
 											<?php
 												
 												foreach($hall as $row)
@@ -135,7 +135,7 @@
 									</td>
 									<td>
 										<select name="booking_status" class="form-control form-filter input-sm">
-											<option value="0">Select...</option>
+											<option value="">Select...</option>
 											<?php
 												
 												foreach($bookstatus as $row)

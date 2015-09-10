@@ -260,7 +260,7 @@ function searchbooking()
 			$nestedData[] = $row->name;
 			$nestedData[] = $row->tel;
 			$nestedData[] = $row->mobile;
-			$nestedData[] = $row->booking_status;
+			$nestedData[] = $row->b_desc;
 			$nestedData[] = '';
 			
 			$data[] = $nestedData;

@@ -39,10 +39,11 @@ and   wedding_booking.cut_id=customer.cut_id";
 	public function get_all_booking_search($requestData)
 	{
 		//$requestData= $_REQUEST;
-		 $myquery = "select wedding_hall.*,customer.*,wedding_booking.*
-					from wedding_hall,customer,wedding_booking
+		 $myquery = "select wedding_hall.*,customer.*,wedding_booking.*,booking_status_tb.*
+					from wedding_hall,customer,wedding_booking,booking_status_tb
 					where wedding_booking.w_code=wedding_hall.w_code
-					and wedding_booking.cut_id=customer.cut_id";
+					and wedding_booking.cut_id=customer.cut_id
+					and booking_status_tb.booking_status_code=wedding_booking.booking_status";
 		if(isset($requestData['w_code']) && $requestData['w_code'] !='')
 		{
 			$myquery = $myquery." AND wedding_hall.w_code = ".$requestData['w_code'];
