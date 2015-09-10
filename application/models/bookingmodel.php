@@ -12,7 +12,11 @@ and   wedding_booking.cut_id=customer.cut_id";
         return $this->db->query($myquery);
     }
 	
-	
+	public function get_booking_status()
+    {
+        $query = $this->db->get('booking_status_tb');
+		return $query->result();
+	}
 	public function get_booking_by_code($booking_code)//,$cut_id)
 	{
 		 $myquery = "select wedding_hall.*,customer.*,wedding_booking.*

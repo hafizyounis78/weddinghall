@@ -45,6 +45,14 @@ class Pages extends CI_Controller
 				$data['hall'] =$this->wedding_hall();
 				//	
 			}
+			if($page == 'searchbooking')
+			{
+				//$data[$page] = $this->viewbookingupdate($indata);
+				$data['bookstatus'] =$this->booking_status();
+				$data['hall'] =$this->wedding_hall();
+				//	
+			}
+			
 			//print_r($data[$page]);
 			//exit;
 			if($page == 'adduser' && $indata !='')
@@ -225,16 +233,17 @@ function updatebooking()
 
 function searchbooking()
 	{
+		
 		$this->load->model('bookingmodel');
 		$rec = $this->bookingmodel->get_booking();
-
+		
 		//print_r($rec->result());
 		//exit;
 		return $rec->result();
-		 		
+ 		
 	}
 	function booking_grid_data()
-	{
+	{	
 		$this->load->model('bookingmodel');
 		$rec = $this->bookingmodel->get_all_booking_search($_REQUEST);
 		
@@ -471,6 +480,12 @@ function deletebooking($booking_code)
 	{
 		$this->load->model('hallmodel');
 		return $this->hallmodel->get_hall();
+		 		
+	}
+	function booking_status()
+	{
+		$this->load->model('bookingmodel');
+		return $this->bookingmodel->get_booking_status();
 		 		
 	}
 	function updateemp()

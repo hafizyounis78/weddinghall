@@ -92,7 +92,20 @@
                                     </td>
                                     
 									<td>
-										<input type="text" class="form-control form-filter input-sm" name="w_code">
+										<select id="w_code" name="w_code" class="form-control form-filter input-sm">
+											<option value="0">Select...</option>
+											<?php
+												
+												foreach($hall as $row)
+												{
+												?>
+							                     <option value="<?php echo $row->w_code;?>" > <?php echo $row->w_name;?></option>
+
+                                                <?php
+												}
+												?>
+											
+										</select>
 									</td>
 									<td>
 										<div class="input-group date date-picker margin-bottom-5" data-date-format="yyyy/mm/dd">
@@ -122,13 +135,18 @@
 									</td>
 									<td>
 										<select name="booking_status" class="form-control form-filter input-sm">
-											<option value="">Select</option>
-											<option value="1">حجز فقط</option>
-											<option value="2">حجز عليه دفعات مالية</option>
-   											<option value="3">حجز مسسدد كامل الدفعات</option>
-                                            <option value="4">ملغي</option>
-											
-										</select>
+											<option value="0">Select...</option>
+											<?php
+												
+												foreach($bookstatus as $row)
+												{
+												?>
+							                     <option value="<?php echo $row->booking_status_code;?>" > <?php echo $row->b_desc;?></option>
+
+                                                <?php
+												}
+												?>
+																					</select>
 									</td>
 									<td>
 										<div class="margin-bottom-5">
