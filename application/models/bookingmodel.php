@@ -39,9 +39,29 @@ and   wedding_booking.cut_id=customer.cut_id";
 					from wedding_hall,customer,wedding_booking
 					where wedding_booking.w_code=wedding_hall.w_code
 					and wedding_booking.cut_id=customer.cut_id";
-		if(isset($requestData['search']['value']))
+		if(isset($requestData['w_code']) && $requestData['w_code'] !='')
 		{
-			$myquery = $myquery." AND name LIKE 'A%' ";
+			$myquery = $myquery." AND wedding_hall.w_code = ".$requestData['w_code'];
+		}
+		if(isset($requestData['cut_id']) && $requestData['cut_id'] !='')
+		{
+			$myquery = $myquery." AND wedding_booking.cut_id LIKE '".$requestData['cut_id']."%' ";;
+		}
+		if(isset($requestData['name']) && $requestData['name'] !='')
+		{
+			$myquery = $myquery." AND name LIKE '".$requestData['name']."%' ";
+		}
+		if(isset($requestData['tel']) && $requestData['tel'] !='')
+		{
+			$myquery = $myquery." AND tel LIKE '".$requestData['tel']."%' ";
+		}
+		if(isset($requestData['mobile']) && $requestData['mobile'] !='')
+		{
+			$myquery = $myquery." AND mobile LIKE '".$requestData['mobile']."%' ";
+		}
+		if(isset($requestData['booking_status']) && $requestData['booking_status'] !='')
+		{
+			$myquery = $myquery." AND booking_status LIKE '".$requestData['booking_status']."%' ";
 		}
 
         return $this->db->query($myquery);

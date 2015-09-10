@@ -92,7 +92,7 @@
                                     </td>
                                     
 									<td>
-										<input type="text" class="form-control form-filter input-sm" name="w_name">
+										<input type="text" class="form-control form-filter input-sm" name="w_code">
 									</td>
 									<td>
 										<div class="input-group date date-picker margin-bottom-5" data-date-format="yyyy/mm/dd">
@@ -122,7 +122,7 @@
 									</td>
 									<td>
 										<select name="booking_status" class="form-control form-filter input-sm">
-											<option value="0">Select...</option>
+											<option value="">Select</option>
 											<option value="1">حجز فقط</option>
 											<option value="2">حجز عليه دفعات مالية</option>
    											<option value="3">حجز مسسدد كامل الدفعات</option>
@@ -132,7 +132,7 @@
 									</td>
 									<td>
 										<div class="margin-bottom-5">
-											<button class="btn btn-sm yellow filter-submit margin-bottom"><i class="fa fa-search"></i> بحث</button>
+											<button type="submit" class="btn btn-sm yellow filter-submit margin-bottom"><i class="fa fa-search"></i> بحث</button>
 										</div>
 										<button class="btn btn-sm red filter-cancel"><i class="fa fa-times"></i> بحث جديد</button>
 									</td>
