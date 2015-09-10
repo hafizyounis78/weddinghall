@@ -236,8 +236,8 @@ function searchbooking()
 	function booking_grid_data()
 	{
 		$this->load->model('bookingmodel');
-		$rec = $this->bookingmodel->get_booking();
-
+		$rec = $this->bookingmodel->get_all_booking_search($_REQUEST);
+		
 		$rec = $rec->result();
 		$i = 1;
 		$data = array();

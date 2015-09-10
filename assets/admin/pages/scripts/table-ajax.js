@@ -11,10 +11,12 @@ var TableAjax = function () {
     var handleRecords = function () {
 
         var grid = new Datatable();
+		
         grid.init({
             src: $("#datatable_ajax"),
             onSuccess: function (grid) {
                 // execute some code after table records loaded
+				alert(grid);
             },
             onError: function(xhr, status, error) {
   				alert(xhr.responseText);
@@ -36,6 +38,7 @@ var TableAjax = function () {
                 "pageLength": 10, // default record count per page
                 "ajax": {
                     "url": "http://localhost/weddinghall/pages/booking_grid_data", // ajax source
+					
                 },
                 "order": [
                     [1, "asc"]
@@ -72,7 +75,7 @@ var TableAjax = function () {
             }
         });
     }
-
+	
     return {
 
         //main function to initiate the module
