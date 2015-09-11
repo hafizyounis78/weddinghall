@@ -40,7 +40,7 @@ foreach($addpayments as $row);
 										* </span>
 										</label>
 										<div class="col-md-4">
-											<input type="text" name="booking_code" readonly <?php if (isset($row->booking_code)) {echo 'value="'.$row->booking_code.'"';}?>  data-required="1" class="form-control"/>
+											<input type="text" name="booking_code" readonly  <?php if (isset($row->booking_code)) {echo 'value="'.$row->booking_code.'"';}?>  data-required="1" class="form-control"/>
 										</div>
 									</div>
 <div class="form-group">
@@ -100,7 +100,7 @@ foreach($addpayments as $row);
 									<div class="form-group">
 										<label class="control-label col-md-3">قيمة الدفعة</label>
 										<div class="col-md-4">
-											<input name="payment_amount" type="text" data-required="1" class="form-control"/>
+											<input id="payment_amount" name="payment_amount" type="text" data-required="1" class="form-control"/>
 										</div>
                                      </div>
                                      <div class="form-group">
@@ -169,14 +169,16 @@ foreach($addpayments as $row);
 								</th>
                                 
 							</tr>
+                            
 							</thead>
 							<tbody  >
 							
 								
 								<?php
 								$i=1;
+								$total = 0;
   							foreach($payment_view as $row)
-  							{
+  							{$total = $total + $row->payment_amount;
 								echo '<tr class="odd gradeX">';
 								echo '<td>'.$i++.'</td>';
 								echo '<td>'.$row->cut_id.'</td>';
@@ -184,12 +186,21 @@ foreach($addpayments as $row);
 								echo '<td>'.$row->mobile.'</td>';
 								echo '<td>'.$row->booking_date.'</td>';
 								echo '<td>'.$row->w_name.'</td>';
-								echo '<td>'.$row->total_price.'</td>';
+								echo '<td>'.$row->final_price.'</td>';
 								echo '<td>'.$row->payment_date.'</td>';
-								echo '<td>'.$row->payment_amount.'</td>';
 								echo '<td>'.$row->invoice_no.'</td>';
+								echo '<td>'.$row->payment_amount.'</td>';
 								echo '</tr>';
+								
 							}
+								
+								echo '<tr align="center" class="odd gradeX">';
+								echo '<td></td>';
+								echo '<td colspan="7">المجموع</td>';
+								echo '<td></td>';
+								echo '<td id="tdTotal">'.$total.'</td>';
+								
+								echo '</tr>';
 							?>
                               
 							</tbody>

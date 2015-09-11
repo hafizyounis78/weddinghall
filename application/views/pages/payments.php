@@ -2,7 +2,7 @@
 					<div class="portlet box yellow">
 						<div class="portlet-title">
 							<div class="caption">
-								<i class="fa fa-user"></i>جدول عرض الحجوزات
+								<i class="fa fa-user"></i>جدول عرض الدفعات المالية
 							</div>
 							<div class="actions">
 								<a href="addbooking" class="btn btn-default btn-sm">
@@ -60,7 +60,7 @@
 								echo '<td>'.$row->address.'</td>';
 								echo '<td>'.$row->booking_code.'</td>';
 								echo '<td>
-								<a href="pages/view/addbooking/'.$row->booking_code.'" class="btn default btn-xs purple">
+								<a href="pages/view/addpayments/'.$row->booking_code.'" class="btn default btn-xs purple">
 										<i class="fa fa-edit"></i> تعديل </a>
 								<a href="pages/view/addpayments/'.$row->booking_code.'" class="btn default btn-xs blue">
 										<i class="fa fa-edit"></i> اضافة دفعه مالية </a>';

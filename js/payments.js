@@ -1,7 +1,8 @@
 $(document).ready(function(){
 	$('#btnAddpayments').click(function(event) {
 		event.preventDefault();
-		
+		var payment_amount = $('#payment_amount').val();
+		alert(payment_amount);
 		$.ajax({
 			url: "http://localhost/weddinghall/pages/addpayments",
 			type: "POST",

@@ -52,6 +52,13 @@ class Pages extends CI_Controller
 				$data['hall'] =$this->wedding_hall();
 				//	
 			}
+			if($page == 'searchpaymentsajax')
+			{
+				//$data[$page] = $this->viewbookingupdate($indata);
+				//$data['bookstatus'] =$this->booking_status();
+				$data['hall'] =$this->wedding_hall();
+				//	
+			}
 			
 			//print_r($data[$page]);
 			//exit;
@@ -280,6 +287,45 @@ function searchbooking()
 
 		 		
 	}
+function payments_grid_data()
+	{	
+		$this->load->model('paymentsmodel');
+		$rec = $this->paymentsmodel->get_all_payments_search($_REQUEST);
+		
+		$rec = $rec->result();
+		$i = 1;
+		$data = array();
+		foreach($rec as $row){
+			$nestedData=array(); 
+			
+			$nestedData[] = $i++;
+			$nestedData[] = $row->cut_id;
+			$nestedData[] = $row->name;
+			$nestedData[] = $row->w_name;
+			$nestedData[] = $row->booking_date;
+			$nestedData[] = $row->final_price;
+			$nestedData[] = $row->payment_amount;
+			$nestedData[] = $row->payment_date;
+			$nestedData[] = $row->invoice_no;
+			$nestedData[] = '';
+			
+			$data[] = $nestedData;
+		}
+		
+		$totalData = count($data);
+		$totalFiltered = $totalData;
+		//$records["draw"] = $sEcho;
+		$json_data = array(
+					"draw"            => intval( $_REQUEST['draw'] ),   // for every request/draw by clientside , they send a number as a parameter, when they recieve a response/data they first check the draw number, so we are sending same number in draw. 
+					"recordsTotal"    => intval( $totalData ),  // total number of records
+					"recordsFiltered" => intval( $totalFiltered ), // total number of records after searching, if there is no searching then totalFiltered = totalData
+					"data"            => $data   // total data array
+					);
+		
+		echo json_encode($json_data);  // send data as json format
+
+		 		
+	}	
 	function booking_calender()
 	{
 		$this->load->model('bookingmodel');

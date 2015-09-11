@@ -57,6 +57,7 @@
 <script src="<?php echo base_url();?>assets/admin/pages/scripts/calendar.js"></script>
 <script src="<?php echo base_url();?>assets/global/scripts/datatable.js"></script>
 <script src="<?php echo base_url();?>assets/admin/pages/scripts/table-ajax.js"></script>
+<script src="<?php echo base_url();?>assets/admin/pages/scripts/payments_table_ajax.js"></script>
 <!-- OUR SCRIPTS-->
 <script src="<?php echo base_url();?>js/users.js"></script>
 <!-- END OUR SCRIPTS-->
