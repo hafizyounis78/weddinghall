@@ -98,13 +98,13 @@ foreach($addpayments as $row);
 										</div>
 									</div>
 									<div class="form-group">
-										<label class="control-label col-md-3">قيمة الدفعة</label>
+										<label class="control-label col-md-3">رقم الوصل المالي</label>
 										<div class="col-md-4">
 											<input id="payment_amount" name="payment_amount" type="text" data-required="1" class="form-control"/>
 										</div>
                                      </div>
                                      <div class="form-group">
-										<label class="control-label col-md-3">رقم الوصل المالي</label>
+										<label class="control-label col-md-3">قيمة الدفعة</label>
 										<div class="col-md-4">
 											<input name="invoice_no" type="text" data-required="1" class="form-control"/>
                                             
@@ -178,7 +178,8 @@ foreach($addpayments as $row);
 								$i=1;
 								$total = 0;
   							foreach($payment_view as $row)
-  							{$total = $total + $row->payment_amount;
+  							{
+								$total = $total + $row->payment_amount;
 								echo '<tr class="odd gradeX">';
 								echo '<td>'.$i++.'</td>';
 								echo '<td>'.$row->cut_id.'</td>';
@@ -194,20 +195,22 @@ foreach($addpayments as $row);
 								
 							}
 								
-								echo '<tr align="center" class="odd gradeX">';
-								echo '<td></td>';
-								echo '<td colspan="7">المجموع</td>';
-								echo '<td></td>';
-								echo '<td id="tdTotal">'.$total.'</td>';
 								
-								echo '</tr>';
 							?>
                               
 							</tbody>
+                            <tfoot>
+                            <?php
+							echo '<tr align="center" class="odd gradeX">';
+								echo '<td colspan="9"><b>المجموع</td>';
+								echo '<td id="tdTotal"><b>'.$total.'</b></td>';
+								echo '</tr>';
+							?>
+                            </tfoot>
 							</table>
-						</div>
+    </div>
 					</div>
 					<!-- END EXAMPLE TABLE PORTLET-->
 			</div>
-            </div>
+            
 								
