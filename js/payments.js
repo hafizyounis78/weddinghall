@@ -36,6 +36,18 @@ $(document).ready(function(){
 		});//END $.ajax
 	}); // END CLICK
 }); // END READY
+/***********************update payments**************************/
+function updatepayemnts()
+{alert($('#payments_body #payment_date_td').html());
+	
+
+$('payments_date').datepicker('setDate',$('#payments_body #payment_date_td').val());
+		//document.getElementById('payment_amount').value =parseInt($('#payments_body #payment_amount_td').html());
+		   document.getElementById('payment_amount').value = $('#payments_body #payment_amount_td').html();
+		   document.getElementById('invoice_no').value =$('#payments_body #invoice_no_td').html();
+		
+}//end function 
+
 
 /********************emp payments***************/
 $(document).ready(function(){

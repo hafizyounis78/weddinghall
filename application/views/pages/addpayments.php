@@ -88,7 +88,7 @@ foreach($addpayments as $row);
 										<label class="control-label col-md-3">تاريخ الدفعة</label>
 										<div class="col-md-4">
 											<div class="input-group date date-picker" data-date-format="yyyy/mm/dd">
-												<input type="text" class="form-control" data-required="1" readonly name="payment_date"/>
+												<input type="text" class="form-control" data-required="1" readonly name="payment_date" id="payment_date"/>
 												<span class="input-group-btn">
 												<button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
 												</span>
@@ -107,7 +107,7 @@ foreach($addpayments as $row);
                                      <div class="form-group">
 										<label class="control-label col-md-3">رقم الوصل المالي</label>
 										<div class="col-md-4">
-											<input name="invoice_no" type="text" data-required="1" class="form-control"/>
+											<input id="invoice_no" name="invoice_no" type="text" data-required="1" class="form-control"/>
                                             
 										</div>
                                      </div>
@@ -168,7 +168,9 @@ foreach($addpayments as $row);
                                 <th>
 									 قيمة الدفعة
 								</th>
-                                
+                                <th>
+									 
+								</th>
 							</tr>
                             
 							</thead>
@@ -189,9 +191,13 @@ foreach($addpayments as $row);
 								echo '<td>'.$row->booking_date.'</td>';
 								echo '<td>'.$row->w_name.'</td>';
 								echo '<td id="final_price_td">'.$row->final_price.'</td>';
-								echo '<td>'.$row->payment_date.'</td>';
-								echo '<td>'.$row->invoice_no.'</td>';
-								echo '<td>'.$row->payment_amount.'</td>';
+								echo '<td id="payment_date_td">'.$row->payment_date.'</td>';
+								echo '<td id="invoice_no_td">'.$row->invoice_no.'</td>';
+								echo '<td id="payment_amount_td">'.$row->payment_amount.'</td>';
+								echo '<td>
+								<button id="btnupdatepayemnts" name="btnupdatepayemnts" type="button" class="btn default btn-xs purple" onclick="updatepayemnts()">
+										<i class="fa fa-edit"></i> تعديل </button>';
+								echo '</td>';		
 								echo '</tr>';
 								
 							}
