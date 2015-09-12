@@ -78,6 +78,53 @@ if(isset($requestData['w_code']) && $requestData['w_code'] !='')
         return $this->db->query($myquery);
 
     }
+public function get_all_emp_payments_search($requestData)
+    {
+        $myquery = "select employee_payments.*,employee.*,contract_type.*,payment_type.*
+					from employee_payments,employee,contract_type,payment_type
+					where employee_payments.emp_code=employee.emp_code
+					and employee.contract_code=contract_type.contract_code
+					and employee_payments.payment_type=payment_type.payment_code";
+
+if(isset($requestData['emp_id']) && $requestData['emp_id'] !='')
+		{
+			$myquery = $myquery." AND emp_id = ".$requestData['emp_id'];
+		}
+		if(isset($requestData['name']) && $requestData['name'] !='')
+		{
+			$myquery = $myquery." AND name LIKE '%".$requestData['name']."%' ";
+		}
+		if(isset($requestData['mobile']) && $requestData['mobile'] !='')
+		{
+			$myquery = $myquery." AND mobile LIKE '%".$requestData['mobile']."%' ";
+		}
+		if(isset($requestData['contract_code']) && $requestData['contract_code'] !='')
+		{
+			$myquery = $myquery." AND employee_payments.contract_code LIKE '%".$requestData['contract_code']."%' ";
+		}
+
+		if(isset($requestData['payment_amount']) && $requestData['payment_amount'] !='')
+		{
+			$myquery = $myquery." AND payment_amount LIKE '".$requestData['payment_amount']."%' ";
+		}
+		if(isset($requestData['payment_type']) && $requestData['payment_type'] !='')
+		{
+			$myquery = $myquery." AND employee_payments.payment_type LIKE '".$requestData['payment_type']."%' ";
+		}
+		if(isset($requestData['payment_date_from']) && $requestData['payment_date_from'] != ''
+		   && isset($requestData['payment_date_to']) && $requestData['payment_date_to'] != '')
+		{
+			$myquery = $myquery." AND payment_date between '".$requestData['payment_date_from']."' and '".$requestData['payment_date_to']."'";
+		}
+		if(isset($requestData['payment_date_from']) && $requestData['payment_date_from'] != ''
+		   && (isset($requestData['payment_date_to']) && $requestData['payment_date_to'] == ''))
+		{
+			$myquery = $myquery." AND payment_date = '".$requestData['payment_date_from']."'";
+		}
+
+        return $this->db->query($myquery);
+
+    }	
 	public function get_booking_by_code($booking_code)
 	{
 		 $myquery = "select wedding_hall.*,customer.*,wedding_booking.*
@@ -168,7 +215,11 @@ public function update_payments()
 		$this->db->update('wedding_booking',$datab);
 
 	}
-
+public function get_payment_type()
+{
+	 $query = $this->db->get('payment_type');
+		return $query->result();
+}
 }
 
 

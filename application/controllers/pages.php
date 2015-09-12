@@ -59,7 +59,14 @@ class Pages extends CI_Controller
 				$data['hall'] =$this->wedding_hall();
 				//	
 			}
-			
+			if($page == 'searchemppaymentsajax')
+			{
+				//$data[$page] = $this->viewbookingupdate($indata);
+				//$data['bookstatus'] =$this->booking_status();
+				$data['contract'] =$this->contract();
+				$data['paymenttype'] =$this->paymenttype();
+				//	
+			}
 			//print_r($data[$page]);
 			//exit;
 			if($page == 'adduser' && $indata !='')
@@ -344,6 +351,48 @@ function payments_grid_data()
 
 		 		
 	}	
+function emp_payments_grid_data()
+	{	
+		$this->load->model('paymentsmodel');
+		$rec = $this->paymentsmodel->get_all_emp_payments_search($_REQUEST);
+		
+		$rec = $rec->result();
+		$i = 1;
+		$data = array();
+
+		foreach($rec as $row){
+			$nestedData=array(); 
+			$btn='<a href="pages/view/addpayments/'.$row->emp_code.'" class="btn default btn-xs blue">
+										<i class="fa fa-edit"></i> اضافة دفعه مالية </a>';
+
+			$nestedData[] = $i++;
+			$nestedData[] = $row->emp_id;
+			$nestedData[] = $row->name;
+			$nestedData[] = $row->mobile;
+			$nestedData[] = $row->contract_type;
+			$nestedData[] = $row->payment_amount;
+			$nestedData[] = $row->payment_date;
+			$nestedData[] = $row->payment_desc;
+			$nestedData[] = $btn;
+			
+			$data[] = $nestedData;
+		}
+		
+		$totalData = count($data);
+		$totalFiltered = $totalData;
+		//$records["draw"] = $sEcho;
+		$json_data = array(
+					"draw"            => intval( $_REQUEST['draw'] ),   // for every request/draw by clientside , they send a number as a parameter, when they recieve a response/data they first check the draw number, so we are sending same number in draw. 
+					"recordsTotal"    => intval( $totalData ),  // total number of records
+					"recordsFiltered" => intval( $totalFiltered ), // total number of records after searching, if there is no searching then totalFiltered = totalData
+					"data"            => $data   // total data array
+					);
+		
+		echo json_encode($json_data);  // send data as json format
+
+		 		
+	}	
+
 	function booking_calender()
 	{
 		$this->load->model('bookingmodel');
@@ -540,16 +589,24 @@ function deletebooking($booking_code)
 			echo $row->sev_price;
 		}
 	}
+
 	function wedding_hall()
 	{
 		$this->load->model('hallmodel');
 		return $this->hallmodel->get_hall();
 		 		
 	}
-	function booking_status()
+	
+	function contract()
 	{
-		$this->load->model('bookingmodel');
-		return $this->bookingmodel->get_booking_status();
+		$this->load->model('contractmodel');
+		return $this->contractmodel->get_contract();
+		 		
+	}
+	function paymenttype()
+	{
+		$this->load->model('paymentsmodel');
+		return $this->paymentsmodel->get_payment_type();
 		 		
 	}
 	function updateemp()

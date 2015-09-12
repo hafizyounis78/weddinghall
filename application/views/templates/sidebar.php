@@ -115,7 +115,7 @@
 						دفعات مالية</a>
 						</li>
 						<li <?php if($title == 'emppayments') echo 'class="active"'; ?>>
-							<a href="<?php echo base_url();?>emppayments">
+							<a href="<?php echo base_url();?>searchemppaymentsajax">
 							<i class="icon-basket"></i>
 							دفعات الموظفين</a>
 						</li>
