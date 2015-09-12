@@ -108,7 +108,7 @@ public function update_booking()
 		$data['w_code'] = $w_code;
 		$data['booking_date'] = $booking_date;
 		$data['cut_id'] = $cut_id;
-		$data['booking_status'] = 1;
+		//$data['booking_status'] = 1;
 		$data['notes'] = $notes;
 
 				
@@ -186,8 +186,16 @@ exit();
 $myquery = "select count(1) 
 			from payments
 			where booking_code=$hdnBookingcode";
+			
 $count=0;
-$count=$rec->result();
+$count=$this->db->query($myquery)->result();
+if ($count>=1)
+{
+		$datab['booking_status']=2;
+		$this->db->where('booking_code',$hdnBookingcode);
+		$this->db->update('wedding_booking',$datab);
+}
+
 
 
 	}
