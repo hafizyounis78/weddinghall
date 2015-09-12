@@ -19,7 +19,7 @@ else
 }
 		
 
-		alert(new_total);
+		
 		if (parseInt(new_total)>parseInt(final_price))
 		{
 			alert('قيمة الدفعات تجوازت المبلغ المطلوب من ,الرجاء التحقق من القيمة المدخلة');
@@ -29,7 +29,7 @@ else
 				document.getElementById('booking_status').value =2;
 		if (parseInt(new_total)==parseInt(final_price))
 		document.getElementById('booking_status').value =3;
-		alert(action);
+		
 		$.ajax({
 			url: "http://localhost/weddinghall/pages/"+action,
 			type: "POST",
@@ -42,20 +42,21 @@ else
 			complete: function(){},
 			success: function(){
 					alert ('تمت عملية الإضافة بنجاح');
-					window.location.href="http://localhost/weddinghall/payments";
+					window.location.href="http://localhost/weddinghall/searchpaymentsajax";
 			}
 		});//END $.ajax
 	}); // END CLICK
 }); // END READY
 /***********************update payments**************************/
 function updatepayemnts()
-{alert($('#payments_body #payment_date_td').html());
+{
 	
 
 $('payments_date').datepicker('setDate',$('#payments_body #payment_date_td').val());
 		document.getElementById('payment_date').value =$('#payments_body #payment_date_td').html();
-		   document.getElementById('payment_amount').value = $('#payments_body #payment_amount_td').html();
-		   document.getElementById('invoice_no').value =$('#payments_body #invoice_no_td').html();
+		document.getElementById('payment_amount').value = $('#payments_body #payment_amount_td').html();
+		document.getElementById('invoice_no').value =$('#payments_body #invoice_no_td').html();
+	    document.getElementById('p_code').value =$('#payments_body #p_code_td').html();
 		    document.getElementById('hdnAction').value =1;
 		
 }//end function 
@@ -78,7 +79,7 @@ $(document).ready(function(){
 			complete: function(){},
 			success: function(){
 					alert ('تمت عملية الإضافة بنجاح');
-					window.location.href="http://localhost/weddinghall/emppayments";
+					window.location.href="http://localhost/weddinghall/searchpaymentsajax";
 			}
 		});//END $.ajax
 	}); // END CLICK

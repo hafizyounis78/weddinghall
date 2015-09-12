@@ -98,6 +98,7 @@ foreach($addpayments as $row);
 											select a date </span>
 										</div>
 									</div>
+                                     <input id="p_code" name="p_code" type="hidden"  /> 
 									<div class="form-group">
 										<label class="control-label col-md-3">قيمة الدفعة</label>
 										<div class="col-md-4">
@@ -142,6 +143,9 @@ foreach($addpayments as $row);
 									*
 								</th>
 								<th>
+									كود العملية
+								</th>
+                                <th>
 									رقم الهوية
 								</th>
 								<th>
@@ -185,6 +189,7 @@ foreach($addpayments as $row);
 								$total = $total + $row->payment_amount;
 								echo '<tr class="odd gradeX">';
 								echo '<td>'.$i++.'</td>';
+								echo '<td id="p_code_td">'.$row->p_code.'</td>';
 								echo '<td>'.$row->cut_id.'</td>';
 								echo '<td>'.$row->name.'</td>';
 								echo '<td>'.$row->mobile.'</td>';

@@ -159,7 +159,8 @@ public function update_payments()
 	//	$data['notes'] = $notes;
 
 				
-		$this->db->where('booking_code',$booking_code);
+		//$this->db->where('booking_code',$booking_code);
+		$this->db->where('p_code',$p_code);
 		$this->db->update('payments',$data);
 	/************update booking status**********/
 		$datab['booking_status'] = $booking_status;

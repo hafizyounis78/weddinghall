@@ -274,7 +274,7 @@ function searchbooking()
 			  <i class="fa fa-edit"></i> تعديل </a>
 			  <button id="btndelbooking" name="btndelbooking" type="button" class="btn default btn-xs black" onclick="deletebooking(\''.$row->booking_code.'\')">
 										<i class="fa fa-trash-o"></i> إلفاء </button>';
-;
+										
 			$nestedData[] = $i++;
 			$nestedData[] = $row->w_name;
 			$nestedData[] = $row->booking_date;
@@ -310,9 +310,12 @@ function payments_grid_data()
 		$rec = $rec->result();
 		$i = 1;
 		$data = array();
+
 		foreach($rec as $row){
 			$nestedData=array(); 
-			
+			$btn='<a href="pages/view/addpayments/'.$row->booking_code.'" class="btn default btn-xs blue">
+										<i class="fa fa-edit"></i> اضافة دفعه مالية </a>';
+
 			$nestedData[] = $i++;
 			$nestedData[] = $row->cut_id;
 			$nestedData[] = $row->name;
@@ -322,7 +325,7 @@ function payments_grid_data()
 			$nestedData[] = $row->payment_amount;
 			$nestedData[] = $row->payment_date;
 			$nestedData[] = $row->invoice_no;
-			$nestedData[] = '';
+			$nestedData[] = $btn;
 			
 			$data[] = $nestedData;
 		}

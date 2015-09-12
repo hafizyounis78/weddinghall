@@ -83,11 +83,6 @@
 							<i class="icon-home"></i>
 							اضافة حجز</a>
 						</li>
-						<li <?php if($title == 'booking') echo 'class="active"'; ?>>
-							<a href="<?php echo base_url();?>booking">
-							<i class="icon-basket"></i>
-							عرض الحجوزات</a>
-						</li>
 						<li>
 							<a href="<?php echo base_url();?>searchbooking">
 							<i class="icon-tag"></i>
@@ -115,7 +110,7 @@
 					</a>
 					<ul class="sub-menu">
 						<li <?php if($title == 'payments') echo 'class="active"'; ?>>
-							<a href="<?php echo base_url();?>payments">
+							<a href="<?php echo base_url();?>searchpaymentsajax">
 							<i class="icon-home"></i>
 						دفعات مالية</a>
 						</li>
@@ -123,11 +118,6 @@
 							<a href="<?php echo base_url();?>emppayments">
 							<i class="icon-basket"></i>
 							دفعات الموظفين</a>
-						</li>
-						<li <?php if($title == 'searchpayments') echo 'class="active"'; ?>>
-							<a href="<?php echo base_url();?>searchpayments">
-							<i class="icon-tag"></i>
-							استعلام على الدفعات المالية</a>
 						</li>
 						<li <?php if($title == 'searchemppayments') echo 'class="active"'; ?>>
 							<a href="<?php echo base_url();?>searchemppayments">
