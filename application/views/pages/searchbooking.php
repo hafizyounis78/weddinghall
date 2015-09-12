@@ -166,4 +166,4 @@
 				</div>
 			</div>
 			<!-- END PAGE CONTENT-->
-		
+		<script src="<?php echo base_url();?>assets/admin/pages/scripts/table-ajax.js"></script>

@@ -127,6 +127,11 @@ and   wedding_booking.booking_code=$booking_code";
 		$data['invoice_no'] = $invoice_no;
 		
 		$this->db->insert('payments',$data);
+		/***************update booking status according the payment amounts*********/
+		$datab['booking_status'] = $booking_status;
+		
+		$this->db->where('booking_code',$booking_code);
+		$this->db->update('wedding_booking',$datab);
 
 	}
 

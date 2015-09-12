@@ -33,6 +33,7 @@ foreach($addpayments as $row);
 									</div>
 									<div class="alert alert-success display-hide">
 										<button class="close" data-close="alert"></button>
+                                        <input id="booking_status" name="booking_status" type="hidden" value="<?php echo $row->booking_status?>" />
 										Your form validation is successful!
 									</div>
                                     <div class="form-group">
@@ -98,13 +99,13 @@ foreach($addpayments as $row);
 										</div>
 									</div>
 									<div class="form-group">
-										<label class="control-label col-md-3">رقم الوصل المالي</label>
+										<label class="control-label col-md-3">قيمة الدفعة</label>
 										<div class="col-md-4">
 											<input id="payment_amount" name="payment_amount" type="text" data-required="1" class="form-control"/>
 										</div>
                                      </div>
                                      <div class="form-group">
-										<label class="control-label col-md-3">قيمة الدفعة</label>
+										<label class="control-label col-md-3">رقم الوصل المالي</label>
 										<div class="col-md-4">
 											<input name="invoice_no" type="text" data-required="1" class="form-control"/>
                                             
@@ -162,16 +163,16 @@ foreach($addpayments as $row);
 									 تاريخ الدفعة 
 								</th>
                                 <th>
-									 قيمة الدفعة
+									 رقم اللإيصال المالي
 								</th>
                                 <th>
-									 رقم اللإيصال المالي
+									 قيمة الدفعة
 								</th>
                                 
 							</tr>
                             
 							</thead>
-							<tbody  >
+							<tbody id="payments_body" >
 							
 								
 								<?php
@@ -187,7 +188,7 @@ foreach($addpayments as $row);
 								echo '<td>'.$row->mobile.'</td>';
 								echo '<td>'.$row->booking_date.'</td>';
 								echo '<td>'.$row->w_name.'</td>';
-								echo '<td>'.$row->final_price.'</td>';
+								echo '<td id="final_price_td">'.$row->final_price.'</td>';
 								echo '<td>'.$row->payment_date.'</td>';
 								echo '<td>'.$row->invoice_no.'</td>';
 								echo '<td>'.$row->payment_amount.'</td>';
@@ -199,11 +200,11 @@ foreach($addpayments as $row);
 							?>
                               
 							</tbody>
-                            <tfoot>
+                            <tfoot id="payments_footer">
                             <?php
 							echo '<tr align="center" class="odd gradeX">';
 								echo '<td colspan="9"><b>المجموع</td>';
-								echo '<td id="tdTotal"><b>'.$total.'</b></td>';
+								echo '<td id="tdTotal">'.$total.'</td>';
 								echo '</tr>';
 							?>
                             </tfoot>

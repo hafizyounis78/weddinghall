@@ -2,7 +2,23 @@ $(document).ready(function(){
 	$('#btnAddpayments').click(function(event) {
 		event.preventDefault();
 		var payment_amount = $('#payment_amount').val();
-		alert(payment_amount);
+		var Total = $('#payments_footer #tdTotal').html();
+		var final_price= $('#payments_body #final_price_td').html();
+
+		alert(Total);
+		var new_total=0;
+		new_total=parseInt(Total)+parseInt(payment_amount);
+		alert(new_total);
+		if (parseInt(new_total)>parseInt(final_price))
+		{
+			alert('قيمة الدفعات تجوازت المبلغ المطلوب من ,الرجاء التحقق من القيمة المدخلة');
+			return;
+		}
+		else if (parseInt(new_total)<parseInt(final_price))
+					document.getElementById('booking_status').value =2;
+		if (parseInt(new_total)==parseInt(final_price))
+		document.getElementById('booking_status').value =3;
+		
 		$.ajax({
 			url: "http://localhost/weddinghall/pages/addpayments",
 			type: "POST",

@@ -181,8 +181,14 @@ exit();
 		$data['booking_code'] = $hdnBookingcode;
 		$data['sev_code'] = $sev_code;
 		$data['sev_price'] = $sev_price;
-
 		$this->db->insert('wedding_booking_details',$data);
+		
+$myquery = "select count(1) 
+			from payments
+			where booking_code=$hdnBookingcode";
+$count=0;
+$count=$rec->result();
+
 
 	}
 	public function delete_booking($booking_code)
