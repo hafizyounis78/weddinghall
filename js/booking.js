@@ -127,7 +127,17 @@ $(document).ready(function(){
 $(document).ready(function(){
 	$('#btnAddbooking_details').click(function(event) {							
 		event.preventDefault();
-		
+	
+	var length=document.getElementById("serv_body").rows.length;
+	var new_sev_code=document.getElementById('sev_code').value;
+	for (i = 1; i < length; i++)
+		{ sev_code_rec=$('#serv_body #sev_code_td'+i).html();
+			if (new_sev_code==sev_code_rec)
+			{
+			alert('تم اضافة الخدمة مسبقاً, الرجاء اختيار خدمة أخرى');
+			return;
+			}
+		}
 		$.ajax({
 			url: "http://localhost/weddinghall/pages/addbooking_details",
 			type: "POST",
@@ -146,15 +156,17 @@ $(document).ready(function(){
 			   $( "#serv_body" ).html(data);
 			   document.getElementById('total_price').value = $('#serv_body #tdTotal').html();
 
-				var sev_index =document.getElementById("sev_code").selectedIndex;
+				//var sev_index =document.getElementById("sev_code").selectedIndex;
 //			   	var sev_index = $(sev_code).item(index);
 			//alert(sev_index);
 			//   alert($('#service_form #sev_code').html());
    				
-				document.getElementById("sev_code").options.remove(sev_index);
+				document.getElementById("sev_code").selectedIndex = "0";
+//				document.getElementById("sev_code").options.remove(sev_index)
+	//			document.getElementById("sev_code").caption="";
 				//$('#sev_code').prop('selectedIndex',0);
 				
-				document.getElementById("sev_code").selectedIndex = "-1";
+				
 				//document.getElementById("sev_code").selectedIndex="0";
 				//document.getElementById("sev_code").text='Select';				
 				//document.getElementById("sev_price").text=0;
@@ -170,7 +182,16 @@ $(document).ready(function(){
 
 function deletebooking(booking_code)
 {
+var r = confirm('هل انت متأكد من الإلفاء');
+if (r == true) {
+    x =1;
+} else {
+    x = 0;
+}
+if(x==1)
+{
 		$.ajax({
+			
 			url: "pages/deletebooking/"+booking_code,
 			type: "POST",
 			error: function(){
@@ -180,9 +201,10 @@ function deletebooking(booking_code)
 			complete: function(){},
 			success: function(){
 					alert ('تمت عملية الإلغاء بنجاح');
-					window.location.href="booking";
+					
 			}
 		});//END $.ajax
+}
 }
 /*********************Service Price*******************/
 $(document).ready(function(){
@@ -212,6 +234,15 @@ function deleteselectedservice(sev_code)
 {
 booking_code= document.getElementById('hdnBookingcode').value;
 
+var r = confirm('هل انت متأكد من عملة الحذف');
+if (r == true) {
+    x =1;
+} else {
+    x = 0;
+}
+if(x==1)
+{
+
 		$.ajax({
 			url: "http://localhost/weddinghall/pages/delete_selectedservice/"+sev_code+"/"+booking_code,
 			type: "POST",
@@ -233,4 +264,5 @@ booking_code= document.getElementById('hdnBookingcode').value;
 					//window.location.href="users";
 			}
 		});//END $.ajax
+}
 }

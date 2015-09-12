@@ -275,8 +275,8 @@ if (isset($addbooking))
 										$total = $total + $row->sev_price;
 										
 										echo '<tr class="odd gradeX">';
-										echo '<td>'.$i++.'</td>';
-										echo '<td>'.$row->sev_code.'</td>';
+										echo '<td>'.$i.'</td>';
+										echo '<td id="sev_code_td'.$i++.'">'.$row->sev_code.'</td>';
 										echo '<td>'.$row->sev_desc.'</td>';
 										echo '<td>'.$row->sev_price.'</td>';
 										echo '<td> 

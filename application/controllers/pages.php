@@ -167,15 +167,15 @@ function searchemppayments()
 		//extract($_POST);
 		$this->bookingmodel->delete_selectedservice($sev_code,$booking_code);
 		$rec=$this->booking_details($booking_code);
-		
+		$i=1;
 		$total = 0;
 		foreach($rec as $row)
   		{
 			$total = $total + $row->sev_price;
 			
 			echo '<tr class="odd gradeX">';
-			echo '<td>'.$i++.'</td>';
-			echo '<td>'.$row->sev_code.'</td>';
+			echo '<td>'.$i.'</td>';
+			echo '<td id="sev_code_td'.$i++.'">'.$row->sev_code.'</td>';
 			echo '<td>'.$row->sev_desc.'</td>';
 			echo '<td>'.$row->sev_price.'</td>';
 			echo '<td> 
@@ -202,13 +202,14 @@ function searchemppayments()
 		$rec=$this->booking_details($hdnBookingcode);
 		
 		$total = 0;
+		$i=1;
 		foreach($rec as $row)
   		{
 			$total = $total + $row->sev_price;
 			
 			echo '<tr class="odd gradeX">';
-			echo '<td>'.$i++.'</td>';
-			echo '<td>'.$row->sev_code.'</td>';
+			echo '<td>'.$i.'</td>';
+			echo '<td id="sev_code_td'.$i++.'">'.$row->sev_code.'</td>';
 			echo '<td>'.$row->sev_desc.'</td>';
 			echo '<td>'.$row->sev_price.'</td>';
 			echo '<td> 
@@ -260,10 +261,20 @@ function searchbooking()
 		
 		$rec = $rec->result();
 		$i = 1;
+		
+		/*'<a href="pages/view/addbooking/'.$row->booking_code.'" class="btn default btn-xs purple">
+			  <i class="fa fa-edit"></i> تعديل </a>
+			  <button id="btndelbooking" name="btndelbooking" type="button" class="btn default btn-xs black" 			onclick="deletebooking(\''.$row->booking_code.'\')">		
+			  <i class="fa fa-trash-o"></i> حذف </button>';*/
+								
 		$data = array();
 		foreach($rec as $row){
 			$nestedData=array(); 
-			
+			$btn='<a href="pages/view/addbooking/'.$row->booking_code.'" class="btn default btn-xs purple">
+			  <i class="fa fa-edit"></i> تعديل </a>
+			  <button id="btndelbooking" name="btndelbooking" type="button" class="btn default btn-xs black" onclick="deletebooking(\''.$row->booking_code.'\')">
+										<i class="fa fa-trash-o"></i> إلفاء </button>';
+;
 			$nestedData[] = $i++;
 			$nestedData[] = $row->w_name;
 			$nestedData[] = $row->booking_date;
@@ -272,7 +283,7 @@ function searchbooking()
 			$nestedData[] = $row->tel;
 			$nestedData[] = $row->mobile;
 			$nestedData[] = $row->b_desc;
-			$nestedData[] = '';
+			$nestedData[] = $btn;
 			
 			$data[] = $nestedData;
 		}
