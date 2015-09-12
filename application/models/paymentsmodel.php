@@ -149,6 +149,24 @@ and   wedding_booking.booking_code=$booking_code";
 		$this->db->insert('employee_payments',$data);
 
 	}
+public function update_payments()
+	{
+		extract($_POST);
+		$data['payment_amount'] = $payment_amount;
+		$data['payment_date'] = $payment_date;
+		$data['invoice_no'] = $invoice_no;
+		//$data['booking_status'] = 1;
+	//	$data['notes'] = $notes;
+
+				
+		$this->db->where('booking_code',$booking_code);
+		$this->db->update('payments',$data);
+	/************update booking status**********/
+		$datab['booking_status'] = $booking_status;
+		$this->db->where('booking_code',$booking_code);
+		$this->db->update('wedding_booking',$datab);
+
+	}
 
 }
 

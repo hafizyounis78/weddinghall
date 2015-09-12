@@ -1,6 +1,6 @@
 <?php
 
-
+$isUpdate=0;
 if (isset($addpayments))
 {
 foreach($addpayments as $row);
@@ -26,7 +26,7 @@ foreach($addpayments as $row);
 								<div class="form-body">
 									<h3 class="form-section"></h3>
 									
-                                    
+                                   <input id="hdnAction" name="hdnAction" type="hidden" value="<?php echo $isUpdate;?>" /> 
                                     <div class="alert alert-danger display-hide">
 										<button class="close" data-close="alert"></button>
 										You have some form errors. Please check below.

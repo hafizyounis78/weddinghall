@@ -4,10 +4,21 @@ $(document).ready(function(){
 		var payment_amount = $('#payment_amount').val();
 		var Total = $('#payments_footer #tdTotal').html();
 		var final_price= $('#payments_body #final_price_td').html();
-
-		alert(Total);
+		var payment_amount_old=$('#payments_body #payment_amount_td').html();
 		var new_total=0;
-		new_total=parseInt(Total)+parseInt(payment_amount);
+		var action = "addpayments";
+if(document.getElementById('hdnAction').value == '1')
+{
+action = "updatepayments";
+
+new_total=parseInt(Total)+parseInt(payment_amount)-parseInt(payment_amount_old);
+}
+else
+{
+		new_total=parseInt(Total)+parseInt(payment_amount);	
+}
+		
+
 		alert(new_total);
 		if (parseInt(new_total)>parseInt(final_price))
 		{
@@ -15,12 +26,12 @@ $(document).ready(function(){
 			return;
 		}
 		else if (parseInt(new_total)<parseInt(final_price))
-					document.getElementById('booking_status').value =2;
+				document.getElementById('booking_status').value =2;
 		if (parseInt(new_total)==parseInt(final_price))
 		document.getElementById('booking_status').value =3;
-		
+		alert(action);
 		$.ajax({
-			url: "http://localhost/weddinghall/pages/addpayments",
+			url: "http://localhost/weddinghall/pages/"+action,
 			type: "POST",
 			data:  $("#payments_form").serialize(),
 			error: function(xhr, status, error) {
@@ -42,9 +53,10 @@ function updatepayemnts()
 	
 
 $('payments_date').datepicker('setDate',$('#payments_body #payment_date_td').val());
-		//document.getElementById('payment_amount').value =parseInt($('#payments_body #payment_amount_td').html());
+		document.getElementById('payment_date').value =$('#payments_body #payment_date_td').html();
 		   document.getElementById('payment_amount').value = $('#payments_body #payment_amount_td').html();
 		   document.getElementById('invoice_no').value =$('#payments_body #invoice_no_td').html();
+		    document.getElementById('hdnAction').value =1;
 		
 }//end function 
 

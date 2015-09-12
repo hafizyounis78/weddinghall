@@ -237,7 +237,11 @@ function updatebooking()
 		$this->load->model('bookingmodel');
 		return $this->bookingmodel->update_booking();
 	}
-
+function updatepayments()
+	{
+		$this->load->model('paymentsmodel');
+		return $this->paymentsmodel->update_payments();
+	}
 function searchbooking()
 	{
 		
