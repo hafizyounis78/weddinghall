@@ -70,10 +70,10 @@
 									<th width="10%">
 									رقم الهوية
 									</th>
-									<th width="20%">
+									<th width="15%">
 										 الاسم
 									</th>
-									<th width="10%">
+									<th width="8%">
 										 تلفون
 									</th>
 									<th width="10%">
