@@ -596,7 +596,11 @@ function deletebooking($booking_code)
 		return $this->hallmodel->get_hall();
 		 		
 	}
-	
+	function booking_status()
+	{
+		$this->load->model('bookingmodel');
+		return $this->bookingmodel->get_booking_status();
+	}
 	function contract()
 	{
 		$this->load->model('contractmodel');

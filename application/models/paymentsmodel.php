@@ -94,7 +94,7 @@ if(isset($requestData['emp_id']) && $requestData['emp_id'] !='')
 		{
 			$myquery = $myquery." AND name LIKE '%".$requestData['name']."%' ";
 		}
-		if(isset($requestData['mobile']) && $requestData['mobile'] !='')
+	if(isset($requestData['mobile']) && $requestData['mobile'] !='')
 		{
 			$myquery = $myquery." AND mobile LIKE '%".$requestData['mobile']."%' ";
 		}
