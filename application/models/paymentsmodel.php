@@ -87,11 +87,16 @@ if(isset($requestData['w_code']) && $requestData['w_code'] !='')
     }
 public function get_all_emp_payments_search($requestData)
     {
-        $myquery = "select employee_payments.*,employee.*,contract_type.*,payment_type.*
+        /*$myquery = "select employee_payments.*,employee.*,contract_type.*,payment_type.*
 					from employee_payments,employee,contract_type,payment_type
 					where employee_payments.emp_code=employee.emp_code
 					and employee.contract_code=contract_type.contract_code
-					and employee_payments.payment_type=payment_type.payment_code";
+					and employee_payments.payment_type=payment_type.payment_code";*/
+		 $myquery = "SELECT employee_payments. * , employee. * , contract_type. * , payment_type. *
+					 FROM employee LEFT JOIN employee_payments ON employee.emp_code = employee_payments.emp_code
+					               LEFT JOIN payment_type ON employee_payments.payment_type = payment_type.payment_code,
+						contract_type
+					WHERE employee.contract_code = contract_type.contract_code";
 
 if(isset($requestData['emp_id']) && $requestData['emp_id'] !='')
 		{
