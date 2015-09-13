@@ -100,17 +100,19 @@ if(isset($requestData['emp_id']) && $requestData['emp_id'] !='')
 		}
 		if(isset($requestData['contract_code']) && $requestData['contract_code'] !='')
 		{
-			$myquery = $myquery." AND employee_payments.contract_code LIKE '%".$requestData['contract_code']."%' ";
+				$myquery = $myquery." AND employee.contract_code = ".$requestData['contract_code'];
+		//	$myquery = $myquery." AND employee_payments.contract_code LIKE '%".$requestData['contract_code']."%' ";
 		}
 
 		if(isset($requestData['payment_amount']) && $requestData['payment_amount'] !='')
 		{
 			$myquery = $myquery." AND payment_amount LIKE '".$requestData['payment_amount']."%' ";
 		}
-		if(isset($requestData['payment_type']) && $requestData['payment_type'] !='')
+	if(isset($requestData['payment_type']) && $requestData['payment_type'] !='')
 		{
 			$myquery = $myquery." AND employee_payments.payment_type LIKE '".$requestData['payment_type']."%' ";
 		}
+		
 		if(isset($requestData['payment_date_from']) && $requestData['payment_date_from'] != ''
 		   && isset($requestData['payment_date_to']) && $requestData['payment_date_to'] != '')
 		{
