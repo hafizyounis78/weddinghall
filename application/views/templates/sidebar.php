@@ -119,11 +119,7 @@
 							<i class="icon-basket"></i>
 							دفعات الموظفين</a>
 						</li>
-						<li <?php if($title == 'searchemppayments') echo 'class="active"'; ?>>
-							<a href="<?php echo base_url();?>searchemppayments">
-							<i class="icon-handbag"></i>
-							استعلام على دفعات الموظفين</a>
-						</li>
+						
 						<li>
 							<a href="ecommerce_products_edit.html">
 							<i class="icon-pencil"></i>

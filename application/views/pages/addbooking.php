@@ -181,7 +181,7 @@ if (isset($addbooking))
 										</label>
 										<div class="col-md-4">
                                         	
-											<select id="sev_code" class="form-control select2me" id="sev_code" name="sev_code">
+											<select id="sev_code" class="form-control select2me" name="sev_code">
 												<option value="0">Select...</option>
 												<?php
 												$selected;

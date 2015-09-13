@@ -130,6 +130,12 @@ $(document).ready(function(){
 	
 	var length=document.getElementById("serv_body").rows.length;
 	var new_sev_code=document.getElementById('sev_code').value;
+//	document.getElementById("sev_code").selectedIndex = "0"
+   if(new_sev_code==0)
+   {
+		alert('يجب اختيار خدمة جديدة');
+   		return;
+   }
 	for (i = 1; i < length; i++)
 		{ sev_code_rec=$('#serv_body #sev_code_td'+i).html();
 			if (new_sev_code==sev_code_rec)
@@ -162,6 +168,8 @@ $(document).ready(function(){
 			//   alert($('#service_form #sev_code').html());
    				
 				document.getElementById("sev_code").selectedIndex = "0";
+						document.getElementById("sev_price").value= 0;
+
 //				document.getElementById("sev_code").options.remove(sev_index)
 	//			document.getElementById("sev_code").caption="";
 				//$('#sev_code').prop('selectedIndex',0);
