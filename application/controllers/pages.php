@@ -362,7 +362,7 @@ function emp_payments_grid_data()
 
 		foreach($rec as $row){
 			$nestedData=array(); 
-			$btn='<a href="pages/view/addpayments/'.$row->emp_code.'" class="btn default btn-xs blue">
+			$btn='<a href="pages/view/addemppayments/'.$row->emp_code.'" class="btn default btn-xs blue">
 										<i class="fa fa-edit"></i> اضافة دفعه مالية </a>';
 
 			$nestedData[] = $i++;

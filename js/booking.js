@@ -233,6 +233,7 @@ $(document).ready(function(){
 			success: function(data){
 					//alert(data);
 				alert ('تمت عملية اضافة السعر بنجاح');
+				window.location.href="http://localhost/weddinghall/addpayments/"+booking_code;
 			}
 		});//END $.ajax
 	}); // END CLICK
