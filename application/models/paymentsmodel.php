@@ -24,11 +24,18 @@ and   wedding_booking.cut_id=customer.cut_id";
     }
 	public function get_all_payments_search($requestData)
     {
-        $myquery = "select payments.*,wedding_booking.*,customer.*,wedding_hall.*
+        /*$myquery = "select payments.*,wedding_booking.*,customer.*,wedding_hall.*
 from  payments,wedding_booking,customer,wedding_hall
 where wedding_booking.booking_code=payments.booking_code
 and   wedding_booking.w_code=wedding_hall.w_code
-and   wedding_booking.cut_id=customer.cut_id";
+and   wedding_booking.cut_id=customer.cut_id";*/
+		
+		$myquery = "SELECT payments. * , wedding_booking. * , customer. * , wedding_hall. *
+					FROM wedding_booking LEFT JOIN payments ON wedding_booking.booking_code = payments.booking_code,
+						 customer, wedding_hall
+					WHERE wedding_booking.w_code = wedding_hall.w_code
+					  AND wedding_booking.cut_id = customer.cut_id";
+
 
 if(isset($requestData['w_code']) && $requestData['w_code'] !='')
 		{
