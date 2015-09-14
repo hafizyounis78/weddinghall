@@ -84,11 +84,13 @@ and   wedding_booking.cut_id=customer.cut_id";
 	}
 	public function get_booking_by_date($booking_date,$w_code)
 	{
-		 $myquery = "select count(1) as cn
-					 from   wedding_booking
-					 where  booking_date='".$booking_date."'
-					 and w_code=$w_code
-					 and booking_status<>4";
+		 $myquery = "SELECT customer.name
+					 FROM wedding_hall, customer, wedding_booking
+					 WHERE wedding_booking.w_code = wedding_hall.w_code
+					 AND wedding_booking.cut_id = customer.cut_id
+					 AND booking_date='".$booking_date."'
+					 AND wedding_booking.w_code=$w_code
+					 AND booking_status<>4";
         return $this->db->query($myquery);
 
 	}

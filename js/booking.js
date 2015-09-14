@@ -21,7 +21,7 @@ $(document).ready(function(){
 	
 				document.getElementById('hdnBookingcode').value = result;
 				alert ('تمت العملية بنجاح');
-					alert(document.getElementById('hdnBookingcode').value )			;
+
 			}
 		});//END $.ajax
 	}); // END CLICK
@@ -86,11 +86,13 @@ $(document).ready(function(){
 			complete: function(){},
 			success: function(result){
 				
-				if(result==1)
+			//	if(result==1)
+			alert(result.name);
+			if (result.name== null )
 				{
 				document.getElementById('booking_date').value = '';
 				
-				alert ('هذا اليوم محجوز');
+			//	alert ('هذا اليوم محجوز');
 				
 				}
 			}
