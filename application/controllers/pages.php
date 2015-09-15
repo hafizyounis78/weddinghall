@@ -1,6 +1,8 @@
 <?php
 class Pages extends CI_Controller 
 {
+	private $bookingdate;
+	private $hall;
 	function view ( $page = 'home', $indata = '')
 	{
 		if( ! file_exists('application/views/pages/'.$page.'.php'))
@@ -40,10 +42,22 @@ class Pages extends CI_Controller
 			}
 			if($page == 'addbooking')
 			{
-				//$data[$page] = $this->viewbookingupdate($indata);
+				// FROM FULL CALENDER
+				if(isset($_SESSION['bookingDate']))
+				{
+					$data['calenderdate'] = $_SESSION['bookingDate'];
+					unset($_SESSION['bookingDate']);
+				}
+				if(isset($_SESSION['bookingHall']))
+				{
+					$data['calenderhall'] = $_SESSION['bookingHall'];
+					unset($_SESSION['bookingHall']);
+				}
+				//----
+				
 				$data['sev'] =$this->services();
 				$data['hall'] =$this->wedding_hall();
-				//	
+				
 			}
 			if($page == 'searchbooking')
 			{
@@ -421,7 +435,13 @@ function emp_payments_grid_data()
    		echo json_encode($output);
 		
 	}
-	
+	function sendBookingData()
+	{
+		if(isset($_POST['date']))
+			$_SESSION['bookingDate'] = $_POST['date'];
+		if(isset($_POST['hall']))
+			$_SESSION['bookingHall'] = $_POST['hall'];
+	}
 	function addbooking()
 	{
 		$this->load->model('bookingmodel');

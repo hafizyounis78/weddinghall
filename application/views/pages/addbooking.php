@@ -20,7 +20,7 @@ if (isset($addbooking))
 					<div class="portlet box green">
 						<div class="portlet-title">
 							<div class="caption">
-								<i class="fa fa-gift"></i>حجز موعد
+								<i class="fa fa-gift"></i>حجز موعد 
 							</div>
 							
 						</div>
@@ -48,12 +48,22 @@ if (isset($addbooking))
 											<select class="form-control select2me" id="w_code" name="w_code">
 												<option value="0">Select...</option>
 												<?php
+												
 												$selected;
 												foreach($hall as $row2)
-												{$selected = "";
+												{
+													$selected = "";
 													if (isset($addbooking))
-													if ($row->w_code==$row2->w_code)	
-													$selected = 'selected="selected"'; 
+													{
+														if ($row->w_code==$row2->w_code)	
+															$selected = 'selected="selected"';
+													}
+													else if (isset($calenderhall))
+													{
+														if ($row2->w_code == $calenderhall)	
+															$selected = 'selected="selected"';
+													}
+													
 												?>
 							                     <option value="<?php echo $row2->w_code;?>" <?php echo $selected;?> > <?php echo $row2->w_name;?></option>
 
@@ -77,7 +87,9 @@ if (isset($addbooking))
 										<div class="col-md-4">
 											<div class="input-group date date-picker" data-date-format="yyyy-mm-dd">
 												<input type="text" class="form-control" readonly id="booking_date" name="booking_date"
-                                                  <?php if (isset($row->booking_date)) {echo 'value="'.$row->booking_date.'"';}?>/>
+                                                  <?php if (isset($row->booking_date)) {echo 'value="'.$row->booking_date.'"';}
+												  	else if(isset($calenderdate)) {echo 'value="'.$calenderdate.'"';};
+												  ?>/>
 												<span class="input-group-btn">
 												<button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
 												</span>

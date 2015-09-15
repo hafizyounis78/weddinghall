@@ -155,11 +155,22 @@ var Calendar = function() {
     					} //END SUCCESS
 						
 					});//END AJAX
-				}//END FUN
-            });
+				},//END FUN EVENT
+				dayClick: function(date, jsEvent, view) {
+					$.ajax({
+    						url:"http://localhost/weddinghall/pages/sendBookingData",
+    						type: "POST",
+							data: { date: date.format(), hall: "1" },
+    						success:function(){
+								window.location.href="addbooking";
+							}
+						   });
 
-        }
+    			}// END dayClick
+            }); //END fullCalendar
 
-    };
+        }// END IF RTL
+
+    }; // END initCalendar
 
 }();
