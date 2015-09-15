@@ -173,7 +173,7 @@
 			  
 			  var d = year+'-'+month+'-'+day;
 			  
-			  var bookingDate = new Date(date);
+			  var bookingDate = new Date(Tdate);
 			  var today = new Date(d);
 			  //alert ("bookingDate: "+bookingDate);
 			  //alert ("today: "+today);
