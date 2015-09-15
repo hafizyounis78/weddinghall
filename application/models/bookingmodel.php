@@ -95,12 +95,13 @@ and wedding_booking.booking_status=booking_status_tb.booking_status_code";
 	}
 	public function get_booking_by_hall($w_code)
 	{
-		 $myquery = "select wedding_hall.*,customer.*,wedding_booking.*
-					  from wedding_hall,customer,wedding_booking
+		 $myquery = "select wedding_hall.*,customer.*,wedding_booking.*,booking_status_tb.*
+					  from wedding_hall,customer,wedding_booking,booking_status_tb
 					 WHERE wedding_booking.w_code = wedding_hall.w_code
 					 AND wedding_booking.cut_id = customer.cut_id
 					 AND wedding_booking.w_code=$w_code
-					 AND booking_status<>4";
+					 AND booking_status<>4
+					 and wedding_booking.booking_status=booking_status_tb.booking_status_code";
         return $this->db->query($myquery);
 
 	}
