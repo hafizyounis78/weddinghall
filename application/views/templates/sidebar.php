@@ -54,20 +54,11 @@
 					</a>
 					<ul class="sub-menu">
 						<li <?php if($title == 'home') echo 'class="active"';?> >
-							<a href="home">
+							<a href="<?php echo base_url();?>home">
 							<i class="icon-bar-chart"></i>
 							الصفحة الرئيسية</a>
 						</li>
-						<li>
-							<a href="index_2.html">
-							<i class="icon-bulb"></i>
-							New Dashboard #1</a>
-						</li>
-						<li>
-							<a href="index_3.html">
-							<i class="icon-graph"></i>
-							New Dashboard #2</a>
-						</li>
+						
 					</ul>
 				</li>
 				<li <?php if($title == 'booking' || $title == 'addbooking') echo 'class="active open"'; ?>>
@@ -88,16 +79,7 @@
 							<i class="icon-tag"></i>
 							استعلام على الحجوزات</a>
 						</li>
-						<li>
-							<a href="ecommerce_products.html">
-							<i class="icon-handbag"></i>
-							Products</a>
-						</li>
-						<li>
-							<a href="ecommerce_products_edit.html">
-							<i class="icon-pencil"></i>
-							Product Edit</a>
-						</li>
+						
 					</ul>
 				</li>
                 <li <?php if($title == 'payments' || $title == 'emppayments') echo 'class="active open"'; ?>>
@@ -120,11 +102,7 @@
 							دفعات الموظفين</a>
 						</li>
 						
-						<li>
-							<a href="ecommerce_products_edit.html">
-							<i class="icon-pencil"></i>
-							Product Edit</a>
-						</li>
+						
 					</ul>
 				</li>
                 <li <?php if($title == 'users') echo 'class="active open"';?>>
@@ -139,13 +117,14 @@
 					?>
 					</a>
 					<ul class="sub-menu">
-						<li <?php if($title == 'users') echo 'class="active"'; ?>>
-							<a href="<?php echo base_url();?>users">
-							عرض المستخدمين</a>
-						</li>
+						
 						<li <?php if($title == 'adduser') echo 'class="active"'; ?>>
 							<a href="<?php echo base_url();?>adduser">
 							اضافة مستخدم</a>
+						</li>
+                        <li <?php if($title == 'users') echo 'class="active"'; ?>>
+							<a href="<?php echo base_url();?>users">
+							عرض المستخدمين</a>
 						</li>
 					</ul>
 				</li>
@@ -157,18 +136,16 @@
 					<span class="<?php if($title == 'employee' || $title == 'addemp') echo'arrow open'; else echo'arrow'; ?>">
 					</a>
 					<ul class="sub-menu">
-						<li <?php if($title == 'employee') echo 'class="active"'; ?>>
-							<a href="<?php echo base_url();?>employee">
-							عرض الموظفين</a>
-						</li>
+						
 						<li <?php if($title == 'addemp') echo 'class="active"'; ?>>
 							<a href="<?php echo base_url();?>addemp">
 							اضافة موظف</a>
 						</li>
-						<li>
-							<a href="layout_language_bar.html">
-							Language Switch Bar</a>
+						<li <?php if($title == 'employee') echo 'class="active"'; ?>>
+							<a href="<?php echo base_url();?>employee">
+							عرض الموظفين</a>
 						</li>
+                       
 					</ul>
 				</li>
 				<li <?php if($title == 'hall' || $title == 'addhall') echo 'class="active open"';?>>
@@ -188,10 +165,7 @@
 							<a href="<?php echo base_url();?>hall">
 							عرض الصالات</a>
 						</li>
-						<li>
-							<a href="ui_nestable.html">
-							Nestable List</a>
-						</li>
+						
 					</ul>
 				</li>
 				<li <?php if($title == 'services' || $title == 'addservices') echo 'class="active open"';?>>

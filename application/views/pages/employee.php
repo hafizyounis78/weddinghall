@@ -53,7 +53,7 @@
 								echo '<td align="center"><a href="'.base_url().'addemp/'.$row->emp_code.'" class="btn default btn-xs purple">
 										<i class="fa fa-edit"></i> تعديل </a>
 
-								<button id="btndelemp" name="btndelemp" type="submit" value="Delete" class="btn default btn-xs black" onclick="deleteEmp('.$row->emp_code.')"><i class="fa fa-trash-o"></i> Delete</button>
+								<button id="btndelemp" name="btndelemp" type="submit" value="Delete" class="btn default btn-xs black" onclick="deleteEmp('.$row->emp_code.')"><i class="fa fa-trash-o"></i> حذف</button>
 ';
 					echo '</td>';
 							echo '</tr>';

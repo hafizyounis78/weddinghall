@@ -139,8 +139,8 @@ if (isset($addbooking))
 								<div class="form-actions">
 									<div class="row">
 										<div class="col-md-offset-3 col-md-9">
-											<button id="btnAddbooking" name="btnAddbooking" type="submit"  class="btn green">Submit</button>
-											<button type="button" class="btn default">Cancel</button>
+											<button id="btnAddbooking" name="btnAddbooking" type="submit"  class="btn green">حفظ</button>
+											<button type="button" class="btn default" value="Cancel" onclick="window.location='http://localhost/weddinghall/';">عودة</button>
 										</div>
 									</div>
 								</div>
@@ -217,7 +217,7 @@ if (isset($addbooking))
 									<div class="row">
 										<div class="col-md-offset-3 col-md-9">
 											<button id="btnAddbooking_details" name="btnAddbooking_details" type="submit"  class="btn green">Submit</button>
-											<button type="button" class="btn default">Cancel</button>
+											
 										</div>
 									</div>
 								</div>
@@ -361,8 +361,8 @@ if (isset($addbooking))
 								<div class="form-actions">
 									<div class="row">
 										<div class="col-md-offset-3 col-md-9">
-											<button id="btnSaveprice" name="btnSaveprice" type="submit"  class="btn green">Submit</button>
-											<button type="button" class="btn default">Cancel</button>
+											<button id="btnSaveprice" name="btnSaveprice" type="submit"  class="btn green">حفظ</button>
+										<button type="button" class="btn default" value="Cancel" onclick="window.location='http://localhost/weddinghall/';">عودة</button>
 										</div>
 									</div>
 								</div>

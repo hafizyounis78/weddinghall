@@ -76,7 +76,7 @@ if (isset($addhall))
 									<div class="row">
 										<div class="col-md-offset-3 col-md-9">
 											<button type="submit" class="btn green" id="btnAddhall" name="btnAddhall">Submit</button>
-											<button type="button" class="btn default" >Cancel</button>
+										<button type="button" class="btn default" value="Cancel" onclick="window.location='http://localhost/weddinghall/hall/';">عودة</button>
 										</div>
 									</div>
 								</div>

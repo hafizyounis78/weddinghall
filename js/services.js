@@ -26,6 +26,14 @@ $(document).ready(function(){
 /***********************delete***************/
 function deleteservice(sev_code)
 {
+	var r = confirm('هل انت متأكد من الإلفاء');
+if (r == true) {
+    x =1;
+} else {
+    x = 0;
+}
+if(x==1)
+{
 		$.ajax({
 			url: "pages/deleteservice/"+sev_code,
 			type: "POST",
@@ -39,4 +47,5 @@ function deleteservice(sev_code)
 					window.location.href="services";
 			}
 		});//END $.ajax
+}
 }

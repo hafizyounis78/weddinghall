@@ -1,7 +1,7 @@
 <!-- END STYLE CUSTOMIZER -->
 			<!-- BEGIN PAGE HEADER-->
 			<h3 class="page-title">
-			<?php echo $title;?> <small>blank page</small>
+			
 			</h3>
 			<div class="page-bar">
 				<ul class="page-breadcrumb">
@@ -12,10 +12,7 @@
 					</li>
 					<li>
 						<a href="#">Page Layouts</a>
-						<i class="fa fa-angle-right"></i>
-					</li>
-					<li>
-						<a href="#"><?php echo $title;?></a>
+			
 					</li>
 				</ul>
 				<div class="page-toolbar">

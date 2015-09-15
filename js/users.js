@@ -29,6 +29,14 @@ $(document).ready(function(){
 /***********************delete***************/
 function deleteUser(username)
 {
+var r = confirm('هل انت متأكد من الإلفاء');
+if (r == true) {
+    x =1;
+} else {
+    x = 0;
+}
+if(x==1)
+{
 		$.ajax({
 			url: "pages/deleteuser/"+username,
 			type: "POST",
@@ -43,4 +51,5 @@ function deleteUser(username)
 					window.location.href="users";
 			}
 		});//END $.ajax
+}
 }

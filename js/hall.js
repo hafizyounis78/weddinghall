@@ -28,6 +28,13 @@ $(document).ready(function(){
 }); // END READY
 /***********************delete***************/
 function deletehall(w_code)
+{var r = confirm('هل انت متأكد من الإلفاء');
+if (r == true) {
+    x =1;
+} else {
+    x = 0;
+}
+if(x==1)
 {
 		$.ajax({
 			url: "pages/deletehall/"+w_code,
@@ -42,4 +49,5 @@ function deletehall(w_code)
 					window.location.href="hall";
 			}
 		});//END $.ajax
+}
 }

@@ -34,7 +34,14 @@ $(document).ready(function(){
 
 /***********************delete***************/
 function deleteEmp(empId)
-{						
+{		var r = confirm('هل انت متأكد من الإلفاء');
+if (r == true) {
+    x =1;
+} else {
+    x = 0;
+}
+if(x==1)
+{				
 		$.ajax({
 			url: "pages/delemp/"+empId,
 			type: "POST",
@@ -48,5 +55,6 @@ function deleteEmp(empId)
 					window.location.href="employee";
 			}
 		});//END $.ajax
+}
 }
 /**************************update******************/
