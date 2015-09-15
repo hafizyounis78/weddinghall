@@ -1,3 +1,9 @@
+<style>
+ 	.day:hover
+	{
+		background-color:#c0c0c0;
+	}
+ </style>
 	<!-- Begin: life time stats -->
 					<div class="portlet">
 						<div class="portlet-title">

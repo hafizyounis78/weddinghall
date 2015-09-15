@@ -19,7 +19,7 @@ $(document).ready(function(){
 			beforeSend: function(){},
 			complete: function(){},
 			success: function(returndb){
-					alert (returndb);
+
 					alert ('تمت العملية بنجاح');
 					window.location.href="users";
 			}
@@ -46,7 +46,7 @@ if(x==1)
 			beforeSend: function(){},
 			complete: function(){},
 			success: function(returndb){
-					alert (returndb);
+				//	alert (returndb);
 					alert ('تمت عملية الحذف بنجاح');
 					window.location.href="users";
 			}
