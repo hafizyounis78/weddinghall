@@ -1,6 +1,7 @@
-var cnt =0;
 // JavaScript Document// JavaScript Document
 $(document).ready(function(){
+	var cnt =0;
+	
 	$('#btnAddbooking').click(function(event) {							
 		event.preventDefault();
 		var action = "Addbooking";
@@ -25,11 +26,6 @@ $(document).ready(function(){
 			}
 		});//END $.ajax
 	}); // END CLICK
-}); // END READY
-
-
-/*********************check booking date*******************/
-$(document).ready(function(){
 	$('#booking_date').change(function(event) {							
 		event.preventDefault();
 		
@@ -87,10 +83,10 @@ $(document).ready(function(){
 			success: function(result){
 				
 			//	if(result==1)
-			alert(result.name);
+			//alert(result.name);
 			if (result.name== null )
 				{
-				document.getElementById('booking_date').value = '';
+				//document.getElementById('booking_date').value = '';
 				
 			//	alert ('هذا اليوم محجوز');
 				
@@ -99,11 +95,7 @@ $(document).ready(function(){
 		});//END $.ajax	
 		
 	}); // END CLICK
-}); // END READY		
-
-/*********************booking_details*******************/
-$(document).ready(function(){
-	$('#sev_code').change(function(event) {							
+ 	$('#sev_code').change(function(event) {							
 		event.preventDefault();
 		var sev_code = $(this).find('option:selected').val();
 		
@@ -124,9 +116,7 @@ $(document).ready(function(){
 			}
 		});//END $.ajax	
 		
-	}); // END CLICK
-}); // END READY		
-$(document).ready(function(){
+	});
 	$('#btnAddbooking_details').click(function(event) {							
 		event.preventDefault();
 	
@@ -185,39 +175,7 @@ $(document).ready(function(){
 
 			}
 		});//END $.ajax
-	}); // END CLICK
-}); // END READY
-
-/***********************delete***************/
-
-function deletebooking(booking_code)
-{
-var r = confirm('هل انت متأكد من الإلفاء');
-if (r == true) {
-    x =1;
-} else {
-    x = 0;
-}
-if(x==1)
-{
-		$.ajax({
-			
-			url: "pages/deletebooking/"+booking_code,
-			type: "POST",
-			error: function(){
-				alert('error');
-			},
-			beforeSend: function(){},
-			complete: function(){},
-			success: function(){
-					alert ('تمت عملية الإلغاء بنجاح');
-					
-			}
-		});//END $.ajax
-}
-}
-/*********************Service Price*******************/
-$(document).ready(function(){
+	});
 	$('#btnSaveprice').click(function(event) {							
 		event.preventDefault();
 		
@@ -239,42 +197,70 @@ $(document).ready(function(){
 			}
 		});//END $.ajax
 	}); // END CLICK
-}); // END READY
-/*******************delete selected service************************/
-function deleteselectedservice(sev_code)
-{
-booking_code= document.getElementById('hdnBookingcode').value;
 
-var r = confirm('هل انت متأكد من عملة الحذف');
-if (r == true) {
-    x =1;
-} else {
-    x = 0;
-}
-if(x==1)
-{
-
-		$.ajax({
-			url: "http://localhost/weddinghall/pages/delete_selectedservice/"+sev_code+"/"+booking_code,
-			type: "POST",
-			data:  $("#serv_body").serialize(),
-			error: function(){
-				alert('error');
-			},
-			beforeSend: function(){},
-			complete: function(){},
-			success: function(data){
-					alert ('تمت عملية الحذف بنجاح');
-				$( "#serv_body" ).html(data);
-				if ( $('#serv_body #tdTotal').html()!='')
-				   document.getElementById('total_price').value = $('#serv_body #tdTotal').html();
-				else
-				   document.getElementById('total_price').value = 0;
-
+//-*********************** functions ***********************--/
+	function deleteselectedservice(sev_code)
+	{
+	booking_code= document.getElementById('hdnBookingcode').value;
+	
+	var r = confirm('هل انت متأكد من عملة الحذف');
+	if (r == true) {
+		x =1;
+	} else {
+		x = 0;
+	}
+	if(x==1)
+	{
+	
+			$.ajax({
+				url: "http://localhost/weddinghall/pages/delete_selectedservice/"+sev_code+"/"+booking_code,
+				type: "POST",
+				data:  $("#serv_body").serialize(),
+				error: function(){
+					alert('error');
+				},
+				beforeSend: function(){},
+				complete: function(){},
+				success: function(data){
+						alert ('تمت عملية الحذف بنجاح');
+					$( "#serv_body" ).html(data);
+					if ( $('#serv_body #tdTotal').html()!='')
+					   document.getElementById('total_price').value = $('#serv_body #tdTotal').html();
+					else
+					   document.getElementById('total_price').value = 0;
+	
+					
+						//window.location.href="users";
+				}
+			});//END $.ajax
+	}
+	
+	}
+	
+	function deletebooking(booking_code)
+	{
+	var r = confirm('هل انت متأكد من الإلفاء');
+	if (r == true) {
+		x =1;
+	} else {
+		x = 0;
+	}
+	if(x==1)
+	{
+			$.ajax({
 				
-					//window.location.href="users";
-			}
-		});//END $.ajax
-}
-
-}
+				url: "pages/deletebooking/"+booking_code,
+				type: "POST",
+				error: function(){
+					alert('error');
+				},
+				beforeSend: function(){},
+				complete: function(){},
+				success: function(){
+						alert ('تمت عملية الإلغاء بنجاح');
+						
+				}
+			});//END $.ajax
+	}
+	}
+}); // END READY
