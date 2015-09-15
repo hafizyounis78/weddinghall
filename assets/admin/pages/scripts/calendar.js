@@ -173,10 +173,10 @@
 			  
 			  var d = year+'-'+month+'-'+day;
 			  
-			  var bookingDate = new Date(Tdate);
+			  var bookingDate = new Date(date);
 			  var today = new Date(d);
-			  //alert ("bookingDate: "+bookingDate);
-			  //alert ("today: "+today);
+			  alert ("bookingDate: "+bookingDate);
+			  alert ("today: "+today);
 			  if (bookingDate <= today)
 			  {
 				  alert ('يجب ان يكون تاريخ الحجز اكبر من تاريخ اليوم');
