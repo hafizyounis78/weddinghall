@@ -84,11 +84,11 @@ $(document).ready(function(){
 				
 			//	if(result==1)
 			//alert(result.name);
-			if (result.name== null )
+			if (result==1 )
 				{
-				//document.getElementById('booking_date').value = '';
+				document.getElementById('booking_date').value = '';
 				
-			//	alert ('هذا اليوم محجوز');
+				alert ('هذا اليوم محجوز  ');
 				
 				}
 			}
