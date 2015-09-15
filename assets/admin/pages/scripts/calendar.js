@@ -1,4 +1,4 @@
-var Calendar = function() {
+﻿var Calendar = function() {
 
 
     return {
@@ -88,12 +88,6 @@ var Calendar = function() {
 
             //predefined events
             $('#event_box').html("");
-            addEvent("My Event 1");
-            addEvent("My Event 2");
-            addEvent("My Event 3");
-            addEvent("My Event 4");
-            addEvent("My Event 5");
-            addEvent("My Event 6");
 
             $('#calendar').fullCalendar('destroy'); // destroy the calendar
             $('#calendar').fullCalendar({ //re-initialize the calendar
@@ -125,10 +119,11 @@ var Calendar = function() {
                     }
                 },
                 events: function(start, end, timezone, callback){
+						var hall = document.getElementById('w_code').value;
 						$.ajax({
     						url:"http://localhost/weddinghall/pages/booking_calender",
     						type: "POST",
-							data: {},
+							data: {hall:hall},
     						success:function(retrieved_data){
          					// Your code here.. use something like this
 							//alert(retrieved_data.length);
@@ -157,6 +152,12 @@ var Calendar = function() {
 					});//END AJAX
 				},//END FUN EVENT
 				dayClick: function(date, jsEvent, view) {
+					if (document.getElementById('w_code').value == 0)
+					{
+						alert('الرجاء أدخل رقم الصالة');
+						return;
+					}
+					
 					$.ajax({
     						url:"http://localhost/weddinghall/pages/sendBookingData",
     						type: "POST",
@@ -174,3 +175,14 @@ var Calendar = function() {
     }; // END initCalendar
 
 }();
+//----
+$(document).ready(function(){
+	
+	$('#w_code').change(function(event) {							
+		event.preventDefault();
+		
+		Calendar.initCalendar();
+	
+	}); // END ON CHANGE
+
+})// END DOCUMENT

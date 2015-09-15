@@ -8,7 +8,8 @@
 							<div class="row">
 								<div class="col-md-3 col-sm-12">
 									<!-- BEGIN DRAGGABLE EVENTS PORTLET-->
-									<h3 class="event-form-title">اختــر الصالـة</h3>
+                                    <label id="errLable" style="color:#F00;display:none"> الرجاء اختر الصالة</label>
+									<h3 class="event-form-title">الصالـة</h3>
 									<div id="external-events">
 										<form class="inline-form">
                                         	<select class="form-control select2me" id="w_code" name="w_code">
@@ -19,13 +20,11 @@
 													echo '<option value="'.$row->w_code.'" >'.$row->w_name.'</option>';
 												}
 												?>
-											
+                                             </select>
 										</form>
 										<hr/>
 										<div id="event_box">
 										</div>
-										<label for="drop-remove">
-										<input type="checkbox" id="drop-remove"/>remove after drop </label>
 										<hr class="visible-xs"/>
 									</div>
 									<!-- END DRAGGABLE EVENTS PORTLET-->

@@ -144,7 +144,7 @@ class Pages extends CI_Controller
 		return $rec->result();
 		 		
 	}
-function searchemppayments()
+	function searchemppayments()
 	{
 	
 		$this->load->model('paymentsmodel');
@@ -249,7 +249,7 @@ function searchemppayments()
 		echo '<td id="tdTotal">'.$total.'</td>';
 		echo '</tr>';		
 	}
-function booking_details($booking_code)
+	function booking_details($booking_code)
 	{
 		$this->load->model('bookingmodel');
 		$rec = $this->bookingmodel->get_booking_details_by_code($booking_code);
@@ -257,17 +257,17 @@ function booking_details($booking_code)
 		return $rec->result();
 	}
 
-function updatebooking()
+	function updatebooking()
 	{
 		$this->load->model('bookingmodel');
 		return $this->bookingmodel->update_booking();
 	}
-function updatepayments()
+	function updatepayments()
 	{
 		$this->load->model('paymentsmodel');
 		return $this->paymentsmodel->update_payments();
 	}
-function searchbooking()
+	function searchbooking()
 	{
 		
 		$this->load->model('bookingmodel');
@@ -326,7 +326,7 @@ function searchbooking()
 
 		 		
 	}
-function payments_grid_data()
+	function payments_grid_data()
 	{	
 		$this->load->model('paymentsmodel');
 		$rec = $this->paymentsmodel->get_all_payments_search($_REQUEST);
@@ -368,7 +368,7 @@ function payments_grid_data()
 
 		 		
 	}	
-function emp_payments_grid_data()
+	function emp_payments_grid_data()
 	{	
 		$this->load->model('paymentsmodel');
 		$rec = $this->paymentsmodel->get_all_emp_payments_search($_REQUEST);
@@ -413,7 +413,14 @@ function emp_payments_grid_data()
 	function booking_calender()
 	{
 		$this->load->model('bookingmodel');
-		$rec = $this->bookingmodel->get_all_booking();
+		if (isset($_POST['hall']) && $_POST['hall'] != 0)
+		{
+			$rec = $this->bookingmodel->get_booking_by_hall($_POST['hall']);
+		}
+		else
+		{
+			$rec = $this->bookingmodel->get_all_booking();
+		}
 		
 		$rec = $rec->result();
 		
@@ -476,14 +483,14 @@ function emp_payments_grid_data()
 		$this->load->model('usermodel');
 		return $this->usermodel->get_user_by_username($username);
 	}
-function viewbookingupdate($booking_code)
+	function viewbookingupdate($booking_code)
 	{
 		$this->load->model('bookingmodel');
 		$rec=$this->bookingmodel->get_booking_by_code($booking_code);
 		return $rec->result();
 	}
-function get_booking_date($booking_date,$w_code)
-{
+	function get_booking_date($booking_date,$w_code)
+	{
 		$this->load->model('bookingmodel');
 		$rec=$this->bookingmodel->get_booking_by_date($booking_date,$w_code);
 	
@@ -492,40 +499,40 @@ function get_booking_date($booking_date,$w_code)
   			echo $row->cn;
 		}
 	
-}
-function employee_view($emp_code)
+	}
+	function employee_view($emp_code)
 	{
 		$this->load->model('paymentsmodel');
 		$rec=$this->paymentsmodel->get_emppayments_by_code($emp_code);
 		return $rec->result();
 	}	
 	
-function payment_view($booking_code)
+	function payment_view($booking_code)
 	{
 		$this->load->model('paymentsmodel');
 		$rec=$this->paymentsmodel->get_payments_by_code($booking_code);
 		return $rec->result();
 	}	
 
-function viewpaydata($booking_code)
+	function viewpaydata($booking_code)
 	{
 		$this->load->model('paymentsmodel');
 		$rec=$this->paymentsmodel->get_booking_by_code($booking_code);
 		return $rec->result();
 	}
-function viewemppaydata($emp_code)
+	function viewemppaydata($emp_code)
 	{
 		$this->load->model('paymentsmodel');
 		return $this->paymentsmodel->get_emp_by_code($emp_code);
 		 
 	}
 
-function viewhallupdate($w_code)
+	function viewhallupdate($w_code)
 	{
 		$this->load->model('hallmodel');
 		return $this->hallmodel->get_hall_by_code($w_code);
 	}
-function viewserviceupdate($sev_code)
+	function viewserviceupdate($sev_code)
 	{
 		$this->load->model('servicemodel');
 		return $this->servicemodel->get_service_by_code($sev_code);
@@ -552,7 +559,7 @@ function viewserviceupdate($sev_code)
 		return $this->hallmodel->delete_hall($w_code);
 
 	}
-function deletebooking($booking_code)
+	function deletebooking($booking_code)
 	{
 		$this->load->model('bookingmodel');
 		return $this->bookingmodel->delete_booking($booking_code);
