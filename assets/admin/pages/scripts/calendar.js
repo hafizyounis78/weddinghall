@@ -160,7 +160,7 @@ var Calendar = function() {
 					$.ajax({
     						url:"http://localhost/weddinghall/pages/sendBookingData",
     						type: "POST",
-							data: { date: date.format(), hall: "1" },
+							data: { date: date.format(), hall: document.getElementById('w_code').value },
     						success:function(){
 								window.location.href="addbooking";
 							}

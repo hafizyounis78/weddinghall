@@ -32,7 +32,10 @@ class Pages extends CI_Controller
 			   $page == 'booking'||$page == 'payments'||$page == 'emppayments'||$page=='searchpayments'||$page=='searchemppayments'||$page=='searchbooking')
 					$data[$page] = $this->$page();
 		
-		
+			if($page == 'home')
+			{
+				$data['hall'] =$this->wedding_hall();
+			}
 			if($page == 'addbooking' && $indata !='')
 			{
 				$data[$page] = $this->viewbookingupdate($indata);
