@@ -1,5 +1,14 @@
 ﻿// JavaScript Document
+
 $(document).ready(function(){
+	var form = $( "#user_form" );
+	form.on('beforeSubmit', function(e) {
+		form.validate();
+		alert('123');
+   // Do your things
+   if (cannotSubmitBecauseOfProblem)
+      e.result = false; // Prevent form submission.
+})
 	$('#btnAdduser').click(function(event) {							
 		event.preventDefault();
 		var action = "adduser";
@@ -9,7 +18,7 @@ $(document).ready(function(){
 		$.ajax({
 			url: "http://localhost/weddinghall/pages/"+action,
 			type: "POST",
-			data:  $("#form_sample_3").serialize(),
+			data:  $("#user_form").serialize(),
 			error: function(xhr, status, error) {
   				//var err = eval("(" + xhr.responseText + ")");
   				alert(xhr.responseText);
