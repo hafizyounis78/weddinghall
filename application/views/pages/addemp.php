@@ -26,7 +26,7 @@ $isUpdate = 1;
 						</div>
 						<div class="portlet-body form">
 							<!-- BEGIN FORM-->
-							<form action="#" id="form_sample_3" class="form-horizontal">
+							<form action="#" id="employee_form" class="form-horizontal">
 								<div class="form-body">
 									<h3 class="form-section"></h3>
 									<input id="hdnAction" name="hdnAction" type="hidden" value="<?php echo $isUpdate;?>" />
@@ -44,7 +44,7 @@ $isUpdate = 1;
 										* </span>
 										</label>
 										<div class="col-md-4">
-											<input type="text" name="emp_id" <?php if (isset($row->emp_id)) {echo 'value="'.$row->emp_id.'"';}?>"  data-required="1" class="form-control"/>
+											<input type="text" name="emp_id" <?php if (isset($row->emp_id)) {echo 'value="'.$row->emp_id.'"';}?>  data-required="1" class="form-control"/>
 										</div>
 									</div>
 
@@ -53,7 +53,7 @@ $isUpdate = 1;
 										* </span>
 										</label>
 										<div class="col-md-4">
-											<input type="text" name="name" data-required="1"  <?php if (isset($row->name)) {echo 'value="'.$row->name.'"';}?>" class="form-control"/>
+											<input type="text" name="name" data-required="1"  <?php if (isset($row->name)) {echo 'value="'.$row->name.'"';}?> class="form-control"/>
 										</div>
 									</div>
                                     									<div class="form-group">
@@ -64,12 +64,12 @@ $isUpdate = 1;
 											<div class="radio-list" data-error-container="#form_2_membership_error">
 												<label>
 												<input type="radio" name="sex" value="1" 
-                                                <?php if (isset($row->sex)) {if ($row->sex==1) echo 'checked=checked"';}?>
+                                                <?php if (isset($row->sex)) {if ($row->sex==1) echo 'checked=checked';}?>
                                                 />
 												ذكر </label>
 												<label>
 												<input type="radio" name="sex" value="2"
-                                                <?php if (isset($row->sex)) {if ($row->sex==2) echo 'checked=checked"';}?>
+                                                <?php if (isset($row->sex)) {if ($row->sex==2) echo 'checked=checked';}?>
                                                 />
 												أنتى </label>
 											</div>

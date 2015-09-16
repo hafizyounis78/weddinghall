@@ -15,7 +15,7 @@ if (isset($adduser))
 						</div>
 						<div class="portlet-body form">
 							<!-- BEGIN FORM-->
-                            <form action="#" id="form_sample_3" class="form-horizontal">
+                            <form action="#" id="user_form" class="form-horizontal">
 								<div class="form-body">
 									<h3 class="form-section"></h3>
 									<input id="hdnAction" name="hdnAction" type="hidden" value="<?php echo $isUpdate;?>" />
@@ -117,7 +117,7 @@ if (isset($adduser))
 								<div class="form-actions">
 									<div class="row">
 										<div class="col-md-offset-3 col-md-9">
-											<button type="submit" class="btn green" id="btnAdduser" name="btnAdduser">Submit</button>
+											<button onclick="$.getScript('ts.js');"type="submit" class="btn green" id="btnAdduser" name="btnAdduser">Submit</button>
 											<button type="button" class="btn default" value="Cancel" onclick="window.location='http://localhost/weddinghall/users/';">عودة</button>
 										</div>
 									</div>

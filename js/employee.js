@@ -14,11 +14,11 @@ $(document).ready(function(){
 		$.ajax({
 			url: "http://localhost/weddinghall/pages/"+action,
 			type: "POST",
-			data:  $("#form_sample_3").serialize(),
+			data:  $("#employee_form").serialize(),
 			error: function(xhr, status, error) {
   				//var err = eval("(" + xhr.responseText + ")");
   				alert(xhr.responseText);
-				alert("pages/"+action);
+				//alert("pages/"+action);
 
 			},
 			beforeSend: function(){},
