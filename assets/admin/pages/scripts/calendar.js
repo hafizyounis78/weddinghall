@@ -157,58 +157,18 @@
 						alert('الرجاء أدخل رقم الصالة');
 						return;
 					}
-				
-					var w_code_v=document.getElementById('w_code').value;
-					var Tdate = new Date();
-			  		var day = Tdate.getDate();
-			  if (day>= 1 && day <= 9) 
-				  day = '0' + day;
-				  
-			  var month = Tdate.getMonth()+1;
-			  if (month >= 1 && month <= 9)
-				  month = '0' + month;
-			  
-			  var year = Tdate.getFullYear();
-			  
-			  
-			  var d = year+'-'+month+'-'+day;
-			  
-			  var bookingDate = new Date(date);
-			  var today = new Date(d);
-			  alert ("bookingDate: "+bookingDate);
-			  alert ("today: "+today);
-			  if (bookingDate <= today)
-			  {
-				  alert ('يجب ان يكون تاريخ الحجز اكبر من تاريخ اليوم');
-			//	  document.getElementById('booking_date').value = '';
-				  return;
-			  }
-				  
-	  		  $.ajax({
-				  url: "http://localhost/weddinghall/pages/get_booking_date/"+bookingdate+"/"+w_code_v,
-				  type: "POST",
-				  data: function(){},
-				  error: function(xhr, status, error) {
-					  //var err = eval("(" + xhr.responseText + ")");
-					  alert(xhr.responseText);
-		  
-				  },
-				  beforeSend: function(){},
-				  complete: function(){},
-				  success: function(result){
-					  
-				  //	if(result==1)
-				  //alert(result.name);
-				  if (result==1 )
-					  {
-					  alert ('هذا اليوم محجوز  ');
-					  return;
-	  
-					  
-					  }
-				  }
-			  });//END $.ajax
+
+					// Check Events
+					var events = $('#calendar').fullCalendar('clientEvents',function(evt) {
+    					return evt.start.format()==date.format();
+					});
 					
+					if (events != null && events != '')
+					{
+						alert('الصالة محجوزة');
+						return;
+					}
+					//-----------
 					$.ajax({
     						url:"http://localhost/weddinghall/pages/sendBookingData",
     						type: "POST",
