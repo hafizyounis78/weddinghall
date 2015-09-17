@@ -33,11 +33,11 @@ $isUpdate = 1;
                                     <input id="emp_code" name="emp_code" type="hidden" value="<?php echo $emp_code;?>" />
                                     <div class="alert alert-danger display-hide">
 										<button class="close" data-close="alert"></button>
-										You have some form errors. Please check below.
+										يـوجد خطأ في ادخال الحقول ... الرجــاء التأكد من الادخال بشـكل صحيـح
 									</div>
 									<div class="alert alert-success display-hide">
 										<button class="close" data-close="alert"></button>
-										Your form validation is successful!
+										تمت عملية التحقق بنجاح!
 									</div>
                                     <div class="form-group">
 										<label class="control-label col-md-3">رقم الهوية <span class="required">
@@ -100,7 +100,9 @@ $isUpdate = 1;
 										</div>
                                      </div>
                                      <div class="form-group">
-										<label class="control-label col-md-3">جوال</label>
+										<label class="control-label col-md-3">جوال <span class="required">
+										* </span>
+                                        </label>
 										<div class="col-md-4">
 											<input name="mobile" type="text" class="form-control"
                                             <?php if (isset($row->mobile)) {echo 'value="'.$row->mobile.'"';}?>/>
@@ -121,7 +123,7 @@ $isUpdate = 1;
 										<div class="col-md-4">
 											<select class="form-control select2me" name="job" 
                                              <?php if (isset($row->job)) {echo 'value="'.$row->job.'"';}?>>
-												<option value="0">Select...</option>
+												<option value="">Select...</option>
 												<option value="1" 
                                                  <?php if (isset($row->job)){if ($row->job== 1) echo 'selected=selected';}?>
                                                 >مضيف</option>
@@ -150,7 +152,7 @@ $isUpdate = 1;
 										</label>
 										<div class="col-md-4">
 											<select class="form-control select2me" name="contract_code">
-												<option value="0">Select...</option>
+												<option value="">Select...</option>
 												<option value="1"
                                             <?php if (isset($row->contract_code)){if ($row->contract_code== 1) echo 'selected=selected';}?>
                                                 >عقد دائم</option>
@@ -164,7 +166,9 @@ $isUpdate = 1;
 										</div>
 									</div>
 								<div class="form-group">
-										<label class="control-label col-md-3">الراتب</label>
+										<label class="control-label col-md-3">الراتب<span class="required">
+										* </span>
+                                        </label>
 										<div class="col-md-4">
 											<input name="salary" type="text" class="form-control"
                                             <?php if (isset($row->salary)) {echo 'value="'.$row->salary.'"';}?>
@@ -175,7 +179,7 @@ $isUpdate = 1;
 								<div class="form-actions">
 									<div class="row">
 										<div class="col-md-offset-3 col-md-9">
-											<button id="btnAddemp" name="btnAddemp" type="submit"  class="btn green">Submit</button>
+											<button id="btnAddemp" name="btnAddemp" type="submit"  class="btn green">حـفـظ</button>
 											<button type="button" class="btn default" value="Cancel" onclick="window.location='http://localhost/weddinghall/employee/';">عودة</button>
 										</div>
 									</div>
