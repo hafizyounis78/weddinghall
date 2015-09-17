@@ -1,5 +1,5 @@
 // JavaScript Document// JavaScript Document
-//$(document).ready(function(){
+
 //	$('#btnAddhall').click(function(event) {
 	//	event.preventDefault();
 function addhall(){		
@@ -10,7 +10,7 @@ function addhall(){
 		$.ajax({
 			url: "http://localhost/weddinghall/pages/"+action,
 			type: "POST",
-			data:  $("#form_sample_3").serialize(),
+			data:  $("#hall_form").serialize(),
 			error: function(xhr, status, error) {
   				//var err = eval("(" + xhr.responseText + ")");
   				alert(xhr.responseText);
@@ -51,7 +51,7 @@ if(x==1)
 		});//END $.ajax
 }}
 //--------------------------------
-var FormValidation = function () {
+var HallFormValidation = function () {
  var handleValidation3 = function() {
         // for more info visit the official plugin documentation: 
         // http://docs.jquery.com/Plugins/Validation

@@ -88,7 +88,7 @@ function deleteEmp(empId)
 	}
 }
 //--------------------------------
-var FormValidation = function () {
+var EmpFormValidation = function () {
  var handleValidation3 = function() {
         // for more info visit the official plugin documentation: 
         // http://docs.jquery.com/Plugins/Validation

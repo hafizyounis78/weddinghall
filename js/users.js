@@ -82,7 +82,7 @@ if(x==1)
 }
 }
 //--------------------------------
-var FormValidation = function () {
+var UserFormValidation = function () {
  var handleValidation3 = function() {
         // for more info visit the official plugin documentation: 
         // http://docs.jquery.com/Plugins/Validation
