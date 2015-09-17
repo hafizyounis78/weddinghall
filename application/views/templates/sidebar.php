@@ -61,12 +61,12 @@
 						
 					</ul>
 				</li>
-				<li <?php if($title == 'booking' || $title == 'addbooking') echo 'class="active open"'; ?>>
+				<li <?php if($title == 'searchbooking' || $title == 'addbooking') echo 'class="active open"'; ?>>
 					<a href="javascript:;">
 					<i class="icon-basket"></i>
 					<span class="title">الحجوزات</span>
-                    <?php if($title == 'booking' || $title == 'addbooking') echo'<span class="selected"></span>';?>
-					<span class="<?php if($title == 'booking' || $title == 'addbooking') echo'arrow open'; else echo'arrow'; ?>"></span>
+                    <?php if($title == 'searchbooking' || $title == 'addbooking') echo'<span class="selected"></span>';?>
+					<span class="<?php if($title == 'searchbooking' || $title == 'addbooking') echo'arrow open'; else echo'arrow'; ?>"></span>
 					</a>
 					<ul class="sub-menu">
 						<li <?php if($title == 'addbooking') echo 'class="active"'; ?>>
@@ -74,7 +74,7 @@
 							<i class="icon-home"></i>
 							اضافة حجز</a>
 						</li>
-						<li>
+						<li <?php if($title == 'searchbooking') echo 'class="active"'; ?>>
 							<a href="<?php echo base_url();?>searchbooking">
 							<i class="icon-tag"></i>
 							استعلام على الحجوزات</a>
@@ -82,21 +82,21 @@
 						
 					</ul>
 				</li>
-                <li <?php if($title == 'payments' || $title == 'emppayments') echo 'class="active open"'; ?>>
+                <li <?php if($title == 'searchpaymentsajax' || $title == 'searchemppaymentsajax') echo 'class="active open"'; ?>>
 					<a href="javascript:;">
 					<i class="icon-basket"></i>
 					<span class="title">المالية</span>
-					<?php if($title == 'payments' || $title == 'emppayments') echo'<span class="selected"></span>';?>
-					<span class="<?php if($title == 'payments' || $title == 'emppayments') echo'arrow open'; else echo'arrow'; ?>">
+					<?php if($title == 'searchpaymentsajax' || $title == 'searchemppaymentsajax') echo'<span class="selected"></span>';?>
+					<span class="<?php if($title == 'searchpaymentsajax' || $title == 'searchemppaymentsajax') echo'arrow open'; else echo'arrow'; ?>">
                     </span>
 					</a>
 					<ul class="sub-menu">
-						<li <?php if($title == 'payments') echo 'class="active"'; ?>>
+						<li <?php if($title == 'searchpaymentsajax') echo 'class="active"'; ?>>
 							<a href="<?php echo base_url();?>searchpaymentsajax">
 							<i class="icon-home"></i>
 						دفعات مالية</a>
 						</li>
-						<li <?php if($title == 'emppayments') echo 'class="active"'; ?>>
+						<li <?php if($title == 'searchemppaymentsajax') echo 'class="active"'; ?>>
 							<a href="<?php echo base_url();?>searchemppaymentsajax">
 							<i class="icon-basket"></i>
 							دفعات الموظفين</a>
@@ -105,7 +105,7 @@
 						
 					</ul>
 				</li>
-                <li <?php if($title == 'users') echo 'class="active open"';?>>
+                <li <?php if($title == 'users' || $title == 'adduser') echo 'class="active open"';?>>
 					<a href="javascript:;">
 					<i class="icon-user"></i>
 					<span class="title">المستخدمين</span>

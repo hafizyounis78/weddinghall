@@ -21,11 +21,11 @@ if (isset($adduser))
 									<input id="hdnAction" name="hdnAction" type="hidden" value="<?php echo $isUpdate;?>" />
                                     <div class="alert alert-danger display-hide">
 										<button class="close" data-close="alert"></button>
-										You have some form errors. Please check below.
+										يـوجد خطأ في ادخال الحقول ... الرجــاء التأكد من الادخال بشـكل صحيـح
 									</div>
 									<div class="alert alert-success display-hide">
 										<button class="close" data-close="alert"></button>
-										Your form validation is successful!
+										تمت عملية التحقق بنجاح!
 									</div>
 									<div class="form-group">
 										<label class="control-label col-md-3">الاســم <span class="required">
@@ -78,7 +78,7 @@ if (isset($adduser))
 										<label class="control-label col-md-3">كلمة المرور <span class="required">
 										* </span></label>
 										<div class="col-md-4">
-											<input name="password" type="password" class="form-control" 
+											<input id="password" name="password" type="password" class="form-control" 
                                             <?php 
 												if(isset($row->password))
 													echo 'value="'.$row->password.'"';
@@ -117,7 +117,7 @@ if (isset($adduser))
 								<div class="form-actions">
 									<div class="row">
 										<div class="col-md-offset-3 col-md-9">
-											<button onclick="$.getScript('ts.js');"type="submit" class="btn green" id="btnAdduser" name="btnAdduser">Submit</button>
+											<button type="submit" class="btn green" id="btnAdduser" name="btnAdduser">حــفـظ</button>
 											<button type="button" class="btn default" value="Cancel" onclick="window.location='http://localhost/weddinghall/users/';">عودة</button>
 										</div>
 									</div>
