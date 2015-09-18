@@ -91,6 +91,8 @@
 		bookingdetailsFormValidation.init();
 		bookingpriceFormValidation.init();
 		ServiceFormValidation.init();
+		paymentsFormValidation.init();
+		emppaymentsFormValidation.init();
 		Calendar.init();
 		TableAjax.init();
 		ServiceFormValidation.init();

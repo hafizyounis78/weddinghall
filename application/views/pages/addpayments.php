@@ -34,12 +34,13 @@ foreach($addpayments as $row);
                                    <input id="hdnAction" name="hdnAction" type="hidden" value="<?php echo $isUpdate;?>" /> 
                                     <div class="alert alert-danger display-hide">
 										<button class="close" data-close="alert"></button>
-										You have some form errors. Please check below.
+										يـوجد خطأ في ادخال الحقول ... الرجــاء التأكد من الادخال بشـكل صحيـح
 									</div>
 									<div class="alert alert-success display-hide">
 										<button class="close" data-close="alert"></button>
                                         <input id="booking_status" name="booking_status" type="hidden" value="<?php echo $row->booking_status?>" />
-										Your form validation is successful!
+										
+										تمت عملية التحقق بنجاح!
 									</div>
                                     <div class="form-group">
 										<label class="control-label col-md-3">كود الحجز <span class="required">

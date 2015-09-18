@@ -34,11 +34,12 @@ foreach($addemppayments as $row);
                                     
                                     <div class="alert alert-danger display-hide">
 										<button class="close" data-close="alert"></button>
-										You have some form errors. Please check below.
+										يـوجد خطأ في ادخال الحقول ... الرجــاء التأكد من الادخال بشـكل صحيـح
+									
 									</div>
 									<div class="alert alert-success display-hide">
 										<button class="close" data-close="alert"></button>
-										Your form validation is successful!
+										تمت عملية التحقق بنجاح!
 									</div>
                                     <div class="form-group">
 										<label class="control-label col-md-3">كود الموظف<span class="required">
@@ -90,7 +91,7 @@ foreach($addemppayments as $row);
 										</label>
 										<div class="col-md-4">
 											<select class="form-control select2me" data-required="1" name="payment_type">
-												<option value="0">Select...</option>
+												<option value="">Select...</option>
 												<option value="1">راتب شهري</option>
                                                 <option value="2">سلفة مالية</option>
 						                        
