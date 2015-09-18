@@ -86,8 +86,10 @@
 		EmpFormValidation.init();
 		UserFormValidation.init();
 		HallFormValidation.init();
+		ServiceFormValidation.init();
 		Calendar.init();
 		TableAjax.init();
+		ServiceFormValidation.init();
       });
    </script>
 <!-- END JAVASCRIPTS -->

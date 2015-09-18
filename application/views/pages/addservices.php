@@ -13,7 +13,7 @@ if (isset($addservices))
 						</div>
 						<div class="portlet-body form">
 							<!-- BEGIN FORM-->
-                            <form action="#" id="form_sample_3" class="form-horizontal">
+                            <form action="#" id="service_form" class="form-horizontal">
 								<div class="form-body">
 									<h3 class="form-section"></h3>
 									<input id="sev_code" name="sev_code" type="hidden" 
@@ -25,11 +25,11 @@ if (isset($addservices))
 									?> />
                                     <div class="alert alert-danger display-hide">
 										<button class="close" data-close="alert"></button>
-										You have some form errors. Please check below.
+										يـوجد خطأ في ادخال الحقول ... الرجــاء التأكد من الادخال بشـكل صحيـح
 									</div>
 									<div class="alert alert-success display-hide">
 										<button class="close" data-close="alert"></button>
-										Your form validation is successful!
+										تمت عملية التحقق بنجاح!
 									</div>
 									<div class="form-group">
 										<label class="control-label col-md-3">اسم الخدمة <span class="required">
@@ -62,7 +62,7 @@ if (isset($addservices))
 								<div class="form-actions">
 									<div class="row">
 										<div class="col-md-offset-3 col-md-9">
-											<button type="submit" class="btn green" id="btnAddservice" name="btnAddservice">Submit</button>
+											<button type="submit" class="btn green" id="btnAddservice" name="btnAddservice">حـفـظ</button>
 											<button type="button" class="btn default" value="Cancel" onclick="window.location='http://localhost/weddinghall/services/';">عودة</button>
 										</div>
 									</div>
