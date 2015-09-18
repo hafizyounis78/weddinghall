@@ -665,7 +665,51 @@ class Pages extends CI_Controller
 		$this->load->model('empmodel');
 		return $this->empmodel->get_emp_by_code($emp_code);
 	}
-
+	function checkempavailable()
+	{
+		$emp_id = $_POST['emp_id'];
+		$this->load->model('empmodel');
+		$rec = $this->empmodel->get_emp_by_id($emp_id);
+		
+		if (count($rec) == 1)
+		{
+			foreach($rec as $row);
+			echo ' الموظف ('.$row->name.') موجود مسبقا';
+		}
+		else
+			echo 0;
+		/*if (count($rec) == 1)
+		{
+			$output = array();
+			foreach($rec as $row)
+			{
+				unset($temp); // Release the contained value of the variable from the last loop
+				$temp = array();
+	
+				// It guess your client side will need the id to extract, and distinguish the ScoreCH data
+				$temp['emp_code'] = $row->emp_code;
+				$temp['emp_id'] = $row->emp_id;
+				$temp['name'] = $row->name;
+				$temp['sex'] = $row->sex;
+				$temp['dob'] = $row->dob;
+				$temp['mobile'] = $row->mobile;
+				$temp['tel'] = $row->tel;
+				$temp['address'] = $row->address;
+				$temp['contract_code'] = $row->contract_code;
+				$temp['salary'] = $row->salary;
+				$temp['job'] = $row->job;
+	
+				array_push($output,$temp);
+			}
+			
+			header('Access-Control-Allow-Origin: *');
+			header("Content-Type: application/json");
+			echo json_encode($output);
+		}
+		else
+			echo 0;*/
+		
+	}
 	function delemp($empID)
 	{
 		$this->load->model('empmodel');

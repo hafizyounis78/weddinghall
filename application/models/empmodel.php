@@ -3,15 +3,21 @@
 class Empmodel extends CI_Model
 {
 
-public function get_employee()
+	public function get_employee()
     {
 		$myquery="SELECT employee.* , job_tb.* FROM employee, job_tb WHERE employee.job = job_tb.job_code";
 		return $this->db->query($myquery);
       
      }
-public function get_emp_by_code($emp_code)
+	public function get_emp_by_code($emp_code)
 	{
 		$this->db->where('emp_code',$emp_code);
+		$query = $this->db->get('employee');
+		return $query->result();
+	}
+	public function get_emp_by_id($emp_id)
+	{
+		$this->db->where('emp_id',$emp_id);
 		$query = $this->db->get('employee');
 		return $query->result();
 	}

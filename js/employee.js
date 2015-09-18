@@ -31,7 +31,44 @@
 		});//END $.ajax
 	}); // END CLICK
 }); // END READY*/
+$(document).ready(function(){
+	$('#emp_id').blur(function(event) {
+		event.preventDefault();
+			
+		$.ajax({
+			url: "pages/checkempavailable",
+			type: "POST",
+			data:  {emp_id: $('#emp_id').val()},
+			error: function(xhr, status, error) {
+  				//var err = eval("(" + xhr.responseText + ")");
+  				alert(xhr.responseText);
+				//alert("pages/"+action);
 
+			},
+			beforeSend: function(){},
+			complete: function(){},
+			success: function(returndb){
+				if(returndb == 0)
+					return ;
+				alert(returndb);
+				$('#emp_id').val('')
+				
+				/*$('#name').val(returndb[0]['name']);
+				$('#dob').val(returndb[0]['dob']);
+				$('#tel').val(returndb[0]['tel']);
+				$('#mobile').val(returndb[0]['mobile']);
+				$('#address').val(returndb[0]['address']);
+				alert($('#contract_code').val());
+				$('#contract_code').val(returndb[0]['contract_code']);
+				alert($('#contract_code').val());
+				$('#salary').val(returndb[0]['salary']);
+					//alert ('تمت عملية الاضافة بنجاح');
+					//window.location.href="employee";*/
+			}
+		});//END $.ajax
+
+	}); // END CLICK
+}); // END READY*/
 function employee()
 {
 	var action = "addemp";

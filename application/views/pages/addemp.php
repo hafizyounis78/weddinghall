@@ -49,7 +49,7 @@ $isUpdate = 1;
 										* </span>
 										</label>
 										<div class="col-md-4">
-											<input type="text" name="emp_id" <?php if (isset($row->emp_id)) {echo 'value="'.$row->emp_id.'"';}?>  data-required="1" class="form-control"/>
+											<input type="text" id="emp_id" name="emp_id" <?php if (isset($row->emp_id)) {echo 'value="'.$row->emp_id.'"';}?>  data-required="1" class="form-control"/>
 										</div>
 									</div>
 
@@ -58,7 +58,7 @@ $isUpdate = 1;
 										* </span>
 										</label>
 										<div class="col-md-4">
-											<input type="text" name="name" data-required="1"  <?php if (isset($row->name)) {echo 'value="'.$row->name.'"';}?> class="form-control"/>
+											<input type="text" id="name" name="name" data-required="1"  <?php if (isset($row->name)) {echo 'value="'.$row->name.'"';}?> class="form-control"/>
 										</div>
 									</div>
                                     									<div class="form-group">
@@ -86,7 +86,7 @@ $isUpdate = 1;
 										<label class="control-label col-md-3">تاريخ الميلاد</label>
 										<div class="col-md-4">
 											<div class="input-group date date-picker" data-date-format="yyyy/mm/dd">
-												<input type="text" class="form-control" readonly name="dob"
+												<input type="text" class="form-control" readonly id="dob" name="dob"
                                                   <?php if (isset($row->dob)) {echo 'value="'.$row->dob.'"';}?>/>
 												<span class="input-group-btn">
 												<button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
@@ -100,7 +100,7 @@ $isUpdate = 1;
 									<div class="form-group">
 										<label class="control-label col-md-3">تلفون</label>
 										<div class="col-md-4">
-											<input name="tel" type="text" class="form-control"
+											<input id="tel" name="tel" type="text" class="form-control"
                                               <?php if (isset($row->tel)) {echo 'value="'.$row->tel.'"';}?>/>
 										</div>
                                      </div>
@@ -109,14 +109,14 @@ $isUpdate = 1;
 										* </span>
                                         </label>
 										<div class="col-md-4">
-											<input name="mobile" type="text" class="form-control"
+											<input id="mobile" name="mobile" type="text" class="form-control"
                                             <?php if (isset($row->mobile)) {echo 'value="'.$row->mobile.'"';}?>/>
 										</div>
                                      </div>
                                      <div class="form-group">
 										<label class="control-label col-md-3">عنوان</label>
 										<div class="col-md-4">
-											<input name="address" type="text" class="form-control"
+											<input id="address" name="address" type="text" class="form-control"
                                              <?php if (isset($row->address)) {echo 'value="'.$row->address.'"';}?>/>
 										</div>
                                      </div>
@@ -156,7 +156,7 @@ $isUpdate = 1;
 										* </span>
 										</label>
 										<div class="col-md-4">
-											<select class="form-control select2me" name="contract_code">
+											<select class="form-control select2me" id="contract_code" name="contract_code">
 												<option value="">Select...</option>
 												<option value="1"
                                             <?php if (isset($row->contract_code)){if ($row->contract_code== 1) echo 'selected=selected';}?>
@@ -175,7 +175,7 @@ $isUpdate = 1;
 										* </span>
                                         </label>
 										<div class="col-md-4">
-											<input name="salary" type="text" class="form-control"
+											<input id="salary" name="salary" type="text" class="form-control"
                                             <?php if (isset($row->salary)) {echo 'value="'.$row->salary.'"';}?>
                                             />
 										</div>
