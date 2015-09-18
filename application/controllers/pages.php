@@ -489,8 +489,11 @@ class Pages extends CI_Controller
 		$rec=$this->bookingmodel->get_booking_by_code($booking_code);
 		return $rec->result();
 	}
-	function get_booking_date($booking_date,$w_code)
+	function get_booking_date()
 	{
+		$booking_date = $_POST['booking_date'];
+		$w_code = $_POST['w_code'];
+		
 		$this->load->model('bookingmodel');
 		$rec=$this->bookingmodel->get_booking_by_date($booking_date,$w_code);
 	
