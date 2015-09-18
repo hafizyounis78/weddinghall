@@ -73,11 +73,11 @@ $('#booking_date').change(function(event) {
 			document.getElementById('booking_date').value = '';
 			return;
 		}
-			
+		
 		$.ajax({
 			url: "http://localhost/weddinghall/pages/get_booking_date",
 			type: "POST",
-			data: {booking_date:bookingDate, w_code:w_code},
+			data: {booking_date:booking_date, w_code:w_code},
 			error: function(xhr, status, error) {
   				//var err = eval("(" + xhr.responseText + ")");
   				alert(xhr.responseText);
@@ -86,6 +86,7 @@ $('#booking_date').change(function(event) {
 			beforeSend: function(){},
 			complete: function(){},
 			success: function(result){
+				
 					if (result==1 ){
 				document.getElementById('booking_date').value = '';
 				
