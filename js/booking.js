@@ -32,7 +32,8 @@ function addbocking(){
 			}
 	});//END $.ajax
 	} // END addbocking
-function date_change(){
+$('#booking_date').change(function(event) {							
+		event.preventDefault();
 		
 		var booking_date= document.getElementById('booking_date').value;
 		var w_code=$('#w_code').val();
@@ -74,9 +75,9 @@ function date_change(){
 		}
 			
 		$.ajax({
-			url: "http://localhost/weddinghall/pages/get_booking_date/"+booking_date+"/"+w_code,
+			url: "http://localhost/weddinghall/pages/get_booking_date",
 			type: "POST",
-			data: function(){},
+			data: {booking_date:bookingDate, w_code:w_code},
 			error: function(xhr, status, error) {
   				//var err = eval("(" + xhr.responseText + ")");
   				alert(xhr.responseText);
@@ -93,7 +94,7 @@ function date_change(){
 				}
 			}
 			});//END $.ajax	
-		}
+}); // END CLICK
 function sev_code_change(){	
  	var sev_code = $('#sev_code').find('option:selected').val();
 		
