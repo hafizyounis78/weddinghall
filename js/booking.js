@@ -95,7 +95,7 @@ function date_change(){
 			});//END $.ajax	
 		}
 function sev_code_change(){	
- 	var sev_code = $(this).find('option:selected').val();
+ 	var sev_code = $('#sev_code').find('option:selected').val();
 		
 		$.ajax({
 			url: "http://localhost/weddinghall/pages/service_price/"+sev_code,
