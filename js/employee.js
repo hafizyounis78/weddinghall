@@ -36,7 +36,7 @@ $(document).ready(function(){
 		event.preventDefault();
 			
 		$.ajax({
-			url: "pages/checkempavailable",
+			url: "http://localhost/weddinghall/pages/checkempavailable",
 			type: "POST",
 			data:  {emp_id: $('#emp_id').val()},
 			error: function(xhr, status, error) {
