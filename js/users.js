@@ -50,7 +50,7 @@ function addUser()
 			success: function(returndb){
 
 					alert ('تمت العملية بنجاح');
-					window.location.href="users";
+					window.location.href="http://localhost/weddinghall/users";
 			}
 		});//END $.ajax
 }

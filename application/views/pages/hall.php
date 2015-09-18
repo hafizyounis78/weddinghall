@@ -40,7 +40,7 @@
 								echo '<td>'.$row->w_name.'</td>';
 								echo '<td>'.$row->address.'</td>';
 								echo '<td>'.$row->w_emp.'</td>';
-								echo '<td align="center"><a href="pages/view/addhall/'.$row->w_code.'" class="btn default btn-xs purple">
+								echo '<td align="center"><a href="http://localhost/weddinghall/addhall/'.$row->w_code.'" class="btn default btn-xs purple">
 										<i class="fa fa-edit"></i> تعديل </a>
 									  
 								  </td>';

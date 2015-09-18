@@ -31,17 +31,17 @@ if (isset($addbooking))
 						</div>
 						<div class="portlet-body form">
 							<!-- BEGIN FORM-->
-							<form action="#" id="form_sample_3" class="form-horizontal">
+							<form action="#" id="booking_form" class="form-horizontal">
 								<div class="form-body">
 									<h3 class="form-section"></h3>
 							<input id="hdnAction" name="hdnAction" type="hidden" value="<?php echo $isUpdate;?>" />
             						<div class="alert alert-danger display-hide">
 										<button class="close" data-close="alert"></button>
-										You have some form errors. Please check below.
+										يـوجد خطأ في ادخال الحقول ... الرجــاء التأكد من الادخال بشـكل صحيـح
 									</div>
 									<div class="alert alert-success display-hide">
 										<button class="close" data-close="alert"></button>
-										Your form validation is successful!
+										تمت عملية التحقق بنجاح!
 									</div>
                                        <div class="form-group">
 										<label class="control-label col-md-3">الصالة<span class="required">
@@ -50,7 +50,7 @@ if (isset($addbooking))
 									
                                     	<div class="col-md-4">
                                         	
-											<select class="form-control select2me" id="w_code" name="w_code">
+											<select class="form-control select2me" id="w_code" name="w_code" onchange="checkdate()">
 												<option value="0">Select...</option>
 												<?php
 												
@@ -81,7 +81,7 @@ if (isset($addbooking))
                                     <div class="form-group">
 										
 										<div class="col-md-4">
-											<input id="hdnBooking_code" name="hdnBooking_code" type="hidden" class="form-control" 
+											<input id="hdnBooking_code" name="hdnBooking_code" type="hidden"  class="form-control" 
                                             value="<?php echo $booking_code; ?>"
                                             />
                                          
@@ -91,7 +91,7 @@ if (isset($addbooking))
 										<label class="control-label col-md-3">تاريخ الحجز</label>
 										<div class="col-md-4">
 											<div class="input-group date date-picker" data-date-format="yyyy-mm-dd">
-												<input type="text" class="form-control" readonly id="booking_date" name="booking_date"
+												<input type="text" class="form-control" readonly id="booking_date" onchange="date_change()" name="booking_date"
                                                   <?php if (isset($row->booking_date)) {echo 'value="'.$row->booking_date.'"';}
 												  	else if(isset($calenderdate)) {echo 'value="'.$calenderdate.'"';};
 												  ?>/>
@@ -198,7 +198,7 @@ if (isset($addbooking))
 										</label>
 										<div class="col-md-4">
                                         	
-											<select id="sev_code" class="form-control select2me" name="sev_code">
+											<select id="sev_code" class="form-control select2me" onchange="sev_code_change()" name="sev_code">
 												<option value="0">Select...</option>
 												<?php
 												$selected;
@@ -217,7 +217,7 @@ if (isset($addbooking))
 								<div class="form-group">
 										<label class="control-label col-md-3">تكلفة الخدمة</label>
 										<div class="col-md-4">
-											<input id="sev_price" id="sev_price" name="sev_price" type="text" class="form-control" readonly/>
+											<input id="sev_price" name="sev_price" type="text" class="form-control" readonly/>
 										</div>
                                 </div>
                                 <div class="form-group">

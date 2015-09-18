@@ -87,6 +87,7 @@
 		EmpFormValidation.init();
 		UserFormValidation.init();
 		HallFormValidation.init();
+		bookingFormValidation.init();
 		ServiceFormValidation.init();
 		Calendar.init();
 		TableAjax.init();

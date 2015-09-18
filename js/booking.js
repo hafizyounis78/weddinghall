@@ -1,34 +1,38 @@
 // JavaScript Document// JavaScript Document
-$(document).ready(function(){
+function checkdate (){
+	if(document.getElementById('booking_date').value !='')
+	{
+		document.getElementById('booking_date').value ;
+	}
+	}
+function addbocking(){
+
 	var cnt =0;
 	
-	$('#btnAddbooking').click(function(event) {							
-		event.preventDefault();
-		var action = "Addbooking";
-		if(document.getElementById('hdnAction').value == '1')
-			action = "updatebooking";
-		$.ajax({
-			url: "http://localhost/weddinghall/pages/"+action,
-			type: "POST",
-			data:  $("#form_sample_3").serialize(),
-			error: function(xhr, status, error) {
+	var action = "Addbooking";
+	if(document.getElementById('hdnAction').value == '1')
+		action = "updatebooking";
+	$.ajax({
+		url: "http://localhost/weddinghall/pages/"+action,
+		type: "POST",
+		data:  $("#form_sample_3").serialize(),
+		error: function(xhr, status, error) {
   				//var err = eval("(" + xhr.responseText + ")");
   				alert(xhr.responseText);
 	
 			},
-			beforeSend: function(){},
-			complete: function(){},
-			success: function(result){
+		beforeSend: function(){},
+		complete: function(){},
+		success: function(result){
 	
 				document.getElementById('hdnBookingcode').value = result;
+				document.getElementById('btnAddbooking').disabled=true;
 				alert ('تمت العملية بنجاح');
 
 			}
-		});//END $.ajax
-	}); // END CLICK
-	$('#booking_date').change(function(event) {							
-		event.preventDefault();
-		
+	});//END $.ajax
+	} // END addbocking
+function date_change(){
 		
 		var booking_date= document.getElementById('booking_date').value;
 		var w_code=$('#w_code').val();
@@ -81,23 +85,17 @@ $(document).ready(function(){
 			beforeSend: function(){},
 			complete: function(){},
 			success: function(result){
-				
-			//	if(result==1)
-			//alert(result.name);
-			if (result==1 )
-				{
+					if (result==1 ){
 				document.getElementById('booking_date').value = '';
 				
 				alert ('هذا اليوم محجوز  ');
 				
 				}
 			}
-		});//END $.ajax	
-		
-	}); // END CLICK
- 	$('#sev_code').change(function(event) {							
-		event.preventDefault();
-		var sev_code = $(this).find('option:selected').val();
+			});//END $.ajax	
+		}
+function sev_code_change(){	
+ 	var sev_code = $(this).find('option:selected').val();
 		
 		$.ajax({
 			url: "http://localhost/weddinghall/pages/service_price/"+sev_code,
@@ -115,10 +113,9 @@ $(document).ready(function(){
 				document.getElementById('sev_price').value = result;
 			}
 		});//END $.ajax	
-		
-	});
-	$('#btnAddbooking_details').click(function(event) {							
-		event.preventDefault();
+		}
+function addbooking_details(){		
+	
 	
 	var length=document.getElementById("serv_body").rows.length;
 	var new_sev_code=document.getElementById('sev_code').value;
@@ -175,9 +172,9 @@ $(document).ready(function(){
 
 			}
 		});//END $.ajax
-	});
-	$('#btnSaveprice').click(function(event) {							
-		event.preventDefault();
+	}
+function saveprice(){
+	
 		
 		var booking_code = $('#hdnBookingcode').val();
 		
@@ -196,11 +193,9 @@ $(document).ready(function(){
 				window.location.href="http://localhost/weddinghall/addpayments/"+booking_code;
 			}
 		});//END $.ajax
-	}); // END CLICK
+		}// END CLICK
 
-//-*********************** functions ***********************--/
-	function deleteselectedservice(sev_code)
-	{
+function deleteselectedservice(sev_code){
 	booking_code= document.getElementById('hdnBookingcode').value;
 	
 	var r = confirm('هل انت متأكد من عملة الحذف');
@@ -234,11 +229,8 @@ $(document).ready(function(){
 				}
 			});//END $.ajax
 	}
-	
 	}
-	
-	function deletebooking(booking_code)
-	{
+function deletebooking(booking_code){
 	var r = confirm('هل انت متأكد من الإلفاء');
 	if (r == true) {
 		x =1;
@@ -261,6 +253,136 @@ $(document).ready(function(){
 						
 				}
 			});//END $.ajax
-	}
-	}
-}); // END READY
+	}	}
+	
+var bookingFormValidation = function () {
+ var handleValidation3 = function() {
+        // for more info visit the official plugin documentation: 
+        // http://docs.jquery.com/Plugins/Validation
+
+            var form3 = $('#booking_form');
+            var error3 = $('.alert-danger', form3);
+            var success3 = $('.alert-success', form3);
+
+            form3.validate({
+                errorElement: 'span', //default input error message container
+                errorClass: 'help-block help-block-error', // default input error message class
+                focusInvalid: false, // do not focus the last invalid input
+                ignore: "", // validate all fields including form hidden input
+                rules: {
+					w_code: {
+                        required: true
+                    },
+					booking_date: {
+                        required: true
+                    },
+					cut_id: {
+                        digits: true,
+                        minlength: 9,
+						maxlength: 9,
+                        required: true
+                    },
+					name: {
+                        minlength: 2,
+                        required: true
+                    },
+                    tel: {
+						digits: true,
+						minlength: 7
+                    },
+					mobile: {
+						digits: true,
+						minlength: 10,
+						required: true
+                    }
+                },
+
+               messages: { // custom messages for radio buttons and checkboxes
+                    w_code: {
+						required: "الرجاء اختيار الصالة"
+                    }, 
+					booking_date: {
+						required: "الرجاء اختيار التاريخ"
+                    }, 
+					 cut_id: {
+						digits: "الرجـاء ادخـال ارقـام فقط",
+						minlength: "الرجاء ادخل رقم الهوية 9 ارقام",
+						maxlength: "الرجاء ادخل رقم الهوية 9 ارقام",
+                        required: "الرجاء ادخل رقم الهوية"
+                    },
+					name: {
+						minlength: "لايمكن ادخال اسم اقل من حرفين",
+                        required: "الرجاء ادخل الاسم"
+                    },
+                    tel: {
+						minlength: "رقم الهاتف يجب ان يكون 7 ارقام",
+						digits: "الرجـاء ادخـال ارقـام فقط"
+                    },
+					mobile: {
+						minlength: "رقم الجوال يجب ان يكون 10 ارقام مبدوء ب 059",
+						digits: "الرجـاء ادخـال ارقـام فقط",
+						required: "الرجـاء ادخـل رقـم الجـوال"
+                    }
+                },
+
+                errorPlacement: function (error, element) { // render error placement for each input type
+                    if (element.parent(".input-group").size() > 0) {
+                        error.insertAfter(element.parent(".input-group"));
+                    } else if (element.attr("data-error-container")) { 
+                        error.appendTo(element.attr("data-error-container"));
+                    } else if (element.parents('.radio-list').size() > 0) { 
+                        error.appendTo(element.parents('.radio-list').attr("data-error-container"));
+                    } else if (element.parents('.radio-inline').size() > 0) { 
+                        error.appendTo(element.parents('.radio-inline').attr("data-error-container"));
+                    } else if (element.parents('.checkbox-list').size() > 0) {
+                        error.appendTo(element.parents('.checkbox-list').attr("data-error-container"));
+                    } else if (element.parents('.checkbox-inline').size() > 0) { 
+                        error.appendTo(element.parents('.checkbox-inline').attr("data-error-container"));
+                    } else {
+                        error.insertAfter(element); // for other inputs, just perform default behavior
+                    }
+                },
+
+                invalidHandler: function (event, validator) { //display error alert on form submit   
+                    success3.hide();
+                    error3.show();
+                    Metronic.scrollTo(error3, -200);
+                },
+
+                highlight: function (element) { // hightlight error inputs
+                   $(element)
+                        .closest('.form-group').addClass('has-error'); // set error class to the control group
+                },
+
+                unhighlight: function (element) { // revert the change done by hightlight
+                    $(element)
+                        .closest('.form-group').removeClass('has-error'); // set error class to the control group
+                },
+
+                success: function (label) {
+                    label
+                        .closest('.form-group').removeClass('has-error'); // set success class to the control group
+                },
+
+                submitHandler: function (form) {
+                    success3.show();
+                    error3.hide();
+					addbocking();
+					addbooking_details();
+					saveprice();
+					
+                    //form[0].submit(); // submit the form
+                }
+
+            });
+    }
+return {
+        //main function to initiate the module
+        init: function () {
+            handleValidation3();
+
+        }
+
+    };
+
+}();
