@@ -7,6 +7,12 @@ foreach($addemppayments as $row);
 }
 
 ?>
+<style>
+ 	.day:hover
+	{
+		background-color:#c0c0c0;
+	}
+ </style>
 
 <div class="row">
 				<div class="col-md-12">

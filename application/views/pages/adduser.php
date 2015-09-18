@@ -6,6 +6,12 @@ if (isset($adduser))
 	$isUpdate = 1;
 }
 ?>
+<style>
+ 	.day:hover
+	{
+		background-color:#c0c0c0;
+	}
+ </style>
 <!-- BEGIN VALIDATION STATES-->
 					<div class="portlet box green">
 						<div class="portlet-title">
