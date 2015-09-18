@@ -28,6 +28,34 @@
 		});//END $.ajax
 	}); // END CLICK
 }); // END READY*/
+//******************************************
+$(document).ready(function(){
+	$('#username').blur(function(event) {
+		event.preventDefault();
+			
+		$.ajax({
+			url: "http://localhost/weddinghall/pages/checkuseravailable",
+			type: "POST",
+			data:  {username: $('#username').val()},
+			error: function(xhr, status, error) {
+  				//var err = eval("(" + xhr.responseText + ")");
+  				alert(xhr.responseText);
+				//alert("pages/"+action);
+
+			},
+			beforeSend: function(){},
+			complete: function(){},
+			success: function(returndb){
+				if(returndb == 0)
+					return ;
+					
+				alert(returndb);
+				$('#username').val('')
+			}
+		});//END $.ajax
+
+	}); // END CLICK
+}); // END READY
 //*******************************************
 function addUser()
 {

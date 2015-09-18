@@ -126,6 +126,7 @@ class Pages extends CI_Controller
 		 
 		//$this->load->view('users_view', $data);
 	}
+	
 	function payments()
 	{
 		$this->load->model('bookingmodel');
@@ -667,6 +668,20 @@ class Pages extends CI_Controller
 	{
 		$this->load->model('empmodel');
 		return $this->empmodel->get_emp_by_code($emp_code);
+	}
+	function checkuseravailable()
+	{
+		$username = $_POST['username'];
+		$this->load->model('usermodel');
+		$rec = $this->usermodel->get_user_by_username($username);
+		
+		if (count($rec) == 1)
+		{
+			foreach($rec as $row);
+			echo ' هذا المستخدم موجود مسبقا';
+		}
+		else
+			echo 0;
 	}
 	function checkempavailable()
 	{

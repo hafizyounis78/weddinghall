@@ -69,7 +69,7 @@ if (isset($adduser))
 										* </span>
 										</label>
 										<div class="col-md-4">
-											<input type="text" name="username" data-required="1" class="form-control" 
+											<input type="text" id="username" name="username" data-required="1" class="form-control" 
                                             <?php 
 												if(isset($row->username))
 												{
