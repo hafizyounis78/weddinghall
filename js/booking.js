@@ -2,7 +2,7 @@
 function checkdate (){
 	if(document.getElementById('booking_date').value !='')
 	{
-		document.getElementById('booking_date').value ;
+		document.getElementById('booking_date').value='' ;
 	}
 	}
 function addbocking(){
