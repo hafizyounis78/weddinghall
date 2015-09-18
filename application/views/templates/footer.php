@@ -88,6 +88,8 @@
 		UserFormValidation.init();
 		HallFormValidation.init();
 		bookingFormValidation.init();
+		bookingdetailsFormValidation.init();
+		bookingpriceFormValidation.init();
 		ServiceFormValidation.init();
 		Calendar.init();
 		TableAjax.init();
