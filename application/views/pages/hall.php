@@ -42,8 +42,7 @@
 								echo '<td>'.$row->w_emp.'</td>';
 								echo '<td align="center"><a href="pages/view/addhall/'.$row->w_code.'" class="btn default btn-xs purple">
 										<i class="fa fa-edit"></i> تعديل </a>
-									  <button id="btndelemp" name="btndelemp" type="button" class="btn default btn-xs black" onclick="deletehall(\''.$row->w_code.'\')">
-										<i class="fa fa-trash-o"></i> حذف </button>
+									  
 								  </td>';
 							echo '</tr>';
 							

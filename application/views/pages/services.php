@@ -21,6 +21,9 @@
 								<th>
 									  السعر
 								</th>
+                                <th>
+									  حالة الخدمة
+								</th>
                                 
 							    <th>&nbsp;
                                 
@@ -36,11 +39,19 @@
 								echo '<td>'.$i++.'</td>';
 								echo '<td>'.$row->sev_desc.'</td>';
 								echo '<td>'.$row->sev_price.'</td>';
+								if ($row->sev_status == 1)
+								echo '<td><span class="label label-sm label-success">
+									فعال</span>
+									</td>';
+								else if ($row->sev_status == 0)
+								echo '<td><span class="label label-sm label-warning">
+									غير فعال</span>
+									</td>';
 
-								echo '<td align="center"><a href="pages/view/addservices/'.$row->sev_code.'" class="btn default btn-xs purple">
+
+								echo '<td align="center"><a href="http://localhost/weddinghall/addservices/'.$row->sev_code.'" class="btn default btn-xs purple">
 										<i class="fa fa-edit"></i> تعديل </a>
-									  <button id="btndelemp" name="btndelemp" type="button" class="btn default btn-xs black" onclick="deleteservice(\''.$row->sev_code.'\')">
-										<i class="fa fa-trash-o"></i> حذف </button>
+									 
 								  </td>';
 							echo '</tr>';
 							

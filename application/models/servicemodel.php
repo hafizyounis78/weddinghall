@@ -4,6 +4,11 @@ class Servicemodel extends CI_Model
 {
 
 	public function get_service()
+    {$this->db->where('sev_status',1);
+        $query = $this->db->get('wedding_services');
+		return $query->result();
+    }
+	public function get_all_service()
     {
         $query = $this->db->get('wedding_services');
 		return $query->result();
@@ -27,6 +32,7 @@ class Servicemodel extends CI_Model
 		extract($_POST);
 		$data['sev_desc'] = $sev_desc;
 		$data['sev_price'] = $sev_price;
+		$data['sev_status'] = 1;
 			
 		$this->db->insert('wedding_services',$data);
 
@@ -37,6 +43,7 @@ class Servicemodel extends CI_Model
 		$data['sev_code'] = $sev_code;
 		$data['sev_desc'] = $sev_desc;
 		$data['sev_price'] = $sev_price;
+		$data['sev_status'] = $sev_status;
 		
 		$this->db->where('sev_code',$sev_code);
 		$this->db->update('wedding_services',$data);

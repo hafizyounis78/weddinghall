@@ -39,7 +39,7 @@ class Pages extends CI_Controller
 			if($page == 'addbooking' && $indata !='')
 			{
 				$data[$page] = $this->viewbookingupdate($indata);
-				$data['sev'] =$this->services();
+				$data['sev'] =$this->get_active_services();
 				$data['hall'] =$this->wedding_hall();
 				$data['booking_sev'] =$this->booking_details($indata);
 			}
@@ -58,7 +58,7 @@ class Pages extends CI_Controller
 				}
 				//----
 				
-				$data['sev'] =$this->services();
+				$data['sev'] =$this->get_active_services();
 				$data['hall'] =$this->wedding_hall();
 				
 			}
@@ -604,6 +604,12 @@ class Pages extends CI_Controller
 	}
 
 	function services()
+	{
+		$this->load->model('servicemodel');
+		return $this->servicemodel->get_all_service();
+		 		
+	}
+	function get_active_services()
 	{
 		$this->load->model('servicemodel');
 		return $this->servicemodel->get_service();

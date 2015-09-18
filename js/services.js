@@ -42,7 +42,7 @@ function addservices()
 			success: function(returndb){
 				//alert (returndb);
 				alert ('تمت عملية الإضافة بنجاح');
-				window.location.href="services";
+				window.location.href="http://localhost/weddinghall/services/";
 			}
 		});//END $.ajax
 }
@@ -67,7 +67,7 @@ function deleteservice(sev_code)
 			complete: function(){},
 			success: function(){
 					alert ('تمت عملية الحذف بنجاح');
-					window.location.href="services";
+					window.location.href="http://localhost/weddinghall/services/";
 			}
 		});//END $.ajax
 	}

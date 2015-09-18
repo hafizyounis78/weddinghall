@@ -1,21 +1,14 @@
 <!-- END STYLE CUSTOMIZER -->
 			<!-- BEGIN PAGE HEADER-->
-			<h3 class="page-title">
 			
-			</h3>
 			<div class="page-bar">
 				<ul class="page-breadcrumb">
-					<li>
-						<i class="fa fa-home"></i>
-						<a href="home">Home</a>
-						<i class="fa fa-angle-right"></i>
-					</li>
-					<li>
-						<a href="#">Page Layouts</a>
-			
-					</li>
+							
+						<a href="home"><i class="fa fa-home"></i></a>
+									
+					
 				</ul>
-				<div class="page-toolbar">
+			<!--	<div class="page-toolbar">-->
 					<!--<div class="btn-group pull-right">
 						<button type="button" class="btn btn-fit-height grey-salt dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="1000" data-close-others="true">
 						Actions <i class="fa fa-angle-down"></i>
@@ -37,6 +30,6 @@
 							</li>
 						</ul>
 					</div>-->
-				</div>
+			<!--	</div>-->
 			</div>
 			<!-- END PAGE HEADER-->

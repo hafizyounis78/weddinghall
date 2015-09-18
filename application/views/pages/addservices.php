@@ -57,6 +57,21 @@ if (isset($addservices))
                                             />
 										</div>
 									</div>
+                                    <div class="form-group">
+										<label class="control-label col-md-3">فعال
+										</label>
+										<div class="col-md-4">
+												<label>
+												<input type="checkbox" value="1" name="sev_status"
+                                                 <?php 
+												if(isset($row->sev_status) && $row->sev_status == 0)
+													echo '';
+												else
+													echo 'checked="checked"';
+												?>
+                                                /> </label>
+										</div>
+									</div>
 
 								</div>
 								<div class="form-actions">
