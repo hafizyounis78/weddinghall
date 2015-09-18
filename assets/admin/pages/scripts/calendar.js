@@ -176,13 +176,25 @@
 					
 					var bookingDate = new Date(booking_date);
 					var today = new Date(d);
-					alert ("bookingDate: "+bookingDate);
-					alert ("today: "+today);
+					//alert ("bookingDate: "+bookingDate);
+					//alert ("today: "+today);
 					if (bookingDate <= today)
 					{
 						alert ('يجب ان يكون تاريخ الحجز اكبر من تاريخ اليوم');
 						return;
 					}
+					
+					// Check Events
+					var events = $('#calendar').fullCalendar('clientEvents',function(evt) {
+    					return evt.start.format()==date.format();
+					});
+					
+					if (events != null && events != '')
+					{
+						alert('الصالة محجوزة');
+						return;
+					}
+					//-----------
 					
 					$.ajax({
     						url:"http://localhost/weddinghall/pages/sendBookingData",
