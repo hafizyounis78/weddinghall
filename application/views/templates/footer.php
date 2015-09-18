@@ -83,6 +83,7 @@
 		QuickSidebar.init(); // init quick sidebar
 		Demo.init(); // init demo features
 		TableManaged.init();
+		FormValidation.init();
 		EmpFormValidation.init();
 		UserFormValidation.init();
 		HallFormValidation.init();
