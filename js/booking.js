@@ -119,8 +119,17 @@ $(document).ready(function(){
 			success: function(returndb){
 				
 				if(returndb == 0)
-					return ;
+				{
+					$('#hdnOldcust').val('0');
+					$('#name').val('');
+					$('#tel').val('');
+					$('#mobile').val('');
+					$('#address').val('');
 				
+					return ;
+				}
+					
+				$('#hdnOldcust').val('1');
 				$('#name').val(returndb[0]['name']);
 				$('#tel').val(returndb[0]['tel']);
 				$('#mobile').val(returndb[0]['mobile']);
