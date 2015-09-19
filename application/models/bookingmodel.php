@@ -178,6 +178,7 @@ public function delete_selectedservice($sev_code,$booking_code)
 			$this->db->insert('customer',$cdata);
 		}
 		
+		
 /*****************booking details************************/	
        //extract($_POST);
 		/*$sdata['booking_code'] = $GLOBALS['booking_code'];

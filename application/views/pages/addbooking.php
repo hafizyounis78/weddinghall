@@ -109,10 +109,15 @@ if (isset($addbooking))
 										<label class="control-label col-md-3">رقم الهوية </label>
 										<div class="col-md-4">
 											<input type="text" id="cut_id" name="cut_id" <?php if (isset($row->cut_id)) {echo 'value="'.$row->cut_id.'"';}?>  data-required="1" class="form-control"/>
-                                            <input id="hdnOldcust" name="hdnFindcust" type="hidden" value="0" />
+
 										</div>
 									</div>
+                                    <div class="form-group">
+										  <input id="hdnOldcust" name="hdnOldcust" type="hidden" readonly="readonly" value="0" />
 
+										</div>
+									</div>
+                                          
 									<div class="form-group">
 										<label class="control-label col-md-3">الاسم<span class="required">
 										* </span>
