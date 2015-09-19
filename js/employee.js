@@ -34,7 +34,10 @@
 $(document).ready(function(){
 	$('#emp_id').blur(function(event) {
 		event.preventDefault();
-			
+		
+		if($("#emp_id").val().length != 9 || isNaN($('#emp_id').val()))
+			return;
+		
 		$.ajax({
 			url: "http://localhost/weddinghall/pages/checkempavailable",
 			type: "POST",
@@ -53,17 +56,6 @@ $(document).ready(function(){
 				alert(returndb);
 				$('#emp_id').val('')
 				
-				/*$('#name').val(returndb[0]['name']);
-				$('#dob').val(returndb[0]['dob']);
-				$('#tel').val(returndb[0]['tel']);
-				$('#mobile').val(returndb[0]['mobile']);
-				$('#address').val(returndb[0]['address']);
-				alert($('#contract_code').val());
-				$('#contract_code').val(returndb[0]['contract_code']);
-				alert($('#contract_code').val());
-				$('#salary').val(returndb[0]['salary']);
-					//alert ('تمت عملية الاضافة بنجاح');
-					//window.location.href="employee";*/
 			}
 		});//END $.ajax
 

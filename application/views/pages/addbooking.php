@@ -108,7 +108,7 @@ if (isset($addbooking))
                                     <div class="form-group">
 										<label class="control-label col-md-3">رقم الهوية </label>
 										<div class="col-md-4">
-											<input type="text" name="cut_id" <?php if (isset($row->cut_id)) {echo 'value="'.$row->cut_id.'"';}?>  data-required="1" class="form-control"/>
+											<input type="text" id="cut_id" name="cut_id" <?php if (isset($row->cut_id)) {echo 'value="'.$row->cut_id.'"';}?>  data-required="1" class="form-control"/>
 										</div>
 									</div>
 
@@ -117,7 +117,7 @@ if (isset($addbooking))
 										* </span>
 										</label>
 										<div class="col-md-4">
-											<input type="text" name="name" data-required="1"  <?php if (isset($row->name)) {echo 'value="'.$row->name.'"';}?> class="form-control"/>
+											<input type="text" id="name" name="name" data-required="1"  <?php if (isset($row->name)) {echo 'value="'.$row->name.'"';}?> class="form-control"/>
 										</div>
 									</div>
                                     
@@ -125,7 +125,7 @@ if (isset($addbooking))
 									<div class="form-group">
 										<label class="control-label col-md-3">تلفون</label>
 										<div class="col-md-4">
-											<input name="tel" type="text" class="form-control"
+											<input id="tel" name="tel" type="text" class="form-control"
                                               <?php if (isset($row->tel)) {echo 'value="'.$row->tel.'"';}?>/>
 										</div>
                                      </div>
@@ -133,7 +133,7 @@ if (isset($addbooking))
                                      <div class="form-group">
 										<label class="control-label col-md-3">جوال</label>
 										<div class="col-md-4">
-											<input name="mobile" type="text" class="form-control"
+											<input id="mobile" name="mobile" type="text" class="form-control"
                                             <?php if (isset($row->mobile)) {echo 'value="'.$row->mobile.'"';}?>/>
 										</div>
                                      </div>
@@ -141,7 +141,7 @@ if (isset($addbooking))
                                      <div class="form-group">
 										<label class="control-label col-md-3">عنوان</label>
 										<div class="col-md-4">
-											<input name="address" type="text" class="form-control"
+											<input id="address" name="address" type="text" class="form-control"
                                              <?php if (isset($row->address)) {echo 'value="'.$row->address.'"';}?>/>
 										</div>
                                      </div>
@@ -156,7 +156,7 @@ if (isset($addbooking))
 								<div class="form-actions">
 									<div class="row">
 										<div class="col-md-offset-3 col-md-9">
-											<button id="btnAddbooking" name="btnAddbooking" type="submit"  class="btn green">حفظ</button>
+											<button id="btnAddbooking" name="btnAddbooking" type="submit"  class="btn green">حـفـظ</button>
 											<button type="button" class="btn default" value="Cancel" onclick="window.location='http://localhost/weddinghall/';">عودة</button>
 										</div>
 									</div>

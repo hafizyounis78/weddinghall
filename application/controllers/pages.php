@@ -669,6 +669,37 @@ class Pages extends CI_Controller
 		$this->load->model('empmodel');
 		return $this->empmodel->get_emp_by_code($emp_code);
 	}
+	function checkcustomeravailable()
+	{
+		$cut_id = $_POST['cut_id'];
+		$this->load->model('bookingmodel');
+		$rec = $this->bookingmodel->get_customer_by_id($cut_id);
+		
+		if (count($rec) == 0)
+		{
+			echo 0;
+			return;
+		}
+		$output = array();
+		foreach($rec as $row)
+		{
+			unset($temp); // Release the contained value of the variable from the last loop
+			$temp = array();
+
+			// It guess your client side will need the id to extract, and distinguish the ScoreCH data
+			$temp['name'] = $row->name;
+			$temp['tel'] = $row->tel;
+			$temp['mobile'] = $row->mobile;
+			$temp['address'] = $row->address;
+
+			array_push($output,$temp);
+			
+			
+			header('Access-Control-Allow-Origin: *');
+			header("Content-Type: application/json");
+			echo json_encode($output);
+		}
+	}
 	function checkuseravailable()
 	{
 		$username = $_POST['username'];

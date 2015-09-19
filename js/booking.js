@@ -31,8 +31,9 @@ function addbocking(){
 
 			}
 	});//END $.ajax
-	} // END addbocking
-$('#booking_date').change(function(event) {							
+} // END addbocking
+$(document).ready(function(){
+	$('#booking_date').change(function(event) {							
 		event.preventDefault();
 		
 		var booking_date= document.getElementById('booking_date').value;
@@ -95,7 +96,41 @@ $('#booking_date').change(function(event) {
 				}
 			}
 			});//END $.ajax	
-}); // END CLICK
+	}); // END CLICK
+
+	$('#cut_id').blur(function(event) {
+		event.preventDefault();
+		
+		if($("#cut_id").val().length != 9 || isNaN($('#cut_id').val()))
+			return;
+		
+		$.ajax({
+			url: "http://localhost/weddinghall/pages/checkcustomeravailable",
+			type: "POST",
+			data:  {cut_id: $('#cut_id').val()},
+			error: function(xhr, status, error) {
+  				//var err = eval("(" + xhr.responseText + ")");
+  				alert(xhr.responseText);
+				//alert("pages/"+action);
+
+			},
+			beforeSend: function(){},
+			complete: function(){},
+			success: function(returndb){
+				
+				if(returndb == 0)
+					return ;
+				
+				$('#name').val(returndb[0]['name']);
+				$('#tel').val(returndb[0]['tel']);
+				$('#mobile').val(returndb[0]['mobile']);
+				$('#address').val(returndb[0]['address']);
+				
+			}
+		});//END $.ajax
+
+	}); // END BLUR
+}); // END READY*/
 function sev_code_change(){	
  	var sev_code = $('#sev_code').find('option:selected').val();
 		

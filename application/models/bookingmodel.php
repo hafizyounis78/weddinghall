@@ -6,9 +6,9 @@ class Bookingmodel extends CI_Model
 	public function get_booking()
     {
         $myquery = "select wedding_hall.*,customer.*,wedding_booking.*
-from wedding_hall,customer,wedding_booking
-where wedding_booking.w_code=wedding_hall.w_code
-and   wedding_booking.cut_id=customer.cut_id";
+					from wedding_hall,customer,wedding_booking
+					where wedding_booking.w_code=wedding_hall.w_code
+					and   wedding_booking.cut_id=customer.cut_id";
         return $this->db->query($myquery);
     }
 	
@@ -19,23 +19,29 @@ and   wedding_booking.cut_id=customer.cut_id";
 	}
 	public function get_booking_by_code($booking_code)//,$cut_id)
 	{
-		 $myquery = "select wedding_hall.*,customer.*,wedding_booking.*
-from wedding_hall,customer,wedding_booking
-where wedding_booking.w_code=wedding_hall.w_code
-and   wedding_booking.cut_id=customer.cut_id
-and wedding_booking.booking_code=$booking_code";
+		$myquery = "select wedding_hall.*,customer.*,wedding_booking.*
+					from wedding_hall,customer,wedding_booking
+					where wedding_booking.w_code=wedding_hall.w_code
+					and   wedding_booking.cut_id=customer.cut_id
+					and wedding_booking.booking_code=$booking_code";
         return $this->db->query($myquery);
 
 	}
 	public function get_all_booking()//,$cut_id)
 	{
 		 $myquery = "select wedding_hall.*,customer.*,wedding_booking.*,booking_status_tb.*
-from wedding_hall,customer,wedding_booking,booking_status_tb
-where wedding_booking.w_code=wedding_hall.w_code
-and   wedding_booking.cut_id=customer.cut_id
-and wedding_booking.booking_status=booking_status_tb.booking_status_code";
+					from wedding_hall,customer,wedding_booking,booking_status_tb
+					where wedding_booking.w_code=wedding_hall.w_code
+					and   wedding_booking.cut_id=customer.cut_id
+					and wedding_booking.booking_status=booking_status_tb.booking_status_code";
         return $this->db->query($myquery);
 
+	}
+	public function get_customer_by_id($cut_id)
+	{
+		$this->db->where('cut_id',$cut_id);
+		$query = $this->db->get('customer');
+		return $query->result();
 	}
 	public function get_all_booking_search($requestData)
 	{
