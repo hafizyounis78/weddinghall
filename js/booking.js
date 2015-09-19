@@ -15,7 +15,7 @@ function addbocking(){
 	$.ajax({
 		url: "http://localhost/weddinghall/pages/"+action,
 		type: "POST",
-		data:  $("#form_sample_3").serialize(),
+		data:  $("#booking_form").serialize(),
 		error: function(xhr, status, error) {
   				//var err = eval("(" + xhr.responseText + ")");
   				alert(xhr.responseText);
@@ -196,7 +196,13 @@ function saveprice(){
 			}
 		});//END $.ajax
 		}// END CLICK
+/*var formid=0;
+$('#btnAddbooking').click(function(event) {	
+formid=1;
+alert(formid);
+alert('btnAddbooking');
 
+});*/
 function deleteselectedservice(sev_code){
 	booking_code= document.getElementById('hdnBookingcode').value;
 	
@@ -369,6 +375,7 @@ var bookingFormValidation = function () {
                 submitHandler: function (form) {
                     success3.show();
                     error3.hide();
+	//				if(formid==1)
 					addbocking();
 									
                     //form[0].submit(); // submit the form
