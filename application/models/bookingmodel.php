@@ -166,27 +166,26 @@ public function delete_selectedservice($sev_code,$booking_code)
 /*****************customer**********************/
 
 	$bookingid=$this->db->insert_id();
-
-
-		$cdata['cut_id'] = $cut_id;
-		$cdata['name'] = $name;
-		$cdata['tel'] = $tel;
-		$cdata['mobile'] = $mobile;
-		$cdata['address'] = $address;
+		// IF Customer Is New -> Add Customer
+		if($hdnOldcust != 1)
+		{
+			$cdata['cut_id'] = $cut_id;
+			$cdata['name'] = $name;
+			$cdata['tel'] = $tel;
+			$cdata['mobile'] = $mobile;
+			$cdata['address'] = $address;
+			
+			$this->db->insert('customer',$cdata);
+		}
 		
 /*****************booking details************************/	
        //extract($_POST);
 		/*$sdata['booking_code'] = $GLOBALS['booking_code'];
 		$sdata['sev_code'] = 30;
 		$sdata['sev_price'] = 401;*/
-	
-
-	
-	
-
-		$this->db->insert('customer',$cdata);
-print_r($bookingid);
-exit();
+		
+		print_r($bookingid);
+		exit();
 		//$this->db->insert('wedding_booking_details',$sdata);
 		return $bookingid;
 
