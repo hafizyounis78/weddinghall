@@ -13,7 +13,7 @@ if (isset($addservices))
 						</div>
 						<div class="portlet-body form">
 							<!-- BEGIN FORM-->
-                            <form action="#" id="service_form" class="form-horizontal">
+                            <form action="#" id="serv_form" class="form-horizontal">
 								<div class="form-body">
 									<h3 class="form-section"></h3>
 									<input id="sev_code" name="sev_code" type="hidden" 

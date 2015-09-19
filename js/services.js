@@ -33,7 +33,7 @@ function addservices()
 		$.ajax({
 			url: "http://localhost/weddinghall/pages/"+action,
 			type: "POST",
-			data:  $("#service_form").serialize(),
+			data:  $("#serv_form").serialize(),
 			error: function(xhr, status, error) {
   				alert(xhr.responseText);
 			},
@@ -78,7 +78,7 @@ var ServiceFormValidation = function () {
         // for more info visit the official plugin documentation: 
         // http://docs.jquery.com/Plugins/Validation
 
-            var form3 = $('#service_form');
+            var form3 = $('#serv_form');
             var error3 = $('.alert-danger', form3);
             var success3 = $('.alert-success', form3);
 
