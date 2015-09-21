@@ -174,7 +174,7 @@ if (isset($addbooking))
 					</div>
 				</div>
 <!--------------------------------------------------- service form------------------------------------------------------>
-				<div class="col-md-12">
+				<div id="dvServices" class="col-md-12" style="display:none">
 					<!-- BEGIN VALIDATION STATES-->
               
 					<div class="portlet box green">

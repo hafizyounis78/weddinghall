@@ -28,6 +28,7 @@ function addbocking(){
 				document.getElementById('hdnBookingcode').value = result;
 				document.getElementById('btnAddbooking').disabled=true;
 				alert ('تمت العملية بنجاح');
+				document.getElementById('dvServices').style.display = "block";
 
 			}
 	});//END $.ajax
