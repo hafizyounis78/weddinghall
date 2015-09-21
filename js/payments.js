@@ -46,12 +46,13 @@ function addpayments(){
 		  } // END addpayments
 
 /***********************update payments**************************/
-function updatepayemnts(){
-	$('payments_date').datepicker('setDate',$('#payments_body #payment_date_td').val());
-	document.getElementById('payment_date').value =$('#payments_body #payment_date_td').html();
-	document.getElementById('payment_amount').value = $('#payments_body #payment_amount_td').html();
-	document.getElementById('invoice_no').value =$('#payments_body #invoice_no_td').html();
-	document.getElementById('p_code').value =$('#payments_body #p_code_td').html();
+function updatepayemnts(i){
+//	var rowid=document.getElementById('payment_date').value =$('#payments_body #payment_date_td'+i).html();
+	$('payments_date').datepicker('setDate',$('#payments_body #payment_date_td'+i).val());
+	document.getElementById('payment_date').value =$('#payments_body #payment_date_td'+i).html();
+	document.getElementById('payment_amount').value = $('#payments_body #payment_amount_td'+i).html();
+	document.getElementById('invoice_no').value =$('#payments_body #invoice_no_td'+i).html();
+	document.getElementById('p_code').value =$('#payments_body #p_code_td'+i).html();
 	document.getElementById('hdnAction').value =1;
 		}//end function 
 

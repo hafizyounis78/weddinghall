@@ -195,18 +195,18 @@ foreach($addpayments as $row);
 								$total = $total + $row->payment_amount;
 								echo '<tr class="odd gradeX">';
 								echo '<td>'.$i++.'</td>';
-								echo '<td id="p_code_td">'.$row->p_code.'</td>';
+								echo '<td id="p_code_td'.$i.'">'.$row->p_code.'</td>';
 								echo '<td>'.$row->cut_id.'</td>';
 								echo '<td>'.$row->name.'</td>';
 								echo '<td>'.$row->mobile.'</td>';
 								echo '<td>'.$row->booking_date.'</td>';
 								echo '<td>'.$row->w_name.'</td>';
-								echo '<td id="final_price_td">'.$row->final_price.'</td>';
-								echo '<td id="payment_date_td">'.$row->payment_date.'</td>';
-								echo '<td id="invoice_no_td">'.$row->invoice_no.'</td>';
-								echo '<td id="payment_amount_td">'.$row->payment_amount.'</td>';
+								echo '<td id="final_price_td'.$i.'">'.$row->final_price.'</td>';
+								echo '<td id="payment_date_td'.$i.'">'.$row->payment_date.'</td>';
+								echo '<td id="invoice_no_td'.$i.'">'.$row->invoice_no.'</td>';
+								echo '<td id="payment_amount_td'.$i.'">'.$row->payment_amount.'</td>';
 								echo '<td>
-								<button id="btnupdatepayemnts" name="btnupdatepayemnts" type="button" class="btn default btn-xs purple" onclick="updatepayemnts()">
+								<button id="btnupdatepayemnts" name="btnupdatepayemnts" type="button" class="btn default btn-xs purple" onclick="updatepayemnts('.$i.')">
 										<i class="fa fa-edit"></i> تعديل </button>';
 								echo '</td>';		
 								echo '</tr>';
