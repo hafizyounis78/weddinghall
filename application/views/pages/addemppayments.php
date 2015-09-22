@@ -87,6 +87,13 @@ foreach($addemppayments as $row);
 										</div>
                                      </div>
                                      <div class="form-group">
+										<label class="control-label col-md-3">رقم الوصل المالي</label>
+										<div class="col-md-4">
+											<input id="invoice_no" name="invoice_no" type="text" data-required="1" class="form-control"/>
+                                            
+										</div>
+                                     </div>
+                                     <div class="form-group">
                    				<label class="control-label col-md-3">نوع الدفع<span class="required">*</span>
 										</label>
 										<div class="col-md-4">
@@ -148,6 +155,9 @@ foreach($addemppayments as $row);
                                 <th>
 									 قيمة الدفعة
 								</th>
+                                <th>
+									 رقم الوصل
+								</th>
                                 
 							</tr>
 							</thead>
@@ -166,6 +176,7 @@ foreach($addemppayments as $row);
 								echo '<td>'.$row->payment_type.'</td>';
 								echo '<td>'.$row->payment_date.'</td>';
 								echo '<td>'.$row->payment_amount.'</td>';
+								echo '<td>'.$row->invoice_no.'</td>';
 								echo '</tr>';
 							}
 							?>

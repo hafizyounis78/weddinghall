@@ -164,6 +164,8 @@ if (isset($addbooking))
 										<div class="col-md-offset-3 col-md-9">
 											<button id="btnAddbooking" name="btnAddbooking" type="submit"  class="btn green">حـفـظ</button>
 											<button type="button" class="btn default" value="Cancel" onclick="window.location='http://localhost/weddinghall/';">عودة</button>
+                       <a href="<?php if (isset($row->booking_code)) {echo base_url().'addpayments/'.$row->booking_code;}?>" class="btn blue">
+										<i class="fa fa-edit"></i>عرض الدفعات المالية</a>
 										</div>
 									</div>
 								</div>
@@ -386,6 +388,7 @@ if (isset($addbooking))
 										<div class="col-md-offset-3 col-md-9">
 											<button id="btnSaveprice" name="btnSaveprice" type="submit"  class="btn green">حفظ</button>
 										<button type="button" class="btn default" value="Cancel" onclick="window.location='http://localhost/weddinghall/';">عودة</button>
+
 										</div>
 									</div>
 								</div>

@@ -78,6 +78,9 @@
 									<th width="10%">
 									تاريخ الدفعة
                 					</th>
+                                    <th width="10%">
+									رقم الوصل 
+                					</th>
 									<th width="10%">
 									نوع الدفعة
                 					</th>
@@ -132,6 +135,9 @@
 											<button class="btn btn-sm default" type="button"><i class="fa fa-calendar"></i></button>
 											</span>
 										</div>
+									</td>
+                                    <td>
+										<input type="text" class="form-control form-filter input-sm" name="invoice_no">
 									</td>
 										<td>
 										<select id="payment_type" name="payment_type" class="form-control form-filter input-sm">

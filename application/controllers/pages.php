@@ -390,6 +390,7 @@ class Pages extends CI_Controller
 			$nestedData[] = $row->contract_type;
 			$nestedData[] = $row->payment_amount;
 			$nestedData[] = $row->payment_date;
+			$nestedData[] = $row->invoice_no;
 			$nestedData[] = $row->payment_desc;
 			$nestedData[] = $btn;
 			

@@ -205,7 +205,7 @@ and   wedding_booking.booking_code=$booking_code";
 		$data['payment_type'] = $payment_type;
 		$data['payment_amount'] = $payment_amount;
 		$data['payment_date'] = $payment_date;
-		//$data['invoice_no'] = $invoice_no;
+		$data['invoice_no'] = $invoice_no;
 		
 		$this->db->insert('employee_payments',$data);
 
