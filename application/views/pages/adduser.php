@@ -1,3 +1,6 @@
+<script type="text/javascript">
+var baseURL = "<?php echo base_url(); ?>";
+</script>
 <?php
 $isUpdate=0;
 if (isset($adduser))

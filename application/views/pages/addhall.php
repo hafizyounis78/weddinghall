@@ -1,3 +1,6 @@
+<script type="text/javascript">
+var baseURL = "<?php echo base_url(); ?>";
+</script>
 <?php
 if (isset($addhall))
 {
@@ -76,7 +79,7 @@ if (isset($addhall))
 									<div class="row">
 										<div class="col-md-offset-3 col-md-9">
 											<button type="submit" class="btn green" id="btnAddhall" name="btnAddhall">حفظ</button>
-										<button type="button" class="btn default" value="Cancel" onclick="window.location='<?php echo base_url()?>weddinghall/hall/';">عودة</button>
+										<button type="button" class="btn default" value="Cancel" onclick="window.location='<?php echo base_url()?>hall/';">عودة</button>
 										</div>
 									</div>
 								</div>

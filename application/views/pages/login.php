@@ -1,4 +1,6 @@
-
+<script type="text/javascript">
+var baseURL = "<?php echo base_url(); ?>";
+</script>
 <!-- BEGIN BODY -->
 <body class="login">
 <!-- BEGIN SIDEBAR TOGGLER BUTTON -->

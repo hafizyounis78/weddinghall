@@ -106,7 +106,7 @@ $(document).ready(function(){
 			return;
 		
 		$.ajax({
-			url: baseURL+"pages/pages/checkcustomeravailable",
+			url: baseURL+"pages/checkcustomeravailable",
 			type: "POST",
 			data:  {cut_id: $('#cut_id').val()},
 			error: function(xhr, status, error) {

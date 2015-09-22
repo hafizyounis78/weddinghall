@@ -1,3 +1,6 @@
+<script type="text/javascript">
+var baseURL = "<?php echo base_url(); ?>";
+</script>
 					<div class="portlet box blue-madison">
 						<div class="portlet-title">
 							<div class="caption">

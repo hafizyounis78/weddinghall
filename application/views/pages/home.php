@@ -1,4 +1,7 @@
-﻿			<div class="portlet box green-meadow calendar">
+﻿<script type="text/javascript">
+var baseURL = "<?php echo base_url(); ?>";
+</script>
+			<div class="portlet box green-meadow calendar">
 						<div class="portlet-title">
 							<div class="caption">
 								<i class="fa fa-gift"></i>Calendar
@@ -36,6 +39,7 @@
 							</div>
 							<!-- END CALENDAR PORTLET-->
 						</div>
+
 					</div>
 <script type="text/javascript">
 var baseURL = "<?php echo base_url(); ?>";

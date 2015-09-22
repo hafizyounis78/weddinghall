@@ -1,3 +1,6 @@
+<script type="text/javascript">
+var baseURL = "<?php echo base_url(); ?>";
+</script>
 <?php
 
 $isUpdate=0;
@@ -122,7 +125,7 @@ foreach($addpayments as $row);
 								<div class="form-actions">
 									<div class="row">
 										<div class="col-md-offset-3 col-md-9">
-											<button id="btnAddpayments" name="btnAddpayments" type="submit"  class="btn green">Submit</button>
+											<button id="btnAddpayments" name="btnAddpayments" type="submit"  class="btn green">حفظ</button>
 											<button type="button" class="btn default" value="Cancel" onclick="window.location='<?php echo base_url()?>searchpaymentsajax/';">عودة</button>
                                           <a href="<?php if (isset($row->booking_code)) {echo base_url().'addbooking/'.$row->booking_code;}?>" class="btn red">
 								<i class="fa fa-edit"></i> عرض بيانات الحجز </a>

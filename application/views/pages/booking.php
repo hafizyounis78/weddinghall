@@ -1,3 +1,6 @@
+<script type="text/javascript">
+var baseURL = "<?php echo base_url(); ?>";
+</script>
 <!-- BEGIN EXAMPLE TABLE PORTLET-->
 					<div class="portlet box yellow">
 						<div class="portlet-title">
