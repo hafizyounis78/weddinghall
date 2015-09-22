@@ -33,7 +33,8 @@ class Bookingmodel extends CI_Model
 					from wedding_hall,customer,wedding_booking,booking_status_tb
 					where wedding_booking.w_code=wedding_hall.w_code
 					and   wedding_booking.cut_id=customer.cut_id
-					and wedding_booking.booking_status=booking_status_tb.booking_status_code";
+					and wedding_booking.booking_status=booking_status_tb.booking_status_code
+					and booking_status<>4";
         return $this->db->query($myquery);
 
 	}

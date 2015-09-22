@@ -43,6 +43,12 @@ class Pages extends CI_Controller
 				$data['hall'] =$this->wedding_hall();
 				$data['booking_sev'] =$this->booking_details($indata);
 			}
+			if($page == 'addemp')
+			{
+
+			$data['jobs']=$this->get_jobs();
+			$data['contract'] =$this->contract();
+			}
 			if($page == 'addbooking')
 			{
 				// FROM FULL CALENDER
@@ -99,10 +105,15 @@ class Pages extends CI_Controller
 			{
 				$data[$page] = $this->viewemppaydata($indata);
 				$data['employee_view']=$this->employee_view($indata);
+				
 			}
 
 			if(($page == 'addemp' )&& $indata !='')
+			{
 				$data[$page] = $this->viewempupdate($indata);
+				$data['jobs']=$this->get_jobs();
+				$data['contract'] =$this->contract();
+			}
 			if(($page == 'addhall' )&& $indata !='')
 				$data[$page] = $this->viewhallupdate($indata);
 			if(($page == 'addservices' )&& $indata !='')
@@ -591,6 +602,7 @@ class Pages extends CI_Controller
 		return $rec->result();
 		 		
 	}
+	
 	function hall()
 	{
 		$this->load->model('hallmodel');
@@ -608,6 +620,12 @@ class Pages extends CI_Controller
 		 		
 	}
 
+	function get_jobs()
+	{
+		$this->load->model('jobmodel');
+		return $this->jobmodel->get_all_jobs();
+
+	}
 	function services()
 	{
 		$this->load->model('servicemodel');

@@ -127,26 +127,24 @@ $isUpdate = 1;
 										</label>
 										<div class="col-md-4">
 											<select class="form-control select2me" name="job" 
-                                             <?php if (isset($row->job)) {echo 'value="'.$row->job.'"';}?>>
-												<option value="">Select...</option>
-												<option value="1" 
-                                                 <?php if (isset($row->job)){if ($row->job== 1) echo 'selected=selected';}?>
-                                                >مضيف</option>
-                                                <option value="2"
-                                                 <?php if (isset($row->job)){if ($row->job== 2) echo 'selected=selected';}?>
-                                                >محاسب مالي</option>
-												<option value="3"
-                                                <?php if (isset($row->job)){if ($row->job== 3) echo 'selected=selected';}?>
-                                                >مصور</option>
-												<option value="4"
-                                                <?php if (isset($row->job)){if ($row->job== 4) echo 'selected=selected';}?>
-                                                >عامل</option>
-                                                <option value="5"
-                                                <?php if (isset($row->job)){if ($row->job== 5) echo 'selected=selected';}?>
-                                                >نظام صالة</option>
-                                                <option value="6"
-                                                <?php if (isset($row->job)){if ($row->job== 6) echo 'selected=selected';}?>
-                                                >حارس</option>
+                                             <option value="">Select...</option>
+											 <?php
+												$selected;
+												foreach($jobs as $row2)
+												{
+													$selected = "";
+													if (isset($addemp))
+													{
+														if ($row->job==$row2->job_code)	
+															$selected = 'selected="selected"';
+													}
+													
+												?>
+							                     <option value="<?php echo $row2->job_code;?>" <?php echo $selected;?> > <?php echo $row2->job_title;?></option>
+
+                                                <?php
+												}
+												?>
                                                 
 											</select>
 										</div>
@@ -158,15 +156,24 @@ $isUpdate = 1;
 										<div class="col-md-4">
 											<select class="form-control select2me" id="contract_code" name="contract_code">
 												<option value="">Select...</option>
-												<option value="1"
-                                            <?php if (isset($row->contract_code)){if ($row->contract_code== 1) echo 'selected=selected';}?>
-                                                >عقد دائم</option>
-												<option value="2"
-                                            <?php if (isset($row->contract_code)){if ($row->contract_code== 2) echo 'selected=selected';}?>
-                                                >عقد مؤقت</option>
-												<option value="3"
-                                            <?php if (isset($row->contract_code)){if ($row->contract_code== 3) echo 'selected=selected';}?>
-                                                >متطوع</option>
+											<?php
+												$selected;
+												foreach($contract as $row2)
+												{
+													$selected = "";
+													if (isset($addemp))
+													{
+														if ($row->contract_code==$row2->contract_code)	
+															$selected = 'selected="selected"';
+													}
+													
+												?>
+							                     <option value="<?php echo $row2->contract_code;?>" <?php echo $selected;?> > <?php echo $row2->contract_type;?></option>
+
+                                                <?php
+												}
+												?>
+                                            
 											</select>
 										</div>
 									</div>
