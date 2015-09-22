@@ -8,7 +8,7 @@ function addhall(){
 			action = "updatehall";
 		
 		$.ajax({
-			url: "http://localhost/weddinghall/pages/"+action,
+			url: baseURL+"pages/"+action,
 			type: "POST",
 			data:  $("#hall_form").serialize(),
 			error: function(xhr, status, error) {
@@ -37,7 +37,7 @@ if (r == true) {
 if(x==1)
 {
 		$.ajax({
-			url: "pages/deletehall/"+w_code,
+			url: baseURL+"pages/deletehall/"+w_code,
 			type: "POST",
 			error: function(){
 				alert('error');
@@ -46,7 +46,7 @@ if(x==1)
 			complete: function(){},
 			success: function(){
 					alert ('تمت عملية الحذف بنجاح');
-					window.location.href="hall";
+					window.location.href=baseURL+"hall";
 			}
 		});//END $.ajax
 }}

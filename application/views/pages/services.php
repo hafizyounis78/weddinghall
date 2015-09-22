@@ -49,10 +49,12 @@
 									</td>';
 
 
-								echo '<td align="center"><a href="http://localhost/weddinghall/addservices/'.$row->sev_code.'" class="btn default btn-xs purple">
+								echo '<td align="center">'
+								?>
+								<a href="<?php echo base_url()?>addservices/<?php echo $row->sev_code?>" class="btn default btn-xs purple">
 										<i class="fa fa-edit"></i> تعديل </a>
-									 
-								  </td>';
+							<?php		 
+							echo '</td>';
 							echo '</tr>';
 							
 							}

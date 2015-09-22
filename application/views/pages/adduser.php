@@ -124,7 +124,7 @@ if (isset($adduser))
 									<div class="row">
 										<div class="col-md-offset-3 col-md-9">
 											<button type="submit" class="btn green" id="btnAdduser" name="btnAdduser">حــفـظ</button>
-											<button type="button" class="btn default" value="Cancel" onclick="window.location='http://localhost/weddinghall/users/';">عودة</button>
+											<button type="button" class="btn default" value="Cancel" onclick="window.location='<?php echo base_url()?>users/';">عودة</button>
 										</div>
 									</div>
 								</div>

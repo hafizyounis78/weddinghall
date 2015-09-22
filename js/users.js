@@ -34,7 +34,7 @@ $(document).ready(function(){
 		event.preventDefault();
 			
 		$.ajax({
-			url: "http://localhost/weddinghall/pages/checkuseravailable",
+			url: baseURL+"pages/checkuseravailable",
 			type: "POST",
 			data:  {username: $('#username').val()},
 			error: function(xhr, status, error) {
@@ -64,7 +64,7 @@ function addUser()
 			action = "updateuser";
 		
 		$.ajax({
-			url: "http://localhost/weddinghall/pages/"+action,
+			url: baseURL+"pages/"+action,
 			type: "POST",
 			data:  $("#user_form").serialize(),
 			error: function(xhr, status, error) {
@@ -78,7 +78,7 @@ function addUser()
 			success: function(returndb){
 
 					alert ('تمت العملية بنجاح');
-					window.location.href="http://localhost/weddinghall/users";
+					window.location.href=baseURL+"users";
 			}
 		});//END $.ajax
 }
@@ -94,7 +94,7 @@ if (r == true) {
 if(x==1)
 {
 		$.ajax({
-			url: "pages/deleteuser/"+username,
+			url: baseURL+"pages/deleteuser/"+username,
 			type: "POST",
 			error: function(){
 				alert('error');
@@ -104,7 +104,7 @@ if(x==1)
 			success: function(returndb){
 				//	alert (returndb);
 					alert ('تمت عملية الحذف بنجاح');
-					window.location.href="users";
+					window.location.href=baseURL+"users";
 			}
 		});//END $.ajax
 }

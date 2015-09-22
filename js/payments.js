@@ -29,7 +29,7 @@ function addpayments(){
 		document.getElementById('booking_status').value =3;
 			
 	$.ajax({
-			url: "http://localhost/weddinghall/pages/"+action,
+			url: baseURL+"pages/"+action,
 			type: "POST",
 			data:  $("#payments_form").serialize(),
 			error: function(xhr, status, error) {
@@ -40,7 +40,7 @@ function addpayments(){
 			complete: function(){},
 			success: function(){
 					alert ('تمت عملية الإضافة بنجاح');
-					window.location.href="http://localhost/weddinghall/searchpaymentsajax";
+					window.location.href=baseURL+"searchpaymentsajax";
 			}
 		  });//END $.ajax
 		  } // END addpayments
@@ -59,7 +59,7 @@ function updatepayemnts(i){
 /********************emp payments***************/
 function addemppayments(){
 	$.ajax({
-			url: "http://localhost/weddinghall/pages/addemppayments",
+			url: baseURL+"pages/addemppayments",
 			type: "POST",
 			data:  $("#emppayments_form").serialize(),
 			error: function(xhr, status, error) {
@@ -70,7 +70,7 @@ function addemppayments(){
 			complete: function(){},
 			success: function(){
 					alert ('تمت عملية الإضافة بنجاح');
-					window.location.href="http://localhost/weddinghall/searchemppaymentsajax";
+					window.location.href=baseURL+"searchemppaymentsajax";
 			}
 		});//END $.ajax
 	} // END addemppayments
@@ -201,6 +201,10 @@ var emppaymentsFormValidation = function () {
                     },
 					payment_type: {
                         required: true
+                    },
+					invoice_no: {
+                        digits: true,
+					    required: true
                     }
                 },
 
@@ -214,6 +218,10 @@ var emppaymentsFormValidation = function () {
                     },
 					payment_type: {
 						required: "الرجاء ادخال نوع الدفعة المالية"
+                    },
+					invoice_no: {
+						digits: "الرجـاء ادخـال ارقـام فقط",
+						required: "الرجاء ادخال رقم الوصل"
                     }   
 					          
 				},

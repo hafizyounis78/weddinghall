@@ -1,4 +1,5 @@
-﻿var Calendar = function() {
+﻿
+var Calendar = function() {
 
 
     return {
@@ -120,8 +121,9 @@
                 },
                 events: function(start, end, timezone, callback){
 						var hall = document.getElementById('w_code').value;
+//						var baseurl = "<?php echo base_url(); ?>";
 						$.ajax({
-    						url:"http://localhost/weddinghall/pages/booking_calender",
+    						url: baseURL+"pages/booking_calender",
     						type: "POST",
 							data: {hall:hall},
     						success:function(retrieved_data){
@@ -197,11 +199,11 @@
 					//-----------
 					
 					$.ajax({
-    						url:"http://localhost/weddinghall/pages/sendBookingData",
+    						url:baseURL+"pages/sendBookingData",
     						type: "POST",
 							data: { date: date.format(), hall: document.getElementById('w_code').value },
     						success:function(){
-								window.location.href="addbooking";
+								window.location.href=baseURL+"addbooking";
 							}
 						   });
 

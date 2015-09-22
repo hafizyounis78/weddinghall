@@ -51,7 +51,7 @@
 								<div class="table-actions-wrapper">
 									<span>
 									</span>
-									<button type="button" class="btn default" value="Cancel" onclick="window.location='http://localhost/weddinghall/';"><i class="fa fa-times"></i>    عودة     </button>
+									<button type="button" class="btn default" value="Cancel" onclick="window.location='<?php echo base_url()?>';"><i class="fa fa-times"></i>    عودة     </button>
 								</div>
 								<table class="table table-striped table-bordered table-hover" id="payments_datatable">
 								<thead>

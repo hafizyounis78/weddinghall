@@ -306,7 +306,7 @@ class Pages extends CI_Controller
 		$data = array();
 		foreach($rec as $row){
 			$nestedData=array(); 
-			$btn='<a href="pages/view/addbooking/'.$row->booking_code.'" class="btn default btn-xs purple">
+			$btn='<a href="'.base_url().'addbooking/'.$row->booking_code.'" class="btn default btn-xs purple">
 			  <i class="fa fa-edit"></i> تعديل </a>
 			  <button id="btndelbooking" name="btndelbooking" type="button" class="btn default btn-xs black" onclick="deletebooking(\''.$row->booking_code.'\')">
 										<i class="fa fa-trash-o"></i> إلفاء </button>';
@@ -349,7 +349,7 @@ class Pages extends CI_Controller
 
 		foreach($rec as $row){
 			$nestedData=array(); 
-			$btn='<a href="pages/view/addpayments/'.$row->booking_code.'" class="btn default btn-xs blue">
+			$btn='<a href="'.base_url().'addpayments/'.$row->booking_code.'" class="btn default btn-xs blue">
 										<i class="fa fa-edit"></i> اضافة دفعه مالية </a>';
 
 			$nestedData[] = $i++;
@@ -391,7 +391,7 @@ class Pages extends CI_Controller
 
 		foreach($rec as $row){
 			$nestedData=array(); 
-			$btn='<a href="pages/view/addemppayments/'.$row->emp_code.'" class="btn default btn-xs blue">
+			$btn='<a href="'.base_url().'addemppayments/'.$row->emp_code.'" class="btn default btn-xs blue">
 										<i class="fa fa-edit"></i> اضافة دفعه مالية </a>';
 
 			$nestedData[] = $i++;

@@ -31,7 +31,7 @@ function addservices()
 			action = "updateservices";
 			
 		$.ajax({
-			url: "http://localhost/weddinghall/pages/"+action,
+			url: baseURL+"pages/"+action,
 			type: "POST",
 			data:  $("#serv_form").serialize(),
 			error: function(xhr, status, error) {
@@ -42,7 +42,7 @@ function addservices()
 			success: function(returndb){
 				//alert (returndb);
 				alert ('تمت عملية الإضافة بنجاح');
-				window.location.href="http://localhost/weddinghall/services/";
+				window.location.href=baseURL+"services/";
 			}
 		});//END $.ajax
 }
@@ -58,7 +58,7 @@ function deleteservice(sev_code)
 	if(x==1)
 	{
 		$.ajax({
-			url: "pages/deleteservice/"+sev_code,
+			url: baseURL+"pages/deleteservice/"+sev_code,
 			type: "POST",
 			error: function(){
 				alert('error');
@@ -67,7 +67,7 @@ function deleteservice(sev_code)
 			complete: function(){},
 			success: function(){
 					alert ('تمت عملية الحذف بنجاح');
-					window.location.href="http://localhost/weddinghall/services/";
+					window.location.href=baseURL+"services/";
 			}
 		});//END $.ajax
 	}

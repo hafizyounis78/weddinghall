@@ -13,7 +13,7 @@ function addbocking(){
 	if(document.getElementById('hdnAction').value == '1')
 		action = "updatebooking";
 	$.ajax({
-		url: "http://localhost/weddinghall/pages/"+action,
+		url: baseURL+"pages/"+action,
 		type: "POST",
 		data:  $("#booking_form").serialize(),
 		error: function(xhr, status, error) {
@@ -77,7 +77,7 @@ $(document).ready(function(){
 		}
 		
 		$.ajax({
-			url: "http://localhost/weddinghall/pages/get_booking_date",
+			url: baseURL+"pages/get_booking_date",
 			type: "POST",
 			data: {booking_date:booking_date, w_code:w_code},
 			error: function(xhr, status, error) {
@@ -106,7 +106,7 @@ $(document).ready(function(){
 			return;
 		
 		$.ajax({
-			url: "http://localhost/weddinghall/pages/checkcustomeravailable",
+			url: baseURL+"pages/pages/checkcustomeravailable",
 			type: "POST",
 			data:  {cut_id: $('#cut_id').val()},
 			error: function(xhr, status, error) {
@@ -145,7 +145,7 @@ function sev_code_change(){
  	var sev_code = $('#sev_code').find('option:selected').val();
 		
 		$.ajax({
-			url: "http://localhost/weddinghall/pages/service_price/"+sev_code,
+			url: baseURL+"pages/service_price/"+sev_code,
 			type: "POST",
 			data: function(){},
 			error: function(xhr, status, error) {
@@ -181,7 +181,7 @@ function addbooking_details(){
 			}
 		}
 		$.ajax({
-			url: "http://localhost/weddinghall/pages/addbooking_details",
+			url: baseURL+"pages/addbooking_details",
 			type: "POST",
 			data:  $("#service_form").serialize(),
 			error: function(xhr, status, error) {
@@ -226,7 +226,7 @@ function saveprice(){
 		var booking_code = $('#hdnBookingcode').val();
 		
 		$.ajax({
-			url: "http://localhost/weddinghall/pages/addbooking_price/"+booking_code,
+			url: baseURL+"pages/addbooking_price/"+booking_code,
 			type: "POST",
 			data:  $("#price_form").serialize(),
 			error: function(xhr, status, error) {
@@ -237,7 +237,7 @@ function saveprice(){
 			success: function(data){
 					//alert(data);
 				alert ('تمت عملية اضافة السعر بنجاح');
-				window.location.href="http://localhost/weddinghall/addpayments/"+booking_code;
+				window.location.href=baseURL+"addpayments/"+booking_code;
 			}
 		});//END $.ajax
 		}// END CLICK
@@ -261,7 +261,7 @@ function deleteselectedservice(sev_code){
 	{
 	
 			$.ajax({
-				url: "http://localhost/weddinghall/pages/delete_selectedservice/"+sev_code+"/"+booking_code,
+				url: baseURL+"pages/delete_selectedservice/"+sev_code+"/"+booking_code,
 				type: "POST",
 				data:  $("#serv_body").serialize(),
 				error: function(){
@@ -294,7 +294,7 @@ function deletebooking(booking_code){
 	{
 			$.ajax({
 				
-				url: "pages/deletebooking/"+booking_code,
+				url: baseURL+"pages/deletebooking/"+booking_code,
 				type: "POST",
 				error: function(){
 					alert('error');

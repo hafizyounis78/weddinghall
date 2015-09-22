@@ -37,3 +37,6 @@
 							<!-- END CALENDAR PORTLET-->
 						</div>
 					</div>
+<script type="text/javascript">
+var baseURL = "<?php echo base_url(); ?>";
+</script>

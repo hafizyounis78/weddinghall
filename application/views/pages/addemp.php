@@ -192,7 +192,7 @@ $isUpdate = 1;
 									<div class="row">
 										<div class="col-md-offset-3 col-md-9">
 											<button id="btnAddemp" name="btnAddemp" type="submit"  class="btn green">حـفـظ</button>
-											<button type="button" class="btn default" value="Cancel" onclick="window.location='http://localhost/weddinghall/employee/';">عودة</button>
+											<button type="button" class="btn default" value="Cancel" onclick="window.location='<?php echo base_url()?>employee/';">عودة</button>
 										</div>
 									</div>
 								</div>

@@ -37,7 +37,7 @@ var TableAjax = function () {
                 ],
                 "pageLength": 10, // default record count per page
                 "ajax": {
-                    "url": "http://localhost/weddinghall/pages/payments_grid_data", // ajax source
+                    "url": baseURL+"pages/payments_grid_data", // ajax source
 					"type": "POST"
                 },
                 "order": [

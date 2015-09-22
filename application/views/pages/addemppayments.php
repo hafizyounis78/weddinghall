@@ -111,7 +111,7 @@ foreach($addemppayments as $row);
 									<div class="row">
 										<div class="col-md-offset-3 col-md-9">
 											<button id="btnAddemppayments" name="btnAddemppayments" type="submit"  class="btn green">Submit</button>
-											<button type="button" class="btn default" value="Cancel" onclick="window.location='http://localhost/weddinghall/searchemppaymentsajax/';">عودة</button>
+											<button type="button" class="btn default" value="Cancel" onclick="window.location='<?php echo base_url()?>searchemppaymentsajax/';">عودة</button>
 										</div>
 									</div>
 								</div>

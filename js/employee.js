@@ -39,7 +39,7 @@ $(document).ready(function(){
 			return;
 		
 		$.ajax({
-			url: "http://localhost/weddinghall/pages/checkempavailable",
+			url: baseURL+"pages/checkempavailable",
 			type: "POST",
 			data:  {emp_id: $('#emp_id').val()},
 			error: function(xhr, status, error) {
@@ -71,7 +71,7 @@ function employee()
 		
 		}
 		$.ajax({
-			url: "http://localhost/weddinghall/pages/"+action,
+			url: baseURL+"pages/"+action,
 			type: "POST",
 			data:  $("#employee_form").serialize(),
 			error: function(xhr, status, error) {
@@ -83,9 +83,9 @@ function employee()
 			beforeSend: function(){},
 			complete: function(){},
 			success: function(returndb){
-				alert (returndb);
+//				alert (returndb);
 					alert ('تمت عملية الاضافة بنجاح');
-					window.location.href="employee";
+					window.location.href= baseURL+"employee";
 			}
 		});//END $.ajax
 }
@@ -102,7 +102,7 @@ function deleteEmp(empId)
 	if(x==1)
 	{				
 		$.ajax({
-			url: "pages/delemp/"+empId,
+			url: baseURL+"pages/delemp/"+empId,
 			type: "POST",
 			error: function(){
 				alert('error');
@@ -111,7 +111,7 @@ function deleteEmp(empId)
 			complete: function(){},
 			success: function(){
 					alert ('تمت عملية الحذف بنجاح');
-					window.location.href="employee";
+					window.location.href= baseURL+"employee";
 			}
 		});//END $.ajax
 	}
