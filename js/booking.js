@@ -89,11 +89,11 @@ $(document).ready(function(){
 			complete: function(){},
 			success: function(result){
 				
-					if (result==1 ){
+					if (result>=1 ){
 				document.getElementById('booking_date').value = '';
 				
 				alert ('هذا اليوم محجوز  ');
-				
+				return;
 				}
 			}
 			});//END $.ajax	

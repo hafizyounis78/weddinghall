@@ -6,12 +6,14 @@ $isUpdate=0;
 $selected='';
 $booking_code='';
 $final_price='';
+$dvService='style="display:none"';
 if (isset($addbooking))
 {
 	foreach($addbooking as $row);
 	$booking_code=$row->booking_code;
 	$final_price = $row->final_price;
 	$isUpdate = 1;
+	$dvService='style="display:block"';
 }
 
 ?>
@@ -179,7 +181,7 @@ if (isset($addbooking))
 					</div>
 				</div>
 <!--------------------------------------------------- service form------------------------------------------------------>
-				<div id="dvServices" class="col-md-12">
+				<div id="dvServices" class="col-md-12" <?php echo $dvService;?>>
 					<!-- BEGIN VALIDATION STATES-->
               
 					<div class="portlet box green">

@@ -8,6 +8,7 @@ class Pages extends CI_Controller
 		if( ! file_exists('application/views/pages/'.$page.'.php'))
 		{
 			show_404();
+	
 		}
 		
 		if ($page == 'login')
