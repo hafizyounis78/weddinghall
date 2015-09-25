@@ -19,10 +19,11 @@ class Bookingmodel extends CI_Model
 	}
 	public function get_booking_by_code($booking_code)//,$cut_id)
 	{
-		$myquery = "select wedding_hall.*,customer.*,wedding_booking.*
-					from wedding_hall,customer,wedding_booking
+		$myquery = "select wedding_hall.*,customer.*,wedding_booking.*,booking_status_tb.*
+					from wedding_hall,customer,wedding_booking,booking_status_tb
 					where wedding_booking.w_code=wedding_hall.w_code
 					and   wedding_booking.cut_id=customer.cut_id
+					and wedding_booking.booking_status=booking_status_tb.booking_status_code
 					and wedding_booking.booking_code=$booking_code";
         return $this->db->query($myquery);
 

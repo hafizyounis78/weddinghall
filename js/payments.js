@@ -1,16 +1,17 @@
 function addpayments(){
 
+	/*----------------------------*/
 	var payment_amount = $('#payment_amount').val();
 	var Total = $('#payments_footer #tdTotal').html();
-	var final_price= $('#payments_body #final_price_td').html();
-	var payment_amount_old=$('#payments_body #payment_amount_td').html();
+	var final_price=   $('#payments_body #final_price_td').html();
+	var payment_amount_old=$('#payment_amount_old').val();
 	var new_total=0;
 	var action = "addpayments";
-	
 	if(document.getElementById('hdnAction').value == '1')
 	 { 
 		action = "updatepayments";
 		new_total=parseInt(Total)+parseInt(payment_amount)-parseInt(payment_amount_old);
+	
 	 }
 	else
 	 {
@@ -22,12 +23,15 @@ function addpayments(){
 		alert('قيمة الدفعات تجوازت المبلغ المطلوب من ,الرجاء التحقق من القيمة المدخلة');
 		return;
 	 }
-	if (parseInt(new_total)<parseInt(final_price))
+	if (parseInt(new_total)<parseInt(final_price)){
+
 		document.getElementById('booking_status').value =2;
-	
+	}
 	if (parseInt(new_total)==parseInt(final_price))
+	{
+
 		document.getElementById('booking_status').value =3;
-			
+	}
 	$.ajax({
 			url: baseURL+"pages/"+action,
 			type: "POST",
@@ -39,8 +43,9 @@ function addpayments(){
 			beforeSend: function(){},
 			complete: function(){},
 			success: function(){
-					alert ('تمت عملية الإضافة بنجاح');
-					window.location.href=baseURL+"searchpaymentsajax";
+					alert ('تمت العملية بنجاح');
+				//	window.location.href=baseURL+"searchpaymentsajax";
+				document.location.reload(true);
 			}
 		  });//END $.ajax
 		  } // END addpayments
@@ -51,6 +56,8 @@ function updatepayemnts(i){
 	$('payments_date').datepicker('setDate',$('#payments_body #payment_date_td'+i).val());
 	document.getElementById('payment_date').value =$('#payments_body #payment_date_td'+i).html();
 	document.getElementById('payment_amount').value = $('#payments_body #payment_amount_td'+i).html();
+	document.getElementById('payment_amount_old').value = $('#payments_body #payment_amount_td'+i).html();
+	document.getElementById('final_price').value = $('#payments_body #final_price_td').html();
 	document.getElementById('invoice_no').value =$('#payments_body #invoice_no_td'+i).html();
 	document.getElementById('p_code').value =$('#payments_body #p_code_td'+i).html();
 	document.getElementById('hdnAction').value =1;
@@ -74,6 +81,67 @@ function addemppayments(){
 			}
 		});//END $.ajax
 	} // END addemppayments
+//--------------------------------
+function deletepayments(p_code,i)
+{
+	/**********************************************/
+	var Total = $('#payments_footer #tdTotal').html();
+	var final_price=  $('#payments_body #final_price_td').html();
+	var payment_amount=$('#payments_body #payment_amount_td'+i).html();
+	var new_total=0;
+	var b_status=0;
+	var b_code=document.getElementById('booking_code').value ;
+	
+
+	new_total=parseInt(Total)-parseInt(payment_amount);
+
+	 
+	
+	
+	if (parseInt(new_total)>parseInt(final_price))
+	 {
+		alert('قيمة الدفعات تجوازت المبلغ المطلوب من ,الرجاء التحقق من القيمة المدخلة');
+		return;
+	 }
+	if (parseInt(new_total)<parseInt(final_price))
+	{
+	b_status=2;
+
+	}
+	if (parseInt(new_total)==parseInt(final_price))
+{
+	b_status=3;
+}
+	/*******************************************/
+
+var r = confirm('هل انت متأكد من الإلفاء');
+if (r == true) {
+    x =1;
+} else {
+    x = 0;
+}
+if(x==1)
+{
+		$.ajax({
+			url: baseURL+"pages/deletepayments/"+p_code,//+bcode+bstatus,
+			type: "POST",
+			data:   {booking_code:b_code,booking_status:b_status},
+			error: function(){
+				alert('error');
+			},
+			beforeSend: function(){},
+			complete: function(){},
+			success: function(returndb){
+				//alert ('تمت عملية الإضافة بنجاح');
+				//	window.location.href=baseURL+"searchpaymentsajax";
+				document.location.reload(true);
+
+			}
+		});//END $.ajax
+}
+}
+//--------------------------------
+	
 
 var paymentsFormValidation = function () {
  var handleValidation3 = function() {

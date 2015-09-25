@@ -27,7 +27,7 @@ function addbocking(){
 	
 				document.getElementById('hdnBookingcode').value = result;
 				document.getElementById('btnAddbooking').disabled=true;
-				alert ('تمت العملية بنجاح');
+			//	alert ('تمت العملية بنجاح');
 				document.getElementById('dvServices').style.display = "block";
 
 			}
@@ -192,7 +192,7 @@ function addbooking_details(){
 			success: function(data){
 					//alert(returndb);
 				//	$('#service_table table > tbody:first').html(data);
-					alert ('تمت عملية اضافة خدمة بنجاح');
+					//alert ('تمت عملية اضافة خدمة بنجاح');
 			
                //$( "#serv_body" ).load( " Addbooking #serv_body" );
 			   $( "#serv_body" ).html(data);
@@ -236,7 +236,7 @@ function saveprice(){
 			complete: function(){},
 			success: function(data){
 					//alert(data);
-				alert ('تمت عملية اضافة السعر بنجاح');
+		//		alert ('تمت عملية اضافة السعر بنجاح');
 				window.location.href=baseURL+"addpayments/"+booking_code;
 			}
 		});//END $.ajax
@@ -270,7 +270,7 @@ function deleteselectedservice(sev_code){
 				beforeSend: function(){},
 				complete: function(){},
 				success: function(data){
-						alert ('تمت عملية الحذف بنجاح');
+					//	alert ('تمت عملية الحذف بنجاح');
 					$( "#serv_body" ).html(data);
 					if ( $('#serv_body #tdTotal').html()!='')
 					   document.getElementById('total_price').value = $('#serv_body #tdTotal').html();
@@ -302,7 +302,7 @@ function deletebooking(booking_code){
 				beforeSend: function(){},
 				complete: function(){},
 				success: function(){
-						alert ('تمت عملية الإلغاء بنجاح');
+						//alert ('تمت عملية الإلغاء بنجاح');
 						
 				}
 			});//END $.ajax
@@ -418,10 +418,11 @@ var bookingFormValidation = function () {
                 },
 
                 submitHandler: function (form) {
-                    success3.show();
+                    addbocking();
+					success3.show();
                     error3.hide();
 	//				if(formid==1)
-					addbocking();
+					
 									
                     //form[0].submit(); // submit the form
                 }
@@ -513,9 +514,10 @@ var bookingdetailsFormValidation = function () {
                 },
 
                 submitHandler: function (form) {
+					addbooking_details();
                     success3.show();
                     error3.hide();
-					addbooking_details();
+
 
 					
                     //form[0].submit(); // submit the form
@@ -601,9 +603,10 @@ var bookingpriceFormValidation = function () {
                 },
 
                 submitHandler: function (form) {
+					saveprice();
                     success3.show();
                     error3.hide();
-					saveprice();
+
 					
                     //form[0].submit(); // submit the form
                 }

@@ -141,10 +141,11 @@ if(isset($requestData['emp_id']) && $requestData['emp_id'] !='')
     }	
 	public function get_booking_by_code($booking_code)
 	{
-		 $myquery = "select wedding_hall.*,customer.*,wedding_booking.*
-from wedding_hall,customer,wedding_booking
+		 $myquery = "select wedding_hall.*,customer.*,wedding_booking.*,booking_status_tb.*
+from wedding_hall,customer,wedding_booking,booking_status_tb
 where wedding_booking.w_code=wedding_hall.w_code
 and   wedding_booking.cut_id=customer.cut_id
+and wedding_booking.booking_status=booking_status_tb.booking_status_code
 and wedding_booking.booking_code=$booking_code";
         return $this->db->query($myquery);
 
@@ -234,6 +235,19 @@ public function get_payment_type()
 	 $query = $this->db->get('payment_type');
 		return $query->result();
 }
+public function delete_payment($p_code)
+	{
+				extract($_POST);
+	/************update booking status**********/
+		$datab['booking_status'] = $booking_status;
+		
+		
+		$this->db->where('booking_code',$booking_code);
+		$this->db->update('wedding_booking',$datab);
+
+		$this->db->where('p_code', $p_code);
+        $this->db->delete('payments');
+	}
 }
 
 

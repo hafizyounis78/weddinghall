@@ -43,17 +43,25 @@ foreach($addpayments as $row);
 										<button class="close" data-close="alert"></button>
                                         <input id="booking_status" name="booking_status" type="hidden" value="<?php echo $row->booking_status?>" />
 										
-										تمت عملية التحقق بنجاح!
+										تمت العملية بنجاح!
 									</div>
                                     <div class="form-group">
 										<label class="control-label col-md-3">كود الحجز <span class="required">
+										</span>
+										</label>
+										<div class="col-md-4">
+											<input type="text" id="booking_code" name="booking_code" readonly  <?php if (isset($row->booking_code)) {echo 'value="'.$row->booking_code.'"';}?>  data-required="1" class="form-control"/>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="control-label col-md-3">حالة الحجز <span class="required">
 										* </span>
 										</label>
 										<div class="col-md-4">
-											<input type="text" name="booking_code" readonly  <?php if (isset($row->booking_code)) {echo 'value="'.$row->booking_code.'"';}?>  data-required="1" class="form-control"/>
+											<input type="text" name="b_desc" readonly <?php if (isset($row->b_desc)) {echo 'value="'.$row->b_desc.'"';}?>  data-required="1" class="form-control"/>
 										</div>
 									</div>
-<div class="form-group">
+                                    <div class="form-group">
 										<label class="control-label col-md-3">اسم الصالة <span class="required">
 										* </span>
 										</label>
@@ -114,6 +122,12 @@ foreach($addpayments as $row);
 											<input id="payment_amount" name="payment_amount" type="text" data-required="1" class="form-control"/>
 										</div>
                                      </div>
+                                     
+											<input id="payment_amount_old" name="payment_amount_old" type="hidden" data-required="1" class="form-control"/>
+										
+                                    
+											<input id="final_price" name="final_price" type="hidden" data-required="1" class="form-control"/>
+										
                                      <div class="form-group">
 										<label class="control-label col-md-3">رقم الوصل المالي</label>
 										<div class="col-md-4">
@@ -125,11 +139,12 @@ foreach($addpayments as $row);
 								<div class="form-actions">
 									<div class="row">
 										<div class="col-md-offset-3 col-md-9">
-											<button id="btnAddpayments" name="btnAddpayments" type="submit"  class="btn green">حفظ</button>
+											<button id="btnAddpayments" name="btnAddpayments" type="submit"  class="btn green" >حفظ</button>
 											<button type="button" class="btn default" value="Cancel" onclick="window.location='<?php echo base_url()?>searchpaymentsajax/';">عودة</button>
                                           <a href="<?php if (isset($row->booking_code)) {echo base_url().'addbooking/'.$row->booking_code;}?>" class="btn red">
 								<i class="fa fa-edit"></i> عرض بيانات الحجز </a>
-										</div>
+									
+                                        </div>
 									</div>
 								</div>
 							</form>
@@ -147,7 +162,7 @@ foreach($addpayments as $row);
 					
 						</div>
                  <div class="portlet-body">
-							<table class="table table-striped table-bordered table-hover" id="sample_2">
+							<table class="table table-striped table-bordered table-hover" id="payments_table">
 							<thead>
 							<tr>
 								<th >
@@ -172,13 +187,13 @@ foreach($addpayments as $row);
 									 اسم الصالة
 								</th>
                                 <th>
-									 المبلغ الإجمالي
+									 المبلغ المطلوب
 								</th>
                                  <th>
 									 تاريخ الدفعة 
 								</th>
                                 <th>
-									 رقم اللإيصال المالي
+									 رقم الوصل
 								</th>
                                 <th>
 									 قيمة الدفعة
@@ -195,9 +210,12 @@ foreach($addpayments as $row);
 								<?php
 								$i=1;
 								$total = 0;
+								$remaining = 0;
+								$required=0;
   							foreach($payment_view as $row)
   							{
 								$total = $total + $row->payment_amount;
+								$required=$row->final_price;
 								echo '<tr class="odd gradeX">';
 								echo '<td>'.$i++.'</td>';
 								echo '<td id="p_code_td'.$i.'">'.$row->p_code.'</td>';
@@ -206,18 +224,20 @@ foreach($addpayments as $row);
 								echo '<td>'.$row->mobile.'</td>';
 								echo '<td>'.$row->booking_date.'</td>';
 								echo '<td>'.$row->w_name.'</td>';
-								echo '<td id="final_price_td'.$i.'">'.$row->final_price.'</td>';
+								echo '<td id="final_price_td">'.$row->final_price.'</td>';
 								echo '<td id="payment_date_td'.$i.'">'.$row->payment_date.'</td>';
 								echo '<td id="invoice_no_td'.$i.'">'.$row->invoice_no.'</td>';
 								echo '<td id="payment_amount_td'.$i.'">'.$row->payment_amount.'</td>';
 								echo '<td>
 								<button id="btnupdatepayemnts" name="btnupdatepayemnts" type="button" class="btn default btn-xs purple" onclick="updatepayemnts('.$i.')">
-										<i class="fa fa-edit"></i> تعديل </button>';
+										<i class="fa fa-edit"></i> تعديل </button>
+										<button id="btndelpayments" name="btndelpayments" type="submit" value="Delete" class="btn default btn-xs black" onclick="deletepayments('.$row->p_code.','.$i.')"><i class="fa fa-trash-o"></i> حذف</button>
+';
 								echo '</td>';		
 								echo '</tr>';
 								
 							}
-								
+								$remaining =$required-$total;
 								
 							?>
                               
@@ -225,8 +245,14 @@ foreach($addpayments as $row);
                             <tfoot id="payments_footer">
                             <?php
 							echo '<tr align="center" class="odd gradeX">';
-								echo '<td colspan="9"><b>المجموع</td>';
+								echo '<td colspan="10"><b>المجموع</td>';
 								echo '<td id="tdTotal">'.$total.'</td>';
+								echo '<td> </td>';
+								echo '</tr>';
+								echo '<tr align="center" class="odd gradeX">';
+								echo '<td colspan="10"><b>المبلغ المتبقي</td>';
+								echo '<td id="tdTotal">'.$remaining.'</td>';
+								echo '<td> </td>';
 								echo '</tr>';
 							?>
                             </tfoot>

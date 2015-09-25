@@ -46,7 +46,7 @@ if (isset($addbooking))
 									</div>
 									<div class="alert alert-success display-hide">
 										<button class="close" data-close="alert"></button>
-										تمت عملية التحقق بنجاح!
+										تمت العملية بنجاح!
 									</div>
                                        <div class="form-group">
 										<label class="control-label col-md-3">الصالة<span class="required">
@@ -203,7 +203,7 @@ if (isset($addbooking))
 									</div>
 									<div class="alert alert-success display-hide">
 										<button class="close" data-close="alert"></button>
-										تمت عملية التحقق بنجاح!
+										تمت العملية بنجاح!
 									</div>
                                     <div class="form-group">
 										<label class="control-label col-md-3">نوع الخدمة<span class="required">
@@ -370,7 +370,7 @@ if (isset($addbooking))
 									</div>
 									<div class="alert alert-success display-hide">
 										<button class="close" data-close="alert"></button>
-										تمت عملية التحقق بنجاح!
+										تمت العملية بنجاح!
 									</div>
                                     <div class="form-group">
 										<label class="control-label col-md-3">تكلفة الحجز والخدمات<span class="required">

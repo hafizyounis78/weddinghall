@@ -596,6 +596,12 @@ class Pages extends CI_Controller
 		return $this->usermodel->delete_user($username);
 
 	}
+	function deletepayments($p_code)
+	{
+		$this->load->model('Paymentsmodel');
+		return $this->Paymentsmodel->delete_payment($p_code);
+
+	}
 	function employee()
 	{
 		$this->load->model('empmodel');
