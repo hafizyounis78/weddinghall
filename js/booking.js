@@ -8,10 +8,12 @@ function checkdate (){
 function addbocking(){
 
 	var cnt =0;
-	
+	var bstatus='';
 	var action = "Addbooking";
 	if(document.getElementById('hdnAction').value == '1')
 		action = "updatebooking";
+	if(document.getElementById('booking_status').value == 4)
+		 bstatus= 1;
 	$.ajax({
 		url: baseURL+"pages/"+action,
 		type: "POST",
@@ -24,13 +26,16 @@ function addbocking(){
 		beforeSend: function(){},
 		complete: function(){},
 		success: function(result){
-	
-				document.getElementById('hdnBookingcode').value = result;
+				if(document.getElementById('hdnAction').value == 0)
+					document.getElementById('hdnBookingcode').value = result;
+			
 				document.getElementById('btnAddbooking').disabled=true;
 			//	alert ('تمت العملية بنجاح');
 				document.getElementById('dvServices').style.display = "block";
-				document.getElementById('b_desc').value ="حجز فقط";
-				document.getElementById('hdnOldcust').value	=0;
+//				document.getElementById('hdnOldcust').value	=0;
+				if(bstatus == 1)
+		 		document.getElementById('b_desc').value ="حجز فقط";
+				//alert(document.getElementById('hdnBookingcode').value);
 				
 
 			}
@@ -168,7 +173,8 @@ function addbooking_details(){
 	
 	
 	var length=document.getElementById("serv_body").rows.length;
-	var new_sev_code=document.getElementById('sev_code').value;
+//	alert(document.getElementById('hdnBookingcode').value);
+		var new_sev_code=document.getElementById('sev_code').value;
 //	document.getElementById("sev_code").selectedIndex = "0"
    if(new_sev_code==0)
    {

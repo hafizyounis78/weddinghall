@@ -210,7 +210,7 @@ public function update_booking()
 		$this->db->where('booking_code',$hdnBooking_code);
 		$this->db->update('wedding_booking',$data);
 		//$cdata['cut_id'] = $cut_id;
-	
+	return $hdnBooking_code;
 	}
 
 	public function get_booking_details_by_code($booking_code)//,$cut_id)
@@ -320,10 +320,8 @@ $b_date=$row->booking_date;
 	public function delete_booking_details($booking_code)
 	{
 
-		$myquery = "update 	wedding_booking_details
-					set 	wedding_booking_details.sev_price=wedding_booking_details.sev_price * (-1)
-					where 	wedding_booking_details.booking_code=$booking_code";
-        return $this->db->query($myquery);
+		 $this->db->where('booking_code',$booking_code);
+		 $this->db->delete('wedding_booking_details');
 		
 	}
 	public function delete_payemnts($booking_code)

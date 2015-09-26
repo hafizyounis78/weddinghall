@@ -17,7 +17,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | environments.
 |
 */
-$config['base_url'] = '77.79.239.202';
+$config['base_url'] = 'http://localhost/weddinghall/';
 
 /*
 |--------------------------------------------------------------------------

@@ -64,10 +64,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => '77.79.239.202 ',
+	'hostname' => 'localhost',
 	'username' => 'root',
-	'password' => 'waseemlove9	',
-	'database' => 'ewdding_weddingdb',
+	'password' => '123',
+	'database' => 'weddingdb',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => TRUE,
