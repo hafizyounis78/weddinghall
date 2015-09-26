@@ -30,7 +30,7 @@ class Pages extends CI_Controller
 			$this->load->view('templates/stylecustomizer');
 			$this->load->view('templates/pageheader');
 			if($page == 'users'||$page == 'employee'|| $page == 'hall'||$page == 'services' ||
-			   $page == 'booking'||$page == 'payments'||$page == 'emppayments'||$page=='searchpayments'||$page=='searchemppayments'||$page=='searchbooking')
+			   $page == 'booking'||$page == 'payments'||$page == 'emppayments'||$page=='searchpayments'||$page=='searchemppayments'||$page=='searchbooking'||$page=='searchdelbooking')
 					$data[$page] = $this->$page();
 		
 			if($page == 'home')
@@ -70,6 +70,13 @@ class Pages extends CI_Controller
 				
 			}
 			if($page == 'searchbooking')
+			{
+				//$data[$page] = $this->viewbookingupdate($indata);
+				$data['bookstatus'] =$this->booking_status();
+				$data['hall'] =$this->wedding_hall();
+				//	
+			}
+			if($page == 'searchdelbooking')
 			{
 				//$data[$page] = $this->viewbookingupdate($indata);
 				$data['bookstatus'] =$this->booking_status();
@@ -187,8 +194,8 @@ class Pages extends CI_Controller
 	{
 		$this->load->model('paymentsmodel');
 		$this->paymentsmodel->insert_payments();
-		
-			
+		/****************************************/
+	$this->update_payments_datatable();			
 	}
 	function addemppayments()
 	{
@@ -275,10 +282,60 @@ class Pages extends CI_Controller
 		$this->load->model('bookingmodel');
 		return $this->bookingmodel->update_booking();
 	}
+	function update_payments_datatable()
+	{	
+		extract($_POST);
+//		$hdnBookingcode
+		$rec=$this->paymentsmodel->get_payments_by_code($booking_code);
+		
+		$i=1;
+		$total = 0;
+		$remaining = 0;
+		$required=0;
+		foreach($rec->result() as $row)
+  		{
+								$total = $total + $row->payment_amount;
+								$required=$row->final_price;
+								echo '<tr class="odd gradeX">';
+								echo '<td>'.$i++.'</td>';
+								echo '<td id="p_code_td'.$i.'">'.$row->p_code.'</td>';
+								echo '<td>'.$row->cut_id.'</td>';
+								echo '<td>'.$row->name.'</td>';
+								echo '<td>'.$row->mobile.'</td>';
+								echo '<td>'.$row->booking_date.'</td>';
+								echo '<td>'.$row->w_name.'</td>';
+								echo '<td id="final_price_td">'.$row->final_price.'</td>';
+								echo '<td id="payment_date_td'.$i.'">'.$row->payment_date.'</td>';
+								echo '<td id="invoice_no_td'.$i.'">'.$row->invoice_no.'</td>';
+								echo '<td id="payment_amount_td'.$i.'">'.$row->payment_amount.'</td>';
+								echo '<td>
+								<button id="btnupdatepayemnts" name="btnupdatepayemnts" type="button" class="btn default btn-xs purple" onclick="updatepayemnts('.$i.')">
+										<i class="fa fa-edit"></i> تعديل </button>
+										<button id="btndelpayments" name="btndelpayments" type="submit" value="Delete" class="btn default btn-xs black" onclick="deletepayments('.$row->p_code.','.$i.')"><i class="fa fa-trash-o"></i> حذف</button>';
+								echo '</td>';		
+								echo '</tr>';
+								
+							}
+								$remaining =$required-$total;
+								echo '<tr align="center" class="odd gradeX">';
+								echo '<td colspan="10"><b>المجموع</td>';
+								echo '<td id="tdTotal">'.$total.'</td>';
+								echo '<td> </td>';
+								echo '</tr>';
+								echo '<tr align="center" class="odd gradeX">';
+								echo '<td colspan="10"><b>المبلغ المتبقي</td>';
+								echo '<td id="tdTotal">'.$remaining.'</td>';
+								echo '<td> </td>';
+								echo '</tr>';	
+		/****************************************/
+		
+	}
 	function updatepayments()
 	{
 		$this->load->model('paymentsmodel');
-		return $this->paymentsmodel->update_payments();
+		$this->paymentsmodel->update_payments();
+/****************************************/
+	$this->update_payments_datatable();
 	}
 	function searchbooking()
 	{
@@ -291,8 +348,18 @@ class Pages extends CI_Controller
 		return $rec->result();
  		
 	}
-	function booking_grid_data()
-	{	
+	function searchdelbooking()
+	{
+		
+		$this->load->model('bookingmodel');
+		$rec = $this->bookingmodel->get_booking();
+		
+		//print_r($rec->result());
+		//exit;
+		return $rec->result();
+ 		
+	}
+	function booking_grid_data(){	
 		$this->load->model('bookingmodel');
 		$rec = $this->bookingmodel->get_all_booking_search($_REQUEST);
 		
@@ -309,7 +376,7 @@ class Pages extends CI_Controller
 			$nestedData=array(); 
 			$btn='<a href="'.base_url().'addbooking/'.$row->booking_code.'" class="btn default btn-xs purple">
 			  <i class="fa fa-edit"></i> تعديل </a>
-			  <button id="btndelbooking" name="btndelbooking" type="button" class="btn default btn-xs black" onclick="deletebooking(\''.$row->booking_code.'\')">
+			  <button id="btndelbooking" name="btndelbooking" type="button" class="btn default btn-xs black" onclick="deletebooking('.$row->booking_code.')">
 										<i class="fa fa-trash-o"></i> إلفاء </button>';
 										
 			$nestedData[] = $i++;
@@ -320,6 +387,51 @@ class Pages extends CI_Controller
 			$nestedData[] = $row->tel;
 			$nestedData[] = $row->mobile;
 			$nestedData[] = $row->b_desc;
+			$nestedData[] = $btn;
+			
+			$data[] = $nestedData;
+		}
+		
+		$totalData = count($data);
+		$totalFiltered = $totalData;
+		//$records["draw"] = $sEcho;
+		$json_data = array(
+					"draw"            => intval( $_REQUEST['draw'] ),   // for every request/draw by clientside , they send a number as a parameter, when they recieve a response/data they first check the draw number, so we are sending same number in draw. 
+					"recordsTotal"    => intval( $totalData ),  // total number of records
+					"recordsFiltered" => intval( $totalFiltered ), // total number of records after searching, if there is no searching then totalFiltered = totalData
+					"data"            => $data   // total data array
+					);
+		
+		echo json_encode($json_data);  // send data as json format
+
+		 		
+	}
+	function delbooking_grid_data(){	
+		$this->load->model('bookingmodel');
+		$rec = $this->bookingmodel->get_all_delbooking_search($_REQUEST);
+		
+		$rec = $rec->result();
+		$i = 1;
+		
+		/*'<a href="pages/view/addbooking/'.$row->booking_code.'" class="btn default btn-xs purple">
+			  <i class="fa fa-edit"></i> تعديل </a>
+			  <button id="btndelbooking" name="btndelbooking" type="button" class="btn default btn-xs black" 			onclick="deletebooking(\''.$row->booking_code.'\')">		
+			  <i class="fa fa-trash-o"></i> حذف </button>';*/
+								
+		$data = array();
+		foreach($rec as $row){
+			$nestedData=array(); 
+			$btn='<a href="'.base_url().'addbooking/'.$row->booking_code.'" class="btn default btn-xs purple">
+			  <i class="fa fa-edit"></i> تعديل </a>';
+										
+			$nestedData[] = $i++;
+			$nestedData[] = $row->w_name;
+			$nestedData[] = $row->old_booking_date;
+			$nestedData[] = $row->cut_id;
+			$nestedData[] = $row->name;
+			$nestedData[] = $row->tel;
+			$nestedData[] = $row->mobile;
+			//$nestedData[] = $row->b_desc;
 			$nestedData[] = $btn;
 			
 			$data[] = $nestedData;
@@ -578,6 +690,7 @@ class Pages extends CI_Controller
 	}
 	function deletebooking($booking_code)
 	{
+		
 		$this->load->model('bookingmodel');
 		return $this->bookingmodel->delete_booking($booking_code);
 
@@ -596,10 +709,11 @@ class Pages extends CI_Controller
 		return $this->usermodel->delete_user($username);
 
 	}
-	function deletepayments($p_code)
+	function deletepayments()
 	{
-		$this->load->model('Paymentsmodel');
-		return $this->Paymentsmodel->delete_payment($p_code);
+		$this->load->model('paymentsmodel');
+		$this->paymentsmodel->delete_payment();
+		$this->update_payments_datatable();
 
 	}
 	function employee()

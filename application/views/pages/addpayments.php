@@ -16,6 +16,14 @@ foreach($addpayments as $row);
 	{
 		background-color:#c0c0c0;
 	}
+	
+#b_desc {
+    text-align: center;
+    color: red;
+	 font-size: 20px;
+	 background-color:#FF0;
+}
+
  </style>
 <div class="row">
 				<div class="col-md-12">
@@ -58,7 +66,7 @@ foreach($addpayments as $row);
 										* </span>
 										</label>
 										<div class="col-md-4">
-											<input type="text" name="b_desc" readonly <?php if (isset($row->b_desc)) {echo 'value="'.$row->b_desc.'"';}?>  data-required="1" class="form-control"/>
+											<input type="text" id="b_desc" name="b_desc" readonly <?php if (isset($row->b_desc)) {echo 'value="'.$row->b_desc.'"';}?>  data-required="1" class="form-control"/>
 										</div>
 									</div>
                                     <div class="form-group">
@@ -72,12 +80,12 @@ foreach($addpayments as $row);
 									<div class="form-group">
 										<label class="control-label col-md-3">تاريخ الحجز</label>
 										<div class="col-md-4">
-											<div class="input-group date date-picker" data-date-format="yyyy/mm/dd">
+											
 												<input type="text" class="form-control" readonly name="booking_date" <?php if (isset($row->booking_date)) {echo 'value="'.$row->booking_date.'"';}?>/>
 												<span class="input-group-btn">
-												<button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
+												
 												</span>
-											</div>
+											
 											<!-- /input-group -->
 											<span class="help-block">
 											select a date </span>
@@ -241,8 +249,8 @@ foreach($addpayments as $row);
 								
 							?>
                               
-							</tbody>
-                            <tfoot id="payments_footer">
+						<!--	</tbody>
+                            <tfoot id="payments_footer"> -->
                             <?php
 							echo '<tr align="center" class="odd gradeX">';
 								echo '<td colspan="10"><b>المجموع</td>';
@@ -255,7 +263,8 @@ foreach($addpayments as $row);
 								echo '<td> </td>';
 								echo '</tr>';
 							?>
-                            </tfoot>
+                           <!-- </tfoot> -->
+                          </tbody>
 							</table>
     </div>
 					</div>

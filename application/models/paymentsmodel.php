@@ -14,27 +14,23 @@ where employee_payments.emp_code=employee.emp_code";
 
 	public function get_all_payments()
     {
-        $myquery = "select payments.*,wedding_booking.*,customer.*,wedding_hall.*
-from  payments,wedding_booking,customer,wedding_hall
-where wedding_booking.booking_code=payments.booking_code
-and   wedding_booking.w_code=wedding_hall.w_code
-and   wedding_booking.cut_id=customer.cut_id";
+        $myquery = "select  payments.*,wedding_booking.*,customer.*,wedding_hall.*
+					from  	payments,wedding_booking,customer,wedding_hall
+					where 	wedding_booking.booking_code=payments.booking_code
+					and		wedding_booking.w_code=wedding_hall.w_code
+					and 	wedding_booking.cut_id=customer.cut_id";
         return $this->db->query($myquery);
 
     }
 	public function get_all_payments_search($requestData)
     {
-        /*$myquery = "select payments.*,wedding_booking.*,customer.*,wedding_hall.*
-from  payments,wedding_booking,customer,wedding_hall
-where wedding_booking.booking_code=payments.booking_code
-and   wedding_booking.w_code=wedding_hall.w_code
-and   wedding_booking.cut_id=customer.cut_id";*/
-		
-		$myquery = "SELECT payments. * , wedding_booking. * , customer. * , wedding_hall. *
-					FROM wedding_booking LEFT JOIN payments ON wedding_booking.booking_code = payments.booking_code,
-						 customer, wedding_hall
-					WHERE wedding_booking.w_code = wedding_hall.w_code
-					  AND wedding_booking.cut_id = customer.cut_id";
+		$myquery = "SELECT 		payments. * , wedding_booking. * , customer. * , wedding_hall. *
+					FROM   		wedding_booking
+					LEFT JOIN 	payments ON wedding_booking.booking_code = payments.booking_code
+					AND 		payment_status <>4, customer, wedding_hall
+					WHERE 		wedding_booking.w_code = wedding_hall.w_code
+					AND 		wedding_booking.cut_id = customer.cut_id
+					AND 		wedding_booking.booking_status <>4";
 
 
 if(isset($requestData['w_code']) && $requestData['w_code'] !='')
@@ -93,10 +89,10 @@ public function get_all_emp_payments_search($requestData)
 					and employee.contract_code=contract_type.contract_code
 					and employee_payments.payment_type=payment_type.payment_code";*/
 		 $myquery = "SELECT employee_payments. * , employee. * , contract_type. * , payment_type. *
-					 FROM employee LEFT JOIN employee_payments ON employee.emp_code = employee_payments.emp_code
+					 FROM   employee LEFT JOIN employee_payments ON employee.emp_code = employee_payments.emp_code
 					               LEFT JOIN payment_type ON employee_payments.payment_type = payment_type.payment_code,
-						contract_type
-					WHERE employee.contract_code = contract_type.contract_code";
+								   contract_type
+					WHERE   employee.contract_code = contract_type.contract_code";
 
 if(isset($requestData['emp_id']) && $requestData['emp_id'] !='')
 		{
@@ -142,11 +138,12 @@ if(isset($requestData['emp_id']) && $requestData['emp_id'] !='')
 	public function get_booking_by_code($booking_code)
 	{
 		 $myquery = "select wedding_hall.*,customer.*,wedding_booking.*,booking_status_tb.*
-from wedding_hall,customer,wedding_booking,booking_status_tb
-where wedding_booking.w_code=wedding_hall.w_code
-and   wedding_booking.cut_id=customer.cut_id
-and wedding_booking.booking_status=booking_status_tb.booking_status_code
-and wedding_booking.booking_code=$booking_code";
+					 from   wedding_hall,customer,wedding_booking,booking_status_tb
+					 where  wedding_booking.w_code=wedding_hall.w_code
+					 and    wedding_booking.cut_id=customer.cut_id
+					 and    wedding_booking.booking_status=booking_status_tb.booking_status_code
+					 and    wedding_booking.booking_code=$booking_code
+					 and    wedding_booking.booking_status<>4";
         return $this->db->query($myquery);
 
 	}
@@ -159,9 +156,9 @@ public function get_emp_by_code($emp_code)
 public function get_emppayments_by_code($emp_code)
 	{
 		 $myquery = "select employee_payments.*,employee.*
-from employee_payments,employee
-where employee_payments.emp_code=employee.emp_code
-and employee_payments.emp_code=$emp_code";
+					 from   employee_payments,employee
+					 where  employee_payments.emp_code=employee.emp_code
+					 and    employee_payments.emp_code=$emp_code";
         return $this->db->query($myquery);
 
 	}
@@ -169,11 +166,12 @@ and employee_payments.emp_code=$emp_code";
 public function get_payments_by_code($booking_code)
 	{
 		 $myquery = "select payments.*,wedding_booking.*,customer.*,wedding_hall.*
-from  payments,wedding_booking,customer,wedding_hall
-where wedding_booking.booking_code=payments.booking_code
-and   wedding_booking.w_code=wedding_hall.w_code
-and   wedding_booking.cut_id=customer.cut_id
-and   wedding_booking.booking_code=$booking_code";
+					 from   payments,wedding_booking,customer,wedding_hall
+					 where  wedding_booking.booking_code=payments.booking_code
+					 and    wedding_booking.w_code=wedding_hall.w_code
+					 and    wedding_booking.cut_id=customer.cut_id
+					 and    wedding_booking.booking_code=$booking_code
+					 and    payment_status<>4";
         return $this->db->query($myquery);
 
 	}	
@@ -235,18 +233,25 @@ public function get_payment_type()
 	 $query = $this->db->get('payment_type');
 		return $query->result();
 }
-public function delete_payment($p_code)
+
+public function delete_payment()
 	{
-				extract($_POST);
+		extract($_POST);
 	/************update booking status**********/
 		$datab['booking_status'] = $booking_status;
 		
 		
 		$this->db->where('booking_code',$booking_code);
 		$this->db->update('wedding_booking',$datab);
+		//update the payment status to deleted status
+		$myquery = "update 	payments
+					set 	payment_amount=payment_amount * (-1),
+							payment_status=4
+					where 	p_code=$p_code";
+        return $this->db->query($myquery);
 
-		$this->db->where('p_code', $p_code);
-        $this->db->delete('payments');
+//		$this->db->where('p_code', $p_code);
+  //      $this->db->delete('payments');
 	}
 }
 

@@ -29,6 +29,9 @@ function addbocking(){
 				document.getElementById('btnAddbooking').disabled=true;
 			//	alert ('تمت العملية بنجاح');
 				document.getElementById('dvServices').style.display = "block";
+				document.getElementById('b_desc').value ="حجز فقط";
+				document.getElementById('hdnOldcust').value	=0;
+				
 
 			}
 	});//END $.ajax
@@ -284,6 +287,9 @@ function deleteselectedservice(sev_code){
 	}
 	}
 function deletebooking(booking_code){
+	
+	
+	//	alert(booking_code);
 	var r = confirm('هل انت متأكد من الإلفاء');
 	if (r == true) {
 		x =1;
@@ -303,7 +309,7 @@ function deletebooking(booking_code){
 				complete: function(){},
 				success: function(){
 						//alert ('تمت عملية الإلغاء بنجاح');
-						
+			document.getElementById("reload").click(); 			
 				}
 			});//END $.ajax
 	}	}

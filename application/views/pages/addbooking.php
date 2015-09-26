@@ -22,6 +22,13 @@ if (isset($addbooking))
 	{
 		background-color:#c0c0c0;
 	}
+	#b_desc {
+    text-align: center;
+    color: red;
+	 font-size: 20px;
+	 background-color:#FF0;
+}
+
  </style>
 <div class="row">
 				<div class="col-md-12">
@@ -40,6 +47,7 @@ if (isset($addbooking))
 								<div class="form-body">
 									<h3 class="form-section"></h3>
 							<input id="hdnAction" name="hdnAction" type="hidden" value="<?php echo $isUpdate;?>" />
+                            <input id="booking_status" name="booking_status" type="hidden" <?php if (isset($row->booking_status)) {echo 'value="'.$row->booking_status.'"';}?> />
             						<div class="alert alert-danger display-hide">
 										<button class="close" data-close="alert"></button>
 										يـوجد خطأ في ادخال الحقول ... الرجــاء التأكد من الادخال بشـكل صحيـح
@@ -47,6 +55,14 @@ if (isset($addbooking))
 									<div class="alert alert-success display-hide">
 										<button class="close" data-close="alert"></button>
 										تمت العملية بنجاح!
+									</div>
+                                    <div class="form-group">
+										<label class="control-label col-md-3">حالة الحجز <span class="required">
+										* </span>
+										</label>
+										<div class="col-md-4">
+											<input type="text" id="b_desc" name="b_desc" readonly <?php if (isset($row->b_desc)) {echo 'value="'.$row->b_desc.'"';}?>  data-required="1" class="form-control"/>
+										</div>
 									</div>
                                        <div class="form-group">
 										<label class="control-label col-md-3">الصالة<span class="required">

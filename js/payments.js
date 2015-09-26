@@ -2,7 +2,7 @@ function addpayments(){
 
 	/*----------------------------*/
 	var payment_amount = $('#payment_amount').val();
-	var Total = $('#payments_footer #tdTotal').html();
+	var Total = $('#payments_body #tdTotal').html();
 	var final_price=   $('#payments_body #final_price_td').html();
 	var payment_amount_old=$('#payment_amount_old').val();
 	var new_total=0;
@@ -26,11 +26,14 @@ function addpayments(){
 	if (parseInt(new_total)<parseInt(final_price)){
 
 		document.getElementById('booking_status').value =2;
+		document.getElementById('b_desc').value ="حجز عليه دفعات مالية";
+		
 	}
 	if (parseInt(new_total)==parseInt(final_price))
 	{
 
 		document.getElementById('booking_status').value =3;
+		document.getElementById('b_desc').value ="حجز مسدد كامل الدفعات";
 	}
 	$.ajax({
 			url: baseURL+"pages/"+action,
@@ -42,10 +45,21 @@ function addpayments(){
 			},
 			beforeSend: function(){},
 			complete: function(){},
-			success: function(){
+			success: function(data){
 					alert ('تمت العملية بنجاح');
-				//	window.location.href=baseURL+"searchpaymentsajax";
-				document.location.reload(true);
+					$( "#payments_body" ).html(data);
+						document.getElementById('payment_date').value ="";
+						document.getElementById('payment_amount').value ="";
+						document.getElementById('payment_amount_old').value ="";
+					//	document.getElementById('final_price').value ="";
+						document.getElementById('invoice_no').value ="";
+						document.getElementById('p_code').value ="";
+						document.getElementById('hdnAction').value =0;
+						
+						
+				//	$( "#payments_footer" ).empty();
+					//	window.location.href=baseURL+"searchpaymentsajax";
+//				document.location.reload(true);
 			}
 		  });//END $.ajax
 		  } // END addpayments
@@ -85,7 +99,7 @@ function addemppayments(){
 function deletepayments(p_code,i)
 {
 	/**********************************************/
-	var Total = $('#payments_footer #tdTotal').html();
+	var Total = $('#payments_body #tdTotal').html();
 	var final_price=  $('#payments_body #final_price_td').html();
 	var payment_amount=$('#payments_body #payment_amount_td'+i).html();
 	var new_total=0;
@@ -106,11 +120,13 @@ function deletepayments(p_code,i)
 	if (parseInt(new_total)<parseInt(final_price))
 	{
 	b_status=2;
+	document.getElementById('b_desc').value ="حجز عليه دفعات مالية";
 
 	}
 	if (parseInt(new_total)==parseInt(final_price))
 {
 	b_status=3;
+		document.getElementById('b_desc').value ="حجز مسدد كامل الدفعات";
 }
 	/*******************************************/
 
@@ -123,19 +139,19 @@ if (r == true) {
 if(x==1)
 {
 		$.ajax({
-			url: baseURL+"pages/deletepayments/"+p_code,//+bcode+bstatus,
+			url: baseURL+"pages/deletepayments",
 			type: "POST",
-			data:   {booking_code:b_code,booking_status:b_status},
+			data:   {p_code:p_code,booking_code:b_code,booking_status:b_status},
 			error: function(){
 				alert('error');
 			},
 			beforeSend: function(){},
 			complete: function(){},
-			success: function(returndb){
+			success: function(data){
 				//alert ('تمت عملية الإضافة بنجاح');
 				//	window.location.href=baseURL+"searchpaymentsajax";
-				document.location.reload(true);
-
+//				document.location.reload(true);
+					$( "#payments_body" ).html(data);
 			}
 		});//END $.ajax
 }

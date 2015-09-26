@@ -11,7 +11,7 @@ var baseURL = "<?php echo base_url(); ?>";
 					<div class="portlet">
 						<div class="portlet-title">
 							<div class="caption">
-								<i class="fa fa-search"></i>استعلام عام على الحجوزات
+								<i class="fa fa-search"></i>استعلام عام على الحجوزات الملغية
 							</div>
 							<div class="actions">
 								<a href="addbooking" class="btn default yellow-stripe">
@@ -57,7 +57,7 @@ var baseURL = "<?php echo base_url(); ?>";
 																		<button type="button" class="btn default" value="Cancel" onclick="window.location='<?php echo base_url()?>';"><i class="fa fa-times"></i>    عودة     </button>
 
 								</div>
-								<table class="table table-striped table-bordered table-hover" id="datatable_ajax">
+								<table class="table table-striped table-bordered table-hover" id="delbookingdatatable_ajax">
 								<thead>
 								<tr role="row" class="heading">
 									
@@ -68,7 +68,7 @@ var baseURL = "<?php echo base_url(); ?>";
 										 الصالة
 									</th>
                                     <th width="14%">
-										 تاريخ الحجز
+										 تاريخ الحجز السابق
 									</th>
 									<th width="10%">
 									رقم الهوية
@@ -81,9 +81,6 @@ var baseURL = "<?php echo base_url(); ?>";
 									</th>
 									<th width="10%">
 										 جوال
-									</th>
-									<th width="10%">
-										 حالة الحجز
 									</th>
 									<th width="10%">
 										 Actions
@@ -136,21 +133,7 @@ var baseURL = "<?php echo base_url(); ?>";
 									<td>
 											<input type="text" class="form-control form-filter input-sm" name="mobile">
 									</td>
-									<td>
-										<select name="booking_status" class="form-control form-filter input-sm">
-											<option value="">Select...</option>
-											<?php
-												
-												foreach($bookstatus as $row)
-												{
-												?>
-							                     <option value="<?php echo $row->booking_status_code;?>" > <?php echo $row->b_desc;?></option>
-
-                                                <?php
-												}
-												?>
-																					</select>
-									</td>
+									
 									<td>
 										<div class="margin-bottom-5">
 											<button type="submit" class="btn btn-sm yellow filter-submit margin-bottom"><i class="fa fa-search"></i> بحث</button>
@@ -169,4 +152,4 @@ var baseURL = "<?php echo base_url(); ?>";
 				</div>
 			</div>
 			<!-- END PAGE CONTENT-->
-		<script src="<?php echo base_url();?>assets/admin/pages/scripts/table-ajax.js"></script>
+		<script src="<?php echo base_url();?>assets/admin/pages/scripts/delbookingtable-ajax.js"></script>

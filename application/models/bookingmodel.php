@@ -45,14 +45,14 @@ class Bookingmodel extends CI_Model
 		$query = $this->db->get('customer');
 		return $query->result();
 	}
-	public function get_all_booking_search($requestData)
-	{
+	public function get_all_booking_search($requestData){
 		//$requestData= $_REQUEST;
 		 $myquery = "select wedding_hall.*,customer.*,wedding_booking.*,booking_status_tb.*
 					from wedding_hall,customer,wedding_booking,booking_status_tb
 					where wedding_booking.w_code=wedding_hall.w_code
 					and wedding_booking.cut_id=customer.cut_id
-					and booking_status_tb.booking_status_code=wedding_booking.booking_status";
+					and booking_status_tb.booking_status_code=wedding_booking.booking_status
+					and booking_status<>4";
 		if(isset($requestData['w_code']) && $requestData['w_code'] !='')
 		{
 			$myquery = $myquery." AND wedding_hall.w_code = ".$requestData['w_code'];
@@ -91,6 +91,52 @@ class Bookingmodel extends CI_Model
         return $this->db->query($myquery);
 
 	}
+	public function get_all_delbooking_search($requestData){
+		//$requestData= $_REQUEST;
+		 $myquery = "select wedding_hall.*,customer.*,wedding_booking.*,booking_status_tb.*
+					from wedding_hall,customer,wedding_booking,booking_status_tb
+					where wedding_booking.w_code=wedding_hall.w_code
+					and wedding_booking.cut_id=customer.cut_id
+					and booking_status_tb.booking_status_code=wedding_booking.booking_status
+					and booking_status=4";
+		if(isset($requestData['w_code']) && $requestData['w_code'] !='')
+		{
+			$myquery = $myquery." AND wedding_hall.w_code = ".$requestData['w_code'];
+		}
+		if(isset($requestData['cut_id']) && $requestData['cut_id'] !='')
+		{
+			$myquery = $myquery." AND wedding_booking.cut_id LIKE '".$requestData['cut_id']."%' ";;
+		}
+		if(isset($requestData['name']) && $requestData['name'] !='')
+		{
+			$myquery = $myquery." AND name LIKE '%".$requestData['name']."%' ";
+		}
+		if(isset($requestData['tel']) && $requestData['tel'] !='')
+		{
+			$myquery = $myquery." AND tel LIKE '".$requestData['tel']."%' ";
+		}
+		if(isset($requestData['mobile']) && $requestData['mobile'] !='')
+		{
+			$myquery = $myquery." AND mobile LIKE '".$requestData['mobile']."%' ";
+		}
+		if(isset($requestData['booking_date_from']) && $requestData['booking_date_from'] != ''
+		   && isset($requestData['booking_date_to']) && $requestData['booking_date_to'] != '')
+		{
+			$myquery = $myquery." AND old_booking_date between '".$requestData['booking_date_from']."' and '".$requestData['booking_date_to']."'";
+		}
+		if(isset($requestData['booking_date_from']) && $requestData['booking_date_from'] != ''
+		   && (isset($requestData['booking_date_to']) && $requestData['booking_date_to'] == ''))
+		{
+			$myquery = $myquery." AND old_booking_date = '".$requestData['booking_date_from']."'";
+		}
+		/*if(isset($requestData['booking_status']) && $requestData['booking_status'] !='')
+		{
+			$myquery = $myquery." AND booking_status LIKE '".$requestData['booking_status']."%' ";
+		}
+*/
+        return $this->db->query($myquery);
+
+	}
 	public function get_booking_by_date($booking_date,$w_code)
 	{
 		 $myquery = "select count(1) as cn
@@ -125,15 +171,46 @@ class Bookingmodel extends CI_Model
 public function update_booking()
 	{
 		extract($_POST);
+		
+		if ($booking_status==4)
+		   {
+			   $data['booking_status'] = 1;	
+			   $this->db->where('booking_code',$hdnBooking_code);
+			   $this->db->delete('wedding_booking_details');
+			   
+		   }
+		$rec = $this->get_customer_by_id($cut_id);
+		if (count($rec) == 0)
+		{
+			
+				$cdata['cut_id'] = $cut_id;
+				$cdata['name'] = $name;
+				$cdata['tel'] = $tel;
+				$cdata['mobile'] = $mobile;
+				$cdata['address'] = $address;
+				$this->db->insert('customer',$cdata);
+			}
+	
+		else
+			{	
+			
+				$cdata['name'] = $name;
+				$cdata['tel'] = $tel;
+				$cdata['mobile'] = $mobile;
+				$cdata['address'] = $address;
+		
+				$this->db->where('cut_id',$cut_id);
+				$this->db->update('customer',$cdata);
+			}
+		   
 		$data['w_code'] = $w_code;
 		$data['booking_date'] = $booking_date;
 		$data['cut_id'] = $cut_id;
-		//$data['booking_status'] = 1;
-		$data['notes'] = $notes;
-
-				
+		$data['notes'] = $notes;			
 		$this->db->where('booking_code',$hdnBooking_code);
 		$this->db->update('wedding_booking',$data);
+		//$cdata['cut_id'] = $cut_id;
+	
 	}
 
 	public function get_booking_details_by_code($booking_code)//,$cut_id)
@@ -176,7 +253,6 @@ public function delete_selectedservice($sev_code,$booking_code)
 			$cdata['tel'] = $tel;
 			$cdata['mobile'] = $mobile;
 			$cdata['address'] = $address;
-			
 			$this->db->insert('customer',$cdata);
 		}
 		
@@ -221,19 +297,47 @@ if ($count>=1)
 	}
 	public function delete_booking($booking_code)
 	{
+		$myquery = "select booking_date
+					from wedding_booking
+					where booking_code=$booking_code";
+			
+$b_date='';
+$rec=$this->db->query($myquery)->result();
+foreach ($rec as $row)
+$b_date=$row->booking_date;
+
 		$data['booking_status']=4;
+		$data['booking_date']=null;
+		$data['final_price']=0;
+		$data['total_price']=0;
+		$data['old_booking_date']=$b_date;
+		
 		$this->db->where('booking_code', $booking_code);
 		$this->db->update('wedding_booking',$data);
 		$this->delete_booking_details($booking_code);
+		$this->delete_payemnts($booking_code);
 	}
 	public function delete_booking_details($booking_code)
 	{
 
-$myquery = "update wedding_booking_details
-			set wedding_booking_details.sev_price=wedding_booking_details.sev_price * (-1)
-			where wedding_booking_details.booking_code=$booking_code";
+		$myquery = "update 	wedding_booking_details
+					set 	wedding_booking_details.sev_price=wedding_booking_details.sev_price * (-1)
+					where 	wedding_booking_details.booking_code=$booking_code";
         return $this->db->query($myquery);
+		
 	}
+	public function delete_payemnts($booking_code)
+	{//update the payments to delete statuse,payment_amount>=1 because some times there is an deleted payments befor
+
+		$myquery = "update 	payments
+					set 	payment_amount=payment_amount * (-1),
+							payment_status=4
+					where 	booking_code=$booking_code
+					and     payment_amount>=1";
+        return $this->db->query($myquery);
+		
+	}
+
 }
 
 

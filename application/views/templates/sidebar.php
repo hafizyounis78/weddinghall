@@ -79,7 +79,11 @@
 							<i class="icon-tag"></i>
 							استعلام على الحجوزات</a>
 						</li>
-						
+						<li <?php if($title == 'searchdelbooking') echo 'class="active"'; ?>>
+							<a href="<?php echo base_url();?>searchdelbooking">
+							<i class="icon-tag"></i>
+							استعلام على الحجوزات الملغية</a>
+						</li>
 					</ul>
 				</li>
                 <li <?php if($title == 'searchpaymentsajax' || $title == 'searchemppaymentsajax') echo 'class="active open"'; ?>>
@@ -123,7 +127,7 @@
 							اضافة مستخدم</a>
 						</li>
                         <li <?php if($title == 'users') echo 'class="active"'; ?>>
-							<a href="<?php echo base_url();?>users">
+						<!--	<a href="<?php echo base_url();?>users"> -->
 							عرض المستخدمين</a>
 						</li>
 					</ul>
