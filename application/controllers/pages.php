@@ -29,7 +29,7 @@ class Pages extends CI_Controller
 			$this->load->view('templates/nav',$ndata);
 			$this->load->view('templates/sidebar');
 			$this->load->view('templates/stylecustomizer');
-			$this->load->view('templates/pageheader');
+			//$this->load->view('templates/pageheader');
 			if($page == 'users'||$page == 'employee'|| $page == 'hall'||$page == 'services' ||
 			   $page == 'booking'||$page == 'payments'||$page == 'emppayments'||$page=='searchpayments'||$page=='searchemppayments'||$page=='searchbooking'||$page=='searchdelbooking')
 					$data[$page] = $this->$page();
