@@ -39,6 +39,18 @@ class Pages extends CI_Controller
 			}
 			if($page == 'addbooking' && $indata !='')
 			{
+				// FROM FULL CALENDER
+				if(isset($_SESSION['bookingDate']))
+				{
+					$data['calenderdate'] = $_SESSION['bookingDate'];
+					unset($_SESSION['bookingDate']);
+				}
+				if(isset($_SESSION['bookingHall']))
+				{
+					$data['calenderhall'] = $_SESSION['bookingHall'];
+					unset($_SESSION['bookingHall']);
+				}
+				//----
 				$data[$page] = $this->viewbookingupdate($indata);
 				$data['sev'] =$this->get_active_services();
 				$data['hall'] =$this->wedding_hall();
