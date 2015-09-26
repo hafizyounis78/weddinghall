@@ -25,7 +25,8 @@ class Pages extends CI_Controller
 			$data['title'] = $page;
 		
 			$this->load->view('templates/header',$data);
-			$this->load->view('templates/nav');
+		$ndata['notification']=$this->get_booking_notification();
+			$this->load->view('templates/nav',$ndata);
 			$this->load->view('templates/sidebar');
 			$this->load->view('templates/stylecustomizer');
 			$this->load->view('templates/pageheader');
@@ -463,8 +464,7 @@ class Pages extends CI_Controller
 
 		 		
 	}
-	function payments_grid_data()
-	{	
+	function payments_grid_data(){	
 		$this->load->model('paymentsmodel');
 		$rec = $this->paymentsmodel->get_all_payments_search($_REQUEST);
 		
@@ -505,8 +505,7 @@ class Pages extends CI_Controller
 
 		 		
 	}	
-	function emp_payments_grid_data()
-	{	
+	function emp_payments_grid_data(){	
 		$this->load->model('paymentsmodel');
 		$rec = $this->paymentsmodel->get_all_emp_payments_search($_REQUEST);
 		
@@ -786,6 +785,13 @@ class Pages extends CI_Controller
 	{
 		$this->load->model('hallmodel');
 		return $this->hallmodel->get_hall();
+		 		
+	}
+	function get_booking_notification()
+	{
+		$this->load->model('notificationmodel');
+		$rec= $this->notificationmodel->get_booking_notification();
+		return $rec->result();
 		 		
 	}
 	function booking_status()

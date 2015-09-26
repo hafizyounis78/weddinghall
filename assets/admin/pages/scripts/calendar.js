@@ -195,6 +195,7 @@ var Calendar = function() {
 					{
 						alert('الصالة محجوزة');
 						return;
+						
 					}
 					//-----------
 					

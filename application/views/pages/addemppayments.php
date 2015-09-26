@@ -70,6 +70,18 @@ foreach($addemppayments as $row);
 										</div>
 									</div>
                               		<div class="form-group">
+                   				<label class="control-label col-md-3">نوع الدفع<span class="required">*</span>
+										</label>
+										<div class="col-md-4">
+											<select class="form-control select2me" data-required="1" name="payment_type">
+												<option value="">Select...</option>
+												<option value="1">راتب شهري</option>
+                                                <option value="2">سلفة مالية</option>
+						                        
+											</select>
+										</div>
+									</div>
+                                    <div class="form-group">
 										<label class="control-label col-md-3">تاريخ الدفعة</label>
 										<div class="col-md-4">
 											<div class="input-group date date-picker" data-date-format="yyyy/mm/dd">
@@ -96,18 +108,7 @@ foreach($addemppayments as $row);
                                             
 										</div>
                                      </div>
-                                     <div class="form-group">
-                   				<label class="control-label col-md-3">نوع الدفع<span class="required">*</span>
-										</label>
-										<div class="col-md-4">
-											<select class="form-control select2me" data-required="1" name="payment_type">
-												<option value="">Select...</option>
-												<option value="1">راتب شهري</option>
-                                                <option value="2">سلفة مالية</option>
-						                        
-											</select>
-										</div>
-									</div>
+                                     
 						
                                      
 								<div class="form-actions">

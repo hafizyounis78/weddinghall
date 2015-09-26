@@ -78,7 +78,7 @@ function addUser()
 			success: function(returndb){
 
 					alert ('تمت العملية بنجاح');
-					window.location.href=baseURL+"users";
+				//	window.location.href=baseURL+"users";
 			}
 		});//END $.ajax
 }
