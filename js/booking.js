@@ -151,7 +151,7 @@ $(document).ready(function(){
 }); // END READY*/
 function sev_code_change(){	
  	var sev_code = $('#sev_code').find('option:selected').val();
-		
+		document.getElementById('btnAddbooking_details').disabled=true;
 		$.ajax({
 			url: baseURL+"pages/service_price/"+sev_code,
 			type: "POST",
@@ -166,6 +166,8 @@ function sev_code_change(){
 			success: function(result){
 				//alert (result);
 				document.getElementById('sev_price').value = result;
+				document.getElementById('btnAddbooking_details').disabled=false;
+				
 			}
 		});//END $.ajax	
 		}
@@ -175,6 +177,7 @@ function addbooking_details(){
 	var length=document.getElementById("serv_body").rows.length;
 //	alert(document.getElementById('hdnBookingcode').value);
 		var new_sev_code=document.getElementById('sev_code').value;
+	document.getElementById('btnAddbooking_details').disabled=true;
 //	document.getElementById("sev_code").selectedIndex = "0"
    if(new_sev_code==0)
    {

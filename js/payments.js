@@ -3,19 +3,24 @@ function addpayments(){
 	/*----------------------------*/
 	var payment_amount = $('#payment_amount').val();
 	var Total = $('#payments_body #tdTotal').html();
-	var final_price=   $('#payments_body #final_price_td').html();
+	var final_price=   $('#final_price').val();
 	var payment_amount_old=$('#payment_amount_old').val();
 	var new_total=0;
 	var action = "addpayments";
+	/*alert('final_price: '+ final_price);
+	alert('Total: '+ Total);
+	alert('payment_amount_old: '+ payment_amount_old);*/
+		
 	if(document.getElementById('hdnAction').value == '1')
 	 { 
 		action = "updatepayments";
 		new_total=parseInt(Total)+parseInt(payment_amount)-parseInt(payment_amount_old);
-	
+//	alert('new_total: '+ new_total);
 	 }
 	else
 	 {
 		new_total=parseInt(Total)+parseInt(payment_amount);	
+		
 	 }
 	
 	if (parseInt(new_total)>parseInt(final_price))
@@ -71,7 +76,7 @@ function updatepayemnts(i){
 	document.getElementById('payment_date').value =$('#payments_body #payment_date_td'+i).html();
 	document.getElementById('payment_amount').value = $('#payments_body #payment_amount_td'+i).html();
 	document.getElementById('payment_amount_old').value = $('#payments_body #payment_amount_td'+i).html();
-	document.getElementById('final_price').value = $('#payments_body #final_price_td').html();
+	//document.getElementById('final_price').value = $('#payments_body #final_price_td').html();
 	document.getElementById('invoice_no').value =$('#payments_body #invoice_no_td'+i).html();
 	document.getElementById('p_code').value =$('#payments_body #p_code_td'+i).html();
 	document.getElementById('hdnAction').value =1;
@@ -100,7 +105,7 @@ function deletepayments(p_code,i)
 {
 	/**********************************************/
 	var Total = $('#payments_body #tdTotal').html();
-	var final_price=  $('#payments_body #final_price_td').html();
+	var final_price=   $('#final_price').val();
 	var payment_amount=$('#payments_body #payment_amount_td'+i).html();
 	var new_total=0;
 	var b_status=0;

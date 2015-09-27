@@ -70,6 +70,15 @@ foreach($addpayments as $row);
 										</div>
 									</div>
                                     <div class="form-group">
+										<label class="control-label col-md-3">المبلغ المطلوب<span class="required">
+										* </span>
+										</label>
+										<div class="col-md-4">
+											<input type="text" id="final_price" name="final_price"  readonly <?php if (isset($row->final_price)) {echo 'value="'.$row->final_price.'"';}?> class="form-control"/>
+										</div>
+									</div>
+
+                                    <div class="form-group">
 										<label class="control-label col-md-3">اسم الصالة <span class="required">
 										* </span>
 										</label>
@@ -109,7 +118,7 @@ foreach($addpayments as $row);
 											<input type="text" name="name"  readonly <?php if (isset($row->name)) {echo 'value="'.$row->name.'"';}?> class="form-control"/>
 										</div>
 									</div>
-                              		<div class="form-group">
+                                   <div class="form-group">
 										<label class="control-label col-md-3">تاريخ الدفعة</label>
 										<div class="col-md-4">
 											<div class="input-group date date-picker" data-date-format="yyyy/mm/dd">
@@ -133,9 +142,7 @@ foreach($addpayments as $row);
                                      
 											<input id="payment_amount_old" name="payment_amount_old" type="hidden" data-required="1" class="form-control"/>
 										
-                                    
-											<input id="final_price" name="final_price" type="hidden" data-required="1" class="form-control"/>
-										
+                                    									
                                      <div class="form-group">
 										<label class="control-label col-md-3">رقم الوصل المالي</label>
 										<div class="col-md-4">

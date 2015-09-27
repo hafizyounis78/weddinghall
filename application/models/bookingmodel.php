@@ -279,7 +279,7 @@ public function delete_selectedservice($sev_code,$booking_code)
 		$data['sev_price'] = $sev_price;
 		$this->db->insert('wedding_booking_details',$data);
 		
-$myquery = "select count(1) 
+/*$myquery = "select count(1) 
 			from payments
 			where booking_code=$hdnBookingcode";
 			
@@ -292,7 +292,7 @@ if ($count>=1)
 		$this->db->update('wedding_booking',$datab);
 }
 
-
+*/
 
 	}
 	public function delete_booking($booking_code)
