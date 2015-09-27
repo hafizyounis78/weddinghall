@@ -62,7 +62,7 @@ if (isset($payments_notification_count))
                             foreach($notification as $row)
   							{
 								echo '<li>';
-								echo '<a href="javascript:;">';
+								echo '<a href="'.base_url().'addbooking/'.$row->booking_code.'">';
 								echo '<span class="time"> '.$row->booking_date.' </span>';
 								echo '<span class="details">';
 								echo '<span class="label label-sm label-icon label-success">';
@@ -107,7 +107,7 @@ if (isset($payments_notification_count))
                             foreach($payments_notification as $row3)
   							{
 								echo '<li>';
-								echo '<a href="inbox.html?a=view">';
+								echo '<a href="'.base_url().'addpayments/'.$row->booking_code.'">';
 								echo '<span class="subject">';
 								echo '<span class="from">'.$row3->name.' </span>';
 								echo '<span class="time">'.$row3->booking_date.' </span>';
