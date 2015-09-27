@@ -215,7 +215,16 @@ var Calendar = function() {
 						  window.location.href = baseURL+event.url;
 						  return false;
 					  }
-    			}//END eventClick
+    			},//END eventClick
+				dayRender: function (date, cell) {
+					var date = new Date(date);
+					
+				  var today = new Date();
+			  
+				  if (date.getDate() == today.getDate()) {
+					  cell.css("background-color", "#ffff99");
+				  }
+			  }//END dayRender
             }); //END fullCalendar
 
         }// END IF RTL
