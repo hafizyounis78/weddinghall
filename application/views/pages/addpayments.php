@@ -7,7 +7,13 @@ $isUpdate=0;
 if (isset($addpayments))
 {
 foreach($addpayments as $row);
-
+/*if (!isset($row->final_price))
+{
+$property='disabled="disabled"'	;
+}
+else
+{$property='disabled="disabled"';
+}*/
 }
 
 ?>

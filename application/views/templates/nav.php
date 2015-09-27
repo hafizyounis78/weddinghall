@@ -8,7 +8,13 @@
 <!-- DOC: Apply "page-footer-fixed" class to the body element to have fixed footer -->
 <!-- DOC: Apply "page-sidebar-reversed" class to put the sidebar on the right side -->
 <!-- DOC: Apply "page-full-width" class to the body element to have full width page without the sidebar menu -->
+<?php
+if (isset($notification_count))
+ foreach($notification_count as $row2);
 
+if (isset($payments_notification_count))
+ foreach($payments_notification_count as $row4);
+?>
 <body class="page-header-fixed page-quick-sidebar-over-content">
 <!-- BEGIN HEADER -->
 <div class="page-header navbar navbar-fixed-top">
@@ -35,14 +41,19 @@
 				<!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
 				<li class="dropdown dropdown-extended dropdown-notification" id="header_notification_bar">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                    
 					<i class="icon-bell"></i>
-					<span class="badge badge-default">
-					7 </span>
-					</a>
+					<?php if (isset($row2->cnt))
+					if ( $row2->cnt >=1){
+                    echo '<span class="badge badge-default">';
+					 echo $row2->cnt ;
+					 echo '</span>';
+					 echo '</a>';
+					}?>
 					<ul class="dropdown-menu">
 						<li class="external">
-							<h3><span class="bold">12 pending</span> notifications</h3>
-							<a href="extra_profile.html">view all</a>
+							<h3><span class="bold"><?php if (isset($row2->cnt)) {echo '" '.$row2->cnt.' "';}?></span> تنبيهات بقرب حفل زفاف </h3>
+							<a href="<?php echo base_url();?>searchbooking">view all</a>
 						</li>
 						<li>
 							<ul class="dropdown-menu-list scroller" style="height: 250px;" data-handle-color="#637283">					
@@ -52,12 +63,13 @@
   							{
 								echo '<li>';
 								echo '<a href="javascript:;">';
-								echo '<span class="time">'.$row->booking_date.'</span>';
+								echo '<span class="time"> '.$row->booking_date.' </span>';
 								echo '<span class="details">';
 								echo '<span class="label label-sm label-icon label-success">';
 								echo '<i class="fa fa-plus"></i>';
-								echo '</span>'.$row->name.'</span>';
-								echo '</span>'.$row->w_name.'</span>';
+								echo '</span> '.$row->name.' </span>';
+								echo '<br>';
+								echo '</span> '.$row->w_name.' </span>';
 								echo '</a>';
 								echo '</li>';
 							}
@@ -73,27 +85,32 @@
 				<li class="dropdown dropdown-extended dropdown-inbox" id="header_inbox_bar">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
 					<i class="icon-envelope-open"></i>
-					<span class="badge badge-default">
-					4 </span>
-					</a>
+                    <?php if (isset($row4->cnt))
+					if ( $row4->cnt >=1){
+					echo '<span class="badge badge-default">';
+					echo $row4->cnt ; 
+					echo '</span>';
+					echo '</a>';
+					}
+					?>
 					<ul class="dropdown-menu">
 						<li class="external">
-							<h3>You have <span class="bold">7 New</span> Messages</h3>
-							<a href="page_inbox.html">view all</a>
+							<h3>لديك <span class="bold"><?php if (isset($row4->cnt)) echo $row4->cnt ; ?></span> تنبيهات مالية</h3>
+							<a href="<?php echo base_url();?>searchpaymentsajax">view all</a>
 						</li>
 						<li>
 							<ul class="dropdown-menu-list scroller" style="height: 275px;" data-handle-color="#637283">
 								<?php
-							if (isset($notification))
-                            foreach($notification as $row)
+							if (isset($payments_notification))
+                            foreach($payments_notification as $row3)
   							{
 								echo '<li>';
 								echo '<a href="inbox.html?a=view">';
 								echo '<span class="subject">';
-								echo '<span class="from">'.$row->name.' </span>';
+								echo '<span class="from">'.$row3->name.' </span>';
 								echo '<span class="time">46 mins </span>';
 								echo '</span>';
-								echo '<span class="message"> تاريخ الحجز '.$row->booking_date.' في  '.$row->w_name.'علمأ بأن حالة الحجز  '.$row->b_desc.'</span>';
+								echo '<span class="message"> تاريخ الحجز '.$row3->booking_date.' في  '.$row->w_name.'علمأ بأن حالة الحجز  '.$row3->b_desc.'</span>';
 								echo '</a>';
 								echo '</li>';
 							}

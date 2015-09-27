@@ -26,6 +26,10 @@ class Pages extends CI_Controller
 		
 			$this->load->view('templates/header',$data);
 		$ndata['notification']=$this->get_booking_notification();
+		$ndata['notification_count']=$this->get_booking_notification_count();
+		$ndata['payments_notification']=$this->get_payments_notification();
+		$ndata['payments_notification_count']=$this->get_payments_notification_count();
+		
 			$this->load->view('templates/nav',$ndata);
 			$this->load->view('templates/sidebar');
 			$this->load->view('templates/stylecustomizer');
@@ -787,6 +791,7 @@ class Pages extends CI_Controller
 		return $this->hallmodel->get_hall();
 		 		
 	}
+/*********************notification******************************/	
 	function get_booking_notification()
 	{
 		$this->load->model('notificationmodel');
@@ -794,6 +799,29 @@ class Pages extends CI_Controller
 		return $rec->result();
 		 		
 	}
+	function get_booking_notification_count()
+	{
+		$this->load->model('notificationmodel');
+		$rec= $this->notificationmodel->get_booking_notification_count();
+		return $rec->result();
+		 		
+	}
+		function get_payments_notification()
+	{
+		$this->load->model('notificationmodel');
+		$rec= $this->notificationmodel->get_payments_notification();
+		return $rec->result();
+		 		
+	}
+	function get_payments_notification_count()
+	{
+		$this->load->model('notificationmodel');
+		$rec= $this->notificationmodel->get_payments_notification_count();
+		return $rec->result();
+		 		
+	}
+
+/**********************************************************/
 	function booking_status()
 	{
 		$this->load->model('bookingmodel');
