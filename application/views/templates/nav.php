@@ -14,17 +14,50 @@ if (isset($notification_count))
 
 if (isset($payments_notification_count))
  foreach($payments_notification_count as $row4);
+ 
+?>
+<?php 
+			date_default_timezone_set ("Asia/Gaza");
+			$day='';
+			switch (date("w")) {
+				case 0:
+					$day = 'الأحد';
+					break;
+				case 1:
+					$day = 'الاثنين';
+					break;
+				case 2:
+					$day = 'الثلاثاء';
+					break;
+				case 3:
+					$day = 'الاربعاء';
+					break;
+				case 4:
+					$day = 'الخميس';
+					break;
+				case 5:
+					$day = 'الجمعة';
+					break;
+				case 6:
+					$day = 'السبت';
+					break;
+			}
+			
 ?>
 <body class="page-header-fixed page-quick-sidebar-over-content">
 <!-- BEGIN HEADER -->
 <div class="page-header navbar navbar-fixed-top">
 	<!-- BEGIN HEADER INNER -->
-	<div class="page-header-inner">
+
+	<div class="page-header-inner" style="color:#FFF" align="right">
+<?php echo $day.' '.date("j-m-Y | g:i a"); ?>
 		<!-- BEGIN LOGO -->
+
 		<div class="page-logo">
 			<a href="home">
 			<img src="<?php echo base_url();?>assets/admin/layout/img/eWedding3.png" alt="logo" class="logo-default"/>
 			</a>
+
 			<div class="menu-toggler sidebar-toggler hide">
 				<!-- DOC: Remove the above "hide" to enable the sidebar toggler button on header -->
 			</div>
@@ -151,36 +184,7 @@ if (isset($payments_notification_count))
 				</li>
 				<!-- END QUICK SIDEBAR TOGGLER -->
 			</ul>
-            <div style="color:#FFF" align="right">
-            <?php 
-			date_default_timezone_set ("Asia/Gaza");
-			$day='';
-			switch (date("w")) {
-				case 0:
-					$day = 'الأحد';
-					break;
-				case 1:
-					$day = 'الاثنين';
-					break;
-				case 2:
-					$day = 'الثلاثاء';
-					break;
-				case 3:
-					$day = 'الاربعاء';
-					break;
-				case 4:
-					$day = 'الخميس';
-					break;
-				case 5:
-					$day = 'الجمعة';
-					break;
-				case 6:
-					$day = 'السبت';
-					break;
-			}
-			
-			echo $day.' '.date("j-m-Y | g:i a"); ?>
-            </div>
+            
 		</div>
 		<!-- END TOP NAVIGATION MENU -->
 	</div>
