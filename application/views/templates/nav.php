@@ -107,10 +107,12 @@ if (isset($payments_notification_count))
                             foreach($payments_notification as $row3)
   							{
 								echo '<li>';
-								echo '<a href="'.base_url().'addpayments/'.$row->booking_code.'">';
+								echo '<a href="'.base_url().'addpayments/'.$row3->booking_code.'">';
 								echo '<span class="subject">';
-								echo '<span class="from">'.$row3->name.' </span>';
 								echo '<span class="time">'.$row3->booking_date.' </span>';
+								echo '<span class="from">'.$row3->name.'<br> </span>';
+								echo '<span class="from">  رقم الجوال :'.$row3->mobile.' </span>';
+								
 								echo '</span>';
 								echo '<span class="message">  في  '.$row->w_name.'<br> علمأ بأن حالة الحجز  ( '.$row3->b_desc.' )</span>';
 								echo '</a>';
