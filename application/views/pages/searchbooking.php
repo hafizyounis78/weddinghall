@@ -19,34 +19,7 @@ var baseURL = "<?php echo base_url(); ?>";
 								<span class="hidden-480">
 								حجز جديد</span>
 								</a>
-								<div class="btn-group">
-									<a class="btn default yellow-stripe" href="#" data-toggle="dropdown">
-									<i class="fa fa-share"></i>
-									<span class="hidden-480">
-									Tools </span>
-									<i class="fa fa-angle-down"></i>
-									</a>
-									<ul class="dropdown-menu pull-right">
-										<li>
-											<a href="#">
-											Export to Excel </a>
-										</li>
-										<li>
-											<a href="#">
-											Export to CSV </a>
-										</li>
-										<li>
-											<a href="#">
-											Export to XML </a>
-										</li>
-										<li class="divider">
-										</li>
-										<li>
-											<a href="#">
-											Print Invoices </a>
-										</li>
-									</ul>
-								</div>
+								
 							</div>
 						</div>
 						<div class="portlet-body">
@@ -54,7 +27,8 @@ var baseURL = "<?php echo base_url(); ?>";
 								<div class="table-actions-wrapper">
 									<span>
 									</span>
-																		<button type="button" class="btn default" value="Cancel" onclick="window.location='<?php echo base_url()?>';"><i class="fa fa-times"></i>    عودة     </button>
+									<button type="button" class="btn default" value="Cancel" onclick="window.location='<?php echo base_url()?>';"><i class="fa  fa-backward"></i>    عودة     </button>
+                                    <button type="button" class="btn default" onclick= "print_view()"><i class="fa  fa-print"></i>    طباعة     </button>
 
 								</div>
 								<table class="table table-striped table-bordered table-hover" id="datatable_ajax">

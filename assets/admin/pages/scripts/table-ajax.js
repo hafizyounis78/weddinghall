@@ -1,3 +1,7 @@
+function print_view()
+{
+	alert('print');
+}
 var TableAjax = function () {
 
     var initPickers = function () {
