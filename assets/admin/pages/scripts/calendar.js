@@ -144,6 +144,7 @@ var Calendar = function() {
          						events.push({
 											title:retrieved_data[a]['title'],
 											start:retrieved_data[a]['start'],
+											url:retrieved_data[a]['url'],
 											backgroundColor:Metronic.getBrandColor(retrieved_data[a]['backgroundColor'])
 											});
 							}//END FOR
@@ -208,7 +209,13 @@ var Calendar = function() {
 							}
 						   });
 
-    			}// END dayClick
+    			},// END dayClick
+				eventClick: function(event) {
+					  if (event.url) {
+						  window.location.href = baseURL+event.url;
+						  return false;
+					  }
+    			}//END eventClick
             }); //END fullCalendar
 
         }// END IF RTL

@@ -25,10 +25,10 @@ class Pages extends CI_Controller
 			$data['title'] = $page;
 		
 			$this->load->view('templates/header',$data);
-		$ndata['notification']=$this->get_booking_notification();
-		$ndata['notification_count']=$this->get_booking_notification_count();
-		$ndata['payments_notification']=$this->get_payments_notification();
-		$ndata['payments_notification_count']=$this->get_payments_notification_count();
+			$ndata['notification']=$this->get_booking_notification();
+			$ndata['notification_count']=$this->get_booking_notification_count();
+			$ndata['payments_notification']=$this->get_payments_notification();
+			$ndata['payments_notification_count']=$this->get_payments_notification_count();
 		
 			$this->load->view('templates/nav',$ndata);
 			$this->load->view('templates/sidebar');
@@ -572,7 +572,8 @@ class Pages extends CI_Controller
           	$temp = array();
 
           	// It guess your client side will need the id to extract, and distinguish the ScoreCH data
-          	$temp['title'] = $row->w_name."\n".$row->name."\n".$row->tel."\n".$row->mobile."\n".$row->b_desc;
+          	$temp['url'] = 'addbooking/'.$row->booking_code;
+			$temp['title'] = $row->w_name."\n".$row->name."\n".$row->tel."\n".$row->mobile."\n".$row->b_desc;
           	$temp['start'] = $row->booking_date;
 			if($row->w_code == 1) $temp['backgroundColor'] = 'yellow';
 			if($row->w_code == 2) $temp['backgroundColor'] = 'blue';
