@@ -69,6 +69,8 @@ if (isset($payments_notification_count))
 								echo '<i class="fa fa-plus"></i>';
 								echo '</span> '.$row->name.' </span>';
 								echo '<br>';
+								echo '</span> جوال رقم : '.$row->mobile.' </span>';
+								echo '<br>';
 								echo '</span> '.$row->w_name.' </span>';
 								echo '</a>';
 								echo '</li>';
@@ -108,9 +110,9 @@ if (isset($payments_notification_count))
 								echo '<a href="inbox.html?a=view">';
 								echo '<span class="subject">';
 								echo '<span class="from">'.$row3->name.' </span>';
-								echo '<span class="time">46 mins </span>';
+								echo '<span class="time">'.$row3->booking_date.' </span>';
 								echo '</span>';
-								echo '<span class="message"> تاريخ الحجز '.$row3->booking_date.' في  '.$row->w_name.'علمأ بأن حالة الحجز  '.$row3->b_desc.'</span>';
+								echo '<span class="message">  في  '.$row->w_name.'<br> علمأ بأن حالة الحجز  ( '.$row3->b_desc.' )</span>';
 								echo '</a>';
 								echo '</li>';
 							}

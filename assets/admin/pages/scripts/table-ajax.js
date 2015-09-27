@@ -1,6 +1,7 @@
 function print_view()
 {
 	alert('print');
+	document.getElementById("page-bar").style.color = "blue";
 }
 var TableAjax = function () {
 
