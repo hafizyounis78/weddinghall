@@ -20,6 +20,17 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('welcome_message');
+		//$this->load->view('welcome_message');
+		
+		$data = 'home';
+			$this->load->view('templates/header',$data);
+			$this->load->view('templates/nav');
+			$this->load->view('templates/sidebar');
+			$this->load->view('templates/stylecustomizer');
+			$this->load->view('templates/pageheader');
+			//$data['hall'] =$this->wedding_hall();
+			$this->load->view('pages/home',$data);
+			$this->load->view('templates/quicksidebar.php');
+			$this->load->view('templates/footer');
 	}
 }
