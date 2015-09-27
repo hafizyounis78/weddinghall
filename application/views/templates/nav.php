@@ -132,7 +132,7 @@ if (isset($payments_notification_count))
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
 				<!--	<img alt="" class="img-circle" src="<?php echo base_url();?>assets/admin/layout/img/avatar3_small.jpg"/> -->
 					<span class="username username-hide-on-mobile">
-					Admin </span>
+					<?php echo $username;?></span>
 					<i class="fa fa-angle-down"></i>
 					</a>
 					<ul class="dropdown-menu dropdown-menu-default">
@@ -144,9 +144,6 @@ if (isset($payments_notification_count))
 					</ul>
 				</li>
 				<!-- END USER LOGIN DROPDOWN -->
-                
-                
-				
 				
 				<!-- BEGIN QUICK SIDEBAR TOGGLER -->
 				<!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
@@ -154,6 +151,36 @@ if (isset($payments_notification_count))
 				</li>
 				<!-- END QUICK SIDEBAR TOGGLER -->
 			</ul>
+            <div style="color:#FFF" align="right">
+            <?php 
+			date_default_timezone_set ("Asia/Gaza");
+			$day='';
+			switch (date("w")) {
+				case 0:
+					$day = 'الأحد';
+					break;
+				case 1:
+					$day = 'الاثنين';
+					break;
+				case 2:
+					$day = 'الثلاثاء';
+					break;
+				case 3:
+					$day = 'الاربعاء';
+					break;
+				case 4:
+					$day = 'الخميس';
+					break;
+				case 5:
+					$day = 'الجمعة';
+					break;
+				case 6:
+					$day = 'السبت';
+					break;
+			}
+			
+			echo $day.' '.date("j-m-Y | g:i a"); ?>
+            </div>
 		</div>
 		<!-- END TOP NAVIGATION MENU -->
 	</div>

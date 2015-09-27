@@ -25,6 +25,7 @@ class Pages extends CI_Controller
 			$data['title'] = $page;
 		
 			$this->load->view('templates/header',$data);
+			$ndata['username'] = $session_data['username'];
 			$ndata['notification']=$this->get_booking_notification();
 			$ndata['notification_count']=$this->get_booking_notification_count();
 			$ndata['payments_notification']=$this->get_payments_notification();
