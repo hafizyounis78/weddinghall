@@ -156,7 +156,14 @@ else
                                             
 										</div>
                                      </div>
-                                     
+                              <!--      <div class="form-group">
+										<label class="control-label col-md-3">ملاحظات</label>
+										<div class="col-md-4">
+											<input id="notes" name="notes" type="text" data-required="1" class="form-control"/>
+                                            
+										</div>
+                                     </div>
+                                  -->  
 								<div class="form-actions">
 									<div class="row">
 										<div class="col-md-offset-3 col-md-9">
@@ -249,6 +256,7 @@ else
 								echo '<td id="payment_date_td'.$i.'">'.$row->payment_date.'</td>';
 								echo '<td id="invoice_no_td'.$i.'">'.$row->invoice_no.'</td>';
 								echo '<td id="payment_amount_td'.$i.'">'.$row->payment_amount.'</td>';
+								//echo '<td id="note_td'.$i.'style="display:none;">'.$row->notes.'</td>';
 								echo '<td>
 								<button id="btnupdatepayemnts" name="btnupdatepayemnts" type="button" class="btn default btn-xs purple" onclick="updatepayemnts('.$i.')">
 										<i class="fa fa-edit"></i> تعديل </button>

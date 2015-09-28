@@ -185,6 +185,7 @@ public function get_payments_by_code($booking_code)
 		$data['payment_amount'] = $payment_amount;
 		$data['payment_date'] = $payment_date;
 		$data['invoice_no'] = $invoice_no;
+	//	$data['notes'] = $notes;
 		
 		$this->db->insert('payments',$data);
 		/***************update booking status according the payment amounts*********/
@@ -215,8 +216,9 @@ public function update_payments()
 		$data['payment_amount'] = $payment_amount;
 		$data['payment_date'] = $payment_date;
 		$data['invoice_no'] = $invoice_no;
+//		$data['notes'] = $notes;
 		//$data['booking_status'] = 1;
-	//	$data['notes'] = $notes;
+		
 
 				
 		//$this->db->where('booking_code',$booking_code);

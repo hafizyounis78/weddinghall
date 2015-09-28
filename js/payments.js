@@ -58,6 +58,7 @@ function addpayments(){
 						document.getElementById('payment_amount_old').value ="";
 					//	document.getElementById('final_price').value ="";
 						document.getElementById('invoice_no').value ="";
+	//					document.getElementById('notes').value ="";
 						document.getElementById('p_code').value ="";
 						document.getElementById('hdnAction').value =0;
 						
@@ -76,7 +77,7 @@ function updatepayemnts(i){
 	document.getElementById('payment_date').value =$('#payments_body #payment_date_td'+i).html();
 	document.getElementById('payment_amount').value = $('#payments_body #payment_amount_td'+i).html();
 	document.getElementById('payment_amount_old').value = $('#payments_body #payment_amount_td'+i).html();
-	//document.getElementById('final_price').value = $('#payments_body #final_price_td').html();
+//	document.getElementById('notes').value = $('#notes_td');
 	document.getElementById('invoice_no').value =$('#payments_body #invoice_no_td'+i).html();
 	document.getElementById('p_code').value =$('#payments_body #p_code_td'+i).html();
 	document.getElementById('hdnAction').value =1;
