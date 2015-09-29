@@ -45,11 +45,8 @@ foreach($addemppayments as $row);
 										تمت عملية التحقق بنجاح!
 									</div>
                                     <div class="form-group">
-										<label class="control-label col-md-3">كود الموظف<span class="required">
-										* </span>
-										</label>
-										<div class="col-md-4">
-											<input type="text" name="emp_code" readonly <?php if (isset($row->emp_id)) {echo 'value="'.$row->emp_code.'"';}?>  data-required="1" class="form-control"/>
+																				<div class="col-md-4">
+											<input type="hidden" name="emp_code" readonly <?php if (isset($row->emp_id)) {echo 'value="'.$row->emp_code.'"';}?>  data-required="1" class="form-control"/>
 										</div>
 									</div>
                                     <div class="form-group">
@@ -176,8 +173,12 @@ foreach($addemppayments as $row);
 								echo '<td>'.$i++.'</td>';
 								echo '<td>'.$row->emp_id.'</td>';
 								echo '<td>'.$row->name.'</td>';
-								echo '<td>'.$row->job.'</td>';
-								echo '<td>'.$row->payment_type.'</td>';
+								echo '<td>'.$row->job_title.'</td>';
+								if($row->payment_type==1)
+								echo '<td> راتب شهري </td>';
+								else if($row->payment_type==2)
+								echo '<td> سلفة </td>';
+
 								echo '<td>'.$row->payment_date.'</td>';
 								echo '<td>'.$row->payment_amount.'</td>';
 								echo '<td>'.$row->invoice_no.'</td>';

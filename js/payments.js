@@ -97,7 +97,7 @@ function addemppayments(){
 			complete: function(){},
 			success: function(){
 					alert ('تمت عملية الإضافة بنجاح');
-					window.location.href=baseURL+"searchemppaymentsajax";
+					document.location.reload(true);
 			}
 		});//END $.ajax
 	} // END addemppayments

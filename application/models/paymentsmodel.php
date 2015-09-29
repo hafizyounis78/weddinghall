@@ -155,9 +155,11 @@ public function get_emp_by_code($emp_code)
 	}
 public function get_emppayments_by_code($emp_code)
 	{
-		 $myquery = "select employee_payments.*,employee.*
-					 from   employee_payments,employee
+		 $myquery = "select employee_payments.*,employee.*,contract_type.*, job_tb.*
+					 from   employee_payments,employee,contract_type,job_tb
 					 where  employee_payments.emp_code=employee.emp_code
+					 AND    employee.contract_code=contract_type.contract_code
+					 AND    employee.job=job_tb.job_code
 					 and    employee_payments.emp_code=$emp_code";
         return $this->db->query($myquery);
 
