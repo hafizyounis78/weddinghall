@@ -55,7 +55,7 @@ else
 									</div>
 									<div class="alert alert-success display-hide">
 										<button class="close" data-close="alert"></button>
-                                        <input id="booking_status" name="booking_status" type="hidden" value="<?php echo $row->booking_status?>" />
+                                        <input id="booking_status" name="booking_status" type="hidden" value="<?php if (isset($row->booking_status)) echo $row->booking_status;?>" />
 										
 										تمت العملية بنجاح!
 									</div>
