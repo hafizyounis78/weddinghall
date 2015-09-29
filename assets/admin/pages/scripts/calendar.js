@@ -223,7 +223,7 @@ var Calendar = function() {
 				  var today = new Date();
 			  
 				  if (date.getDate() == today.getDate()) {
-					  cell.css("background-color", "#ffff99");
+					  cell.css("background-color", "#cdba96");
 				  }
 			  }//END dayRender
             }); //END fullCalendar
