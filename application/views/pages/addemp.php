@@ -88,8 +88,8 @@ $isUpdate = 1;
 	<div class="form-group">
 										<label class="control-label col-md-3">تاريخ الميلاد</label>
 										<div class="col-md-4">
-											<div class="input-group date date-picker" data-date-format="yyyy/mm/dd">
-												<input type="text" class="form-control" readonly id="dob" name="dob"
+											<div class="input-group date date-picker " data-date-format="yyyy/mm/dd">
+												<input type="text" class="form-control dp" readonly id="dob" name="dob"
                                                   <?php if (isset($row->dob)) {echo 'value="'.$row->dob.'"';}?>/>
 												<span class="input-group-btn">
 												<button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
@@ -207,4 +207,4 @@ $isUpdate = 1;
 				</div>
 			</div>
             
-								
+

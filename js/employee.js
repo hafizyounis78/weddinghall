@@ -1,4 +1,10 @@
+$(document).ready(function () {
+ 
+   $('.dp').on('change', function(){
+       $('.datepicker').hide();
+   });
 
+});
 // JavaScript Document// JavaScript Document
 
 /*$(document).ready(function(){

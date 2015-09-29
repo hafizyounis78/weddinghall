@@ -85,14 +85,14 @@ foreach($addemppayments as $row);
 										<label class="control-label col-md-3">تاريخ الدفعة</label>
 										<div class="col-md-4">
 											<div class="input-group date date-picker" data-date-format="yyyy/mm/dd">
-												<input type="text" class="form-control" data-required="1" readonly name="payment_date"/>
+												<input type="text" class="form-control dp" data-required="1" readonly name="payment_date"/>
 												<span class="input-group-btn">
 												<button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
 												</span>
 											</div>
 											<!-- /input-group -->
 											<span class="help-block">
-											ex.:2015/08/01 </span>
+											 </span>
 										</div>
 									</div>
 									<div class="form-group">

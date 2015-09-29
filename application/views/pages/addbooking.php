@@ -112,7 +112,7 @@ if (isset($addbooking))
 										<label class="control-label col-md-3">تاريخ الحجز</label>
 										<div class="col-md-4">
 											<div class="input-group date date-picker" data-date-format="yyyy-mm-dd">
-												<input type="text" class="form-control" readonly id="booking_date" name="booking_date"
+												<input type="text" class="form-control dp" readonly id="booking_date" name="booking_date"
                                                   <?php if (isset($row->booking_date)) {echo 'value="'.$row->booking_date.'"';}
 												  	else if(isset($calenderdate)) {echo 'value="'.$calenderdate.'"';};
 												  ?>/>
@@ -422,4 +422,4 @@ if (isset($addbooking))
 
 			</div>
             
-								
+
