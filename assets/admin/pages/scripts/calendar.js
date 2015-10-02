@@ -221,9 +221,13 @@ var Calendar = function() {
 					var date = new Date(date);
 					
 				  var today = new Date();
-			  
+				  var month = date.getMonth()+1;
+				  var Tmonth = today.getMonth()+1;
 				  if (date.getDate() == today.getDate()) {
-					  cell.css("background-color", "#cdba96");
+					  if(month==Tmonth){
+					  cell.css("background-color", "#A0E339");
+					   
+					  }
 				  }
 			  }//END dayRender
             }); //END fullCalendar

@@ -54,7 +54,7 @@ if (isset($payments_notification_count))
 		<!-- BEGIN LOGO -->
 
 		<div class="page-logo">
-			<a href="home">
+			<a href="<?php echo base_url();?>home">
 			<img src="<?php echo base_url();?>assets/admin/layout/img/eWedding3.png" alt="logo" class="logo-default"/>
 			</a>
 
