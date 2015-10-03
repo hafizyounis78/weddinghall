@@ -126,10 +126,10 @@
 							<a href="<?php echo base_url();?>adduser">
 							اضافة مستخدم</a>
 						</li>
-                        <li <?php if($title == 'users') echo 'class="active"'; ?>>
-						<!--	<a href="<?php echo base_url();?>users"> -->
+                        <!--<li <?php if($title == 'users') echo 'class="active"'; ?>>
+							<a href="<?php echo base_url();?>users"> 
 							عرض المستخدمين</a>
-						</li>
+						</li>-->
 					</ul>
 				</li>
 				<li <?php if($title == 'employee' || $title == 'addemp') echo 'class="active open"';?>>
@@ -161,10 +161,10 @@
 					
 					</a>
 					<ul class="sub-menu">
-						<li <?php if($title == 'addhall') echo 'class="active"'; ?>>
-							<a href="<?php echo base_url();?>addhall">
+				<!--		<li <?php if($title == 'addhall') echo 'class="active"'; ?>>
+						<a href="<?php echo base_url();?>addhall">
 							إضافة صالة</a>
-						</li>
+						</li>-->
 						<li <?php if($title == 'hall') echo 'class="active"'; ?>>
 							<a href="<?php echo base_url();?>hall">
 							عرض الصالات</a>

@@ -6,10 +6,7 @@ var baseURL = "<?php echo base_url(); ?>";
 							<div class="caption">
 								<i class="fa fa-user"></i>جدول الصالات
 							</div>
-							<div class="actions">
-								<a href="addhall" class="btn btn-default btn-sm">
-								<i class="fa fa-plus"></i> إضافة صالة </a>
-							</div>
+							
 						</div>
 						<div class="portlet-body">
 							<table class="table table-striped table-bordered table-hover" id="sample_3">
