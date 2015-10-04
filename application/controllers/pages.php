@@ -317,7 +317,7 @@ class Pages extends CI_Controller
 								echo '<tr class="odd gradeX">';
 								echo '<td>'.$i++.'</td>';
 								echo '<td id="p_code_td'.$i.'">'.$row->p_code.'</td>';
-								echo '<td>'.$row->cut_id.'</td>';
+								echo '<td>'.$row->cut_id_no.'</td>';
 								echo '<td>'.$row->name.'</td>';
 								echo '<td>'.$row->mobile.'</td>';
 								echo '<td>'.$row->booking_date.'</td>';
@@ -400,7 +400,7 @@ class Pages extends CI_Controller
 			$nestedData[] = $i++;
 			$nestedData[] = $row->w_name;
 			$nestedData[] = $row->booking_date;
-			$nestedData[] = $row->cut_id;
+			$nestedData[] = $row->cut_id_no;
 			$nestedData[] = $row->name;
 			$nestedData[] = $row->tel;
 			$nestedData[] = $row->mobile;
@@ -445,7 +445,7 @@ class Pages extends CI_Controller
 			$nestedData[] = $i++;
 			$nestedData[] = $row->w_name;
 			$nestedData[] = $row->old_booking_date;
-			$nestedData[] = $row->cut_id;
+			$nestedData[] = $row->cut_id_no;
 			$nestedData[] = $row->name;
 			$nestedData[] = $row->tel;
 			$nestedData[] = $row->mobile;
@@ -483,7 +483,7 @@ class Pages extends CI_Controller
 										<i class="fa fa-edit"></i> اضافة دفعه مالية </a>';
 
 			$nestedData[] = $i++;
-			$nestedData[] = $row->cut_id;
+			$nestedData[] = $row->cut_id_no;
 			$nestedData[] = $row->name;
 			$nestedData[] = $row->w_name;
 			$nestedData[] = $row->booking_date;
@@ -862,9 +862,9 @@ class Pages extends CI_Controller
 	}
 	function checkcustomeravailable()
 	{
-		$cut_id = $_POST['cut_id'];
+		$cut_id_no = $_POST['cut_id_no'];
 		$this->load->model('bookingmodel');
-		$rec = $this->bookingmodel->get_customer_by_id($cut_id);
+		$rec = $this->bookingmodel->get_customer_by_id($cut_id_no);
 		
 		if (count($rec) == 0)
 		{

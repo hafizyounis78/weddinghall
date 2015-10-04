@@ -96,7 +96,7 @@ var baseURL = "<?php echo base_url(); ?>";
 									
                                     </td>
                                     <td>
-										<input type="text" class="form-control form-filter input-sm" name="cut_id">
+										<input type="text" class="form-control form-filter input-sm" name="cut_id_no">
 									</td>
                                     <td>
 										<input type="text" class="form-control form-filter input-sm" name="name">

@@ -107,16 +107,19 @@ $(document).ready(function(){
 			});//END $.ajax	
 	}); // END CLICK
 
-	$('#cut_id').blur(function(event) {
+	$('#cut_id_no').blur(function(event) {
 		event.preventDefault();
 		
-		if($("#cut_id").val().length != 9 || isNaN($('#cut_id').val()))
-			return;
-		
+		/*if($("#cut_id_no").val().length != 9 || isNaN($('#cut_id_no').val()))
+			return;*/
+		if($("#cut_id_no").val()==0)
+		{
+		return;
+		}
 		$.ajax({
 			url: baseURL+"pages/checkcustomeravailable",
 			type: "POST",
-			data:  {cut_id: $('#cut_id').val()},
+			data:  {cut_id_no: $('#cut_id_no').val()},
 			error: function(xhr, status, error) {
   				//var err = eval("(" + xhr.responseText + ")");
   				alert(xhr.responseText);
@@ -344,11 +347,9 @@ var bookingFormValidation = function () {
 					booking_date: {
                         required: true
                     },
-					cut_id: {
+					cut_id_no: {
                         digits: true,
-                        minlength: 9,
-						maxlength: 9,
-                        required: true
+                       
                     },
 					name: {
                         minlength: 2,
@@ -372,11 +373,9 @@ var bookingFormValidation = function () {
 					booking_date: {
 						required: "الرجاء اختيار التاريخ"
                     }, 
-					 cut_id: {
+					 cut_id_no: {
 						digits: "الرجـاء ادخـال ارقـام فقط",
-						minlength: "الرجاء ادخل رقم الهوية 9 ارقام",
-						maxlength: "الرجاء ادخل رقم الهوية 9 ارقام",
-                        required: "الرجاء ادخل رقم الهوية"
+						
                     },
 					name: {
 						minlength: "لايمكن ادخال اسم اقل من حرفين",

@@ -129,7 +129,7 @@ if (isset($addbooking))
                                     <div class="form-group">
 										<label class="control-label col-md-3">رقم الهوية </label>
 										<div class="col-md-4">
-											<input type="text" id="cut_id" name="cut_id" <?php if (isset($row->cut_id)) {echo 'value="'.$row->cut_id.'"';}?>  data-required="1" class="form-control"/>
+											<input type="text" id="cut_id_no" name="cut_id_no" <?php if (isset($row->cut_id_no)) {echo 'value="'.$row->cut_id_no.'"';}?>  data-required="1" class="form-control"/>
 
 										</div>
 									</div>

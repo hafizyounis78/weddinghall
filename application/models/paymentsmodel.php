@@ -37,9 +37,9 @@ if(isset($requestData['w_code']) && $requestData['w_code'] !='')
 		{
 			$myquery = $myquery." AND wedding_hall.w_code = ".$requestData['w_code'];
 		}
-		if(isset($requestData['cut_id']) && $requestData['cut_id'] !='')
+		if(isset($requestData['cut_id_no']) && $requestData['cut_id_no'] !='')
 		{
-			$myquery = $myquery." AND wedding_booking.cut_id LIKE '".$requestData['cut_id']."%' ";;
+			$myquery = $myquery." AND customer.cut_id_no LIKE '".$requestData['cut_id_no']."%' ";;
 		}
 		if(isset($requestData['name']) && $requestData['name'] !='')
 		{

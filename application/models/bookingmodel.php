@@ -39,12 +39,13 @@ class Bookingmodel extends CI_Model
         return $this->db->query($myquery);
 
 	}
-	public function get_customer_by_id($cut_id)
+	public function get_customer_by_id($cut_id_no)
 	{
-		$this->db->where('cut_id',$cut_id);
+		$this->db->where('cut_id_no',$cut_id_no);
 		$query = $this->db->get('customer');
 		return $query->result();
 	}
+	
 	public function get_all_booking_search($requestData){
 		//$requestData= $_REQUEST;
 		 $myquery = "select wedding_hall.*,customer.*,wedding_booking.*,booking_status_tb.*
@@ -57,9 +58,9 @@ class Bookingmodel extends CI_Model
 		{
 			$myquery = $myquery." AND wedding_hall.w_code = ".$requestData['w_code'];
 		}
-		if(isset($requestData['cut_id']) && $requestData['cut_id'] !='')
+		if(isset($requestData['cut_id_no']) && $requestData['cut_id_no'] !='')
 		{
-			$myquery = $myquery." AND wedding_booking.cut_id LIKE '".$requestData['cut_id']."%' ";;
+			$myquery = $myquery." AND customer.cut_id_no LIKE '".$requestData['cut_id_no']."%' ";;
 		}
 		if(isset($requestData['name']) && $requestData['name'] !='')
 		{
@@ -103,9 +104,9 @@ class Bookingmodel extends CI_Model
 		{
 			$myquery = $myquery." AND wedding_hall.w_code = ".$requestData['w_code'];
 		}
-		if(isset($requestData['cut_id']) && $requestData['cut_id'] !='')
+		if(isset($requestData['cut_id_no']) && $requestData['cut_id_no'] !='')
 		{
-			$myquery = $myquery." AND wedding_booking.cut_id LIKE '".$requestData['cut_id']."%' ";;
+			$myquery = $myquery." AND customer.cut_id_no LIKE '".$requestData['cut_id_no']."%' ";;
 		}
 		if(isset($requestData['name']) && $requestData['name'] !='')
 		{
@@ -179,33 +180,40 @@ public function update_booking()
 			   $this->db->delete('wedding_booking_details');
 			   
 		   }
-		$rec = $this->get_customer_by_id($cut_id);
+		
+		$rec = $this->get_customer_by_id($cut_id_no);
+		   
 		if (count($rec) == 0)
 		{
 			
-				$cdata['cut_id'] = $cut_id;
+				$cdata['cut_id_no'] = $cut_id_no;
 				$cdata['name'] = $name;
 				$cdata['tel'] = $tel;
 				$cdata['mobile'] = $mobile;
 				$cdata['address'] = $address;
 				$this->db->insert('customer',$cdata);
+				$custm_id=$this->db->insert_id();		
 			}
 	
 		else
 			{	
-			
+			//اذا الكستومر موجود بدنا نطلب نستخدم كود المكستومر ونجيبه علشان ندخله في البوكينج
+				foreach($rec as $row);
+				$custm_id =$row->cut_id;
+				//*************************************************
 				$cdata['name'] = $name;
 				$cdata['tel'] = $tel;
 				$cdata['mobile'] = $mobile;
 				$cdata['address'] = $address;
+				$cdata['cut_id_no'] = $cut_id_no;
 		
-				$this->db->where('cut_id',$cut_id);
+				$this->db->where('cut_id',$custm_id);
 				$this->db->update('customer',$cdata);
 			}
-		   
+   		
 		$data['w_code'] = $w_code;
 		$data['booking_date'] = $booking_date;
-		$data['cut_id'] = $cut_id;
+		$data['cut_id'] = $custm_id;
 		$data['notes'] = $notes;			
 		$this->db->where('booking_code',$hdnBooking_code);
 		$this->db->update('wedding_booking',$data);
@@ -233,11 +241,28 @@ public function delete_selectedservice($sev_code,$booking_code)
 	public function insert_booking()
 	{
 		extract($_POST);
-		
+	
+		if($hdnOldcust != 1)
+		{
+			$cdata['cut_id_no'] = $cut_id_no;
+			$cdata['name'] = $name;
+			$cdata['tel'] = $tel;
+			$cdata['mobile'] = $mobile;
+			$cdata['address'] = $address;
+			$this->db->insert('customer',$cdata);
+			$customerid=$this->db->insert_id();	
+		}
+		else if($hdnOldcust >= 1)
+		{
+					$rec = $this->get_customer_by_id($cut_id_no);
+					foreach($rec as $row);
+					$customerid=$row->cut_id;
+			}
+	
 /*****************booking************************/		
 	$bdata['w_code'] = $w_code;
 	$bdata['booking_date'] = $booking_date;
-	$bdata['cut_id'] = $cut_id;
+	$bdata['cut_id'] = $customerid;
 	$bdata['booking_status'] = 1;
 	$bdata['notes'] = $notes;
 
@@ -246,15 +271,6 @@ public function delete_selectedservice($sev_code,$booking_code)
 
 	$bookingid=$this->db->insert_id();
 		// IF Customer Is New -> Add Customer
-		if($hdnOldcust != 1)
-		{
-			$cdata['cut_id'] = $cut_id;
-			$cdata['name'] = $name;
-			$cdata['tel'] = $tel;
-			$cdata['mobile'] = $mobile;
-			$cdata['address'] = $address;
-			$this->db->insert('customer',$cdata);
-		}
 		
 		
 /*****************booking details************************/	
