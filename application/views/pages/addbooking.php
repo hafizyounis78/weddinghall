@@ -246,7 +246,7 @@ if (isset($addbooking))
 								<div class="form-group">
 										<label class="control-label col-md-3">تكلفة الخدمة</label>
 										<div class="col-md-4">
-											<input id="sev_price" name="sev_price" type="text" class="form-control" readonly/>
+											<input id="sev_price" name="sev_price" type="text" class="form-control" />
 										</div>
                                 </div>
                                 <div class="form-group">
