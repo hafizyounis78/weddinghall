@@ -42,6 +42,23 @@ function addbocking(){
 	});//END $.ajax
 } // END addbocking
 $(document).ready(function(){
+
+
+$('#btnisnew').click(function(event){
+	alert('is new');
+document.getElementById('cut_id_no').value=null;
+document.getElementById('name').value=null;
+document.getElementById('tel').value=null;
+document.getElementById('mobile').value=null;
+document.getElementById('notes').value=null;
+document.getElementById('isnew').value=1;
+
+});
+
+
+
+/**************************************/
+
 	$('#booking_date').change(function(event) {							
 		event.preventDefault();
 		
@@ -107,51 +124,10 @@ $(document).ready(function(){
 			});//END $.ajax	
 	}); // END CLICK
 
-	$('#cut_id_no').blur(function(event) {
-		event.preventDefault();
-		
-		/*if($("#cut_id_no").val().length != 9 || isNaN($('#cut_id_no').val()))
-			return;*/
-		if($("#cut_id_no").val()==0)
-		{
-		return;
-		}
-		$.ajax({
-			url: baseURL+"pages/checkcustomeravailable",
-			type: "POST",
-			data:  {cut_id_no: $('#cut_id_no').val()},
-			error: function(xhr, status, error) {
-  				//var err = eval("(" + xhr.responseText + ")");
-  				alert(xhr.responseText);
-				//alert("pages/"+action);
-
-			},
-			beforeSend: function(){},
-			complete: function(){},
-			success: function(returndb){
-				
-				if(returndb == 0)
-				{
-					$('#hdnOldcust').val('0');
-					$('#name').val('');
-					$('#tel').val('');
-					$('#mobile').val('');
-					$('#address').val('');
-				
-					return ;
-				}
-					
-				$('#hdnOldcust').val('1');
-				$('#name').val(returndb[0]['name']);
-				$('#tel').val(returndb[0]['tel']);
-				$('#mobile').val(returndb[0]['mobile']);
-				$('#address').val(returndb[0]['address']);
-				
-			}
-		});//END $.ajax
-
-	}); // END BLUR
 }); // END READY*/
+
+
+
 function sev_code_change(){	
  	var sev_code = $('#sev_code').find('option:selected').val();
 		document.getElementById('btnAddbooking_details').disabled=true;

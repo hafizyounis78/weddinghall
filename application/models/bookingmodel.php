@@ -39,16 +39,16 @@ class Bookingmodel extends CI_Model
         return $this->db->query($myquery);
 
 	}
-	public function get_customer_by_id($cut_id_no)
+	public function get_customer_by_id($cut_id)
 	{
-		if ($cut_id_no!=0)
-		{
-		$this->db->where('cut_id_no',$cut_id_no);
+		/*if ($cut_id_no!=0)
+		{*/
+		$this->db->where('cut_id',$cut_id);
 		$query = $this->db->get('customer');
 		return $query->result();
-		}
+		/*}
 		else
-		return null;
+		return null;*/
 	}
 	
 	public function get_all_booking_search($requestData){
@@ -178,7 +178,7 @@ public function update_booking()
 	{
 		extract($_POST);
 		
-		$rec = $this->get_customer_by_id($cut_id_no);
+		/*$rec = $this->get_customer_by_id($cut_id);
 		   
 		if (count($rec) == 0)
 		{
@@ -192,11 +192,11 @@ public function update_booking()
 				$custm_id=$this->db->insert_id();		
 			}
 	
-		else
+		else*/
 			{	
 			//اذا الكستومر موجود بدنا نطلب نستخدم كود المكستومر ونجيبه علشان ندخله في البوكينج
-				foreach($rec as $row);
-				$custm_id =$row->cut_id;
+			//	foreach($rec as $row);
+				$custm_id =$cut_id;
 				//*************************************************
 				$cdata['name'] = $name;
 				$cdata['tel'] = $tel;

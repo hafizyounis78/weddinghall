@@ -3,6 +3,7 @@ var baseURL = "<?php echo base_url(); ?>";
 </script>
 <?php
 $isUpdate=0;
+$isnew=1;
 $selected='';
 $booking_code='';
 $final_price='';
@@ -13,6 +14,7 @@ if (isset($addbooking))
 	$booking_code=$row->booking_code;
 	$final_price = $row->final_price;
 	$isUpdate = 1;
+	$isnew=0;
 	$dvService='style="display:block"';
 }
 
@@ -47,6 +49,7 @@ if (isset($addbooking))
 								<div class="form-body">
 									<h3 class="form-section"></h3>
 							<input id="hdnAction" name="hdnAction" type="hidden" value="<?php echo $isUpdate;?>" />
+                            <input id="isnew" name="isnew" type="hidden" value="<?php echo $isnew;?>" />
                             <input id="booking_status" name="booking_status" type="hidden" <?php if (isset($row->booking_status)) {echo 'value="'.$row->booking_status.'"';}?> />
             						<div class="alert alert-danger display-hide">
 										<button class="close" data-close="alert"></button>
@@ -130,6 +133,7 @@ if (isset($addbooking))
 										<label class="control-label col-md-3">رقم الهوية </label>
 										<div class="col-md-4">
 											<input type="text" id="cut_id_no" name="cut_id_no" <?php if (isset($row->cut_id_no)) {echo 'value="'.$row->cut_id_no.'"';}?>  data-required="1" class="form-control"/>
+<input type="hidden" id="cut_id" name="cut_id" <?php if (isset($row->cut_id)) {echo 'value="'.$row->cut_id.'"';}?>  data-required="1" class="form-control"/>
 
 										</div>
 									</div>
@@ -187,6 +191,7 @@ if (isset($addbooking))
 											<button type="button" class="btn default" value="Cancel" onclick="window.location='<?php echo base_url()?>';">عودة</button>
                        <a href="<?php if (isset($row->booking_code)) {echo base_url().'addpayments/'.$row->booking_code;}?>" class="btn blue">
 										<i class="fa fa-edit"></i>عرض الدفعات المالية</a>
+                                        <button id="btnisnew" name="btnisnew" type="button" class="btn red" >استبدال الزبون</button>
 										</div>
 									</div>
 								</div>
