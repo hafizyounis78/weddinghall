@@ -179,7 +179,7 @@ if (isset($addbooking))
                                      <div class="form-group">
 										<label class="control-label col-md-3">ملاحظات</label>
 										<div class="col-md-4">
-											<input name="notes" type="text" class="form-control"
+											<input id="notes" name="notes" type="text" class="form-control"
                                              <?php if (isset($row->notes)) {echo 'value="'.$row->notes.'"';}?>/>
 										</div>
                                      </div>

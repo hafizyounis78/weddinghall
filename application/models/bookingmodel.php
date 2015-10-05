@@ -53,6 +53,9 @@ class Bookingmodel extends CI_Model
 	
 	public function get_all_booking_search($requestData){
 		//$requestData= $_REQUEST;
+		date_default_timezone_set('Asia/Gaza');   
+		$today_date = date('Y-m-d');
+
 		 $myquery = "select wedding_hall.*,customer.*,wedding_booking.*,booking_status_tb.*
 					from wedding_hall,customer,wedding_booking,booking_status_tb
 					where wedding_booking.w_code=wedding_hall.w_code
@@ -79,6 +82,10 @@ class Bookingmodel extends CI_Model
 		{
 			$myquery = $myquery." AND mobile LIKE '".$requestData['mobile']."%' ";
 		}
+		if(!isset($requestData['booking_date_from']) && !isset($requestData['booking_date_to']))
+		{
+			$myquery = $myquery." AND DATE_FORMAT(wedding_booking.booking_date,'%Y-%m-%d')>= '$today_date'";
+		}
 		if(isset($requestData['booking_date_from']) && $requestData['booking_date_from'] != ''
 		   && isset($requestData['booking_date_to']) && $requestData['booking_date_to'] != '')
 		{
@@ -87,7 +94,7 @@ class Bookingmodel extends CI_Model
 		if(isset($requestData['booking_date_from']) && $requestData['booking_date_from'] != ''
 		   && (isset($requestData['booking_date_to']) && $requestData['booking_date_to'] == ''))
 		{
-			$myquery = $myquery." AND booking_date = '".$requestData['booking_date_from']."'";
+			$myquery = $myquery." AND booking_date >= '".$requestData['booking_date_from']."'";
 		}
 		if(isset($requestData['booking_status']) && $requestData['booking_status'] !='')
 		{
@@ -179,8 +186,8 @@ public function update_booking()
 		extract($_POST);
 		
 		/*$rec = $this->get_customer_by_id($cut_id);
-		   
-		if (count($rec) == 0)
+		   */
+		if ($isnew == 0)
 		{
 			
 				$cdata['cut_id_no'] = $cut_id_no;
@@ -192,7 +199,7 @@ public function update_booking()
 				$custm_id=$this->db->insert_id();		
 			}
 	
-		else*/
+		else
 			{	
 			//اذا الكستومر موجود بدنا نطلب نستخدم كود المكستومر ونجيبه علشان ندخله في البوكينج
 			//	foreach($rec as $row);

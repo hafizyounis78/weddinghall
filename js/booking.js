@@ -45,14 +45,23 @@ $(document).ready(function(){
 
 
 $('#btnisnew').click(function(event){
-	alert('is new');
+	var r = confirm('سيتم استبدال بيانات الزبون,هل انت متأكد من هذه العملية');
+	if (r == true) {
+		x =1;
+	} else {
+		x = 0;
+	}
+	if(x==1)
+	{
+	
 document.getElementById('cut_id_no').value=null;
 document.getElementById('name').value=null;
 document.getElementById('tel').value=null;
 document.getElementById('mobile').value=null;
+document.getElementById('address').value=null;
 document.getElementById('notes').value=null;
 document.getElementById('isnew').value=1;
-
+	}
 });
 
 
