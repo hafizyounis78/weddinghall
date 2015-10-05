@@ -41,9 +41,14 @@ class Bookingmodel extends CI_Model
 	}
 	public function get_customer_by_id($cut_id_no)
 	{
+		if ($cut_id_no!=0)
+		{
 		$this->db->where('cut_id_no',$cut_id_no);
 		$query = $this->db->get('customer');
 		return $query->result();
+		}
+		else
+		return null;
 	}
 	
 	public function get_all_booking_search($requestData){
@@ -173,14 +178,6 @@ public function update_booking()
 	{
 		extract($_POST);
 		
-		if ($booking_status==4)
-		   {
-			   $data['booking_status'] = 1;	
-			   $this->db->where('booking_code',$hdnBooking_code);
-			   $this->db->delete('wedding_booking_details');
-			   
-		   }
-		
 		$rec = $this->get_customer_by_id($cut_id_no);
 		   
 		if (count($rec) == 0)
@@ -211,12 +208,23 @@ public function update_booking()
 				$this->db->update('customer',$cdata);
 			}
    		
+		if ($booking_status==4)
+		   {
+			   $data['booking_status'] = 1;	
+		//	   $this->db->where('booking_code',$hdnBooking_code);
+			   
+		   }
+		
 		$data['w_code'] = $w_code;
 		$data['booking_date'] = $booking_date;
 		$data['cut_id'] = $custm_id;
 		$data['notes'] = $notes;			
-		$this->db->where('booking_code',$hdnBooking_code);
-		$this->db->update('wedding_booking',$data);
+	$this->db->where('booking_code',$hdnBooking_code);		
+	$this->db->update('wedding_booking',$data);
+		/**********************delete all booking details*************/
+	$this->db->where('booking_code',$hdnBooking_code);
+		$this->db->delete('wedding_booking_details');
+		
 		//$cdata['cut_id'] = $cut_id;
 	return $hdnBooking_code;
 	}
