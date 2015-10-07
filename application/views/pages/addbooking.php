@@ -128,7 +128,8 @@ if (isset($addbooking))
 												  	echo $disabled;
 												  ?>/>
 												<span class="input-group-btn">
-												<button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
+												<button class="btn default" type="button" <?php echo $disabled;
+												  ?>><i class="fa fa-calendar"></i></button>
 												</span>
 											</div>
 											<!-- /input-group -->
