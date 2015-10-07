@@ -2,7 +2,7 @@
 var baseURL = "<?php echo base_url(); ?>";
 </script>
 <?php
-
+$disabled = "";
 $isUpdate=0;
 if (isset($addpayments))
 {
@@ -15,7 +15,10 @@ else
 {$property='disabled="disabled"';
 }*/
 }
-
+if (isset($row->booking_status) && $row->booking_status == 4)
+	{
+		$disabled = 'disabled="disabled"';
+	}
 ?>
 <style>
  	.day:hover
@@ -127,10 +130,10 @@ else
                                    <div class="form-group">
 										<label class="control-label col-md-3">تاريخ الدفعة</label>
 										<div class="col-md-4">
-											<div class="input-group date date-picker" data-date-format="yyyy/mm/dd">
-												<input type="text" class="form-control dp" data-required="1" readonly name="payment_date" id="payment_date"/>
+											<div class="input-group date date-picker" data-date-format="yyyy/mm/dd" >
+												<input type="text" class="form-control dp" data-required="1" readonly name="payment_date" id="payment_date" <?php echo $disabled;?>/>
 												<span class="input-group-btn">
-												<button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
+												<button class="btn default" type="button" <?php echo $disabled;?>><i class="fa fa-calendar"></i></button>
 												</span>
 											</div>
 											<!-- /input-group -->
@@ -142,7 +145,7 @@ else
 									<div class="form-group">
 										<label class="control-label col-md-3">قيمة الدفعة</label>
 										<div class="col-md-4">
-											<input id="payment_amount" name="payment_amount" type="text" data-required="1" class="form-control"/>
+											<input id="payment_amount" name="payment_amount" type="text" data-required="1" class="form-control" <?php echo $disabled;?>/>
 										</div>
                                      </div>
                                      
@@ -152,7 +155,7 @@ else
                                      <div class="form-group">
 										<label class="control-label col-md-3">رقم الوصل المالي</label>
 										<div class="col-md-4">
-											<input id="invoice_no" name="invoice_no" type="text" data-required="1" class="form-control"/>
+											<input id="invoice_no" name="invoice_no" type="text" data-required="1" class="form-control" <?php echo $disabled;?>/>
                                             
 										</div>
                                      </div>
@@ -167,7 +170,7 @@ else
 								<div class="form-actions">
 									<div class="row">
 										<div class="col-md-offset-3 col-md-9">
-											<button id="btnAddpayments" name="btnAddpayments" type="submit"  class="btn green" >حفظ</button>
+											<button id="btnAddpayments" name="btnAddpayments" type="submit"  class="btn green" <?php echo $disabled;?>>حفظ</button>
 											<button type="button" class="btn default" value="Cancel" onclick="window.location='<?php echo base_url()?>searchpaymentsajax/';">عودة</button>
                                           <a href="<?php if (isset($row->booking_code)) {echo base_url().'addbooking/'.$row->booking_code;}?>" class="btn red">
 								<i class="fa fa-edit"></i> عرض بيانات الحجز </a>
@@ -257,12 +260,17 @@ else
 								echo '<td id="invoice_no_td'.$i.'">'.$row->invoice_no.'</td>';
 								echo '<td id="payment_amount_td'.$i.'">'.$row->payment_amount.'</td>';
 								//echo '<td id="note_td'.$i.'style="display:none;">'.$row->notes.'</td>';
+						if (!isset($disabled))
+						{
 								echo '<td>
-								<button id="btnupdatepayemnts" name="btnupdatepayemnts" type="button" class="btn default btn-xs purple" onclick="updatepayemnts('.$i.')">
+								<button id="btnupdatepayemnts" name="btnupdatepayemnts" type="button" class="btn default btn-xs purple"  onclick="updatepayemnts('.$i.')">
 										<i class="fa fa-edit"></i> تعديل </button>
 										<button id="btndelpayments" name="btndelpayments" type="submit" value="Delete" class="btn default btn-xs black" onclick="deletepayments('.$row->p_code.','.$i.')"><i class="fa fa-trash-o"></i> حذف</button>
 ';
-								echo '</td>';		
+								echo '</td>';
+						}
+						else
+						echo '<td></td>';
 								echo '</tr>';
 								
 							}

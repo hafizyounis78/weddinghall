@@ -340,12 +340,16 @@ if (isset($addbooking))
 										echo '<td id="sev_code_td'.$i++.'">'.$row->sev_code.'</td>';
 										echo '<td>'.$row->sev_desc.'</td>';
 										echo '<td>'.$row->sev_price.'</td>';
+										if ( $disabled=="" )
+											{
 										echo '<td> 
 									  <button id="btndelservice" name="btndelservice" type="button" class="btn default btn-xs black" onclick="deleteselectedservice('.$row->sev_code.')">
 									  
 										<i class="fa fa-trash-o"></i> حذف </button>
 								  </td>';
-			
+										}
+										else
+											echo '<td> </td>';
 										echo '</tr>';
 										
 									}
