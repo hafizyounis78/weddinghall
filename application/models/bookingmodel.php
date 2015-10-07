@@ -215,6 +215,8 @@ public function update_booking()
 		
 		/*$rec = $this->get_customer_by_id($cut_id);
 		   */
+		 if ($booking_status<>4)
+		 {  
 		if ($isnew == 0)
 		{
 			
@@ -259,7 +261,14 @@ public function update_booking()
 		/**********************delete all booking details*************/
 	$this->db->where('booking_code',$hdnBooking_code);
 		$this->db->delete('wedding_booking_details');
-		
+		 }
+		 else
+		 {
+
+		$data['notes'] = $notes;			
+	$this->db->where('booking_code',$hdnBooking_code);		
+	$this->db->update('wedding_booking',$data);
+		 }
 		//$cdata['cut_id'] = $cut_id;
 	return $hdnBooking_code;
 	}
