@@ -180,6 +180,34 @@ class Bookingmodel extends CI_Model
 				
 		$this->db->where('booking_code',$booking_code);
 		$this->db->update('wedding_booking',$data);
+		
+		//--------------------------------------------
+		$myquery = "select sum(payment_amount) as total 
+					  from payments 
+					 where booking_code=$booking_code
+					   and payment_status <>4 "; 
+					  
+		$r = $this->db->query($myquery);
+		$rec = $r->result();
+		$total_payment = '';
+		foreach($rec as $row)
+  		{
+			$total_payment = $row->total;
+		}
+		
+		/*************update booking status --------*/
+		if($final_price > $total_payment)
+		{
+			$datab['booking_status']=2;
+			$this->db->where('booking_code',$booking_code);
+			$this->db->update('wedding_booking',$datab);
+		}
+		else if ($final_price = $total_payment)
+		{
+			$datab['booking_status']=3;
+			$this->db->where('booking_code',$booking_code);
+			$this->db->update('wedding_booking',$datab);
+		}
 	}
 public function update_booking()
 	{
@@ -310,7 +338,7 @@ public function delete_selectedservice($sev_code,$booking_code)
 		$data['sev_price'] = $sev_price;
 		$this->db->insert('wedding_booking_details',$data);
 		//-----------------------------------------
-		
+		/*
 		$myquery = "select final_price from wedding_booking where  booking_code = $hdnBookingcode"; 
 		$r = $this->db->query($myquery);
 		$rec = $r->result();
@@ -332,8 +360,8 @@ public function delete_selectedservice($sev_code,$booking_code)
   		{
 			$total_payment = $row->total;
 		}
-		
-		/*************update booking status to 2 --------*/
+		*/
+		/*************update booking status to 2 --------
 		if($final_price > $total_payment)
 		{
 			$datab['booking_status']=2;
@@ -346,7 +374,7 @@ public function delete_selectedservice($sev_code,$booking_code)
 			$this->db->where('booking_code',$hdnBookingcode);
 			$this->db->update('wedding_booking',$datab);
 		}
-		
+		*/
 		
 		
 /*$myquery = "select count(1) 
