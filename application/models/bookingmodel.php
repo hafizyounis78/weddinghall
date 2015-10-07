@@ -309,10 +309,46 @@ public function delete_selectedservice($sev_code,$booking_code)
 		$data['sev_code'] = $sev_code;
 		$data['sev_price'] = $sev_price;
 		$this->db->insert('wedding_booking_details',$data);
+		//-----------------------------------------
+		
+		$myquery = "select final_price from wedding_booking where  booking_code = $hdnBookingcode"; 
+		$r = $this->db->query($myquery);
+		$rec = $r->result();
+		$final_price = '';
+		foreach($rec as $row)
+  		{
+			$final_price = $row->final_price;
+		}
+		
+		$myquery = "select sum(payment_amount) as total 
+					  from payments 
+					 where booking_code=$hdnBookingcode
+					   and payment_status <>4 "; 
+					  
+		$r = $this->db->query($myquery);
+		$rec = $r->result();
+		$total_payment = '';
+		foreach($rec as $row)
+  		{
+			$total_payment = $row->total;
+		}
+		
 		/*************update booking status to 2 --------*/
-		$datab['booking_status']=2;
-		$this->db->where('booking_code',$hdnBookingcode);
-		$this->db->update('wedding_booking',$datab);
+		if($final_price > $total_payment)
+		{
+			$datab['booking_status']=2;
+			$this->db->where('booking_code',$hdnBookingcode);
+			$this->db->update('wedding_booking',$datab);
+		}
+		else if ($final_price = $total_payment)
+		{
+			$datab['booking_status']=3;
+			$this->db->where('booking_code',$hdnBookingcode);
+			$this->db->update('wedding_booking',$datab);
+		}
+		
+		
+		
 /*$myquery = "select count(1) 
 			from payments
 			where booking_code=$hdnBookingcode";
