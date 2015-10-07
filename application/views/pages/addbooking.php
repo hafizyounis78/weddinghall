@@ -191,7 +191,6 @@ if (isset($addbooking))
 											<button type="button" class="btn default" value="Cancel" onclick="window.location='<?php echo base_url()?>';">عودة</button>
                        <a href="<?php if (isset($row->booking_code)) {echo base_url().'addpayments/'.$row->booking_code;}?>" class="btn blue">
 										<i class="fa fa-edit"></i>عرض الدفعات المالية</a>
-                                        <button id="btnisnew" name="btnisnew" type="button" class="btn red" >استبدال الزبون</button>
 										</div>
 									</div>
 								</div>

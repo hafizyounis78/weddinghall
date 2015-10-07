@@ -440,7 +440,7 @@ class Pages extends CI_Controller
 		foreach($rec as $row){
 			$nestedData=array(); 
 			$btn='<a href="'.base_url().'addbooking/'.$row->booking_code.'" class="btn default btn-xs purple">
-			  <i class="fa fa-edit"></i> تعديل </a>';
+			  <i class="fa fa-edit"></i> عرض </a>';
 										
 			$nestedData[] = $i++;
 			$nestedData[] = $row->w_name;
