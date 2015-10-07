@@ -82,11 +82,30 @@ function updatepayemnts(i){
 	document.getElementById('p_code').value =$('#payments_body #p_code_td'+i).html();
 	document.getElementById('hdnAction').value =1;
 		}//end function 
+function updatempepayemnts(i){
+//	var rowid=document.getElementById('payment_date').value =$('#payments_body #payment_date_td'+i).html();
+	$('payments_date').datepicker('setDate',$('#payments_body #payment_date_td'+i).val());
+	document.getElementById('payment_date').value =$('#emppayments_body #payment_date_td'+i).html();
+	document.getElementById('payment_amount').value = $('#emppayments_body #payment_amount_td'+i).html();
+	document.getElementById("payment_type").selectedIndex  = $('#emppayments_body #payment_type_td'+i).html();
+	document.getElementById("payment_type")
+	//document.getElementById('payment_amount_old').value = $('#payments_body #payment_amount_td'+i).html();
+//	document.getElementById('notes').value = $('#notes_td');
+	document.getElementById('invoice_no').value =$('#emppayments_body #invoice_no_td'+i).html();
+	document.getElementById('ep_code').value =$('#emppayments_body #ep_code_td'+i).html();
+	document.getElementById('hdnAction').value =1;
+	
+		}//end function 
 
 /********************emp payments***************/
 function addemppayments(){
+	var action = "addemppayments";
+	if(document.getElementById('hdnAction').value == '1')
+	 { 
+		action = "updateemppayments";
+	 }
 	$.ajax({
-			url: baseURL+"pages/addemppayments",
+			url: baseURL+"pages/"+action,
 			type: "POST",
 			data:  $("#emppayments_form").serialize(),
 			error: function(xhr, status, error) {
@@ -95,9 +114,22 @@ function addemppayments(){
 			},
 			beforeSend: function(){},
 			complete: function(){},
-			success: function(){
+			success: function(data){
 					alert ('تمت عملية الإضافة بنجاح');
-					document.location.reload(true);
+//					document.location.reload(true);
+
+					$( "#emppayments_body" ).html(data);
+						document.getElementById('payment_date').value ="";
+						document.getElementById('payment_amount').value ="";
+					//document.getElementById('payment_type').value ="";
+					$("payment_type").val(0);
+//						document.getElementById('payment_type').caption ="";
+					//	document.getElementById('final_price').value ="";
+						document.getElementById('invoice_no').value ="";
+	//					document.getElementById('notes').value ="";
+						document.getElementById('p_code').value ="";
+						document.getElementById('hdnAction').value =0;
+					
 			}
 		});//END $.ajax
 	} // END addemppayments
@@ -158,6 +190,37 @@ if(x==1)
 				//	window.location.href=baseURL+"searchpaymentsajax";
 //				document.location.reload(true);
 					$( "#payments_body" ).html(data);
+			}
+		});//END $.ajax
+}
+}
+//--------------------------------
+function deletempepayments(ep_code)
+{
+	alert(ep_code);
+	var emp_code=document.getElementById('emp_code').value;
+var r = confirm('هل انت متأكد من الإلفاء');
+if (r == true) {
+    x =1;
+} else {
+    x = 0;
+}
+if(x==1)
+{
+		$.ajax({
+			url: baseURL+"pages/deleteemppayments",
+			type: "POST",
+			data:   {ep_code:ep_code,emp_code:emp_code},
+			error: function(){
+				alert('error');
+			},
+			beforeSend: function(){},
+			complete: function(){},
+			success: function(data){
+				//alert ('تمت عملية الإضافة بنجاح');
+				//	window.location.href=baseURL+"searchpaymentsajax";
+//				document.location.reload(true);
+					$( "#emppayments_body" ).html(data);
 			}
 		});//END $.ajax
 }

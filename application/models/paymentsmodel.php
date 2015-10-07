@@ -239,6 +239,18 @@ public function update_payments()
 		$this->db->update('wedding_booking',$datab);
 
 	}
+public function update_emppayments()
+	{
+		extract($_POST);
+		$data['payment_type'] = $payment_type;
+		$data['payment_amount'] = $payment_amount;
+		$data['payment_date'] = $payment_date;
+		$data['invoice_no'] = $invoice_no;
+//		
+		$this->db->where('ep_code',$ep_code);
+		$this->db->update('employee_payments',$data);
+	}
+
 public function get_payment_type()
 {
 	 $query = $this->db->get('payment_type');
@@ -263,6 +275,19 @@ public function delete_payment()
 
 //		$this->db->where('p_code', $p_code);
   //      $this->db->delete('payments');
+	}
+
+
+
+	public function delete_emppayment()
+	{
+		extract($_POST);
+
+		
+		$myquery = "delete 	from employee_payments
+					where 	ep_code=$ep_code";
+        return $this->db->query($myquery);
+
 	}
 }
 

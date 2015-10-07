@@ -2,7 +2,7 @@
 var baseURL = "<?php echo base_url(); ?>";
 </script>
 <?php
-
+$isUpdate=0;
 if (isset($addemppayments))
 {
 foreach($addemppayments as $row);
@@ -34,7 +34,9 @@ foreach($addemppayments as $row);
 								<div class="form-body">
 									<h3 class="form-section"></h3>
 	
-                                    
+                                     <input id="hdnAction" name="hdnAction" type="hidden" value="<?php echo $isUpdate;?>" /> 
+                                      <input id="ep_code" name="ep_code" type="hidden" /> 
+ 
                                     <div class="alert alert-danger display-hide">
 										<button class="close" data-close="alert"></button>
 										يـوجد خطأ في ادخال الحقول ... الرجــاء التأكد من الادخال بشـكل صحيـح
@@ -46,9 +48,10 @@ foreach($addemppayments as $row);
 									</div>
                                     <div class="form-group">
 																				<div class="col-md-4">
-											<input type="hidden" name="emp_code" readonly <?php if (isset($row->emp_id)) {echo 'value="'.$row->emp_code.'"';}?>  data-required="1" class="form-control"/>
+											<input type="hidden" id="emp_code" name="emp_code" readonly <?php if (isset($row->emp_code)) {echo 'value="'.$row->emp_code.'"';}?>  data-required="1" class="form-control"/>
 										</div>
 									</div>
+
                                     <div class="form-group">
 										<label class="control-label col-md-3">رقم الهوية <span class="required">
 										* </span>
@@ -70,8 +73,8 @@ foreach($addemppayments as $row);
                    				<label class="control-label col-md-3">نوع الدفع<span class="required">*</span>
 										</label>
 										<div class="col-md-4">
-											<select class="form-control select2me" data-required="1" name="payment_type">
-												<option value="">Select...</option>
+											<select class="form-control select2me" data-required="1" id="payment_type" name="payment_type">
+												<option value="0">Select...</option>
 												<option value="1">راتب شهري</option>
                                                 <option value="2">سلفة مالية</option>
 						                        
@@ -82,7 +85,7 @@ foreach($addemppayments as $row);
 										<label class="control-label col-md-3">تاريخ الدفعة</label>
 										<div class="col-md-4">
 											<div class="input-group date date-picker" data-date-format="yyyy/mm/dd">
-												<input type="text" class="form-control dp" data-required="1" readonly name="payment_date"/>
+												<input type="text" class="form-control dp" data-required="1" readonly id="payment_date" name="payment_date"/>
 												<span class="input-group-btn">
 												<button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
 												</span>
@@ -95,7 +98,7 @@ foreach($addemppayments as $row);
 									<div class="form-group">
 										<label class="control-label col-md-3">قيمة الدفعة</label>
 										<div class="col-md-4">
-											<input name="payment_amount" type="text" data-required="1" class="form-control"/>
+											<input id="payment_amount" name="payment_amount" type="text" data-required="1" class="form-control"/>
 										</div>
                                      </div>
                                      <div class="form-group">
@@ -133,10 +136,13 @@ foreach($addemppayments as $row);
 						</div>
                 <div class="portlet-body">
 							<table class="table table-striped table-bordered table-hover" id="sample_2">
-							<thead>
-							<tr>
-								<th >
+							<thead >
+							<tr >
+								<th>
 									*
+								</th>
+                                <th>
+									كود العملية
 								</th>
 								<th>
 									رقم الهوية
@@ -154,39 +160,63 @@ foreach($addemppayments as $row);
 									 تاريخ الدفعة 
 								</th>
                                 <th>
+									 رقم الوصل
+								</th>
+                                <th>
 									 قيمة الدفعة
 								</th>
                                 <th>
-									 رقم الوصل
+									 
 								</th>
+                                
                                 
 							</tr>
 							</thead>
-							<tbody  >
+							<tbody id="emppayments_body" >
 							
 								
 								<?php
 								$i=1;
+								$total = 0;
   							foreach($employee_view as $row)
-  							{
-								echo '<tr class="odd gradeX">';
+  							{	$total = $total + $row->payment_amount;
+								echo '<tr align="center" class="odd gradeX">';
 								echo '<td>'.$i++.'</td>';
+								echo '<td id="ep_code_td'.$i.'">'.$row->ep_code.'</td>';
 								echo '<td>'.$row->emp_id.'</td>';
 								echo '<td>'.$row->name.'</td>';
 								echo '<td>'.$row->job_title.'</td>';
 								if($row->payment_type==1)
-								echo '<td> راتب شهري </td>';
+								echo '<td id="payment_type_td'.$i.'"> راتب شهري </td>';
 								else if($row->payment_type==2)
-								echo '<td> سلفة </td>';
-
-								echo '<td>'.$row->payment_date.'</td>';
-								echo '<td>'.$row->payment_amount.'</td>';
-								echo '<td>'.$row->invoice_no.'</td>';
+								echo '<td id="payment_type_td'.$i.'"> سلفة </td>';
+								echo '<td id="payment_date_td'.$i.'">'.$row->payment_date.'</td>';
+								echo '<td id="invoice_no_td'.$i.'">'.$row->invoice_no.'</td>';
+								echo '<td id="payment_amount_td'.$i.'">'.$row->payment_amount.'</td>';
+								echo '<td>
+								<button id="btnupdateemppayemnts" name="btnupdateemppayemnts" type="button" class="btn default btn-xs purple" onclick="updatempepayemnts('.$i.')">
+										<i class="fa fa-edit"></i> تعديل </button>
+										<button id="btndelemppayments" name="btndelemppayments" type="submit" value="Delete" class="btn default btn-xs black" onclick="deletempepayments('.$row->ep_code.')"><i class="fa fa-trash-o"></i> حذف</button>';
+								echo '</td>';
 								echo '</tr>';
 							}
 							?>
-                              
-							</tbody>
+                            </tbody>
+							
+							
+                          <!--
+                            <tfoot id="emppayments_footer">  
+							echo '<tr align="center" class="odd gradeX">';
+								echo '<td colspan="8"><b>المجموع</td>';
+								echo '<td id="tdTotal">'.$total.'</td>';
+								echo '<td > </td>';
+														
+								echo '</tr>';
+								
+						
+                             </tfoot>--> 
+
+							
 							</table>
 						</div>
 					</div>

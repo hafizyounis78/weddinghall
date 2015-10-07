@@ -219,7 +219,7 @@ class Pages extends CI_Controller
 	{
 		$this->load->model('paymentsmodel');
 		$this->paymentsmodel->insert_emppayments();
-		
+		$this->update_emppayments_datatable();			
 	}
 
 	function delete_selectedservice($sev_code,$booking_code)
@@ -348,6 +348,44 @@ class Pages extends CI_Controller
 		/****************************************/
 		
 	}
+	
+/******************************************************************/
+function update_emppayments_datatable()
+	{	
+		extract($_POST);
+//		$hdnBookingcode
+		$rec=$this->paymentsmodel->get_emppayments_by_code($emp_code);
+		
+		$i=1;
+		$total = 0;
+		
+		foreach($rec->result() as $row)
+  		{$total = $total + $row->payment_amount;
+								echo '<tr align="center" class="odd gradeX">';
+								echo '<td>'.$i++.'</td>';
+								echo '<td id="ep_code_td'.$i.'">'.$row->ep_code.'</td>';
+								echo '<td>'.$row->emp_id.'</td>';
+								echo '<td>'.$row->name.'</td>';
+								echo '<td>'.$row->job_title.'</td>';
+								if($row->payment_type==1)
+								echo '<td id="payment_type_td'.$i.'"> راتب شهري </td>';
+								else if($row->payment_type==2)
+								echo '<td id="payment_type_td'.$i.'"> سلفة </td>';
+								echo '<td id="payment_date_td'.$i.'">'.$row->payment_date.'</td>';
+								echo '<td id="invoice_no_td'.$i.'">'.$row->invoice_no.'</td>';
+								echo '<td id="payment_amount_td'.$i.'">'.$row->payment_amount.'</td>';
+								echo '<td>
+								<button id="btnupdateemppayemnts" name="btnupdateemppayemnts" type="button" class="btn default btn-xs purple" onclick="updatempepayemnts('.$i.')">
+										<i class="fa fa-edit"></i> تعديل </button>
+										<button id="btndelemppayments" name="btndelemppayments" type="submit" value="Delete" class="btn default btn-xs black" onclick="deletempepayments('.$row->ep_code.','.$i.')"><i class="fa fa-trash-o"></i> حذف</button>';
+								echo '</td>';
+								echo '</tr>';
+							}
+							
+		/****************************************/
+		
+	}
+/******************************************************************/
 	function updatepayments()
 	{
 		$this->load->model('paymentsmodel');
@@ -355,6 +393,14 @@ class Pages extends CI_Controller
 /****************************************/
 	$this->update_payments_datatable();
 	}
+	function updateemppayments()
+	{
+		$this->load->model('paymentsmodel');
+		$this->paymentsmodel->update_emppayments();
+/****************************************/
+	$this->update_emppayments_datatable();
+	}
+	
 	function searchbooking()
 	{
 		
@@ -734,6 +780,13 @@ class Pages extends CI_Controller
 		$this->load->model('paymentsmodel');
 		$this->paymentsmodel->delete_payment();
 		$this->update_payments_datatable();
+
+	}
+	function deleteemppayments()
+	{
+		$this->load->model('paymentsmodel');
+		$this->paymentsmodel->delete_emppayment();
+		$this->update_emppayments_datatable();
 
 	}
 	function employee()
