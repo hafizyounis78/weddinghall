@@ -24,6 +24,9 @@ where employee_payments.emp_code=employee.emp_code";
     }
 	public function get_all_payments_search($requestData)
     {
+		date_default_timezone_set('Asia/Gaza');   
+		$today_date = date('Y-m-d');
+
 		$myquery = "SELECT 		payments. * , wedding_booking. * , customer. * , wedding_hall. *
 					FROM   		wedding_booking
 					LEFT JOIN 	payments ON wedding_booking.booking_code = payments.booking_code
@@ -53,6 +56,10 @@ if(isset($requestData['w_code']) && $requestData['w_code'] !='')
 		{
 			$myquery = $myquery." AND final_price LIKE '".$requestData['final_price']."%' ";
 		}
+		if(!isset($requestData['booking_date_from']) && !isset($requestData['booking_date_to']))
+		{
+			$myquery = $myquery." AND DATE_FORMAT(wedding_booking.booking_date,'%Y-%m-%d')>= '$today_date'";
+		}
 		if(isset($requestData['booking_date_from']) && $requestData['booking_date_from'] != ''
 		   && isset($requestData['booking_date_to']) && $requestData['booking_date_to'] != '')
 		{
@@ -61,7 +68,7 @@ if(isset($requestData['w_code']) && $requestData['w_code'] !='')
 		if(isset($requestData['booking_date_from']) && $requestData['booking_date_from'] != ''
 		   && (isset($requestData['booking_date_to']) && $requestData['booking_date_to'] == ''))
 		{
-			$myquery = $myquery." AND booking_date = '".$requestData['booking_date_from']."'";
+			$myquery = $myquery." AND booking_date >= '".$requestData['booking_date_from']."'";
 		}
 		if(isset($requestData['invoice_no']) && $requestData['invoice_no'] !='')
 		{
@@ -75,7 +82,7 @@ if(isset($requestData['w_code']) && $requestData['w_code'] !='')
 		if(isset($requestData['payment_date_from']) && $requestData['payment_date_from'] != ''
 		   && (isset($requestData['payment_date_to']) && $requestData['payment_date_to'] == ''))
 		{
-			$myquery = $myquery." AND payment_date = '".$requestData['payment_date_from']."'";
+			$myquery = $myquery." AND payment_date >= '".$requestData['payment_date_from']."'";
 		}
 
         return $this->db->query($myquery);
@@ -129,7 +136,7 @@ if(isset($requestData['emp_id']) && $requestData['emp_id'] !='')
 		if(isset($requestData['payment_date_from']) && $requestData['payment_date_from'] != ''
 		   && (isset($requestData['payment_date_to']) && $requestData['payment_date_to'] == ''))
 		{
-			$myquery = $myquery." AND payment_date = '".$requestData['payment_date_from']."'";
+			$myquery = $myquery." AND payment_date >= '".$requestData['payment_date_from']."'";
 		}
 
         return $this->db->query($myquery);
