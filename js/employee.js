@@ -89,7 +89,7 @@ function employee()
 			beforeSend: function(){},
 			complete: function(){},
 			success: function(returndb){
-alert (returndb);
+//alert (returndb);
 					alert ('تمت عملية الاضافة بنجاح');
 					window.location.href= baseURL+"employee";
 			}

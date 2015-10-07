@@ -127,7 +127,7 @@ function addemppayments(){
 					//	document.getElementById('final_price').value ="";
 						document.getElementById('invoice_no').value ="";
 	//					document.getElementById('notes').value ="";
-						document.getElementById('p_code').value ="";
+						document.getElementById('ep_code').value ="";
 						document.getElementById('hdnAction').value =0;
 					
 			}
@@ -197,7 +197,7 @@ if(x==1)
 //--------------------------------
 function deletempepayments(ep_code)
 {
-	alert(ep_code);
+	
 	var emp_code=document.getElementById('emp_code').value;
 var r = confirm('هل انت متأكد من الإلفاء');
 if (r == true) {

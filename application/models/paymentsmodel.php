@@ -149,8 +149,8 @@ if(isset($requestData['emp_id']) && $requestData['emp_id'] !='')
 					 where  wedding_booking.w_code=wedding_hall.w_code
 					 and    wedding_booking.cut_id=customer.cut_id
 					 and    wedding_booking.booking_status=booking_status_tb.booking_status_code
-					 and    wedding_booking.booking_code=$booking_code
-					 and    wedding_booking.booking_status<>4";
+					 and    wedding_booking.booking_code=$booking_code";
+//					 and    wedding_booking.booking_status<>4";
         return $this->db->query($myquery);
 
 	}
@@ -179,8 +179,8 @@ public function get_payments_by_code($booking_code)
 					 where  wedding_booking.booking_code=payments.booking_code
 					 and    wedding_booking.w_code=wedding_hall.w_code
 					 and    wedding_booking.cut_id=customer.cut_id
-					 and    wedding_booking.booking_code=$booking_code
-					 and    payment_status<>4";
+					 and    wedding_booking.booking_code=$booking_code";
+//					 and    payment_status<>4";
         return $this->db->query($myquery);
 
 	}	

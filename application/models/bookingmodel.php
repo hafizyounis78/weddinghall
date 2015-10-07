@@ -412,7 +412,7 @@ $b_date=$row->booking_date;
 		
 		$this->db->where('booking_code', $booking_code);
 		$this->db->update('wedding_booking',$data);
-		$this->delete_booking_details($booking_code);
+//		$this->delete_booking_details($booking_code);
 		$this->delete_payemnts($booking_code);
 	}
 	public function delete_booking_details($booking_code)
