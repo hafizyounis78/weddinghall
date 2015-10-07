@@ -215,13 +215,13 @@ public function update_booking()
 				$this->db->update('customer',$cdata);
 			}
    		
-		if ($booking_status==4)
+		/*if ($booking_status==4)
 		   {
-			   $data['booking_status'] = 1;	
+		//	   $data['booking_status'] = 1;	
 		//	   $this->db->where('booking_code',$hdnBooking_code);
 			   
 		   }
-		
+		*/
 		$data['w_code'] = $w_code;
 		$data['booking_date'] = $booking_date;
 		$data['cut_id'] = $custm_id;
@@ -309,7 +309,10 @@ public function delete_selectedservice($sev_code,$booking_code)
 		$data['sev_code'] = $sev_code;
 		$data['sev_price'] = $sev_price;
 		$this->db->insert('wedding_booking_details',$data);
-		
+		/*************update booking status to 2 --------*/
+		$datab['booking_status']=2;
+		$this->db->where('booking_code',$hdnBookingcode);
+		$this->db->update('wedding_booking',$datab);
 /*$myquery = "select count(1) 
 			from payments
 			where booking_code=$hdnBookingcode";
