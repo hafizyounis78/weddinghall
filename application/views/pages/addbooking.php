@@ -8,6 +8,7 @@ $selected='';
 $booking_code='';
 $final_price='';
 $dvService='style="display:none"';
+$disabled = "";
 if (isset($addbooking))
 {
 	foreach($addbooking as $row);
@@ -16,6 +17,11 @@ if (isset($addbooking))
 	$isUpdate = 1;
 	$isnew=0;
 	$dvService='style="display:block"';
+	if (isset($row->booking_status) && $row->booking_status == 4)
+	{
+		$disabled = 'disabled="disabled"';
+	}
+	
 }
 
 ?>
@@ -74,7 +80,8 @@ if (isset($addbooking))
 									
                                     	<div class="col-md-4">
                                         	
-											<select class="form-control select2me" id="w_code" name="w_code" onchange="checkdate()">
+											<select class="form-control select2me" id="w_code" name="w_code" onchange="checkdate()"
+                                            <?php echo $disabled;?> >
 												<option value="0">Select...</option>
 												<?php
 												
@@ -118,6 +125,7 @@ if (isset($addbooking))
 												<input type="text" class="form-control dp" readonly id="booking_date" name="booking_date"
                                                   <?php if (isset($row->booking_date)) {echo 'value="'.$row->booking_date.'"';}
 												  	else if(isset($calenderdate)) {echo 'value="'.$calenderdate.'"';};
+												  	echo $disabled;
 												  ?>/>
 												<span class="input-group-btn">
 												<button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
@@ -132,7 +140,7 @@ if (isset($addbooking))
                                     <div class="form-group">
 										<label class="control-label col-md-3">رقم الهوية </label>
 										<div class="col-md-4">
-											<input type="text" id="cut_id_no" name="cut_id_no" <?php if (isset($row->cut_id_no)) {echo 'value="'.$row->cut_id_no.'"';}?>  data-required="1" class="form-control"/>
+											<input type="text" id="cut_id_no" name="cut_id_no" <?php if (isset($row->cut_id_no)) {echo 'value="'.$row->cut_id_no.'"';}?>  data-required="1" class="form-control" <?php echo $disabled;?>/>
 <input type="hidden" id="cut_id" name="cut_id" <?php if (isset($row->cut_id)) {echo 'value="'.$row->cut_id.'"';}?>  data-required="1" class="form-control"/>
 
 										</div>
@@ -148,7 +156,7 @@ if (isset($addbooking))
 										* </span>
 										</label>
 										<div class="col-md-4">
-											<input type="text" id="name" name="name" data-required="1"  <?php if (isset($row->name)) {echo 'value="'.$row->name.'"';}?> class="form-control"/>
+											<input type="text" id="name" name="name" data-required="1"  <?php if (isset($row->name)) {echo 'value="'.$row->name.'"';}?> class="form-control" <?php echo $disabled;?>/>
 										</div>
 									</div>
                                     
@@ -157,7 +165,8 @@ if (isset($addbooking))
 										<label class="control-label col-md-3">تلفون</label>
 										<div class="col-md-4">
 											<input id="tel" name="tel" type="text" class="form-control"
-                                              <?php if (isset($row->tel)) {echo 'value="'.$row->tel.'"';}?>/>
+                                              <?php if (isset($row->tel)) {echo 'value="'.$row->tel.'"';} 
+											  echo $disabled;?>/>
 										</div>
                                      </div>
                                     
@@ -165,7 +174,8 @@ if (isset($addbooking))
 										<label class="control-label col-md-3">جوال</label>
 										<div class="col-md-4">
 											<input id="mobile" name="mobile" type="text" class="form-control"
-                                            <?php if (isset($row->mobile)) {echo 'value="'.$row->mobile.'"';}?>/>
+                                            <?php if (isset($row->mobile)) {echo 'value="'.$row->mobile.'"';}
+											echo $disabled;?>/>
 										</div>
                                      </div>
                                     
@@ -173,14 +183,14 @@ if (isset($addbooking))
 										<label class="control-label col-md-3">عنوان</label>
 										<div class="col-md-4">
 											<input id="address" name="address" type="text" class="form-control"
-                                             <?php if (isset($row->address)) {echo 'value="'.$row->address.'"';}?>/>
+                                             <?php if (isset($row->address)) {echo 'value="'.$row->address.'"';}
+											 echo $disabled;?>/>
 										</div>
                                      </div>
                                      <div class="form-group">
 										<label class="control-label col-md-3">ملاحظات</label>
 										<div class="col-md-4">
-											<input id="notes" name="notes" type="text" class="form-control"
-                                             <?php if (isset($row->notes)) {echo 'value="'.$row->notes.'"';}?>/>
+                                          <textarea id="notes" name="notes" cols="" rows="" class="form-control"><?php if (isset($row->notes)) {echo $row->notes;}?></textarea>
 										</div>
                                      </div>
                                    
@@ -231,7 +241,7 @@ if (isset($addbooking))
 										</label>
 										<div class="col-md-4">
                                         	
-											<select id="sev_code" class="form-control select2me" onchange="sev_code_change()" name="sev_code">
+											<select id="sev_code" class="form-control select2me" onchange="sev_code_change()" name="sev_code" <?php echo $disabled;?>>
 												<option value="0">Select...</option>
 												<?php
 												$selected;
@@ -250,7 +260,7 @@ if (isset($addbooking))
 								<div class="form-group">
 										<label class="control-label col-md-3">تكلفة الخدمة</label>
 										<div class="col-md-4">
-											<input id="sev_price" name="sev_price" type="text" class="form-control" />
+											<input id="sev_price" name="sev_price" type="text" class="form-control" <?php echo $disabled;?>/>
 										</div>
                                 </div>
                                 <div class="form-group">
@@ -266,7 +276,7 @@ if (isset($addbooking))
 								<div class="form-actions">
 									<div class="row">
 										<div class="col-md-offset-3 col-md-9">
-											<button id="btnAddbooking_details" name="btnAddbooking_details" type="submit"  class="btn green">Submit</button>
+											<button id="btnAddbooking_details" name="btnAddbooking_details" type="submit"  class="btn green" <?php echo $disabled;?>>حـفـظ</button>
 											
 										</div>
 									</div>
@@ -405,13 +415,13 @@ if (isset($addbooking))
 										<label class="control-label col-md-3">المبلغ المطلوب</label>
 										<div class="col-md-4">
 											<input id="final_price" name="final_price" type="text" class="form-control"
-                                           value="<?php echo $final_price;?>"/>
+                                           value="<?php echo $final_price;?>" <?php echo $disabled;?>/>
 										</div>
                                 </div>
 								<div class="form-actions">
 									<div class="row">
 										<div class="col-md-offset-3 col-md-9">
-											<button id="btnSaveprice" name="btnSaveprice" type="submit"  class="btn green">حفظ</button>
+											<button id="btnSaveprice" name="btnSaveprice" type="submit"  class="btn green" <?php echo $disabled;?>>حفظ</button>
 										<button type="button" class="btn default" value="Cancel" onclick="window.location='<?php echo base_url()?>';">عودة</button>
 
 										</div>
