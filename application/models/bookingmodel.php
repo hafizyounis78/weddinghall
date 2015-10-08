@@ -217,8 +217,8 @@ public function update_booking()
 		   */
 		 if ($booking_status<>4)
 		 {  
-		if ($isnew == 0)
-		{
+			/*if ($isnew == 0)
+			  {
 			
 				$cdata['cut_id_no'] = $cut_id_no;
 				$cdata['name'] = $name;
@@ -227,10 +227,10 @@ public function update_booking()
 				$cdata['address'] = $address;
 				$this->db->insert('customer',$cdata);
 				$custm_id=$this->db->insert_id();		
-			}
+			 }
 	
-		else
-			{	
+			else
+			 {	*/
 			//اذا الكستومر موجود بدنا نطلب نستخدم كود المكستومر ونجيبه علشان ندخله في البوكينج
 			//	foreach($rec as $row);
 				$custm_id =$cut_id;
@@ -243,7 +243,7 @@ public function update_booking()
 		
 				$this->db->where('cut_id',$custm_id);
 				$this->db->update('customer',$cdata);
-			}
+			 //}
    		
 		/*if ($booking_status==4)
 		   {
@@ -252,6 +252,7 @@ public function update_booking()
 			   
 		   }
 		*/
+	
 		$data['w_code'] = $w_code;
 		$data['booking_date'] = $booking_date;
 		$data['cut_id'] = $custm_id;
@@ -259,8 +260,8 @@ public function update_booking()
 	$this->db->where('booking_code',$hdnBooking_code);		
 	$this->db->update('wedding_booking',$data);
 		/**********************delete all booking details*************/
-	$this->db->where('booking_code',$hdnBooking_code);
-		$this->db->delete('wedding_booking_details');
+	//$this->db->where('booking_code',$hdnBooking_code);
+	//	$this->db->delete('wedding_booking_details');
 		 }
 		 else
 		 {
@@ -415,8 +416,8 @@ $b_date=$row->booking_date;
 
 		$data['booking_status']=4;
 		$data['booking_date']=null;
-		$data['final_price']=0;
-		$data['total_price']=0;
+		//$data['final_price']=0;
+		//$data['total_price']=0;
 		$data['old_booking_date']=$b_date;
 		
 		$this->db->where('booking_code', $booking_code);

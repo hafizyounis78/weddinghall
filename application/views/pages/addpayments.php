@@ -260,7 +260,7 @@ if (isset($row->booking_status) && $row->booking_status == 4)
 								echo '<td id="invoice_no_td'.$i.'">'.$row->invoice_no.'</td>';
 								echo '<td id="payment_amount_td'.$i.'">'.$row->payment_amount.'</td>';
 								//echo '<td id="note_td'.$i.'style="display:none;">'.$row->notes.'</td>';
-						if (!isset($disabled))
+						if ($disabled == "")
 						{
 								echo '<td>
 								<button id="btnupdatepayemnts" name="btnupdatepayemnts" type="button" class="btn default btn-xs purple"  onclick="updatepayemnts('.$i.')">
