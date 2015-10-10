@@ -106,6 +106,10 @@ class Bookingmodel extends CI_Model
 		{
 			$myquery = $myquery." AND wedding_booking.org_id = ".$requestData['org_id'];
 		}
+		if(isset($requestData['notes']) && $requestData['notes'] !='')
+		{
+			$myquery = $myquery." AND wedding_booking.notes LIKE '%".$requestData['notes']."%' ";
+		}
 
 
         return $this->db->query($myquery);

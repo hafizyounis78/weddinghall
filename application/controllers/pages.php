@@ -459,7 +459,9 @@ function update_emppayments_datatable()
 			$nestedData[] = $row->tel;
 			$nestedData[] = $row->mobile;
 			$nestedData[] = $row->org_desc;
+			$nestedData[] = $row->notes;
 			$nestedData[] = $row->b_desc;
+
 			$nestedData[] = $btn;
 			
 			$data[] = $nestedData;

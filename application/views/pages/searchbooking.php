@@ -38,31 +38,34 @@ var baseURL = "<?php echo base_url(); ?>";
 									<th width="5%">
 										 &nbsp;#
 									</th>
-									<th width="10%">
+									<th width="8%">
 										 الصالة
 									</th>
                                     <th width="14%">
 										 تاريخ الحجز
 									</th>
-									<th width="10%">
+									<th width="8%">
 									رقم الهوية
 									</th>
-									<th width="15%">
+									<th width="10%">
 										 الاسم
 									</th>
 									<th width="8%">
 										 تلفون
 									</th>
-									<th width="10%">
+									<th width="8%">
 										 جوال
 									</th>
                                     <th width="10%">
 										 الجمعية
 									</th>
-									<th width="10%">
+		                            <th width="10%">
+										 ملاجظات
+									</th>
+		   							<th width="10%">
 										 حالة الحجز
 									</th>
-									<th width="10%">
+        							<th width="10%">
 										 Actions
 									</th>
 								</tr>
@@ -128,7 +131,11 @@ var baseURL = "<?php echo base_url(); ?>";
 												?>
 																					</select>
 									</td>
-									<td>
+		                              <td>
+											<input type="text" class="form-control form-filter input-sm" name="notes">
+									</td>
+		
+        							<td>
 										<select name="booking_status" class="form-control form-filter input-sm">
 											<option value="">Select...</option>
 											<?php
@@ -143,7 +150,7 @@ var baseURL = "<?php echo base_url(); ?>";
 												?>
 																					</select>
 									</td>
-									<td>
+      							<td>
 										<div class="margin-bottom-5">
 											<button type="submit" class="btn btn-sm yellow filter-submit margin-bottom"><i class="fa fa-search"></i> بحث</button>
 										</div>
