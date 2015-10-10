@@ -27,7 +27,7 @@ where employee_payments.emp_code=employee.emp_code";
 		date_default_timezone_set('Asia/Gaza');   
 		$today_date = date('Y-m-d');
 
-		$myquery = "SELECT 		payments. * , wedding_booking. * , customer. * , wedding_hall. *,organizations_tb.*
+		$myquery = "SELECT 		payments. * , wedding_booking. * , customer. * , wedding_hall. *,organizations_tb.org_desc
 					FROM   		wedding_booking
 					LEFT JOIN 	payments ON wedding_booking.booking_code = payments.booking_code
 					AND 		payment_status <>4

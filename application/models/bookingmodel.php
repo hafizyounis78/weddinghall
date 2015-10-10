@@ -56,7 +56,7 @@ class Bookingmodel extends CI_Model
 		date_default_timezone_set('Asia/Gaza');   
 		$today_date = date('Y-m-d');
 
-		 $myquery = "select 	wedding_hall.*,customer.*,wedding_booking.*,booking_status_tb.*,organizations_tb.*
+		 $myquery = "select 	wedding_hall.*,customer.*,wedding_booking.*,booking_status_tb.*,organizations_tb.org_desc
 					from 		wedding_booking
 					LEFT JOIN 	organizations_tb ON wedding_booking.org_id=organizations_tb.org_id
 								,wedding_hall,customer,booking_status_tb
@@ -78,11 +78,11 @@ class Bookingmodel extends CI_Model
 		}
 		if(isset($requestData['tel']) && $requestData['tel'] !='')
 		{
-			$myquery = $myquery." AND tel LIKE '".$requestData['tel']."%' ";
+			$myquery = $myquery." AND customer.tel LIKE '".$requestData['tel']."%' ";
 		}
 		if(isset($requestData['mobile']) && $requestData['mobile'] !='')
 		{
-			$myquery = $myquery." AND mobile LIKE '".$requestData['mobile']."%' ";
+			$myquery = $myquery." AND customer.mobile LIKE '".$requestData['mobile']."%' ";
 		}
 		if(!isset($requestData['booking_date_from']) && !isset($requestData['booking_date_to']))
 		{
@@ -104,7 +104,7 @@ class Bookingmodel extends CI_Model
 		}
 		if(isset($requestData['org_id']) && $requestData['org_id'] !='')
 		{
-			$myquery = $myquery." AND organizations_tb.org_id = ".$requestData['org_id'];
+			$myquery = $myquery." AND wedding_booking.org_id = ".$requestData['org_id'];
 		}
 
 
@@ -113,7 +113,7 @@ class Bookingmodel extends CI_Model
 	}
 	public function get_all_delbooking_search($requestData){
 		//$requestData= $_REQUEST;
-		 $myquery = "select wedding_hall.*,customer.*,wedding_booking.*,booking_status_tb.*,organizations_tb.*
+		 $myquery = "select wedding_hall.*,customer.*,wedding_booking.*,booking_status_tb.*,organizations_tb.org_desc
 					from 		wedding_booking
 					LEFT JOIN 	organizations_tb ON wedding_booking.org_id=organizations_tb.org_id
 								,wedding_hall,customer,booking_status_tb
