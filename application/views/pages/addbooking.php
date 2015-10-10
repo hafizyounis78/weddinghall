@@ -188,6 +188,28 @@ if (isset($addbooking))
 											 echo $disabled;?>/>
 										</div>
                                      </div>
+                                    <div class="form-group">
+										<label class="control-label col-md-3">الجمعية<span class="required">
+										* </span>
+										</label>
+										<div class="col-md-4">
+                                        	
+											<select id="org_id" class="form-control select2me" name="org_id" <?php echo $disabled;?>>
+												<option value="0">Select...</option>
+												<?php
+												$selected;
+												foreach($organization as $row)
+												{	 
+												?>
+							                     <option value="<?php echo $row->org_id;?>"> 
+												 	<?php echo $row->org_desc;?></option>
+
+                                                <?php
+												}
+												?>
+											</select>
+										</div>
+									</div>
                                      <div class="form-group">
 										<label class="control-label col-md-3">ملاحظات</label>
 										<div class="col-md-4">

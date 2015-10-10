@@ -82,6 +82,9 @@ var baseURL = "<?php echo base_url(); ?>";
 									<th width="10%">
 										 جوال
 									</th>
+                                    <th width="10%">
+										 الجمعية
+									</th>
 									<th width="10%">
 										 Actions
 									</th>
@@ -132,6 +135,21 @@ var baseURL = "<?php echo base_url(); ?>";
 									</td>
 									<td>
 											<input type="text" class="form-control form-filter input-sm" name="mobile">
+									</td>
+                                     <td>
+										<select name="org_id" class="form-control form-filter input-sm">
+											<option value="">Select...</option>
+											<?php
+												
+												foreach($organization as $row)
+												{
+												?>
+							                     <option value="<?php echo $row->org_id;?>" > <?php echo $row->org_desc;?></option>
+
+                                                <?php
+												}
+												?>
+																					</select>
 									</td>
 									
 									<td>

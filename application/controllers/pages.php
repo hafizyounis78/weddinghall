@@ -61,7 +61,7 @@ class Pages extends CI_Controller
 				$data['sev'] =$this->get_active_services();
 				$data['hall'] =$this->wedding_hall();
 				$data['booking_sev'] =$this->booking_details($indata);
-				$data['organization'] =$this->organization();
+				$data['organization'] =$this->wedding_org();
 			}
 			if($page == 'addemp')
 			{
@@ -86,7 +86,7 @@ class Pages extends CI_Controller
 				
 				$data['sev'] =$this->get_active_services();
 				$data['hall'] =$this->wedding_hall();
-				$data['organization'] =$this->organization();
+				$data['organization'] =$this->wedding_org();
 				
 			}
 			if($page == 'searchbooking')
@@ -94,7 +94,7 @@ class Pages extends CI_Controller
 				//$data[$page] = $this->viewbookingupdate($indata);
 				$data['bookstatus'] =$this->booking_status();
 				$data['hall'] =$this->wedding_hall();
-				$data['organization'] =$this->organization();
+				$data['organization'] =$this->wedding_org();
 				//	
 			}
 			if($page == 'searchdelbooking')
@@ -102,7 +102,7 @@ class Pages extends CI_Controller
 				//$data[$page] = $this->viewbookingupdate($indata);
 				$data['bookstatus'] =$this->booking_status();
 				$data['hall'] =$this->wedding_hall();
-				$data['organization'] =$this->organization();
+				$data['organization'] =$this->wedding_org();
 				//	
 			}
 			if($page == 'searchpaymentsajax')
@@ -110,7 +110,7 @@ class Pages extends CI_Controller
 				//$data[$page] = $this->viewbookingupdate($indata);
 				//$data['bookstatus'] =$this->booking_status();
 				$data['hall'] =$this->wedding_hall();
-				$data['organization'] =$this->organization();
+				$data['organization'] =$this->wedding_org();
 				//	
 			}
 			if($page == 'searchemppaymentsajax')
@@ -458,6 +458,7 @@ function update_emppayments_datatable()
 			$nestedData[] = $row->name;
 			$nestedData[] = $row->tel;
 			$nestedData[] = $row->mobile;
+			$nestedData[] = $row->org_desc;
 			$nestedData[] = $row->b_desc;
 			$nestedData[] = $btn;
 			
@@ -503,6 +504,7 @@ function update_emppayments_datatable()
 			$nestedData[] = $row->name;
 			$nestedData[] = $row->tel;
 			$nestedData[] = $row->mobile;
+			$nestedData[] = $row->org_desc;
 			//$nestedData[] = $row->b_desc;
 			$nestedData[] = $btn;
 			
@@ -544,6 +546,7 @@ function update_emppayments_datatable()
 			$nestedData[] = $row->final_price;
 			$nestedData[] = $row->payment_amount;
 			$nestedData[] = $row->payment_date;
+			$nestedData[] = $row->org_desc;
 			$nestedData[] = $row->invoice_no;
 			$nestedData[] = $btn;
 			
@@ -836,9 +839,16 @@ function update_emppayments_datatable()
 	function organization()
 	{
 		$this->load->model('orgmodel');
+		return $this->orgmodel->get_all_org();
+		 		
+	}
+	function wedding_org()
+	{
+		$this->load->model('orgmodel');
 		return $this->orgmodel->get_org();
 		 		
 	}
+
 	function booking()
 	{
 		$this->load->model('bookingmodel');

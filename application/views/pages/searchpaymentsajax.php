@@ -84,6 +84,9 @@ var baseURL = "<?php echo base_url(); ?>";
 									<th width="10%">
 									تاريخ الدفعة
                 					</th>
+                                    <th width="10%">
+									الجمعية
+									</th>
 									<th width="10%">
 									رقم الفاتورة
 									</th>
@@ -151,6 +154,21 @@ var baseURL = "<?php echo base_url(); ?>";
 											<button class="btn btn-sm default" type="button"><i class="fa fa-calendar"></i></button>
 											</span>
 										</div>
+									</td>
+                                    <td>
+										<select name="org_id" class="form-control form-filter input-sm">
+											<option value="">Select...</option>
+											<?php
+												
+												foreach($organization as $row)
+												{
+												?>
+							                     <option value="<?php echo $row->org_id;?>" > <?php echo $row->org_desc;?></option>
+
+                                                <?php
+												}
+												?>
+																					</select>
 									</td>
                                     <td>
 											<input type="text" class="form-control form-filter input-sm" name="invoice_no">

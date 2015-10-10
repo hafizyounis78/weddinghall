@@ -56,12 +56,14 @@ class Bookingmodel extends CI_Model
 		date_default_timezone_set('Asia/Gaza');   
 		$today_date = date('Y-m-d');
 
-		 $myquery = "select wedding_hall.*,customer.*,wedding_booking.*,booking_status_tb.*
-					from wedding_hall,customer,wedding_booking,booking_status_tb
-					where wedding_booking.w_code=wedding_hall.w_code
-					and wedding_booking.cut_id=customer.cut_id
-					and booking_status_tb.booking_status_code=wedding_booking.booking_status
-					and booking_status<>4";
+		 $myquery = "select 	wedding_hall.*,customer.*,wedding_booking.*,booking_status_tb.*,organizations_tb.*
+					from 		wedding_booking
+					LEFT JOIN 	organizations_tb ON wedding_booking.org_id=organizations_tb.org_id
+								,wedding_hall,customer,booking_status_tb
+					where 		wedding_booking.w_code=wedding_hall.w_code
+					and 		wedding_booking.cut_id=customer.cut_id
+					and 		booking_status_tb.booking_status_code=wedding_booking.booking_status
+					and 		booking_status<>4";
 		if(isset($requestData['w_code']) && $requestData['w_code'] !='')
 		{
 			$myquery = $myquery." AND wedding_hall.w_code = ".$requestData['w_code'];
@@ -100,17 +102,25 @@ class Bookingmodel extends CI_Model
 		{
 			$myquery = $myquery." AND booking_status LIKE '".$requestData['booking_status']."%' ";
 		}
+		if(isset($requestData['org_id']) && $requestData['org_id'] !='')
+		{
+			$myquery = $myquery." AND organizations_tb.org_id = ".$requestData['org_id'];
+		}
+
 
         return $this->db->query($myquery);
 
 	}
 	public function get_all_delbooking_search($requestData){
 		//$requestData= $_REQUEST;
-		 $myquery = "select wedding_hall.*,customer.*,wedding_booking.*,booking_status_tb.*
-					from wedding_hall,customer,wedding_booking,booking_status_tb
+		 $myquery = "select wedding_hall.*,customer.*,wedding_booking.*,booking_status_tb.*,organizations_tb.*
+					from 		wedding_booking
+					LEFT JOIN 	organizations_tb ON wedding_booking.org_id=organizations_tb.org_id
+								,wedding_hall,customer,booking_status_tb
 					where wedding_booking.w_code=wedding_hall.w_code
 					and wedding_booking.cut_id=customer.cut_id
 					and booking_status_tb.booking_status_code=wedding_booking.booking_status
+					and wedding_booking.org_id=organizations_tb.org_id
 					and booking_status=4";
 		if(isset($requestData['w_code']) && $requestData['w_code'] !='')
 		{
@@ -141,6 +151,10 @@ class Bookingmodel extends CI_Model
 		   && (isset($requestData['booking_date_to']) && $requestData['booking_date_to'] == ''))
 		{
 			$myquery = $myquery." AND old_booking_date = '".$requestData['booking_date_from']."'";
+		}
+		if(isset($requestData['org_id']) && $requestData['org_id'] !='')
+		{
+			$myquery = $myquery." AND organizations_tb.org_id = ".$requestData['org_id'];
 		}
 		/*if(isset($requestData['booking_status']) && $requestData['booking_status'] !='')
 		{
@@ -256,6 +270,7 @@ public function update_booking()
 		$data['w_code'] = $w_code;
 		$data['booking_date'] = $booking_date;
 		$data['cut_id'] = $custm_id;
+		$data['org_id'] = $org_id;
 		$data['notes'] = $notes;			
 	$this->db->where('booking_code',$hdnBooking_code);		
 	$this->db->update('wedding_booking',$data);
@@ -318,6 +333,7 @@ public function delete_selectedservice($sev_code,$booking_code)
 	$bdata['cut_id'] = $customerid;
 	$bdata['booking_status'] = 1;
 	$bdata['notes'] = $notes;
+	$bdata['org_id'] = $org_id;
 
 	$this->db->insert('wedding_booking',$bdata);
 /*****************customer**********************/

@@ -4,6 +4,11 @@ class Orgmodel extends CI_Model
 {
 
 	public function get_org()
+    {$this->db->where('org_status',1);
+        $query = $this->db->get('organizations_tb');
+		return $query->result();
+    }
+	public function get_all_org()
     {
         $query = $this->db->get('organizations_tb');
 		return $query->result();
@@ -11,7 +16,6 @@ class Orgmodel extends CI_Model
 	public function get_org_by_code($org_id)
 	{
 		$this->db->where('org_id',$org_id);
-		
 		$query = $this->db->get('organizations_tb');
 		return $query->result();
 	}
