@@ -198,11 +198,11 @@ if (isset($addbooking))
 												<option value="0">Select...</option>
 												<?php
 												$selected;
-												foreach($organization as $row)
+												foreach($organization as $orgrow)
 												{	 
 												?>
-							                     <option value="<?php echo $row->org_id;?>"> 
-												 	<?php echo $row->org_desc;?></option>
+							                     <option value="<?php echo $orgrow->org_id;?>"> 
+												 	<?php echo $orgrow->org_desc;?></option>
 
                                                 <?php
 												}
