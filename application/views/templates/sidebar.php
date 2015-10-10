@@ -190,6 +190,24 @@
 						</li>
 					</ul>
 				</li>
+                <li <?php if($title == 'organization' || $title == 'addorg') echo 'class="active open"';?>>
+					<a href="javascript:;">
+					<i class="icon-puzzle"></i>
+					<span class="title">الجمعيات</span>
+					<?php if($title == 'organization' || $title == 'addorg') echo'<span class="selected"></span>';?>
+					<span class="<?php if($title == 'organization' || $title == 'addorg') echo'arrow open'; else echo'arrow'; ?>">
+					</a>
+					<ul class="sub-menu">
+						<li <?php if($title == 'addorg') echo 'class="active"'; ?>>
+							<a href="<?php echo base_url();?>addorg">
+							اضافة جمعية</a>
+						</li>
+						<li <?php if($title == 'organization') echo 'class="active"'; ?>>
+							<a href="<?php echo base_url();?>organization">
+							عرض الجمعيات</a>
+						</li>
+					</ul>
+				</li>
 		</div>
 	</div>
 	<!-- END SIDEBAR -->

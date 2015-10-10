@@ -66,6 +66,7 @@
 <!-- END OUR SCRIPTS-->
 <!-- OUR SCRIPTS-->
 <script src="<?php echo base_url();?>js/hall.js"></script>
+<script src="<?php echo base_url();?>js/organization.js"></script>
 <!-- END OUR SCRIPTS-->
 <!-- OUR SCRIPTS-->
 <script src="<?php echo base_url();?>js/payments.js"></script>
@@ -87,6 +88,7 @@
 		EmpFormValidation.init();
 		UserFormValidation.init();
 		HallFormValidation.init();
+		orgFormValidation.init();
 		bookingFormValidation.init();
 		bookingdetailsFormValidation.init();
 		bookingpriceFormValidation.init();

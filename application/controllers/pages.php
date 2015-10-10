@@ -36,7 +36,7 @@ class Pages extends CI_Controller
 			$this->load->view('templates/stylecustomizer');
 			//$this->load->view('templates/pageheader');
 			if($page == 'users'||$page == 'employee'|| $page == 'hall'||$page == 'services' ||
-			   $page == 'booking'||$page == 'payments'||$page == 'emppayments'||$page=='searchpayments'||$page=='searchemppayments'||$page=='searchbooking'||$page=='searchdelbooking')
+			   $page == 'booking'||$page == 'payments'||$page == 'emppayments'||$page=='searchpayments'||$page=='searchemppayments'||$page=='searchbooking'||$page=='searchdelbooking'||$page=='organization')
 					$data[$page] = $this->$page();
 		
 			if($page == 'home')
@@ -61,6 +61,7 @@ class Pages extends CI_Controller
 				$data['sev'] =$this->get_active_services();
 				$data['hall'] =$this->wedding_hall();
 				$data['booking_sev'] =$this->booking_details($indata);
+				$data['organization'] =$this->organization();
 			}
 			if($page == 'addemp')
 			{
@@ -85,6 +86,7 @@ class Pages extends CI_Controller
 				
 				$data['sev'] =$this->get_active_services();
 				$data['hall'] =$this->wedding_hall();
+				$data['organization'] =$this->organization();
 				
 			}
 			if($page == 'searchbooking')
@@ -92,6 +94,7 @@ class Pages extends CI_Controller
 				//$data[$page] = $this->viewbookingupdate($indata);
 				$data['bookstatus'] =$this->booking_status();
 				$data['hall'] =$this->wedding_hall();
+				$data['organization'] =$this->organization();
 				//	
 			}
 			if($page == 'searchdelbooking')
@@ -99,6 +102,7 @@ class Pages extends CI_Controller
 				//$data[$page] = $this->viewbookingupdate($indata);
 				$data['bookstatus'] =$this->booking_status();
 				$data['hall'] =$this->wedding_hall();
+				$data['organization'] =$this->organization();
 				//	
 			}
 			if($page == 'searchpaymentsajax')
@@ -106,6 +110,7 @@ class Pages extends CI_Controller
 				//$data[$page] = $this->viewbookingupdate($indata);
 				//$data['bookstatus'] =$this->booking_status();
 				$data['hall'] =$this->wedding_hall();
+				$data['organization'] =$this->organization();
 				//	
 			}
 			if($page == 'searchemppaymentsajax')
@@ -142,6 +147,9 @@ class Pages extends CI_Controller
 			}
 			if(($page == 'addhall' )&& $indata !='')
 				$data[$page] = $this->viewhallupdate($indata);
+				
+			if(($page == 'addorg' )&& $indata !='')
+				$data[$page] = $this->vieworgupdate($indata);
 			if(($page == 'addservices' )&& $indata !='')
 				$data[$page] = $this->viewserviceupdate($indata);
 
@@ -663,6 +671,12 @@ function update_emppayments_datatable()
 		$this->hallmodel->insert_hall();
 			
 	}
+	function addorg()
+	{
+		$this->load->model('orgmodel');
+		$this->orgmodel->insert_org();
+			
+	}
 	function addservices()
 	{
 		$this->load->model('servicemodel');
@@ -727,6 +741,11 @@ function update_emppayments_datatable()
 		$this->load->model('hallmodel');
 		return $this->hallmodel->get_hall_by_code($w_code);
 	}
+	function vieworgupdate($org_id)
+	{
+		$this->load->model('orgmodel');
+		return $this->orgmodel->get_org_by_code($org_id);
+	}
 	function viewserviceupdate($sev_code)
 	{
 		$this->load->model('servicemodel');
@@ -743,6 +762,11 @@ function update_emppayments_datatable()
 		$this->load->model('hallmodel');
 		return $this->hallmodel->update_hall();
 	}
+	function updateorg()
+	{
+		$this->load->model('orgmodel');
+		return $this->orgmodel->update_org();
+	}
 	function updateservices()
 	{
 		$this->load->model('servicemodel');
@@ -752,6 +776,12 @@ function update_emppayments_datatable()
 	{
 		$this->load->model('hallmodel');
 		return $this->hallmodel->delete_hall($w_code);
+
+	}
+	function deleteorg($org_id)
+	{
+		$this->load->model('orgmodel');
+		return $this->orgmodel->delete_org($org_id);
 
 	}
 	function deletebooking($booking_code)
@@ -803,6 +833,12 @@ function update_emppayments_datatable()
 		return $this->hallmodel->get_hall();
 		 		
 	}
+	function organization()
+	{
+		$this->load->model('orgmodel');
+		return $this->orgmodel->get_org();
+		 		
+	}
 	function booking()
 	{
 		$this->load->model('bookingmodel');
@@ -849,6 +885,7 @@ function update_emppayments_datatable()
 		return $this->hallmodel->get_hall();
 		 		
 	}
+	
 /*********************notification******************************/	
 	function get_booking_notification()
 	{
