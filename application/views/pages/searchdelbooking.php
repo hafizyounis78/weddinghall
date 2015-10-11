@@ -85,6 +85,9 @@ var baseURL = "<?php echo base_url(); ?>";
                                     <th width="10%">
 										 الجمعية
 									</th>
+                                     <th width="10%">
+										 ملاحظات
+									</th>
 									<th width="10%">
 										 Actions
 									</th>
@@ -151,7 +154,9 @@ var baseURL = "<?php echo base_url(); ?>";
 												?>
 																					</select>
 									</td>
-									
+									 <td>
+											<input type="text" class="form-control form-filter input-sm" name="notes">
+									</td>
 									<td>
 										<div class="margin-bottom-5">
 											<button type="submit" class="btn btn-sm yellow filter-submit margin-bottom"><i class="fa fa-search"></i> بحث</button>

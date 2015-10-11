@@ -126,7 +126,6 @@ class Bookingmodel extends CI_Model
 					where wedding_booking.w_code=wedding_hall.w_code
 					and wedding_booking.cut_id=customer.cut_id
 					and booking_status_tb.booking_status_code=wedding_booking.booking_status
-					and wedding_booking.org_id=organizations_tb.org_id
 					and booking_status=4";
 		if(isset($requestData['w_code']) && $requestData['w_code'] !='')
 		{
@@ -156,11 +155,15 @@ class Bookingmodel extends CI_Model
 		if(isset($requestData['booking_date_from']) && $requestData['booking_date_from'] != ''
 		   && (isset($requestData['booking_date_to']) && $requestData['booking_date_to'] == ''))
 		{
-			$myquery = $myquery." AND old_booking_date = '".$requestData['booking_date_from']."'";
+			$myquery = $myquery." AND old_booking_date >= '".$requestData['booking_date_from']."'";
 		}
 		if(isset($requestData['org_id']) && $requestData['org_id'] !='')
 		{
 			$myquery = $myquery." AND organizations_tb.org_id = ".$requestData['org_id'];
+		}
+		if(isset($requestData['notes']) && $requestData['notes'] !='')
+		{
+			$myquery = $myquery." AND wedding_booking.notes LIKE '%".$requestData['notes']."%' ";
 		}
 		/*if(isset($requestData['booking_status']) && $requestData['booking_status'] !='')
 		{
