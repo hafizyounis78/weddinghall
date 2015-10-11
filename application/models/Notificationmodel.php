@@ -15,7 +15,8 @@ public function get_booking_notification()
 					AND 	wedding_booking.cut_id = customer.cut_id
 					AND 	wedding_booking.booking_status <>4
 					AND 	wedding_booking.booking_status = booking_status_tb.booking_status_code
-					AND 	DATE_FORMAT(wedding_booking.booking_date,'%Y-%m-%d') between '$today_date' and '$after_date'";
+ 					AND 	DATE_FORMAT(wedding_booking.booking_date,'%Y-%m-%d') between '$today_date' and  '$after_date'
+					ORDER BY wedding_booking.booking_date ";
 					
 	 return $this->db->query($myquery);
 	}
@@ -48,7 +49,8 @@ public function get_payments_notification()
 					AND 	wedding_booking.cut_id = customer.cut_id
 					AND 	wedding_booking.booking_status =2
 					AND 	wedding_booking.booking_status = booking_status_tb.booking_status_code
-					AND 	DATE_FORMAT(wedding_booking.booking_date,'%Y-%m-%d') between '$today_date' and '$after_date'";
+					AND 	DATE_FORMAT(wedding_booking.booking_date,'%Y-%m-%d') between '$today_date' and '$after_date' 
+					ORDER BY wedding_booking.booking_date";
 					
 	 return $this->db->query($myquery);
 	}

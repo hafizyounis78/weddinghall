@@ -200,8 +200,14 @@ if (isset($addbooking))
 												$selected;
 												foreach($organization as $orgrow)
 												{	 
+												$selected = "";
+													if (isset($addbooking))
+													{
+														if ($row->org_id==$orgrow->org_id)	
+															$selected = 'selected="selected"';
+													}
 												?>
-							                     <option value="<?php echo $orgrow->org_id;?>"> 
+							                     <option value="<?php echo $orgrow->org_id;?>"  <?php echo $selected;?>> 
 												 	<?php echo $orgrow->org_desc;?></option>
 
                                                 <?php
@@ -267,12 +273,12 @@ if (isset($addbooking))
 											<select id="sev_code" class="form-control select2me" onchange="sev_code_change()" name="sev_code" <?php echo $disabled;?>>
 												<option value="0">Select...</option>
 												<?php
-												$selected;
+												
 												foreach($sev as $row)
 												{	 
 												?>
 							                     <option value="<?php echo $row->sev_code;?>"> 
-												 	<?php echo '['.$row->sev_code.']  '.$row->sev_desc;?></option>
+												 	<?php echo $row->sev_desc;?></option>
 
                                                 <?php
 												}

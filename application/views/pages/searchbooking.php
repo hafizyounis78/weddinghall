@@ -60,7 +60,7 @@ var baseURL = "<?php echo base_url(); ?>";
 										 الجمعية
 									</th>
 		                            <th width="10%">
-										 ملاجظات
+										 ملاحظات
 									</th>
 		   							<th width="10%">
 										 حالة الحجز

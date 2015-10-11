@@ -30,8 +30,10 @@ class Bookingmodel extends CI_Model
 	}
 	public function get_all_booking()//,$cut_id)
 	{
-		 $myquery = "select wedding_hall.*,customer.*,wedding_booking.*,booking_status_tb.*
-					from wedding_hall,customer,wedding_booking,booking_status_tb
+		 $myquery = "select wedding_hall.*,customer.*,wedding_booking.*,booking_status_tb.*,organizations_tb.org_desc
+					from 		wedding_booking
+					LEFT JOIN 	organizations_tb ON wedding_booking.org_id=organizations_tb.org_id
+					,wedding_hall,customer,booking_status_tb
 					where wedding_booking.w_code=wedding_hall.w_code
 					and   wedding_booking.cut_id=customer.cut_id
 					and wedding_booking.booking_status=booking_status_tb.booking_status_code

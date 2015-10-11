@@ -204,7 +204,10 @@ function addbooking_details(){
 			//   alert($('#service_form #sev_code').html());
    				
 				document.getElementById("sev_code").selectedIndex = "0";
-						document.getElementById("sev_price").value= 0;
+				document.getElementById("sev_price").value= 0;
+				var ar=document.getElementById("sev_code").selectedIndex;
+				 $('#sev_code').prop('selectedIndex', index);
+				alert(ar);
 
 //				document.getElementById("sev_code").options.remove(sev_index)
 	//			document.getElementById("sev_code").caption="";
