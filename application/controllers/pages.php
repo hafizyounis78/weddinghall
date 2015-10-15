@@ -633,7 +633,8 @@ function update_emppayments_datatable()
 
           	// It guess your client side will need the id to extract, and distinguish the ScoreCH data
           	$temp['url'] = 'addbooking/'.$row->booking_code;
-			$temp['title'] = $row->w_name."\n".$row->name."\n".$row->mobile."\n".$row->org_desc."\n".$row->b_desc;
+			$temp['title'] = $row->w_name."\n".$row->name."\n".$row->mobile."\n".$row->b_desc;
+//			"\n".$row->org_desc.
           	$temp['start'] = $row->booking_date;
 			$temp['textColor'] = '#666666';
 			if($row->w_code == 1) $temp['backgroundColor'] = 'red';
