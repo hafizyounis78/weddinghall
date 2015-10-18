@@ -319,7 +319,7 @@ class Pages extends CI_Controller
 		$remaining = 0;
 		$required=0;
 		foreach($rec->result() as $row)
-  		{
+  		{if ($row->payment_status<>4)
 								$total = $total + $row->payment_amount;
 								$required=$row->final_price;
 								echo '<tr class="odd gradeX">';
