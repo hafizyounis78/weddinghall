@@ -53,7 +53,7 @@ class Bookingmodel extends CI_Model
 		return null;*/
 	}
 	
-	public function get_all_booking_search($requestData){
+	public function count_all_booking_search($requestData){
 		//$requestData= $_REQUEST;
 		date_default_timezone_set('Asia/Gaza');   
 		$today_date = date('Y-m-d');
@@ -65,7 +65,39 @@ class Bookingmodel extends CI_Model
 					where 		wedding_booking.w_code=wedding_hall.w_code
 					and 		wedding_booking.cut_id=customer.cut_id
 					and 		booking_status_tb.booking_status_code=wedding_booking.booking_status
+					and 		booking_status<>4
+					AND 		DATE_FORMAT(wedding_booking.booking_date,'%Y-%m-%d')>= '$today_date'";
+		$rec = $this->db->query($myquery);
+		
+		return count($rec->result());
+	}
+	
+	public function get_all_booking_search($requestData){
+		//$requestData= $_REQUEST;
+		
+		$columns = array( 
+			0 =>'wedding_hall.w_code', 
+			1 => 'booking_date',
+			2=> 'customer.cut_id_no',
+			3=> 'name',
+			4=> 'tel',
+			5=> 'mobile',
+			6=> 'org_id',
+			7=> 'wedding_booking.notes',
+			8=> 'booking_status');
+		
+		date_default_timezone_set('Asia/Gaza');   
+		$today_date = date('Y-m-d');
+
+		 $myquery = "select 	wedding_hall.*,customer.*,wedding_booking.*,booking_status_tb.*,organizations_tb.org_desc
+					from 		wedding_booking
+					LEFT JOIN 	organizations_tb ON wedding_booking.org_id=organizations_tb.org_id
+								,wedding_hall,customer,booking_status_tb
+					where 		wedding_booking.w_code=wedding_hall.w_code
+					and 		wedding_booking.cut_id=customer.cut_id
+					and 		booking_status_tb.booking_status_code=wedding_booking.booking_status
 					and 		booking_status<>4";
+					
 		if(isset($requestData['w_code']) && $requestData['w_code'] !='')
 		{
 			$myquery = $myquery." AND wedding_hall.w_code = ".$requestData['w_code'];
@@ -113,7 +145,8 @@ class Bookingmodel extends CI_Model
 			$myquery = $myquery." AND wedding_booking.notes LIKE '%".$requestData['notes']."%' ";
 		}
 
-
+		$myquery = $myquery." ORDER BY ". $columns[$requestData['order'][0]['column']]."   ".$requestData['order'][0]['dir']." LIMIT ".$requestData['start']." ,".$requestData['length']."   ";
+		
         return $this->db->query($myquery);
 
 	}
@@ -170,6 +203,7 @@ class Bookingmodel extends CI_Model
 			$myquery = $myquery." AND booking_status LIKE '".$requestData['booking_status']."%' ";
 		}
 */
+		
         return $this->db->query($myquery);
 
 	}
