@@ -145,7 +145,7 @@ function deletepayments(p_code,i)
 	var b_code=document.getElementById('booking_code').value ;
 	
 
-	new_total=parseInt(Total)-parseInt(payment_amount);
+	new_total=parseInt(Total)-Math.abs(parseInt(payment_amount));
 
 	 
 	

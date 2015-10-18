@@ -448,7 +448,7 @@ $b_date=$row->booking_date;
 		$this->db->where('booking_code', $booking_code);
 		$this->db->update('wedding_booking',$data);
 //		$this->delete_booking_details($booking_code);
-		$this->delete_payemnts($booking_code);
+//		$this->delete_payemnts($booking_code);
 	}
 	public function delete_booking_details($booking_code)
 	{
@@ -464,7 +464,8 @@ $b_date=$row->booking_date;
 					set 	payment_amount=payment_amount * (-1),
 							payment_status=4
 					where 	booking_code=$booking_code
-					and     payment_amount>=1";
+					and     payment_amount>=1
+					and     payment_status <> 4" ;
         return $this->db->query($myquery);
 		
 	}

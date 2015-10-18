@@ -245,7 +245,9 @@ if (isset($row->booking_status) && $row->booking_status == 4)
 								$required=0;
   							foreach($payment_view as $row)
   							{
+								if ($row->payment_status<>4)
 								$total = $total + $row->payment_amount;
+								
 								$required=$row->final_price;
 								echo '<tr class="odd gradeX">';
 								echo '<td>'.$i++.'</td>';
@@ -274,8 +276,9 @@ if (isset($row->booking_status) && $row->booking_status == 4)
 								echo '</tr>';
 								
 							}
+							
 								$remaining =$required-$total;
-								
+					
 							?>
                               
 						<!--	</tbody>

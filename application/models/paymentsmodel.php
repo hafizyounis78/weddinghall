@@ -275,7 +275,8 @@ public function delete_payment()
 		$myquery = "update 	payments
 					set 	payment_amount=payment_amount * (-1),
 							payment_status=4
-					where 	p_code=$p_code";
+					where 	p_code=$p_code
+					and     payment_status <> 4";
         return $this->db->query($myquery);
 
 //		$this->db->where('p_code', $p_code);
