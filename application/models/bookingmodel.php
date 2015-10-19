@@ -76,15 +76,15 @@ class Bookingmodel extends CI_Model
 		//$requestData= $_REQUEST;
 		
 		$columns = array( 
-			0 =>'wedding_hall.w_code', 
-			1 => 'booking_date',
-			2=> 'customer.cut_id_no',
-			3=> 'name',
-			4=> 'tel',
-			5=> 'mobile',
-			6=> 'org_id',
-			7=> 'wedding_booking.notes',
-			8=> 'booking_status');
+			1 =>'wedding_hall.w_code', 
+			2 => 'booking_date',
+			3=> 'customer.cut_id_no',
+			4=> 'name',
+			5=> 'tel',
+			6=> 'mobile',
+			7=> 'org_id',
+			8=> 'wedding_booking.notes',
+			9=> 'booking_status');
 		
 		date_default_timezone_set('Asia/Gaza');   
 		$today_date = date('Y-m-d');
