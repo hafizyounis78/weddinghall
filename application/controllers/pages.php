@@ -128,7 +128,10 @@ class Pages extends CI_Controller
 			if($page == 'addpayments' && $indata !='')
 			{
 				$data[$page] = $this->viewpaydata($indata);
-				$data['payment_view'] = $this->payment_view($indata);
+				$addpayments=$data[$page];
+				foreach($addpayments as $row);
+				$b_status=$row->booking_status;
+				$data['payment_view'] = $this->payment_view($indata,$b_status);
 				
 			}
 
@@ -722,10 +725,10 @@ function update_emppayments_datatable()
 		return $rec->result();
 	}	
 	
-	function payment_view($booking_code)
+	function payment_view($booking_code,$b_status)
 	{
 		$this->load->model('paymentsmodel');
-		$rec=$this->paymentsmodel->get_payments_by_code($booking_code);
+		$rec=$this->paymentsmodel->get_payments_by_code($booking_code,$b_status);
 		return $rec->result();
 	}	
 

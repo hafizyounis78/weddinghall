@@ -177,8 +177,11 @@ public function get_emppayments_by_code($emp_code)
 
 	}
 
-public function get_payments_by_code($booking_code)
+public function get_payments_by_code($booking_code,$b_status)
 	{
+//		extract($_POST);
+		if ($b_status=4)
+		{
 		 $myquery = "select payments.*,wedding_booking.*,customer.*,wedding_hall.*
 					 from   payments,wedding_booking,customer,wedding_hall
 					 where  wedding_booking.booking_code=payments.booking_code
@@ -186,6 +189,17 @@ public function get_payments_by_code($booking_code)
 					 and    wedding_booking.cut_id=customer.cut_id
 					 and    wedding_booking.booking_code=$booking_code";
 //					 and    payment_status<>4";
+		}
+		else
+		{
+			$myquery = "select payments.*,wedding_booking.*,customer.*,wedding_hall.*
+					 from   payments,wedding_booking,customer,wedding_hall
+					 where  wedding_booking.booking_code=payments.booking_code
+					 and    wedding_booking.w_code=wedding_hall.w_code
+					 and    wedding_booking.cut_id=customer.cut_id
+					 and    wedding_booking.booking_code=$booking_code
+					 and    payment_status<>4";
+		}
         return $this->db->query($myquery);
 
 	}	
