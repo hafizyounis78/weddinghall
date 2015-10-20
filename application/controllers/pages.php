@@ -530,6 +530,7 @@ function update_emppayments_datatable()
 	}
 	function payments_grid_data(){	
 		$this->load->model('paymentsmodel');
+		$totalData = $this->paymentsmodel->count_all_payments_search($_REQUEST);
 		$rec = $this->paymentsmodel->get_all_payments_search($_REQUEST);
 		
 		$rec = $rec->result();
@@ -556,9 +557,8 @@ function update_emppayments_datatable()
 			$data[] = $nestedData;
 		}
 		
-		$totalData = count($data);
+
 		$totalFiltered = $totalData;
-		//$records["draw"] = $sEcho;
 		$json_data = array(
 					"draw"            => intval( $_REQUEST['draw'] ),   // for every request/draw by clientside , they send a number as a parameter, when they recieve a response/data they first check the draw number, so we are sending same number in draw. 
 					"recordsTotal"    => intval( $totalData ),  // total number of records
@@ -572,6 +572,7 @@ function update_emppayments_datatable()
 	}	
 	function emp_payments_grid_data(){	
 		$this->load->model('paymentsmodel');
+		$totalData = $this->paymentsmodel->count_all_emp_payments_search($_REQUEST);
 		$rec = $this->paymentsmodel->get_all_emp_payments_search($_REQUEST);
 		
 		$rec = $rec->result();
@@ -596,10 +597,7 @@ function update_emppayments_datatable()
 			
 			$data[] = $nestedData;
 		}
-		
-		$totalData = count($data);
 		$totalFiltered = $totalData;
-		//$records["draw"] = $sEcho;
 		$json_data = array(
 					"draw"            => intval( $_REQUEST['draw'] ),   // for every request/draw by clientside , they send a number as a parameter, when they recieve a response/data they first check the draw number, so we are sending same number in draw. 
 					"recordsTotal"    => intval( $totalData ),  // total number of records

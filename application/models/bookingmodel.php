@@ -65,8 +65,54 @@ class Bookingmodel extends CI_Model
 					where 		wedding_booking.w_code=wedding_hall.w_code
 					and 		wedding_booking.cut_id=customer.cut_id
 					and 		booking_status_tb.booking_status_code=wedding_booking.booking_status
-					and 		booking_status<>4
-					AND 		DATE_FORMAT(wedding_booking.booking_date,'%Y-%m-%d')>= '$today_date'";
+					and 		booking_status<>4";
+		if(isset($requestData['w_code']) && $requestData['w_code'] !='')
+		{
+			$myquery = $myquery." AND wedding_hall.w_code = ".$requestData['w_code'];
+		}
+		if(isset($requestData['cut_id_no']) && $requestData['cut_id_no'] !='')
+		{
+			$myquery = $myquery." AND customer.cut_id_no LIKE '".$requestData['cut_id_no']."%' ";;
+		}
+		if(isset($requestData['name']) && $requestData['name'] !='')
+		{
+			$myquery = $myquery." AND name LIKE '%".$requestData['name']."%' ";
+		}
+		if(isset($requestData['tel']) && $requestData['tel'] !='')
+		{
+			$myquery = $myquery." AND customer.tel LIKE '".$requestData['tel']."%' ";
+		}
+		if(isset($requestData['mobile']) && $requestData['mobile'] !='')
+		{
+			$myquery = $myquery." AND customer.mobile LIKE '".$requestData['mobile']."%' ";
+		}
+		if(!isset($requestData['booking_date_from']) && !isset($requestData['booking_date_to']))
+		{
+			$myquery = $myquery." AND DATE_FORMAT(wedding_booking.booking_date,'%Y-%m-%d')>= '$today_date'";
+		}
+		if(isset($requestData['booking_date_from']) && $requestData['booking_date_from'] != ''
+		   && isset($requestData['booking_date_to']) && $requestData['booking_date_to'] != '')
+		{
+			$myquery = $myquery." AND booking_date between '".$requestData['booking_date_from']."' and '".$requestData['booking_date_to']."'";
+		}
+		if(isset($requestData['booking_date_from']) && $requestData['booking_date_from'] != ''
+		   && (isset($requestData['booking_date_to']) && $requestData['booking_date_to'] == ''))
+		{
+			$myquery = $myquery." AND booking_date >= '".$requestData['booking_date_from']."'";
+		}
+		if(isset($requestData['booking_status']) && $requestData['booking_status'] !='')
+		{
+			$myquery = $myquery." AND booking_status LIKE '".$requestData['booking_status']."%' ";
+		}
+		if(isset($requestData['org_id']) && $requestData['org_id'] !='')
+		{
+			$myquery = $myquery." AND wedding_booking.org_id = ".$requestData['org_id'];
+		}
+		if(isset($requestData['notes']) && $requestData['notes'] !='')
+		{
+			$myquery = $myquery." AND wedding_booking.notes LIKE '%".$requestData['notes']."%' ";
+		}
+
 		$rec = $this->db->query($myquery);
 		
 		return count($rec->result());
@@ -165,6 +211,45 @@ class Bookingmodel extends CI_Model
 					and booking_status_tb.booking_status_code=wedding_booking.booking_status
 					and booking_status=4";
 					
+		if(isset($requestData['w_code']) && $requestData['w_code'] !='')
+		{
+			$myquery = $myquery." AND wedding_hall.w_code = ".$requestData['w_code'];
+		}
+		if(isset($requestData['cut_id_no']) && $requestData['cut_id_no'] !='')
+		{
+			$myquery = $myquery." AND customer.cut_id_no LIKE '".$requestData['cut_id_no']."%' ";;
+		}
+		if(isset($requestData['name']) && $requestData['name'] !='')
+		{
+			$myquery = $myquery." AND name LIKE '%".$requestData['name']."%' ";
+		}
+		if(isset($requestData['tel']) && $requestData['tel'] !='')
+		{
+			$myquery = $myquery." AND tel LIKE '".$requestData['tel']."%' ";
+		}
+		if(isset($requestData['mobile']) && $requestData['mobile'] !='')
+		{
+			$myquery = $myquery." AND mobile LIKE '".$requestData['mobile']."%' ";
+		}
+		if(isset($requestData['booking_date_from']) && $requestData['booking_date_from'] != ''
+		   && isset($requestData['booking_date_to']) && $requestData['booking_date_to'] != '')
+		{
+			$myquery = $myquery." AND old_booking_date between '".$requestData['booking_date_from']."' and '".$requestData['booking_date_to']."'";
+		}
+		if(isset($requestData['booking_date_from']) && $requestData['booking_date_from'] != ''
+		   && (isset($requestData['booking_date_to']) && $requestData['booking_date_to'] == ''))
+		{
+			$myquery = $myquery." AND old_booking_date >= '".$requestData['booking_date_from']."'";
+		}
+		if(isset($requestData['org_id']) && $requestData['org_id'] !='')
+		{
+			$myquery = $myquery." AND organizations_tb.org_id = ".$requestData['org_id'];
+		}
+		if(isset($requestData['notes']) && $requestData['notes'] !='')
+		{
+			$myquery = $myquery." AND wedding_booking.notes LIKE '%".$requestData['notes']."%' ";
+		}
+
 		$rec = $this->db->query($myquery);
 		
 		return count($rec->result());
