@@ -235,7 +235,7 @@ public function get_all_emp_payments_search($requestData)
 			1=> 'emp_id',
 			2=> 'name',
 			3 =>'mobile', 
-			4 =>'contract_code',
+			4 =>'employee.contract_code',
 			5=> 'payment_amount',
 			6=> 'payment_date',
 			7=> 'invoice_no',
