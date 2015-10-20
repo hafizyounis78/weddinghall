@@ -484,6 +484,7 @@ function update_emppayments_datatable()
 	}
 	function delbooking_grid_data(){	
 		$this->load->model('bookingmodel');
+		$totalData = $this->bookingmodel->count_all_delbooking_search($_REQUEST);
 		$rec = $this->bookingmodel->get_all_delbooking_search($_REQUEST);
 		
 		$rec = $rec->result();
@@ -514,7 +515,6 @@ function update_emppayments_datatable()
 			$data[] = $nestedData;
 		}
 		
-		$totalData = count($data);
 		$totalFiltered = $totalData;
 		//$records["draw"] = $sEcho;
 		$json_data = array(

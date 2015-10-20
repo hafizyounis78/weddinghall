@@ -150,8 +150,39 @@ class Bookingmodel extends CI_Model
         return $this->db->query($myquery);
 
 	}
+	
+	
+	public function count_all_delbooking_search($requestData){
+		//$requestData= $_REQUEST;
+		
+		
+		 $myquery = "select wedding_hall.*,customer.*,wedding_booking.*,booking_status_tb.*,organizations_tb.org_desc
+					from 		wedding_booking
+					LEFT JOIN 	organizations_tb ON wedding_booking.org_id=organizations_tb.org_id
+								,wedding_hall,customer,booking_status_tb
+					where wedding_booking.w_code=wedding_hall.w_code
+					and wedding_booking.cut_id=customer.cut_id
+					and booking_status_tb.booking_status_code=wedding_booking.booking_status
+					and booking_status=4";
+					
+		$rec = $this->db->query($myquery);
+		
+		return count($rec->result());
+	}
+	
 	public function get_all_delbooking_search($requestData){
 		//$requestData= $_REQUEST;
+		
+		$columns = array( 
+			1 =>'wedding_hall.w_code', 
+			2 => 'old_booking_date',
+			3=> 'customer.cut_id_no',
+			4=> 'name',
+			5=> 'tel',
+			6=> 'mobile',
+			7=> 'org_id',
+			8=> 'wedding_booking.notes');
+		
 		 $myquery = "select wedding_hall.*,customer.*,wedding_booking.*,booking_status_tb.*,organizations_tb.org_desc
 					from 		wedding_booking
 					LEFT JOIN 	organizations_tb ON wedding_booking.org_id=organizations_tb.org_id
@@ -203,6 +234,7 @@ class Bookingmodel extends CI_Model
 			$myquery = $myquery." AND booking_status LIKE '".$requestData['booking_status']."%' ";
 		}
 */
+		$myquery = $myquery." ORDER BY ". $columns[$requestData['order'][0]['column']]."   ".$requestData['order'][0]['dir']." LIMIT ".$requestData['start']." ,".$requestData['length']."   ";
 		
         return $this->db->query($myquery);
 
